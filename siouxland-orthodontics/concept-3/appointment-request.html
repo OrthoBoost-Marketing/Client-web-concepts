@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en" id="top">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Request an Appointment | Siouxland Orthodontics</title>
+<meta name="description" content="Request your free orthodontic consultation with Dr. Aaron Williams at Siouxland Orthodontics. Four locations in Sioux City, Le Mars, and Wayne. No referral needed.">
+<!-- TODO at launch: swap the Pages URLs below for the confirmed client domain -->
+<link rel="icon" type="image/png" href="assets/favicon.png">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Request an Appointment | Siouxland Orthodontics">
+<meta property="og:description" content="Request your free orthodontic consultation with Dr. Aaron Williams at Siouxland Orthodontics. Four locations in Sioux City, Le Mars, and Wayne. No referral needed.">
+<meta property="og:url" content="https://orthoboost-marketing.github.io/siouxland-orthodontics/appointment-request.html">
+<meta property="og:image" content="https://orthoboost-marketing.github.io/siouxland-orthodontics/assets/logo-main.png">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Volkhov:ital,wght@0,400;0,700;1,400&family=Argentum+Sans:wght@400;600;700;800&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Volkhov:ital,wght@0,400;0,700;1,400&family=Argentum+Sans:wght@400;600;700;800&display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Volkhov:ital,wght@0,400;0,700;1,400&family=Argentum+Sans:wght@400;600;700;800&display=swap"></noscript>
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<!-- ===== Header (same design system as index) ===== -->
+<header class="topbar">
+  <div class="topbar__inner">
+    <a class="logo" href="index.html" aria-label="Siouxland Orthodontics home">
+      <img src="assets/logo-horizontal.svg" width="480" height="101" alt="Siouxland Orthodontics">
+    </a>
+    <button class="menu-toggle" aria-label="Open menu" aria-expanded="false" onclick="toggleNav(this)">
+      <span></span><span></span><span></span>
+    </button>
+    <nav class="nav" id="nav" aria-label="Main">
+      <a href="index.html#dr-williams">About</a>
+      <div class="has-sub">
+        <a href="index.html#care" aria-haspopup="true">Services <span class="caret" aria-hidden="true">&#9662;</span></a>
+        <div class="sub">
+          <a href="index.html#care">Braces</a>
+          <a href="index.html#care">Clear Braces</a>
+          <a href="index.html#care">Invisalign &amp; Clear Aligners</a>
+          <a href="index.html#airway">Airway-Focused Orthodontics</a>
+          <a href="index.html#care">Early Evaluations</a>
+          <a href="index.html#care">Retainers</a>
+        </div>
+      </div>
+      <a href="index.html#locations">Locations</a>
+      <a href="index.html#footer">Contact</a>
+    </nav>
+    <a href="https://www.eservicepayments.com/cgi-bin/Vanco_ver3.vps?appver3=wWsk24ZWJSTZKsGd1RMKlg0BDvsSG3VIWQCPJNNxD8upkiY7JlDavDsozUE7KG0nFx2NSo8LdUKGuGuF396vbRBiYVkUv3BK2epsdn04qbsiYnTg5dP4O6rpX5QvPEWlBhHDN59kLZFffwKfYERpQjLN8llZzjaw5n1BHo0aH7Y=&amp;ver=3" target="_blank" rel="noopener" style="color:var(--ink);font-weight:600;font-size:13.5px;letter-spacing:.04em;text-transform:uppercase;white-space:nowrap;">Pay Online</a>
+    <a class="btn" href="appointment-request.html">Request a Free Consult</a>
+  </div>
+</header>
+
+<!-- ===== Form hero ===== -->
+<section class="form-hero">
+  <div class="wrap">
+    <h1>Your First Visit Is <span class="accent">On Us.</span></h1>
+    <p>Getting started is easy. Tell us a little about you, and our team will reach out to find a time that works. No referral needed, and no pressure.</p>
+  </div>
+</section>
+
+<!-- ===== Form ===== -->
+<main class="wrap form-wrap">
+  <div class="form-card">
+    <!--
+      GHL WIRING (Amy): replace the submit handler below with the Go High Level
+      form endpoint / embed once the backend is set up. Field names are kept
+      simple and mappable: first_name, last_name, phone, email, patient_for,
+      location, interest, message.
+    -->
+    <form id="consult-form" novalidate>
+      <div class="field-row">
+        <div class="field">
+          <label for="first_name">First name <span class="req">*</span></label>
+          <input type="text" id="first_name" name="first_name" required autocomplete="given-name">
+        </div>
+        <div class="field">
+          <label for="last_name">Last name <span class="req">*</span></label>
+          <input type="text" id="last_name" name="last_name" required autocomplete="family-name">
+        </div>
+      </div>
+      <div class="field-row">
+        <div class="field">
+          <label for="phone">Phone <span class="req">*</span></label>
+          <input type="tel" id="phone" name="phone" required autocomplete="tel">
+        </div>
+        <div class="field">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" autocomplete="email">
+        </div>
+      </div>
+
+      <fieldset>
+        <legend>Who is this visit for?</legend>
+        <div class="chip-group">
+          <label><input type="radio" name="patient_for" value="my-child" checked><span>My child</span></label>
+          <label><input type="radio" name="patient_for" value="my-teen"><span>My teen</span></label>
+          <label><input type="radio" name="patient_for" value="myself"><span>Myself</span></label>
+          <label><input type="radio" name="patient_for" value="not-sure"><span>Not sure yet</span></label>
+        </div>
+      </fieldset>
+
+      <div class="field">
+        <label for="location">Preferred location</label>
+        <select id="location" name="location">
+          <option value="">No preference, closest works</option>
+          <option value="morningside">Morningside (Sioux City, IA)</option>
+          <option value="leeds">Leeds (Sioux City, IA)</option>
+          <option value="lemars">Le Mars, IA</option>
+          <option value="wayne">Wayne, NE</option>
+        </select>
+      </div>
+
+      <fieldset>
+        <legend>What are you interested in?</legend>
+        <div class="chip-group">
+          <label><input type="checkbox" name="interest" value="braces"><span>Braces</span></label>
+          <label><input type="checkbox" name="interest" value="clear-aligners"><span>Clear aligners / Invisalign</span></label>
+          <label><input type="checkbox" name="interest" value="airway"><span>Airway-focused care</span></label>
+          <label><input type="checkbox" name="interest" value="early-eval"><span>Early evaluation</span></label>
+          <label><input type="checkbox" name="interest" value="not-sure"><span>Not sure, help me decide</span></label>
+        </div>
+      </fieldset>
+
+      <div class="field">
+        <label for="message">Anything you'd like us to know?</label>
+        <textarea id="message" name="message" rows="4" placeholder="Questions, concerns, or the best time to reach you."></textarea>
+        <p class="hint">Please don't include medical details here. We'll cover everything at your visit.</p>
+      </div>
+
+      <button class="btn btn--big" type="submit" style="width:100%;justify-content:center;">
+        Request My Free Consult <span class="arrow">&rarr;</span>
+      </button>
+      <p class="form-note">We'll only use your info to schedule your visit. See our <a href="../concept-1/privacy.html">Privacy Policy</a> and <a href="../concept-1/hipaa.html">HIPAA Notice</a>.</p>
+    </form>
+
+    <div class="form-success" id="form-success">
+      <h2>Thank you! We got your request.</h2>
+      <p>Our team will reach out shortly to find a time that works for you. We're looking forward to meeting you.</p>
+      <p style="margin-top:18px;"><a class="btn btn--ghost" href="index.html">Back to Home</a></p>
+    </div>
+  </div>
+
+  <p class="cta__reassure" style="justify-content:center;margin:26px 0 0;">
+    <span><span class="dot" aria-hidden="true"></span> No referral needed</span>
+    <span><span class="dot" aria-hidden="true"></span> Most insurance accepted</span>
+    <span><span class="dot" aria-hidden="true"></span> Free initial consultation</span>
+  </p>
+</main>
+
+<!-- ===== Footer (same design system as index) ===== -->
+<footer id="footer">
+  <div class="foot-trust">
+    <span><span class="ico" aria-hidden="true">&#10003;</span> Insurance Help</span>
+    <span><span class="ico" aria-hidden="true">&#10003;</span> Flexible Payments</span>
+    <span><span class="ico" aria-hidden="true">&#10003;</span> No Hidden Fees</span>
+    <span><span class="ico" aria-hidden="true">&#10003;</span> Care You Can Trust</span>
+  </div>
+  <div class="foot-main">
+    <div class="foot-logo">
+      <img src="assets/logo-horizontal.svg" width="480" height="101" alt="Siouxland Orthodontics">
+      <p>One trusted doctor who gets to know you, continuing 30+ years of orthodontic care in Siouxland.</p>
+    </div>
+    <div>
+      <h4>Visit Us</h4>
+      <ul>
+        <li>Morningside &middot; <a href="tel:+17122762766">(712) 276-2766</a></li>
+        <li>Leeds &middot; <a href="tel:+17122390420">(712) 239-0420</a></li>
+        <li>Le Mars &middot; <a href="tel:+17125465179">(712) 546-5179</a></li>
+        <li>Wayne, NE &middot; <a href="tel:+14028331333">(402) 833-1333</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="index.html#care">Braces &amp; Aligners</a></li>
+        <li><a href="index.html#airway">Airway-Focused Care</a></li>
+        <li><a href="index.html#dr-williams">About Dr. Williams</a></li>
+        <li><a href="https://www.eservicepayments.com/cgi-bin/Vanco_ver3.vps?appver3=wWsk24ZWJSTZKsGd1RMKlg0BDvsSG3VIWQCPJNNxD8upkiY7JlDavDsozUE7KG0nFx2NSo8LdUKGuGuF396vbRBiYVkUv3BK2epsdn04qbsiYnTg5dP4O6rpX5QvPEWlBhHDN59kLZFffwKfYERpQjLN8llZzjaw5n1BHo0aH7Y=&amp;ver=3" target="_blank" rel="noopener">Pay Online</a>&#8203;</li>
+        <li><a href="https://form.jotform.com/212784779432063" target="_blank" rel="noopener">For Dentists: Refer a Patient</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="legal">
+    &copy; 2026 Siouxland Orthodontics. All rights reserved.
+    <a href="../concept-1/privacy.html">Privacy Policy</a> <a href="../concept-1/terms.html">Terms of Use</a> <a href="../concept-1/hipaa.html">HIPAA Notice</a>
+  </div>
+</footer>
+
+<script>
+function toggleNav(btn){
+  const m = document.getElementById('nav');
+  const open = m.classList.toggle('open');
+  btn.setAttribute('aria-expanded', open);
+}
+document.getElementById('consult-form').addEventListener('submit', function(e){
+  e.preventDefault();
+  if (!this.checkValidity()) { this.reportValidity(); return; }
+  this.style.display = 'none';
+  document.getElementById('form-success').style.display = 'block';
+});
+</script>
+</body>
+</html>

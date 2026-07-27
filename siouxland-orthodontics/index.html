@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Siouxland Orthodontics — Design Previews</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Volkhov:wght@700&family=Figtree:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --coral:#F65822; --amber:#D53C00; --gold:#FFDC49;
+    --ink:#1b1e2a; --ink-soft:#4a4d5a; --faint:#696c78;
+    --line:#e8e4de; --card:#ffffff; --ground:#FFF8F1;
+  }
+  * { margin:0; box-sizing:border-box; }
+  html, body { height:100%; }
+  body {
+    font-family:'Figtree', system-ui, sans-serif;
+    color:var(--ink); background:var(--ground);
+    display:grid; place-items:center;
+    padding:clamp(18px, 3vh, 40px) clamp(18px, 3vw, 40px);
+  }
+  main { width:100%; max-width:980px; display:flex; flex-direction:column; gap:clamp(16px, 2.8vh, 30px); }
+
+  .top { display:flex; justify-content:space-between; align-items:flex-end; gap:24px; flex-wrap:wrap; }
+  .brand { display:flex; align-items:center; gap:11px; }
+  .brand img { height:clamp(40px, 6vh, 54px); width:auto; flex:0 0 auto; }
+  .top .note { font-size:.78rem; color:var(--faint); }
+
+  .intro h1 { font-family:'Volkhov', Georgia, serif; font-size:clamp(1.3rem, 3.2vh, 1.7rem); font-weight:700; line-height:1.22; }
+  .intro h1 em { font-style:normal; color:var(--coral); }
+  .intro p { color:var(--ink-soft); line-height:1.55; margin-top:8px; font-size:clamp(.86rem, 1.7vh, .96rem); max-width:74ch; }
+
+  .concepts { display:grid; grid-template-columns:repeat(3, 1fr); gap:clamp(12px, 1.6vw, 18px); align-items:stretch; }
+  .concept {
+    background:var(--card); border:1px solid var(--line); border-radius:14px;
+    padding:clamp(16px, 2.4vh, 22px) clamp(16px, 1.6vw, 22px);
+    box-shadow:0 1px 2px rgba(27,30,42,.04), 0 12px 28px -22px rgba(27,30,42,.2);
+    display:flex; flex-direction:column;
+  }
+  .concept-head { display:flex; justify-content:space-between; align-items:center; gap:10px; }
+  .concept-head h2 { font-size:clamp(.94rem, 1.8vh, 1.04rem); font-weight:700; }
+  .concept-head .sub { display:block; color:var(--faint); font-weight:400; font-size:.78rem; margin-top:2px; }
+  .tag {
+    font-size:.66rem; font-weight:700; letter-spacing:.06em; text-transform:uppercase;
+    color:var(--amber); background:color-mix(in srgb, var(--gold) 34%, #fff);
+    border-radius:999px; padding:4px 10px; white-space:nowrap; flex:0 0 auto;
+  }
+  .concept p { color:var(--ink-soft); line-height:1.52; font-size:clamp(.8rem, 1.6vh, .88rem); margin-top:10px; }
+  .concept-foot { display:flex; align-items:center; justify-content:flex-end; margin-top:auto; padding-top:14px; }
+  .open {
+    text-decoration:none; font-size:.8rem; font-weight:700; color:#fff; background:var(--coral);
+    border-radius:999px; padding:8px 18px; transition:background .15s;
+  }
+  .open:hover { background:var(--amber); }
+
+  footer { display:flex; justify-content:space-between; align-items:center; gap:12px; color:var(--faint); font-size:.78rem; flex-wrap:wrap; }
+
+  @media (max-width: 760px) {
+    body { place-items:start center; }
+    .concepts { grid-template-columns:1fr; }
+    .concept p { max-width:62ch; }
+  }
+</style>
+</head>
+<body>
+<main>
+  <div class="top">
+    <div class="brand" aria-label="Siouxland Orthodontics">
+      <img src="concept-1/assets/logo-horizontal.png" alt="Siouxland Orthodontics">
+    </div>
+    <span class="note">Unlisted previews, just for your team.</span>
+  </div>
+
+  <div class="intro">
+    <h1>Three directions for the new <em>Siouxland Orthodontics</em> website</h1>
+    <p>All three are full working sites you can click through, page for page, sharing the same content, photos, logo, and site map. The difference is the structure and the feel: a warm editorial story, a browse-first site built for quick answers, and a crisp single-flow build closest to the approved mockup. Pick a concept below and explore.</p>
+  </div>
+
+  <div class="concepts">
+    <div class="concept">
+      <div class="concept-head">
+        <h2>Concept 1<span class="sub">warm editorial</span></h2>
+        <span class="tag">Story-led</span>
+      </div>
+      <p>The sunset-toned design you have seen before. Long, warm pages that walk families through the practice like a story: the doctor first, then the care, then the plan. Big serif headlines, cream backgrounds, and a calm, premium pace from top to bottom.</p>
+      <div class="concept-foot">
+        <a class="open" href="concept-1/">Open Concept 1 &rarr;</a>
+      </div>
+    </div>
+
+    <div class="concept">
+      <div class="concept-head">
+        <h2>Concept 2<span class="sub">browse-first</span></h2>
+        <span class="tag">Scan &amp; act</span>
+      </div>
+      <p>A very different take, built for busy parents who want answers fast. A search bar in the header, a treatment menu you can jump straight into, quick promo cards and tile grids, and a standing banner for the free consult. Everything is one glance and one click away.</p>
+      <div class="concept-foot">
+        <a class="open" href="concept-2/">Open Concept 2 &rarr;</a>
+      </div>
+    </div>
+
+    <div class="concept">
+      <div class="concept-head">
+        <h2>Concept 3<span class="sub">structured</span></h2>
+        <span class="tag">Mockup-close</span>
+      </div>
+      <p>The build that follows Dr. Williams' approved homepage mockup most directly. One flowing homepage that covers the care menu, airway focus, all four locations, and Dr. Williams himself, paired with a dedicated appointment-request page. Crisp, structured, and closest to the concept he sent.</p>
+      <div class="concept-foot">
+        <a class="open" href="concept-3/">Open Concept 3 &rarr;</a>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <span>Prepared for Dr. Williams and the Siouxland Orthodontics team</span>
+    <span>OrthoBoost</span>
+  </footer>
+</main>
+</body>
+</html>
