@@ -21,7 +21,7 @@
       <a href="https://www.eservicepayments.com/cgi-bin/Vanco_ver3.vps?appver3=wWsk24ZWJSTZKsGd1RMKlg0BDvsSG3VIWQCPJNNxD8upkiY7JlDavDsozUE7KG0nFx2NSo8LdUKGuGuF396vbRBiYVkUv3BK2epsdn04qbsiYnTg5dP4O6rpX5QvPEWlBhHDN59kLZFffwKfYERpQjLN8llZzjaw5n1BHo0aH7Y=&amp;ver=3" target="_blank" rel="noopener">Make a Payment</a>
       <a href="about.html">Meet the Doctors</a><a href="https://form.jotform.com/212784779432063" target="_blank" rel="noopener">Refer a Patient</a>
       <a href="financing.html">Payment &amp; financing</a>
-      <a href="contact.html">Contact</a>
+      <a href="contact.html">Contact</a><div id="gt-widget" class="gt-widget" aria-label="Translate this page"></div>
     </nav>
   </div></div>
   <div class="masthead"><div class="wrap mast-in">
@@ -43,6 +43,8 @@
 <section class="hero">
   <div class="hero-copy">
     <h1>Get the Straight, <em>Confident Smile</em> You Deserve.</h1>
+    <!-- Concept 1 warmth per Jul 27 call: sunset rule + little sun -->
+    <div class="rule"><svg class="rule-sun" viewBox="0 0 30 30" aria-hidden="true"><circle cx="15" cy="15" r="6.5"/><line x1="15" y1="5.5" x2="15" y2="1.5"/><line x1="21.7" y1="8.3" x2="24.5" y2="5.5"/><line x1="8.3" y1="8.3" x2="5.5" y2="5.5"/></svg></div>
     <p>Expert orthodontic care for kids, teens, and adults across Siouxland, guided personally by doctors who know you, from your first visit to your last.</p>
     <div class="hero-ctas">
       <a class="btn btn-coral" href="appointment.html">Request your free consult</a>
@@ -50,7 +52,11 @@
     </div>
     <div class="hero-trust"><span class="stars">★★★★★</span>Continuing 30+ years of trusted care in Siouxland</div>
   </div>
-  <img src="assets/photos/family-stories.webp" width="1200" height="800" fetchpriority="high" alt="A Siouxland family with kids and teens smiling together">
+  <div class="hero-visual">
+    <!-- Concept 1 warmth per Jul 27 call: the big sun that pops up over the photo -->
+    <svg class="bigsun" viewBox="0 0 130 130" aria-hidden="true"><circle cx="65" cy="78" r="44"/><line x1="65" y1="26" x2="65" y2="10"/><line x1="101.8" y1="41.2" x2="111.7" y2="31.3"/><line x1="28.2" y1="41.2" x2="18.3" y2="31.3"/></svg>
+    <img src="assets/photos/family-stories.webp" width="1200" height="800" fetchpriority="high" alt="A Siouxland family with kids and teens smiling together">
+  </div>
 </section>
 
 <section><div class="wrap">
@@ -233,7 +239,7 @@
       <a href="locations.html">All locations</a>
     </div>
     <div class="fcol"><h3>Practice</h3>
-      <a href="about.html">Meet the Doctors</a><a href="https://form.jotform.com/212784779432063" target="_blank" rel="noopener">Refer a Patient</a>
+      <a href="about.html">Meet the Doctors</a>
       <a href="financing.html">Payment &amp; financing</a>
       <a href="appointment.html">Request a free consult</a>
       <a href="https://www.eservicepayments.com/cgi-bin/Vanco_ver3.vps?appver3=wWsk24ZWJSTZKsGd1RMKlg0BDvsSG3VIWQCPJNNxD8upkiY7JlDavDsozUE7KG0nFx2NSo8LdUKGuGuF396vbRBiYVkUv3BK2epsdn04qbsiYnTg5dP4O6rpX5QvPEWlBhHDN59kLZFffwKfYERpQjLN8llZzjaw5n1BHo0aH7Y=&amp;ver=3" target="_blank" rel="noopener">Make a Payment</a>
@@ -274,5 +280,23 @@
   });
 })();
 </script>
+<script>
+/* Sunrise pop (Concept 1 warmth, Jul 27 call). Gated on html.anim so no-JS
+   and reduced-motion users always get the full static design. */
+(function(){
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var root = document.documentElement;
+  root.classList.add('anim');
+  requestAnimationFrame(function(){ requestAnimationFrame(function(){
+    setTimeout(function(){ root.classList.add('lit'); }, 300);
+  }); });
+})();
+</script>
+<script>
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({ pageLanguage: 'en', includedLanguages: 'en,es', layout: google.translate.TranslateElement.InlineLayout.SIMPLE }, 'gt-widget');
+}
+</script>
+<script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit" defer></script>
 </body>
 </html>
