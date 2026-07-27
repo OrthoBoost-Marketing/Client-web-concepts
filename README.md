@@ -19,7 +19,7 @@ Concept copies also remain on the dev account (`dev-orthoboost.github.io`); link
 
 [Notion client record](https://app.notion.com/p/31232d9551dd81aeb086cd14a2d107ce) · Dr. Sam Daher · Vancouver, BC · [downtownorthodontics.ca](https://www.downtownorthodontics.ca)
 
-**Status (Notion snapshot, Jul 27 2026):** mockups shared for client review · [Website Mockups page](https://app.notion.com/p/39f32d9551dd81f8be3df413d9e87a85)
+**Status (Notion snapshot, Jul 27 2026):** Concept A selected as the direction on the Jul 16 review call (hybrid: A's layout plus CTA elements from B and C) · [meeting notes](https://app.notion.com/p/39f32d9551dd81f8be3df413d9e87a85)
 
 | Concept | Style | Themes | Extras |
 | --- | --- | --- | --- |
