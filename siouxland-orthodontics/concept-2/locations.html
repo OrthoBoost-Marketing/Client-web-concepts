@@ -12,6 +12,7 @@
 <link rel="icon" type="image/png" href="assets/logo-main.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Volkhov:ital,wght@0,400;0,700;1,400&family=Figtree:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/browse.css">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
 </head>
 <body>
 <header>
@@ -21,7 +22,7 @@
       <a href="https://www.eservicepayments.com/cgi-bin/Vanco_ver3.vps?appver3=wWsk24ZWJSTZKsGd1RMKlg0BDvsSG3VIWQCPJNNxD8upkiY7JlDavDsozUE7KG0nFx2NSo8LdUKGuGuF396vbRBiYVkUv3BK2epsdn04qbsiYnTg5dP4O6rpX5QvPEWlBhHDN59kLZFffwKfYERpQjLN8llZzjaw5n1BHo0aH7Y=&amp;ver=3" target="_blank" rel="noopener">Make a Payment</a>
       <a href="about.html">Meet the Doctors</a><a href="https://form.jotform.com/212784779432063" target="_blank" rel="noopener">Refer a Patient</a>
       <a href="financing.html">Payment &amp; financing</a>
-      <a href="contact.html">Contact</a>
+      <a href="contact.html">Contact</a><div id="gt-widget" class="gt-widget" aria-label="Translate this page"></div>
     </nav>
   </div></div>
   <div class="masthead"><div class="wrap mast-in">
@@ -69,8 +70,13 @@
       <a class="link-arrow" href="location-wayne.html">Visit this office <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg></a></div>
   </div>
 </div></section>
+<!-- Interactive map per Jul 27 call: four clickable pins with addresses.
+     TODO before launch: verify lat/lng against Google Maps (approximated from addresses). -->
+<section style="padding-top:0"><div class="wrap">
+  <div id="loc-map" aria-label="Map of our four office locations"></div>
+</div></section>
 <section style="padding-top:0"><div class="wrap split">
-  <div><h2>The same Dr. Williams at every office</h2>
+  <div><h2>The same doctors at every office</h2>
     <p>No matter which location you choose, you see doctors who know you, every visit. Same warm team, same careful attention, same plain-language answers. We simply meet you at the office that is easiest for your family to reach.</p>
   </div>
   <div class="ph"><img src="assets/photos/dr-williams-home.jpg" alt="Dr. Aaron Williams"></div>
@@ -114,7 +120,7 @@
       <a href="locations.html">All locations</a>
     </div>
     <div class="fcol"><h4>Practice</h4>
-      <a href="about.html">Meet the Doctors</a><a href="https://form.jotform.com/212784779432063" target="_blank" rel="noopener">Refer a Patient</a>
+      <a href="about.html">Meet the Doctors</a>
       <a href="financing.html">Payment &amp; financing</a>
       <a href="appointment.html">Request a free consult</a>
       <a href="https://www.eservicepayments.com/cgi-bin/Vanco_ver3.vps?appver3=wWsk24ZWJSTZKsGd1RMKlg0BDvsSG3VIWQCPJNNxD8upkiY7JlDavDsozUE7KG0nFx2NSo8LdUKGuGuF396vbRBiYVkUv3BK2epsdn04qbsiYnTg5dP4O6rpX5QvPEWlBhHDN59kLZFffwKfYERpQjLN8llZzjaw5n1BHo0aH7Y=&amp;ver=3" target="_blank" rel="noopener">Make a Payment</a>
@@ -155,5 +161,37 @@
   });
 })();
 </script>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+<script>
+(function(){
+  var el = document.getElementById('loc-map');
+  if (!el || typeof L === 'undefined') return;
+  var locs = [
+    { name: 'Morningside', page: 'location-morningside.html', address: '4224 Sergeant Rd, Sioux City, IA 51106', phone: '(712) 276-2766', tel: '+17122762766', color: '#6B3F82', lat: 42.4593, lng: -96.3560 },
+    { name: 'Leeds', page: 'location-leeds.html', address: '2801 Outer Dr N, Sioux City, IA 51104', phone: '(712) 239-0420', tel: '+17122390420', color: '#415B2F', lat: 42.5433, lng: -96.3695 },
+    { name: 'Le Mars', page: 'location-lemars.html', address: '405 Plymouth St NW, Le Mars, IA 51031', phone: '(712) 546-5179', tel: '+17125465179', color: '#A42C42', lat: 42.7940, lng: -96.1690 },
+    { name: 'Wayne', page: 'location-wayne.html', address: '617 Pearl St Ste #2, Wayne, NE 68787', phone: '(402) 833-1333', tel: '+14028331333', color: '#4270AF', lat: 42.2296, lng: -97.0181 }
+  ];
+  var map = L.map(el, { scrollWheelZoom: false });
+  L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 19,
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+  }).addTo(map);
+  locs.forEach(function(l){
+    L.circleMarker([l.lat, l.lng], { radius: 10, color: '#1A1C22', weight: 2, fillColor: l.color, fillOpacity: 1 })
+      .addTo(map)
+      .bindPopup('<b>' + l.name + '</b><br>' + l.address +
+                 '<br><a href="tel:' + l.tel + '">' + l.phone + '</a>' +
+                 '<br><a href="' + l.page + '">Visit this office &rarr;</a>');
+  });
+  map.fitBounds(locs.map(function(l){ return [l.lat, l.lng]; }), { padding: [40, 40] });
+})();
+</script>
+<script>
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({ pageLanguage: 'en', includedLanguages: 'en,es', layout: google.translate.TranslateElement.InlineLayout.SIMPLE }, 'gt-widget');
+}
+</script>
+<script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit" defer></script>
 </body>
 </html>
