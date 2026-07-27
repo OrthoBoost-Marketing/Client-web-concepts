@@ -187,7 +187,7 @@ function page({ file, title, current, main, bodyClass = '', desc = DEFAULT_DESC 
 <meta property="og:type" content="website">
 <meta property="og:title" content="${title}">
 <meta property="og:description" content="${desc}">
-<meta property="og:image" content="https://orthoboost-marketing.github.io/siouxland-orthodontics/concept-2/assets/photos/kids-sunset.jpg">
+<meta property="og:image" content="https://orthoboost-marketing.github.io/Client-web-concepts/siouxland-orthodontics/concept-2/assets/photos/kids-sunset.jpg">
 <link rel="icon" type="image/png" href="assets/logo-main.png">
 ${FONTS}
 <link rel="stylesheet" href="assets/browse.css">

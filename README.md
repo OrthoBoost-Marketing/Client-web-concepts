@@ -1,15 +1,15 @@
-# Client Web Previews
+# Client Web Concepts
 
-OrthoBoost's live design previews for client review, served via GitHub Pages at **https://orthoboost-marketing.github.io/**. (The repo keeps the `OrthoBoost-Marketing.github.io` name because that exact name is what GitHub serves at the root URL.)
+OrthoBoost's live design previews for client review, served via GitHub Pages at **https://orthoboost-marketing.github.io/Client-web-concepts/**. (The repo name is the URL path segment clients see, so renaming the repo changes every shared link.)
 
 One folder per practice, one `concept-*/` subfolder per design direction. Every concept is a self-contained static site. Each practice folder's `index.html` is the client-facing selector page (that is the link to share); the repo root `index.html` lists all practice spaces. Folder slugs are the practice's full name in kebab-case, matching its Notion client record.
 
 | Practice | Space | Concepts | Notion |
 | --- | --- | --- | --- |
-| Downtown Orthodontics | [/downtown-orthodontics/](https://orthoboost-marketing.github.io/downtown-orthodontics/) | 3 | [client record](https://app.notion.com/p/31232d9551dd81aeb086cd14a2d107ce) |
-| Siouxland Orthodontics | [/siouxland-orthodontics/](https://orthoboost-marketing.github.io/siouxland-orthodontics/) | 3 | [client record](https://app.notion.com/p/39632d9551dd802fb5f1fc06c8478199) |
-| Elite Dental & Wellness | [/elite-dental-wellness/](https://orthoboost-marketing.github.io/elite-dental-wellness/) | 1 | [client record](https://app.notion.com/p/31232d9551dd8149a5b3e428ea272491) |
-| Chang Orthodontics | [/chang-orthodontics/](https://orthoboost-marketing.github.io/chang-orthodontics/) | 3 | [client record](https://app.notion.com/p/31232d9551dd81c3bef9dd3cfab1f108) |
+| Downtown Orthodontics | [/downtown-orthodontics/](https://orthoboost-marketing.github.io/Client-web-concepts/downtown-orthodontics/) | 3 | [client record](https://app.notion.com/p/31232d9551dd81aeb086cd14a2d107ce) |
+| Siouxland Orthodontics | [/siouxland-orthodontics/](https://orthoboost-marketing.github.io/Client-web-concepts/siouxland-orthodontics/) | 3 | [client record](https://app.notion.com/p/39632d9551dd802fb5f1fc06c8478199) |
+| Elite Dental & Wellness | [/elite-dental-wellness/](https://orthoboost-marketing.github.io/Client-web-concepts/elite-dental-wellness/) | 1 | [client record](https://app.notion.com/p/31232d9551dd8149a5b3e428ea272491) |
+| Chang Orthodontics | [/chang-orthodontics/](https://orthoboost-marketing.github.io/Client-web-concepts/chang-orthodontics/) | 3 | [client record](https://app.notion.com/p/31232d9551dd81c3bef9dd3cfab1f108) |
 
 Concept copies also remain on the dev account (`dev-orthoboost.github.io`); links already shared with clients from there keep working. This repo is the canonical home.
 
@@ -23,9 +23,9 @@ Concept copies also remain on the dev account (`dev-orthoboost.github.io`); link
 
 | Concept | Style | Themes |
 | --- | --- | --- |
-| [concept-a](https://orthoboost-marketing.github.io/downtown-orthodontics/concept-a/) | Editorial one-pager | dark default · [light](https://orthoboost-marketing.github.io/downtown-orthodontics/concept-a/?theme=light) |
-| [concept-b](https://orthoboost-marketing.github.io/downtown-orthodontics/concept-b/) | Pale blue, rounded | light default · [dark](https://orthoboost-marketing.github.io/downtown-orthodontics/concept-b/?theme=dark) |
-| [concept-c](https://orthoboost-marketing.github.io/downtown-orthodontics/concept-c/) | Swiss editorial | dark default · [light](https://orthoboost-marketing.github.io/downtown-orthodontics/concept-c/?theme=light) |
+| [concept-a](https://orthoboost-marketing.github.io/Client-web-concepts/downtown-orthodontics/concept-a/) | Editorial one-pager | dark default · [light](https://orthoboost-marketing.github.io/Client-web-concepts/downtown-orthodontics/concept-a/?theme=light) |
+| [concept-b](https://orthoboost-marketing.github.io/Client-web-concepts/downtown-orthodontics/concept-b/) | Pale blue, rounded | light default · [dark](https://orthoboost-marketing.github.io/Client-web-concepts/downtown-orthodontics/concept-b/?theme=dark) |
+| [concept-c](https://orthoboost-marketing.github.io/Client-web-concepts/downtown-orthodontics/concept-c/) | Swiss editorial | dark default · [light](https://orthoboost-marketing.github.io/Client-web-concepts/downtown-orthodontics/concept-c/?theme=light) |
 
 **Notes:** sibling office "Smiles Ortho" (Canada) is branded separately and treated as its own client.
 
@@ -37,9 +37,9 @@ Concept copies also remain on the dev account (`dev-orthoboost.github.io`); link
 
 | Concept | Style | Themes |
 | --- | --- | --- |
-| [concept-1](https://orthoboost-marketing.github.io/siouxland-orthodontics/concept-1/) | Warm editorial, story-led (sunset palette) | light only |
-| [concept-2](https://orthoboost-marketing.github.io/siouxland-orthodontics/concept-2/) | Browse-first: search-led header, treatment menu | light only |
-| [concept-3](https://orthoboost-marketing.github.io/siouxland-orthodontics/concept-3/) | Structured single flow, closest to the approved mockup | light only |
+| [concept-1](https://orthoboost-marketing.github.io/Client-web-concepts/siouxland-orthodontics/concept-1/) | Warm editorial, story-led (sunset palette) | light only |
+| [concept-2](https://orthoboost-marketing.github.io/Client-web-concepts/siouxland-orthodontics/concept-2/) | Browse-first: search-led header, treatment menu | light only |
+| [concept-3](https://orthoboost-marketing.github.io/Client-web-concepts/siouxland-orthodontics/concept-3/) | Structured single flow, closest to the approved mockup | light only |
 
 **Notes:** concepts 1 and 2 share the same content, photos, logo, and 19-page site map; concept-2 is generated by `build-concept-2.mjs` (copy source of truth is the concept-1 pages). The flat full build (`siouxland-full`) stays on the dev account only.
 
@@ -51,7 +51,7 @@ Concept copies also remain on the dev account (`dev-orthoboost.github.io`); link
 
 | Concept | Style | Themes |
 | --- | --- | --- |
-| [concept-a](https://orthoboost-marketing.github.io/elite-dental-wellness/concept-a/) | Editorial whole-body homepage, sage + gold | light only |
+| [concept-a](https://orthoboost-marketing.github.io/Client-web-concepts/elite-dental-wellness/concept-a/) | Editorial whole-body homepage, sage + gold | light only |
 
 **Notes:** built from the Vite + React source in `Back to School Ad Campaign/elite-web` (`npm run build`, copy `dist/` here). Lighthouse at deploy: mobile 94, desktop 100. Practice is mid-rebrand from "Elite Smiles" (elitesmilesaz.com).
 
@@ -63,6 +63,6 @@ Concept copies also remain on the dev account (`dev-orthoboost.github.io`); link
 
 | Concept | Style | Themes |
 | --- | --- | --- |
-| [concept-1](https://orthoboost-marketing.github.io/chang-orthodontics/concept-1/) | Clinical instrument: data-led, schematic diagrams (26 pages) | light only |
-| [concept-2](https://orthoboost-marketing.github.io/chang-orthodontics/concept-2/) | Editorial precision on IBM Carbon (26 pages) | light only |
-| [concept-3](https://orthoboost-marketing.github.io/chang-orthodontics/concept-3/) | Calm clinical: warm, rounded, serif (26 pages) | light only |
+| [concept-1](https://orthoboost-marketing.github.io/Client-web-concepts/chang-orthodontics/concept-1/) | Clinical instrument: data-led, schematic diagrams (26 pages) | light only |
+| [concept-2](https://orthoboost-marketing.github.io/Client-web-concepts/chang-orthodontics/concept-2/) | Editorial precision on IBM Carbon (26 pages) | light only |
+| [concept-3](https://orthoboost-marketing.github.io/Client-web-concepts/chang-orthodontics/concept-3/) | Calm clinical: warm, rounded, serif (26 pages) | light only |
