@@ -1,3 +1,37 @@
+/* ===========================================================================
+ * STALE — DO NOT RUN. Renamed from build-concept-2.mjs on Jul 31 2026.
+ * ===========================================================================
+ *
+ * concept-2/ is NO LONGER GENERATED. The HTML files in concept-2/ are now the
+ * source of truth and are edited directly.
+ *
+ * This script fell behind the site and running it would silently destroy
+ * client-approved launch content. Measured against the live site on Jul 31
+ * 2026, regenerating would have rewritten all 19 pages (6,123 changed HTML
+ * lines plus 545 CSS lines) and specifically would have:
+ *
+ *   - deleted Dr. Daniel Kaler, the practice's second doctor (7 references on
+ *     about.html, 2 on index.html), reverting every page to "you get Dr.
+ *     Williams" — factually wrong for a two-doctor practice
+ *   - deleted the Google Translate widget
+ *   - deleted the reveal.js motion layer from all pages
+ *   - deleted the homepage locations map
+ *   - reinstated "Most insurance accepted, including Medicaid" on
+ *     financing.html, which was deliberately scrubbed (commit fed4098)
+ *
+ * It also cannot run as written: SRC and OUT below point at
+ * C:/Users/jules/Desktop/... which does not exist outside one machine, and
+ * OUT is not inside this repo.
+ *
+ * Kept only as a record of the original copy and structure. If concept-2 ever
+ * needs a real generator again, rebuild it FROM the current concept-2/ HTML,
+ * not from this file.
+ *
+ * For the mechanical SEO bits (canonical, og:url, robots, sitemap, robots.txt,
+ * JSON-LD) see ../concept-2-seo.mjs, which IS safe to run and is idempotent.
+ * ===========================================================================
+ */
+
 // Siouxland Orthodontics — Concept 2 (browse-first direction).
 // Generates the full flat site into dev-orthoboost/siouxland/concept-2 reusing
 // the copy, photos, and logo from the existing siouxland-full build.

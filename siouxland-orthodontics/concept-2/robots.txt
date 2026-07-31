@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://orthoboost-marketing.github.io/Client-web-concepts/siouxland-orthodontics/concept-2/sitemap.xml
