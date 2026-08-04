@@ -103,8 +103,20 @@
                  color: rgba(38,70,83,0.72); margin-top: 14px; max-width: 62ch; line-height: 1.6; text-wrap: pretty; }
   .hero-actions .callwrap { display: inline-flex; align-items: baseline; gap: 9px; white-space: nowrap; }
   .hero-actions .or { font-family: var(--mono); font-size: 13px; letter-spacing: 0.06em; text-transform: uppercase; color: rgba(38,70,83,0.6); }
-  .hero-sec .hero-top { padding-top: 40px; }
-  .hero-sec .hero-meta { padding: 28px 0 22px; align-items: start; }
+  /* masthead hero: headline left, action column right, lede and NAP on a ruled row beneath */
+  .hero-sec .hero-top { display: grid; grid-template-columns: minmax(0, 1.72fr) minmax(258px, 1fr); gap: 32px 48px; align-items: end; padding-top: 40px; }
+  .hero-sec .hero-head .h1 { max-width: 26ch; font-size: clamp(38px, 4.6vw, 62px); }
+  .hero-sec .hero-cta { align-items: stretch; }
+  .hero-sec .hero-actions { flex-direction: column; align-items: stretch; gap: 12px; }
+  .hero-sec .hero-actions .btn { width: 100%; justify-content: center; }
+  .hero-sec .hero-cta .callwrap { gap: 8px; }
+  .hero-sec .hero-cta .phone { font-family: var(--mono); font-size: 15px; letter-spacing: 0.02em; }
+  .hero-sec .hero-assure { margin-top: 4px; max-width: none; }
+  .hero-sub { grid-column: 1 / -1; display: grid; grid-template-columns: 1fr auto; gap: 24px 48px; align-items: baseline;
+              border-top: 1px solid var(--slate); padding: 20px 0 20px; }
+  .hero-nap { font-family: var(--mono); font-size: 12px; letter-spacing: 0.05em; text-transform: uppercase; color: rgba(38,70,83,0.6); text-align: right; }
+  .hero-sec .hero-img { object-position: center 42%; }
+  .hero-sec .hero-img img { object-position: center 42%; }
   .hero-sec .h1 { font-size: clamp(40px, 5.2vw, 68px); }
   .figrow { display: grid; grid-template-columns: 1fr auto; gap: 20px; }
 
@@ -239,10 +251,16 @@
     .split, .split-alt, .usp, .hero-meta, .proof-grid, .band-inner, .figrow, .flegal, .steps { grid-template-columns: 1fr; }
     .hero-meta { gap: 28px; }
     .hero-sec { height: calc(100svh - 76px - 72px - 12px); }   /* mobile bottom bar */
-    .hero-sec .hero-top { padding-top: 24px; }
-    .hero-sec .hero-meta { padding: 20px 0 18px; gap: 18px; }
-    .hero-sec .lede { font-size: 18px; }
-    .hero-sec .hero-img { min-height: 96px; }
+    .hero-sec .hero-top { grid-template-columns: 1fr; gap: 18px; padding-top: 24px; }
+    .hero-sec .hero-head { order: 1; }
+    .hero-sub { order: 2; grid-template-columns: 1fr; gap: 10px; padding-top: 16px; }
+    .hero-nap { text-align: left; }
+    .hero-sec .hero-cta { order: 3; }
+    .hero-sec .hero-cta .phone { font-family: var(--serif); font-size: 22px; }
+    .hero-sec .lede { font-size: 16px; line-height: 1.5; }
+    .hero-sec .hero-head .h1 { font-size: 32px; }
+    .hero-nap { display: none; }          /* NAP lives in the footer and on contact; the hero needs the room for the photo */
+    .hero-sec .hero-img { min-height: 150px; }
     .hero-sec .hero-actions .btn { width: 100%; justify-content: center; }
     .hero-sec .hero-actions { gap: 10px 14px; }
     .hero-assure { font-size: 12px; margin-top: 10px; }
@@ -358,21 +376,24 @@
 
 <section class="wrap hero-sec">
   <div class="hero-top rv">
-    <p class="setup">Live a little.</p>
-    <h1 class="h1">Smile a lot: braces and Invisalign in Anthem, AZ.</h1>
-  </div>
-  <div class="hero-meta rv">
-    <p class="lede">Romans Orthodontics is independent and doctor-owned. One doctor, one office, and a treatment plan built around how you actually live.</p>
+    <div class="hero-head">
+      <p class="setup">Live a little.</p>
+      <h1 class="h1">Smile a lot: braces and Invisalign in Anthem, AZ.</h1>
+    </div>
     <div class="hero-cta">
-        <div class="hero-actions">
+      <div class="hero-actions">
       <a class="btn" href="free-consult.html">Book your free consult</a>
       <span class="callwrap"><span class="or">or call</span><a class="phone" href="tel:+16233201222">(623) 320-1222</a></span>
     </div>
-        <p class="hero-assure">Free consult · 30 minutes · exact price up front</p>
-      </div>
+      <p class="hero-assure">Free consult · 30 minutes · exact price up front</p>
+    </div>
+    <div class="hero-sub">
+      <p class="lede">Romans Orthodontics is independent and doctor-owned. One doctor, one office, and a treatment plan built around how you actually live.</p>
+      <p class="hero-nap">3618 W. Anthem Way, Suite D120 · Anthem, AZ 85086</p>
+    </div>
   </div>
   <div class="rv">
-    <div class="hero-img"><img src="../assets/lifestyle-patient-care-01.webp" alt="Dr. Romans checking a young patient's braces in the treatment area" width="1200" height="1600" fetchpriority="high" decoding="async"></div>
+    <div class="hero-img"><img src="../assets/lifestyle-patient-care-01.webp" alt="Dr. Romans checking a young patient's braces in the treatment area" width="1200" height="1600" fetchpriority="high"></div>
     <div class="figrow cap">
       <span>A patient visit at Romans Orthodontics</span>
       <span class="hide-sm">Anthem, Arizona</span>

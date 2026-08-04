@@ -75,3 +75,19 @@ Still true after the change: every hero clears the fold at 1440x800, 1366x768, 1
 Every claim in the new copy already appears in approved copy on the page it sits on. Nothing new is asserted to patients.
 
 *Open item for the client:* confirm AAO membership and Invisalign provider status before either is added to the authority band.
+
+**2026-08-04 · hero recomposed as a masthead**
+
+The previous hero put the CTA in the right cell of the lede row, which left a hole in the top right beside the H1 and stacked three type treatments at three scales (solid button, large serif phone, mono microline) in a small area. Recomposed:
+
+- `.hero-top` is now a two-column grid, `1.72fr / 1fr`, bottom-aligned: `.hero-head` (eyebrow + H1) left, `.hero-cta` right. The action column fills the space beside the headline and the button sits on the headline's last baseline.
+- The CTA column is one voice: full-width button, then `or call` + number in mono at 15px, then the microline. The large serif phone is gone from desktop; mobile keeps it at serif 22px because it is a primary action there.
+- `.hero-sub` spans both columns under a slate hairline: lede left, NAP right in mono. The NAP fills a dead row and puts the address in the hero for local SEO. Hidden below 1000px, where the room is needed for the photo.
+- H1 in the hero is `clamp(38px, 4.6vw, 62px)` at `max-width: 26ch` so the homepage headline holds two lines and the longer service headlines hold three.
+- The photo gained about 90px because the CTA moved up, and `object-position: center 42%` keeps faces in frame at the letterbox crop.
+
+Mobile order is H1, sub, CTA, photo, set with `order` on the grid children. Trimmed to keep the photo real rather than a sliver: H1 32px, lede 16px, NAP hidden, photo floor 150px.
+
+Also removed `decoding="async"` from the hero `<img>`. On an LCP element it can defer the paint, and it was doing exactly that at 390px.
+
+*Verification note for future passes:* headless Chrome on Windows clamps `--window-size` width, so a 390px screenshot lays out wider and then crops, which looks like overflow that is not there. Measure in a real 390px iframe. `scrollWidth` reads 390 on every page.
