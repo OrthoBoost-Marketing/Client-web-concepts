@@ -29,3 +29,14 @@ All copy facts validated 2026-08-04 against the Notion client card and the legac
 ## Before launch
 
 Wire form POST → GoHighLevel + leads backup · thank-you.html as conversion goal · attorney review of all 4 legal placeholders · remove noindex · 301s from legacy URLs (/about-us, /treatments, /early-treatment, /teen-treatment, /adult-treatment, /clear-aligners, /clear-braces, /metal-braces, /how-to-get-started, /contact-us, /faq, /terms-conditions, /privacy-policy, /refund-policy, /accessibility-statement) · Lighthouse 90+ + real-device mobile pass (build-ticket QA gate). Services beyond the current five (airway/TMJ, sleep appliances, laser gum recontouring, aligner variants) await the Master Site Map from SEO before new doorway pages are added.
+
+## Revisions
+
+**2026-08-04 · logo + header** — Header and footer now carry the **full horizontal lockup** (215×42 header, 204×40 footer) instead of a collapsed lockup and a stretched icon-mark. Two real bugs were behind it:
+
+- **Desktop header logo was rendering at 20px wide.** Brand + nav + phone + CTA needed 1335px inside a 1200px bar, so flex shrank the brand cell to 49px and the lockup with it. Fixed by reclaiming 122px (nav cells 22→13px, phone block 26→18px, header CTA 30→22px, brand gutter 28→20px), pinning `.brand`/`.brand img` to `flex: 0 0 auto` so it can never silently collapse again, and moving the drawer breakpoint 1150→1264px — below 1265 the row cannot fit, so the hamburger takes over. 1280 and 1366 laptops keep the full desktop nav.
+- **Footer mark was rendering 342×34**, stretched from a mostly-empty square canvas.
+- **New asset:** `romans-orthodontics-lockup-horizontal-reversed-white.svg` — the kit's 9-file logo standard had a reversed *mark* but no reversed *lockup*, and the ink in the two-colour lockup (#264653) is invisible on the slate footer.
+- **Footer legal row overflowed at 390px** (doc scrollWidth 418, pre-existing) — `.flinks` now wraps.
+
+Verified across all 17 pages: `scrollWidth === 390`, header 215×42, footer 204×40, no tap target under 44px. Header checked at 2560/1440/1366/1280/1200/390.
