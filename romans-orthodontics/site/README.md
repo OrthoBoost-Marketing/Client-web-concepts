@@ -40,3 +40,10 @@ Wire form POST → GoHighLevel + leads backup · thank-you.html as conversion go
 - **Footer legal row overflowed at 390px** (doc scrollWidth 418, pre-existing): `.flinks` now wraps.
 
 Verified across all 17 pages: `scrollWidth === 390`, header 215×42, footer 204×40, no tap target under 44px. Header checked at 2560/1440/1366/1280/1200/390.
+
+**2026-08-04 · hero above the fold** — Every hero now clears the first screen at 1440x800, 1366x768, 1280x720 and 390x844, verified per page.
+
+- The 10 photo-hero pages get `.hero-sec`: a flex column with a definite `height: calc(100svh - 76px - 12px)` (and minus the 72px mobile bar below 1000px), so the hero photo flexes to absorb whatever the text leaves over and the caption always lands inside the fold. Note `height`, not `max-height`: with `max-height` the flex shrink resolves against the auto height and the last child overflows by ~18px. Hero type and padding came down to match (H1 clamp 40-68px, hero-top 40px, hero-meta 28/22).
+- The 12px is deliberate, it leaves a sliver of the next section showing so the page reads as scrollable.
+- free-consult has no photo to flex, so the tall left column moved out instead. "What to bring" and the "book right now" scheduler block are now their own `.consult-extra` section directly below the hero, and the form block, fields and labels are tighter. Hero is now eyebrow, H1, lede and the whole 4-field form with its button and note, all above the fold. Tradeoff: whitespace under the lede on desktop, because the form column is the tall one. Anything put back there stacks on mobile and pushes the form under the fold.
+- Measure in the settled reveal state. `.rv` carries `transform: translateY(18px)` until the observer adds `.in`, so an un-settled measurement reads 18px pessimistic.

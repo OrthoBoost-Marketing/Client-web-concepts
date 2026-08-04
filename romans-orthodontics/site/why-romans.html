@@ -92,6 +92,14 @@
   .hero-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 14px 28px; }
   .hero-actions .phone { border-bottom: 1px solid rgba(38,70,83,0.35); padding-bottom: 2px; }
   .hero-img { height: clamp(300px, 40vw, 520px); }
+  /* hero fits the first screen: the image absorbs whatever the text leaves over */
+  .hero-sec { display: flex; flex-direction: column; height: calc(100svh - 76px - 12px); }
+  .hero-sec > *:last-child { flex: 1 1 auto; min-height: 0; display: flex; flex-direction: column; }
+  .hero-sec .hero-img { flex: 1 1 auto; min-height: 90px; }
+  .hero-sec .figrow { flex: 0 0 auto; }
+  .hero-sec .hero-top { padding-top: 40px; }
+  .hero-sec .hero-meta { padding: 28px 0 22px; }
+  .hero-sec .h1 { font-size: clamp(40px, 5.2vw, 68px); }
   .figrow { display: grid; grid-template-columns: 1fr auto; gap: 20px; }
 
   /* section shell with index rail */
@@ -145,6 +153,11 @@
     .sec { grid-template-columns: 1fr; gap: 24px; padding-top: 72px; }
     .split, .split-alt, .usp, .hero-meta, .band-inner, .figrow, .flegal { grid-template-columns: 1fr; }
     .hero-meta { gap: 28px; }
+    .hero-sec { height: calc(100svh - 76px - 72px - 12px); }   /* mobile bottom bar */
+    .hero-sec .hero-top { padding-top: 24px; }
+    .hero-sec .hero-meta { padding: 20px 0 18px; gap: 18px; }
+    .hero-sec .lede { font-size: 18px; }
+    .hero-sec .hero-img { min-height: 120px; }
     .usp { gap: 28px; }
     .usp .usp-figure, .usp.flip .usp-figure { order: -1; }
     .split .fig-first { order: -1; }
@@ -233,7 +246,7 @@
   </div>
 </header>
 
-<section class="wrap">
+<section class="wrap hero-sec">
   <div class="hero-top rv">
     <p class="setup">Six reasons, all real.</p>
     <h1 class="h1">Why families choose Romans Orthodontics.</h1>

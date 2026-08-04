@@ -161,11 +161,14 @@
   }
 
   /* page-specific: consult form */
-  .consult-hero { padding: 64px 0 0; }
-  .consult-grid { display: grid; grid-template-columns: 1fr 1.05fr; gap: 56px; align-items: start; padding: 40px 0 0; }
-  .form-block { background: var(--paper-2); border: 1px solid var(--slate); padding: 36px 34px 38px; }
-  .form-block .lbl { display: block; margin-bottom: 8px; }
-  .field { margin-bottom: 24px; }
+  .consult-hero { padding: 16px 0 0; }
+  .consult-hero .h1 { font-size: clamp(32px, 3.4vw, 46px); }
+  .consult-extra { padding-top: 4px; }
+  .consult-extra-grid { display: grid; grid-template-columns: 1fr 1.05fr; gap: 56px; align-items: start; }
+  .consult-grid { display: grid; grid-template-columns: 1fr 1.05fr; gap: 56px; align-items: start; padding: 10px 0 0; }
+  .form-block { background: var(--paper-2); border: 1px solid var(--slate); padding: 20px 24px 22px; }
+  .form-block .lbl { display: block; margin-bottom: 5px; }
+  .field { margin-bottom: 12px; }
   .field input, .field select { width: 100%; font-family: var(--sans); font-size: 18px; color: var(--slate); background: var(--paper); border: 1px solid var(--slate); border-radius: 0; padding: 16px 16px; min-height: 56px; }
   .field select { appearance: none; -webkit-appearance: none; background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='9' viewBox='0 0 14 9'%3E%3Cpath d='M1 1l6 6 6-6' fill='none' stroke='%23264653' stroke-width='2'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 16px center; padding-right: 44px; }
   .field input:focus, .field select:focus { outline: 2px solid var(--copper); outline-offset: 1px; }
@@ -178,7 +181,13 @@
   .bring li { display: grid; grid-template-columns: 34px 1fr; gap: 12px; padding: 10px 0; border-bottom: 1px solid var(--rule-soft); font-size: 18px; line-height: 1.5; }
   .bring li .idx { padding-top: 2px; }
   @media (max-width: 1000px) {
-    .consult-grid { grid-template-columns: 1fr; gap: 36px; }
+    .consult-grid { grid-template-columns: 1fr; gap: 20px; }
+    .consult-extra-grid { grid-template-columns: 1fr; gap: 28px; }
+    .consult-hero { padding-top: 22px; }
+    .consult-hero .h1 { font-size: 32px; }
+    .consult-hero .lede { font-size: 16px; line-height: 1.45; }
+    .consult-hero .form-block { padding: 22px 20px 24px; }
+    .consult-hero .field { margin-bottom: 12px; }
     .form-block { padding: 28px 22px 30px; }
   }
 
@@ -279,20 +288,9 @@
     <div class="rv">
       <p class="lede">Thirty minutes with Dr. Romans: a tour of the office, a digital scan, no goopy impressions, and an exact price before you leave. No obligation, no pressure.</p>
 
-      <div class="alt-book">
-        <p class="lbl">Prefer to book a time right now?</p>
-        <p style="margin-top: 12px;">Pick your own slot on our <a class="link" href="https://app.orthosync.ai/online-scheduling/id/94119461-6e1b-4e48-93be-d20db6f346ad">online scheduler</a>, or just call us.</p>
-        <a class="phone" href="tel:+16233201222" style="display: inline-block; margin-top: 16px;">(623) 320-1222</a>
-      </div>
+      
 
-      <div class="bring">
-        <p class="lbl">What to bring</p>
-        <ul>
-          <li><span class="idx">01</span><span>Your dental insurance card, if you have one. We'll verify orthodontic coverage on the spot.</span></li>
-          <li><span class="idx">02</span><span>Your questions. All of them. That's what the visit is for.</span></li>
-          <li><span class="idx">03</span><span>That's it. No paperwork homework before you arrive.</span></li>
-        </ul>
-      </div>
+      
     </div>
 
     <div class="rv" id="form">
@@ -325,6 +323,24 @@
         <p class="form-note">We'll call you back to find a time. No spam, ever.</p>
       </form>
     </div>
+  </div>
+</section>
+
+<section class="wrap consult-extra">
+  <div class="consult-extra-grid">
+    <div class="alt-book">
+        <p class="lbl">Prefer to book a time right now?</p>
+        <p style="margin-top: 12px;">Pick your own slot on our <a class="link" href="https://app.orthosync.ai/online-scheduling/id/94119461-6e1b-4e48-93be-d20db6f346ad">online scheduler</a>, or just call us.</p>
+        <a class="phone" href="tel:+16233201222" style="display: inline-block; margin-top: 16px;">(623) 320-1222</a>
+      </div>
+    <div class="bring">
+        <p class="lbl">What to bring</p>
+        <ul>
+          <li><span class="idx">01</span><span>Your dental insurance card, if you have one. We'll verify orthodontic coverage on the spot.</span></li>
+          <li><span class="idx">02</span><span>Your questions. All of them. That's what the visit is for.</span></li>
+          <li><span class="idx">03</span><span>That's it. No paperwork homework before you arrive.</span></li>
+        </ul>
+      </div>
   </div>
 </section>
 
