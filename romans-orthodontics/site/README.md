@@ -59,3 +59,19 @@ Verified across all 17 pages: `scrollWidth === 390`, header 215×42, footer 204�
 Still true after the change: every hero clears the fold at 1440x800, 1366x768, 1280x720 and 390x844. Mobile photo floor dropped 120px to 96px so the longest H1 plus microline still fits at 390.
 
 *Not done here:* the three concept pages still reference the JPG masters. They are frozen artifacts, so they were left alone.
+
+**2026-08-04 · kit elements borrowed into concept A, plus column alignment**
+
+*Alignment cleanup.* Multi-column rows now line their bodies up across columns using `grid-template-rows: subgrid` on the row children (`.step`, `.proof-cell`, `.authority-cell`), with an `@supports not` fallback that sets a `min-height` on the heading instead. Also `gap: 44px` on `.steps` was applying to rows as well as columns, which is what opened the space between the headings and the bodies; it is `column-gap` + `row-gap: 0` now.
+
+*Four kit elements, authored in concept A's language rather than copied.*
+- **Risk reversal.** Three-point block, mono ordinal + serif claim + body on one baseline, no checkmark glyphs (this design has no icons anywhere). On free-consult it sits directly under the hero form; on the homepage the three points run as a rule-separated line inside the copper CTA band.
+- **Includes list.** free-consult gets a four-row "What the visit includes" as Sec. 02, closing on the leave-with-a-plan line. The homepage gets a tighter three-row "What you leave with" inside Sec. 04.
+- **Mid-page CTA band.** The homepage already had one; free-consult now carries the same copper band before the FAQ, so the two pages match.
+- **Authority band.** `paper-2` ground with slate hairlines, institution set in mono above the credential in Fraunces. **Type only, no borrowed marks.** ABO, AAO and Invisalign logos are not used, and neither AAO membership nor Invisalign provider tier is claimed, because neither appears anywhere in the approved copy. Both are marked `[CONFIRM]` in an HTML comment on each page.
+
+*Naming.* The new component is `.claims` / `.claim`, not `.ledger`. `.ledger` already existed as the two-column credentials grid in the homepage's Sec. 05, and reusing the name laid the new rows out two-up.
+
+Every claim in the new copy already appears in approved copy on the page it sits on. Nothing new is asserted to patients.
+
+*Open item for the client:* confirm AAO membership and Invisalign provider status before either is added to the authority band.

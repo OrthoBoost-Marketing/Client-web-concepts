@@ -153,9 +153,43 @@
   .irow .m { font-size: 18px; font-weight: 500; color: var(--copper); white-space: nowrap; }
 
   /* first-visit steps */
-  .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 44px; margin-top: 44px; border-top: 1px solid var(--slate); padding-top: 36px; }
+  .steps { display: grid; grid-template-columns: repeat(3, 1fr); column-gap: 44px; row-gap: 0; margin-top: 44px; border-top: 1px solid var(--slate); padding-top: 36px; }
   .step h3 { font-size: clamp(24px, 2.2vw, 30px); line-height: 1.12; margin-top: 14px; }
   .step p { font-size: 18px; line-height: 1.55; color: rgba(38,70,83,0.88); margin-top: 12px; max-width: 34ch; }
+  /* --- alignment: heading and body baselines line up across columns --- */
+  .steps { grid-template-rows: auto auto auto; }
+  .step { display: grid; grid-template-rows: subgrid; grid-row: span 3; align-content: start; }
+  .proof-grid { grid-template-rows: auto auto auto; }
+  .proof-cell { display: grid; grid-template-rows: subgrid; grid-row: span 3; align-content: start; }
+  @supports not (grid-template-rows: subgrid) {
+    .step, .proof-cell { display: block; }
+    .step h3 { min-height: 2.3em; }
+    .authority-cell { display: block; }
+    .authority-cell .inst { min-height: 3em; }
+    .proof-cell h2 { min-height: 2.32em; }
+  }
+  /* --- ledger: mono ordinal, serif claim, body on the same baseline --- */
+  .claims { border-top: 1px solid var(--slate); margin-top: 34px; }
+  .claims-lbl { font-family: var(--mono); font-size: 13px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--copper-dark); margin-bottom: 16px; }
+  .claim { display: grid; grid-template-columns: 52px 1.05fr 1.5fr; gap: 24px; align-items: baseline; padding: 20px 0; border-bottom: 1px solid var(--rule); }
+  .claim .n { font-family: var(--mono); font-size: 14px; letter-spacing: 0.08em; color: var(--copper); }
+  .claim .t { font-family: var(--serif); font-size: clamp(20px, 1.8vw, 25px); line-height: 1.14; letter-spacing: -0.015em; }
+  .claim .d { font-size: 18px; line-height: 1.55; color: rgba(38,70,83,0.88); }
+  .claims-note { font-family: var(--mono); font-size: 13px; letter-spacing: 0.06em; text-transform: uppercase; color: rgba(38,70,83,0.72); margin-top: 18px; }
+  /* --- authority: training and credentials, set as type, never borrowed marks --- */
+  .authority { background: var(--paper-2); border-top: 1px solid var(--slate); border-bottom: 1px solid var(--slate); margin-top: 92px; }
+  .authority-inner { max-width: 1200px; margin: 0 auto; padding: 0 var(--pad); }
+  .authority-lbl { font-family: var(--mono); font-size: 13px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--copper-dark); padding: 26px 0 20px; }
+  .authority-grid { display: grid; grid-template-columns: repeat(4, 1fr); grid-template-rows: auto auto; border-top: 1px solid var(--rule); }
+  .authority-cell { display: grid; grid-template-rows: subgrid; grid-row: span 2; align-content: start; }
+  .authority-cell { padding: 26px 28px 30px; border-right: 1px solid var(--rule); }
+  .authority-cell:first-child { padding-left: 0; }
+  .authority-cell:last-child { padding-right: 0; border-right: 0; }
+  .authority-cell .inst { font-family: var(--mono); font-size: 12px; letter-spacing: 0.07em; text-transform: uppercase; color: rgba(38,70,83,0.66); line-height: 1.5; }
+  .authority-cell .cred { font-family: var(--serif); font-size: clamp(20px, 1.7vw, 24px); line-height: 1.16; letter-spacing: -0.015em; margin-top: 10px; }
+  /* --- reassurance line inside the copper CTA band --- */
+  .band-assure { grid-column: 1 / -1; display: flex; flex-wrap: wrap; gap: 10px 26px; border-top: 1px solid rgba(250,246,241,0.28); padding-top: 20px; margin-top: 6px; }
+  .band-assure span { font-family: var(--mono); font-size: 13px; letter-spacing: 0.07em; text-transform: uppercase; color: rgba(250,246,241,0.9); }
 
   /* credentials ledger */
   .ledger { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 0 48px; margin-top: 44px; }
@@ -221,7 +255,13 @@
     .row, .row-nap { grid-template-columns: 1fr; row-gap: 8px; padding: 14px 0; }
     .irow { grid-template-columns: 1fr; row-gap: 12px; }
     .irow .thumb { height: 180px; }
-    .steps { gap: 28px; }
+    .steps { column-gap: 28px; row-gap: 28px; }
+    .claim { grid-template-columns: 40px 1fr; gap: 6px 16px; }
+    .claim .d { grid-column: 2; }
+    .authority-grid { grid-template-columns: 1fr; }
+    .authority-cell { padding: 20px 0 22px; border-right: 0; border-bottom: 1px solid var(--rule); }
+    .authority-cell:last-child { border-bottom: 0; }
+    .authority { margin-top: 64px; }
     .fcol { padding: 40px 0 32px; border-right: 0; border-bottom: 1px solid var(--rule-light); }
     .fcol:last-child { border-bottom: 0; }
     .hide-sm { display: none; }
@@ -427,6 +467,37 @@
   <div class="band-inner">
     <h2>Your free consult takes 30 minutes. The smile sticks around.</h2>
     <a class="btn btn-invert" href="free-consult.html">Book your free consult</a>
+    <div class="band-assure">
+      <span>Free consult</span>
+      <span>No obligation to start</span>
+      <span>An exact price, not a range</span>
+    </div>
+  </div>
+</section>
+
+<!-- Training and credentials, set as type. Never borrow ABO/AAO/Invisalign marks without written permission.
+     [CONFIRM] before adding any: AAO membership status, Invisalign provider tier. Neither is claimed anywhere on this site. -->
+<section class="authority">
+  <div class="authority-inner">
+    <div class="authority-lbl rv">Training and credentials</div>
+    <div class="authority-grid">
+      <div class="authority-cell rv">
+        <div class="inst">American Board of Orthodontics</div>
+        <div class="cred">Board-certified</div>
+      </div>
+      <div class="authority-cell rv">
+        <div class="inst">St. Louis Children's Hospital</div>
+        <div class="cred">Craniofacial fellowship</div>
+      </div>
+      <div class="authority-cell rv">
+        <div class="inst">Saint Louis University</div>
+        <div class="cred">MSD, orthodontics</div>
+      </div>
+      <div class="authority-cell rv">
+        <div class="inst">A.T. Still University</div>
+        <div class="cred">DMD, public health certificate</div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -508,6 +579,26 @@
         <p>Same week if you like, or take the plan home and think it over. No pressure either way.</p>
       </div>
     </div>
+
+    <div class="claims rv">
+      <div class="claim">
+        <div class="n">01</div>
+        <div class="t">An exact written price</div>
+        <div class="d">Treatment and retainers together, yours to keep.</div>
+      </div>
+      <div class="claim">
+        <div class="n">02</div>
+        <div class="t">A plan you can think over</div>
+        <div class="d">Start the same week, or take it home. No pressure either way.</div>
+      </div>
+      <div class="claim">
+        <div class="n">03</div>
+        <div class="t">The coverage math, done</div>
+        <div class="d">PPO, FSA/HSA and in-house financing, sorted at the visit.</div>
+      </div>
+    </div>
+    <p class="claims-note">What you leave with, whether or not you start</p>
+
     <a class="btn rv" href="free-consult.html" style="margin-top: 40px;">Book your free consult</a>
   </div>
 </section>

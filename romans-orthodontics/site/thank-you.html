@@ -109,7 +109,7 @@
   .row .k { padding-top: 3px; }
 
   /* first-visit steps */
-  .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 44px; margin-top: 44px; border-top: 1px solid var(--slate); padding-top: 36px; }
+  .steps { display: grid; grid-template-columns: repeat(3, 1fr); column-gap: 44px; row-gap: 0; margin-top: 44px; border-top: 1px solid var(--slate); padding-top: 36px; }
   .step h3 { font-size: clamp(24px, 2.2vw, 30px); line-height: 1.12; margin-top: 14px; }
   .step p { font-size: 18px; line-height: 1.55; color: rgba(38,70,83,0.88); margin-top: 12px; max-width: 34ch; }
 
@@ -147,7 +147,7 @@
     .hero-meta { gap: 28px; }
     .split .fig-first { order: -1; }
     .row, .row-nap { grid-template-columns: 1fr; row-gap: 8px; padding: 14px 0; }
-    .steps { gap: 28px; }
+    .steps { column-gap: 28px; row-gap: 28px; }
     .fcol { padding: 40px 0 32px; border-right: 0; border-bottom: 1px solid var(--rule-light); }
     .fcol:last-child { border-bottom: 0; }
     .hide-sm { display: none; }
