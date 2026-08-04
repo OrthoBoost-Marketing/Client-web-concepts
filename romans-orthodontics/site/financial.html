@@ -3,12 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Meet Dr. Nicholas Romans, DMD, MSD | Romans Orthodontics</title>
-<meta name="description" content="Dr. Nicholas Romans is a board-certified, fellowship-trained orthodontist in Anthem, AZ — the one doctor you'll see at every visit at Romans Orthodontics.">
+<title>Braces &amp; Invisalign Cost in Anthem, AZ — Pricing &amp; Financing | Romans Orthodontics</title>
+<meta name="description" content="What braces and Invisalign cost in Anthem, AZ — and how Romans Orthodontics makes treatment fit your budget: free consults with exact quotes, PPO insurance, FSA/HSA, and in-house financing.">
 <meta name="robots" content="noindex">
-<meta property="og:title" content="Meet Dr. Nicholas Romans, DMD, MSD | Romans Orthodontics">
-<meta property="og:description" content="Dr. Nicholas Romans is a board-certified, fellowship-trained orthodontist in Anthem, AZ — the one doctor you'll see at every visit at Romans Orthodontics.">
-<meta property="og:image" content="../assets/team-headshot-dr-romans-01.jpg">
+<meta property="og:title" content="Braces &amp; Invisalign Cost in Anthem, AZ — Pricing &amp; Financing | Romans Orthodontics">
+<meta property="og:description" content="What braces and Invisalign cost in Anthem, AZ — and how Romans Orthodontics makes treatment fit your budget: free consults with exact quotes, PPO insurance, FSA/HSA, and in-house financing.">
+<meta property="og:image" content="../assets/lifestyle-patient-care-02.jpg">
 <link rel="icon" type="image/svg+xml" href="../assets/romans-orthodontics-icon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -93,6 +93,15 @@
   .hero-img { height: clamp(300px, 40vw, 520px); }
   .figrow { display: grid; grid-template-columns: 1fr auto; gap: 20px; }
 
+  /* proof band */
+  .proof { background: var(--slate); color: var(--paper); margin-top: 64px; }
+  .proof-grid { display: grid; grid-template-columns: repeat(3, 1fr); }
+  .proof-cell { padding: 40px 34px; border-right: 1px solid var(--rule-light); }
+  .proof-cell:first-child { padding-left: 0; }
+  .proof-cell:last-child { padding-right: 0; border-right: 0; }
+  .proof-cell h2 { font-size: clamp(24px, 2.2vw, 30px); line-height: 1.14; margin-top: 12px; letter-spacing: -0.02em; }
+  .proof-cell p { font-size: 18px; color: rgba(250,246,241,0.85); margin-top: 8px; }
+
   /* section shell with index rail */
   .sec { display: grid; grid-template-columns: 170px 1fr; gap: 40px; padding-top: 92px; }
   .rail { padding-top: 10px; }
@@ -106,10 +115,32 @@
   .row-nap { grid-template-columns: 148px 1fr; padding: 15px 0; }
   .row .k { padding-top: 3px; }
 
+  /* usp zigzag */
+  .usp { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; padding: 44px 0; border-top: 1px solid var(--slate); }
+  .usp h2 { font-size: clamp(30px, 3.4vw, 46px); line-height: 1.02; }
+  .usp .setup { margin-top: 16px; }
+  .usp-img { aspect-ratio: 5 / 4; }
+  .usp.flip .usp-text { order: 2; }
+  .usp.flip .usp-figure { order: 1; }
+
   /* copper band */
   .band { background: var(--copper); color: var(--paper); margin-top: 92px; }
   .band-inner { display: grid; grid-template-columns: 1fr auto; gap: 40px; align-items: center; padding: 62px var(--pad); max-width: 1200px; margin: 0 auto; }
   .band h2 { font-size: clamp(28px, 3.4vw, 44px); line-height: 1.06; letter-spacing: -0.025em; max-width: 26ch; text-wrap: balance; }
+
+  /* treatment index */
+  .index { margin-top: 44px; border-top: 1px solid var(--slate); }
+  .irow { display: grid; grid-template-columns: 70px 118px 1.1fr 1.4fr auto; gap: 24px; align-items: center; padding: 20px 0; border-bottom: 1px solid var(--rule); color: var(--slate); }
+  .irow:hover { background: var(--paper-2); color: var(--slate); }
+  .irow .thumb { height: 80px; }
+  .irow .t { font-family: var(--serif); font-size: clamp(24px, 2.2vw, 30px); line-height: 1.08; letter-spacing: -0.02em; }
+  .irow .d { font-size: 18px; line-height: 1.5; color: rgba(38,70,83,0.88); }
+  .irow .m { font-size: 18px; font-weight: 500; color: var(--copper); white-space: nowrap; }
+
+  /* first-visit steps */
+  .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 44px; margin-top: 44px; border-top: 1px solid var(--slate); padding-top: 36px; }
+  .step h3 { font-size: clamp(24px, 2.2vw, 30px); line-height: 1.12; margin-top: 14px; }
+  .step p { font-size: 18px; line-height: 1.55; color: rgba(38,70,83,0.88); margin-top: 12px; max-width: 34ch; }
 
   /* credentials ledger */
   .ledger { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 0 48px; margin-top: 44px; }
@@ -117,6 +148,14 @@
   .lrow .idx { padding-top: 6px; }
   .lrow h3 { font-size: 24px; line-height: 1.12; letter-spacing: -0.015em; }
   .lrow p { font-size: 18px; line-height: 1.5; color: rgba(38,70,83,0.85); margin-top: 8px; }
+
+  /* faq */
+  .faq-list { margin-top: 44px; border-top: 1px solid var(--slate); }
+  .faq-item { border-bottom: 1px solid var(--rule); }
+  .faq-q { width: 100%; display: flex; justify-content: space-between; align-items: baseline; gap: 24px; background: none; border: 0; padding: 22px 0; cursor: pointer; text-align: left; font-family: var(--serif); font-size: clamp(22px, 2vw, 28px); letter-spacing: -0.02em; color: var(--slate); }
+  .faq-q .faq-sign { font-family: var(--mono); font-size: 22px; color: var(--copper); flex: 0 0 auto; }
+  .faq-a { display: none; padding: 0 0 26px; font-size: 18px; line-height: 1.6; color: rgba(38,70,83,0.9); max-width: 60ch; }
+  .faq-item.open .faq-a { display: block; }
 
   /* closing */
   .closing { border-top: 1px solid var(--slate); margin-top: 92px; padding: 80px 0 92px; display: flex; flex-direction: column; align-items: center; text-align: center; }
@@ -148,11 +187,18 @@
   @media (max-width: 1000px) {
     :root { --pad: 24px; }
     .sec { grid-template-columns: 1fr; gap: 24px; padding-top: 72px; }
-    .split, .split-alt, .hero-meta, .band-inner, .figrow, .flegal { grid-template-columns: 1fr; }
+    .split, .split-alt, .usp, .hero-meta, .proof-grid, .band-inner, .figrow, .flegal, .steps { grid-template-columns: 1fr; }
     .hero-meta { gap: 28px; }
+    .usp { gap: 28px; }
+    .usp .usp-figure, .usp.flip .usp-figure { order: -1; }
     .split .fig-first { order: -1; }
+    .proof-cell { padding: 28px 0; border-right: 0; border-bottom: 1px solid var(--rule-light); }
+    .proof-cell:last-child { border-bottom: 0; }
     .band-inner { padding: 44px var(--pad); }
     .row, .row-nap { grid-template-columns: 1fr; row-gap: 8px; padding: 14px 0; }
+    .irow { grid-template-columns: 1fr; row-gap: 12px; }
+    .irow .thumb { height: 180px; }
+    .steps { gap: 28px; }
     .fcol { padding: 40px 0 32px; border-right: 0; border-bottom: 1px solid var(--rule-light); }
     .fcol:last-child { border-bottom: 0; }
     .hide-sm { display: none; }
@@ -234,130 +280,168 @@
 
 <section class="wrap">
   <div class="hero-top rv">
-    <p class="setup">The doctor you'll actually see.</p>
-    <h1 class="h1">Dr. Nicholas Romans, DMD, MSD.</h1>
+    <p class="setup">The honest answer first.</p>
+    <h1 class="h1">What braces cost in Anthem — and how we make it fit.</h1>
   </div>
   <div class="hero-meta rv">
-    <p class="lede">Board-certified orthodontist, craniofacial fellow, and the one person at Romans Orthodontics whose name is on the door — and on your treatment plan, at every visit.</p>
+    <p class="lede">Every case is different, so we won't print a number that might be wrong for you. Instead, your free consult ends with an exact, all-in price — treatment and retainers included — and that number is yours to keep, with no obligation.</p>
     <div class="hero-actions">
       <a class="btn" href="free-consult.html">Book your free consult</a>
       <a class="phone" href="tel:+16233201222">(623) 320-1222</a>
     </div>
   </div>
   <div class="rv">
-    <div class="hero-img" role="img" aria-label="Portrait of Dr. Nicholas Romans, DMD, MSD" style="background-image: url('../assets/team-headshot-dr-romans-03.jpg'); background-size: cover; background-position: center top;"></div>
+    <div class="hero-img" role="img" aria-label="A patient and staff member at the front desk of Romans Orthodontics" style="background-image: url('../assets/lifestyle-patient-care-02.jpg'); background-size: cover; background-position: center;"></div>
     <div class="figrow cap">
-      <span>Fig. 01 — Dr. Nicholas Romans, DMD, MSD</span>
+      <span>Fig. 01 — At the front desk, where the numbers get explained</span>
       <span class="hide-sm">Anthem, Arizona</span>
     </div>
   </div>
 </section>
 
-<section class="wrap sec" id="why-orthodontics">
-  <div class="rail lbl">Sec. 01<br>The path</div>
-  <div class="split">
-    <div class="rv fig-first">
-      <div style="aspect-ratio: 4 / 5; background-image: url('../assets/lifestyle-patient-care-01.jpg'); background-size: cover; background-position: center;" role="img" aria-label="Dr. Romans with a young patient during a visit"></div>
-      <div class="cap">Fig. 02 — With a patient in the treatment area</div>
-    </div>
+<section class="wrap sec" id="four-ways">
+  <div class="rail lbl">Sec. 01<br>Fitting the budget</div>
+  <div>
     <div class="rv">
-      <p class="setup">Why orthodontics?</p>
-      <h2 class="h2">The pattern in his path.</h2>
-      <p class="body" style="margin-top: 28px;">You can learn a lot about a doctor from the choices he made before anyone was watching. Alongside his dental degree at A.T. Still University, Dr. Romans earned a certificate in public health — extra study, chosen, in how care reaches whole communities. After his orthodontic specialty training, he completed a craniofacial fellowship with the team at St. Louis Children's Hospital, treating children with cleft lip and palate — some of the most complex, highest-stakes cases in the field.</p>
-      <p class="body" style="margin-top: 20px;">And through it all, he kept showing up to volunteer clinics: Give Kids A Smile, Missions of Mercy, Dentures for Veterans. The pattern is hard to miss — at each fork, he picked the version of dentistry that was about people, not just teeth. Orthodontics, done one patient at a time in his own practice, is where that path led — more than seven years dedicated to orthodontics, including advanced specialty training.</p>
+      <p class="setup">No mystery math.</p>
+      <h2 class="h2" style="max-width: 24ch;">Four ways treatment fits your budget.</h2>
+    </div>
+
+    <div class="usp rv" style="margin-top: 44px;">
+      <div class="usp-text">
+        <div class="num-big">01</div>
+        <p class="setup">The exact quote.</p>
+        <h2>A free consult that ends with a real number.</h2>
+        <p class="body" style="margin-top: 22px;">Dr. Romans examines your teeth, takes a digital scan, and walks you through your options. Then you get an exact written price for your case — treatment and retainers, all in. No estimate ranges, no "starting at," no surprise add-ons later.</p>
+        <a class="link" href="free-consult.html" style="margin-top: 22px;">How the free consult works →</a>
+      </div>
+      <div class="usp-figure">
+        <div class="usp-img" role="img" aria-label="Dr. Romans with a patient in the treatment area" style="background-image: url('../assets/lifestyle-patient-care-01.jpg'); background-size: cover; background-position: center;"></div>
+        <div class="cap">Fig. 02 — The consult where the quote happens</div>
+      </div>
+    </div>
+
+    <div class="usp flip rv">
+      <div class="usp-text">
+        <div class="num-big">02</div>
+        <p class="setup">Insurance, verified.</p>
+        <h2>Major PPO plans, checked on the spot.</h2>
+        <p class="body" style="margin-top: 22px;">We accept major PPO dental plans. Bring your insurance details to the consult and we'll verify your orthodontic coverage while you're here — so the written price you leave with already reflects what your plan contributes.</p>
+      </div>
+      <div class="usp-figure">
+        <div class="usp-img" role="img" aria-label="The reception area at Romans Orthodontics" style="background-image: url('../assets/office-reception-02.jpg'); background-size: cover; background-position: center;"></div>
+        <div class="cap">Fig. 03 — Reception, where coverage gets verified</div>
+      </div>
+    </div>
+
+    <div class="usp rv">
+      <div class="usp-text">
+        <div class="num-big">03</div>
+        <p class="setup">Pre-tax dollars.</p>
+        <h2>FSA and HSA funds work here.</h2>
+        <p class="body" style="margin-top: 22px;">Orthodontic treatment is a common use for flexible spending and health savings accounts. If you've been setting money aside pre-tax, you can put it toward treatment at Romans Orthodontics — ask at your consult and we'll walk you through it.</p>
+      </div>
+      <div class="usp-figure">
+        <div class="usp-img" role="img" aria-label="The treatment area at Romans Orthodontics" style="background-image: url('../assets/office-treatment-02.jpg'); background-size: cover; background-position: center;"></div>
+        <div class="cap">Fig. 04 — The treatment area</div>
+      </div>
+    </div>
+
+    <div class="usp flip rv">
+      <div class="usp-text">
+        <div class="num-big">04</div>
+        <p class="setup">Spread it out.</p>
+        <h2>In-house financing, from the office itself.</h2>
+        <p class="body" style="margin-top: 22px;">We offer in-house financing so the cost of treatment can be spread out over time — arranged directly with the practice, not a third-party lender's call center. Terms are discussed at your consult, alongside your exact quote.</p>
+        <a class="link" href="free-consult.html" style="margin-top: 22px;">Ask about financing at your consult →</a>
+      </div>
+      <div class="usp-figure">
+        <div class="usp-img" role="img" aria-label="The exterior of the Romans Orthodontics office" style="background-image: url('../assets/office-exterior-01.jpg'); background-size: cover; background-position: center;"></div>
+        <div class="cap">Fig. 05 — The office on W. Anthem Way</div>
+      </div>
     </div>
   </div>
 </section>
 
-<section class="wrap sec" id="training">
-  <div class="rail lbl">Sec. 02<br>Training</div>
+<section class="wrap sec" id="insurance">
+  <div class="rail lbl">Sec. 02<br>Insurance</div>
+  <div class="split">
+    <div class="rv">
+      <p class="setup">Plain-English version.</p>
+      <h2 class="h2">What orthodontic insurance actually does.</h2>
+      <p class="body" style="margin-top: 28px;">Dental insurance treats orthodontics differently from cleanings and fillings. Most plans that include orthodontic benefits contribute a portion of the cost up to a lifetime orthodontic maximum — a one-time cap that varies from plan to plan, separate from your annual dental maximum.</p>
+      <p class="body" style="margin-top: 18px;">What a plan covers, for whom, and at what age also varies. Some plans cover orthodontics for children only; others include adults. Rather than guess, we verify your specific coverage at the free consult, so the price you take home already accounts for it.</p>
+    </div>
+    <div class="rv">
+      <div class="table" style="margin-top: 12px;">
+        <div class="row"><span class="idx k">Typically does</span><span>Contribute a set portion of orthodontic treatment cost, up to the plan's lifetime orthodontic maximum.</span></div>
+        <div class="row"><span class="idx k">Typically doesn't</span><span>Cover the full cost of treatment, or renew the orthodontic benefit each year the way annual dental maximums do.</span></div>
+        <div class="row"><span class="idx k">Varies by plan</span><span>Whether adults are covered, waiting periods, and the size of the lifetime maximum.</span></div>
+        <div class="row"><span class="idx k">What we do</span><span>Verify your specific plan's orthodontic coverage at the free consult, before you see your written quote.</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="wrap sec" id="how-pricing-works">
+  <div class="rail lbl">Sec. 03<br>The process</div>
   <div>
     <div class="rv">
-      <p class="setup">The long way around, on purpose.</p>
-      <h2 class="h2" style="max-width: 22ch;">Three degrees, a certificate, and a fellowship.</h2>
+      <p class="setup">From scan to number.</p>
+      <h2 class="h2" style="max-width: 24ch;">How pricing works, step by step.</h2>
     </div>
-    <div class="table rv" style="margin-top: 44px;">
-      <div class="row">
-        <span class="idx k">University of Kansas</span>
-        <span>B.S. in Biology — the science foundation.</span>
+    <div class="steps">
+      <div class="step rv">
+        <div class="num-big">01</div>
+        <h3>Scan and exam</h3>
+        <p>A digital scan — no goopy impressions — and an exam by Dr. Romans, so the quote is based on your actual case.</p>
       </div>
-      <div class="row">
-        <span class="idx k">A.T. Still University</span>
-        <span>DMD, plus a certificate in public health earned alongside it.</span>
+      <div class="step rv">
+        <div class="num-big">02</div>
+        <h3>Options and timeline</h3>
+        <p>Braces or Invisalign, what each would involve for you, and how long treatment is likely to take.</p>
       </div>
-      <div class="row">
-        <span class="idx k">Saint Louis University</span>
-        <span>MSD and orthodontic specialty training. His graduate research examined Invisalign treatment outcomes — the same planning questions he now answers chairside.</span>
-      </div>
-      <div class="row">
-        <span class="idx k">St. Louis Children's Hospital</span>
-        <span>Craniofacial fellowship with the Washington University team, caring for children with cleft lip and palate.</span>
-      </div>
-      <div class="row">
-        <span class="idx k">Board certification</span>
-        <span>Certified by the American Board of Orthodontics — a voluntary examination of his actual clinical cases.</span>
-      </div>
-      <div class="row">
-        <span class="idx k">Languages</span>
-        <span>English, Polish</span>
+      <div class="step rv">
+        <div class="num-big">03</div>
+        <h3>Your exact written price</h3>
+        <p>One all-in number — treatment and retainers — with insurance verified and financing options laid out. Yours to keep.</p>
       </div>
     </div>
+    <a class="btn rv" href="free-consult.html" style="margin-top: 40px;">Book your free consult</a>
   </div>
 </section>
 
 <section class="band">
   <div class="band-inner">
-    <h2>All that training is free to sit down with. That's what the consult is for.</h2>
+    <h2>The consult is free. The number you leave with is exact.</h2>
     <a class="btn btn-invert" href="free-consult.html">Book your free consult</a>
   </div>
 </section>
 
-<section class="wrap sec" id="how-he-practices">
-  <div class="rail lbl">Sec. 03<br>In practice</div>
-  <div class="split split-alt">
-    <div class="rv">
-      <p class="setup">How he practices.</p>
-      <h2 class="h2">Plans he makes. Checks he does himself.</h2>
-      <p class="body" style="margin-top: 28px;">Dr. Romans built a solo, doctor-owned practice so the care could work one way: you see him, and only him, at every visit. Records start with digital scans instead of goopy impressions. Treatment plans are made by Dr. Romans, checked by Dr. Romans, and adjusted by Dr. Romans — there's no one to hand the hard parts to, and that's by design.</p>
-      <a class="link" href="why-romans.html" style="margin-top: 26px;">Six reasons families choose Romans →</a>
-    </div>
-    <div class="rv">
-      <div style="aspect-ratio: 5 / 4; background-image: url('../assets/office-treatment-02.jpg'); background-size: cover; background-position: center;" role="img" aria-label="The treatment area at Romans Orthodontics"></div>
-      <div class="cap">Fig. 03 — The treatment area, Anthem</div>
-    </div>
-  </div>
-</section>
-
-<section class="wrap sec" id="community">
-  <div class="rail lbl">Sec. 04<br>Community</div>
+<section class="wrap sec" id="cost-faq">
+  <div class="rail lbl">Sec. 04<br>Cost questions</div>
   <div>
     <div class="rv">
-      <p class="setup">Off the clock, still a doctor.</p>
-      <h2 class="h2" style="max-width: 24ch;">Where he gives his time.</h2>
+      <p class="setup">Fair questions, straight answers.</p>
+      <h2 class="h2" style="max-width: 22ch;">Questions people ask about cost.</h2>
     </div>
-    <div class="ledger">
-      <div class="lrow rv"><span class="idx">G—01</span><div><h3>Give Kids A Smile</h3><p>Volunteer dental care for kids whose families couldn't otherwise afford it.</p></div></div>
-      <div class="lrow rv"><span class="idx">G—02</span><div><h3>Missions of Mercy</h3><p>Large-scale volunteer clinics providing free dental care to families in need.</p></div></div>
-      <div class="lrow rv"><span class="idx">G—03</span><div><h3>Dentures for Veterans</h3><p>Donated treatment for veterans in the community.</p></div></div>
-      <div class="lrow rv"><span class="idx">G—04</span><div><h3>Arizona Humane Society</h3><p>Volunteer efforts for a cause the office backs year-round.</p></div></div>
-    </div>
-  </div>
-</section>
-
-<section class="wrap sec" id="away-from-the-office">
-  <div class="rail lbl">Sec. 05<br>Off duty</div>
-  <div class="split">
-    <div class="rv fig-first">
-      <div style="aspect-ratio: 4 / 5; background-image: url('../assets/team-headshot-dr-romans-01.jpg'); background-size: cover; background-position: center top;" role="img" aria-label="Portrait of Dr. Nicholas Romans"></div>
-      <div class="cap">Fig. 04 — Dr. Romans</div>
-    </div>
-    <div class="rv">
-      <p class="setup">Away from the office.</p>
-      <h2 class="h2">Life outside the practice.</h2>
-      <!-- Intake needed from Dr. Romans before launch. Kit angle: ask him what he'd do with a
-           completely free Saturday, and what patients would be surprised to learn about him.
-           60 words in his own words — do not write this for him. -->
-      <p class="body" style="margin-top: 28px;"><span class="confirm">[CONFIRM: 60 words from Dr. Romans — hobbies, family, what he does on a Saturday]</span></p>
+    <div class="faq-list rv">
+      <div class="faq-item open">
+        <button class="faq-q" aria-expanded="true">Why don't you list prices on the website?<span class="faq-sign">–</span></button>
+        <p class="faq-a">Because a published number would be wrong for most people. The cost of treatment depends on your teeth, your bite, and the option you choose — so any figure we printed here would be a guess. Instead, your free consult ends with an exact written price for your case, with nothing left out.</p>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">Does insurance cover braces for adults?<span class="faq-sign">+</span></button>
+        <p class="faq-a">It depends entirely on your plan. Some PPO dental plans include orthodontic benefits for adults; others limit them to children, and lifetime orthodontic maximums vary widely. Rather than guess, bring your insurance details to the free consult and we'll verify your specific coverage on the spot.</p>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">Can I finance treatment without perfect credit?<span class="faq-sign">+</span></button>
+        <p class="faq-a">We offer in-house financing arranged directly with the practice, and we work to make treatment fit real budgets. The details of how financing is set up are discussed one-on-one at your free consult, alongside your written quote — ask us there and we'll walk you through exactly how it works.</p>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">Is the consultation really free?<span class="faq-sign">+</span></button>
+        <p class="faq-a">Yes — genuinely free, with no obligation attached. You get a tour, a digital scan, an exam by Dr. Romans, and an exact written price for your treatment. If you'd rather take that number home and think it over, that's completely fine. The quote is yours to keep either way.</p>
+      </div>
     </div>
   </div>
 </section>
