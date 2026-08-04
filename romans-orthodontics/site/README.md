@@ -91,3 +91,5 @@ Mobile order is H1, sub, CTA, photo, set with `order` on the grid children. Trim
 Also removed `decoding="async"` from the hero `<img>`. On an LCP element it can defer the paint, and it was doing exactly that at 390px.
 
 *Verification note for future passes:* headless Chrome on Windows clamps `--window-size` width, so a 390px screenshot lays out wider and then crops, which looks like overflow that is not there. Measure in a real 390px iframe. `scrollWidth` reads 390 on every page.
+
+**2026-08-04 · credentials joined to the CTA band** — `.band + .authority { margin-top: 0; border-top: 0 }` so the credential strip butts directly against the copper CTA and the two read as one unit instead of two floating bands. The adjacent-sibling selector outranks the mobile `.authority { margin-top: 64px }`, so the join holds at 390px too. Measured gap is 0px on both pages at 1440 and 390.
