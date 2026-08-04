@@ -47,3 +47,15 @@ Verified across all 17 pages: `scrollWidth === 390`, header 215×42, footer 204�
 - The 12px is deliberate, it leaves a sliver of the next section showing so the page reads as scrollable.
 - free-consult has no photo to flex, so the tall left column moved out instead. "What to bring" and the "book right now" scheduler block are now their own `.consult-extra` section directly below the hero, and the form block, fields and labels are tighter. Hero is now eyebrow, H1, lede and the whole 4-field form with its button and note, all above the fold. Tradeoff: whitespace under the lede on desktop, because the form column is the tall one. Anything put back there stacks on mobile and pushes the form under the fold.
 - Measure in the settled reveal state. `.rv` carries `transform: translateY(18px)` until the observer adds `.in`, so an un-settled measurement reads 18px pessimistic.
+
+**2026-08-04 · hero rule-8 fix + conversion pass** — Closes the only hard violation against the kit hero spec, and reworks the hero's conversion mechanics without adopting any of the five preapproved layouts.
+
+*Rule 8, LCP image.* Every photo was a full-resolution camera original: the homepage hero was 3,808 KB against a 200 KB cap, and the library totalled 22.6 MB. All eight are now WebP, sized to the width they actually display at, each verified under 200 KB (largest 190 KB), library total 1,267 KB, 5.5% of before. JPG masters stay in `assets/` and are no longer referenced. The hero photo is also no longer a CSS `background-image`: it is a real `<img>` with intrinsic width and height, `fetchpriority="high"`, `decoding="async"`, and a matching `<link rel="preload" as="image">` in the head, so the LCP element is discoverable in the first HTML parse. Backgrounds cannot take `fetchpriority` and are found late, which is why the preload half of rule 8 could not have been satisfied in the old markup.
+
+*Conversion pass.* The CTA block is now a stack in its own grid cell: primary button, then a labelled secondary ("or call" + number, grouped so it never wraps apart), then a risk-reversal microline. Every microline claim already appears in approved copy on that page, so nothing new is being asserted. Mobile gets a full-width primary button. `hero-meta` switched to `align-items: start` now that the CTA column is the taller one.
+
+*Deliberately not mirrored.* No trust chips or pills (BrightWay), no floating review badge (Wild Smiles), no photo-beside-headline split (Marlowe, Maple Grove), no background video (Sage & Stone). The arrangement stays concept A's: full-width eyebrow and H1, then lede against the CTA stack, then a full-bleed photo band with the editorial caption row.
+
+Still true after the change: every hero clears the fold at 1440x800, 1366x768, 1280x720 and 390x844. Mobile photo floor dropped 120px to 96px so the longest H1 plus microline still fits at 390.
+
+*Not done here:* the three concept pages still reference the JPG masters. They are frozen artifacts, so they were left alone.
