@@ -216,6 +216,37 @@ body[data-kb="1"] .psp-stickybar{display:none}
 .rob-loc-card{grid-template-columns:1fr}
 .rob-loc-map{min-height:320px;border-left:0;border-top:1px solid var(--line)}
 }
+/* ── phone hero: all four credentials above the fold ─────────────────────
+   The 2×2 credential grid used to end 114px past the usable bottom (the
+   viewport less the 47px sticky bar), so the second row was never seen on
+   load. Everything above it gives back a little — padding, gaps, display
+   sizes — rather than any one thing collapsing. The cells stay 2×2 and the
+   type stays on the scale. */
+@media (max-width:640px){
+.rob-hero-inner{padding-block:var(--space-4) var(--space-5)}
+.rob-hero .psp-stack--3{gap:var(--space-2)}
+.rob-h1{font-size:clamp(32px,8.4vw,40px)}
+.rob-hero .psp-body--lede{font-size:var(--step-body-sm)}
+.rob-actions{gap:var(--space-2)}
+.rob-hero .rob-trust{margin-top:var(--space-3);padding-top:var(--space-3);row-gap:var(--space-3)}
+.rob-trust-title{font-size:var(--step-lede)}
+}
+
+/* Short phones (SE, mini) need another ~40px. Height, not width, is what is
+   scarce here, so the query asks about height — a 360×740 handset keeps the
+   roomier tier above. Tap targets are untouched either way. */
+@media (max-width:640px) and (max-height:720px){
+.rob-hero-inner{padding-block:var(--space-2) var(--space-4)}
+.rob-hero .psp-stack--3{gap:var(--space-1)}
+.rob-h1{font-size:28px}
+.rob-actions{gap:var(--space-1)}
+.rob-hero .psp-body--lede{line-height:1.35}
+.rob-hero .rob-trust{margin-top:var(--space-2);padding-top:var(--space-2);row-gap:var(--space-2)}
+.rob-hero .rob-trust-cell{gap:4px}
+.rob-hero .rob-trust-sub{line-height:1.15}
+.rob-trust-title{font-size:var(--step-body)}
+}
+
 @media (max-width:640px){
 .rob-footer-grid,.rob-services{grid-template-columns:1fr}
 .rob-cta-card{padding:var(--space-4) var(--space-3)}
