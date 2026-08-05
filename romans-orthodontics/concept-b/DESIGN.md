@@ -1,4 +1,4 @@
-# DESIGN.md — Romans Orthodontics, concept-b
+# DESIGN.md: Romans Orthodontics, concept-b
 
 Layer 1 brand authorship for the `concept-b/` build. Direction: **hometown warm
 (family)**. Read this before touching a page. Every page links
