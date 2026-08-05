@@ -178,9 +178,15 @@ address{font-style:normal}
 .rox-nap-label{font-family:var(--font-mono);font-size:var(--step-small);letter-spacing:var(--tracking-label);text-transform:uppercase;color:var(--ink-muted);padding-top:.3em}
 .rox-nap-value{display:grid;gap:var(--space-1);justify-items:start}
 .rox-hours{display:grid;gap:var(--space-1)}
-/* Google's tile palette is louder than anything else on the page. Pulling the
-   saturation back sits it with the graded photography instead of against it. */
-.rox-map{display:block;width:100%;height:100%;min-height:calc(var(--space-6) * 4);border:1px solid var(--line);background:var(--surface-alt);filter:saturate(.78) contrast(.96)}
+/* The map is treated as a piece of the page's photography rather than a
+   third-party box dropped in: same hairline frame, same copper frame offset
+   behind it, and the tiles graded toward the paper and slate the rest of the
+   page is made of. The tint is a low-opacity colour blend, not a heavy
+   overlay — Google's attribution and logo stay legible underneath. */
+.rox-mapwrap{height:100%}
+.rox-mapwrap .rox-figure__frame{height:100%;min-height:calc(var(--space-6) * 4)}
+.rox-map{display:block;width:100%;height:100%;border:0;background:var(--surface-alt);filter:saturate(.52) contrast(.94) brightness(1.04) sepia(.16)}
+.rox-map-tint{position:absolute;inset:0;z-index:2;background:var(--brand);opacity:.16;mix-blend-mode:color;pointer-events:none}
 
 /* ── footer. No footer primitive exists. ──────────────────────────────── */
 .rox-footer-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1.1fr;gap:var(--space-5) var(--space-4)}
@@ -254,8 +260,8 @@ body{padding-bottom:calc(var(--tap) + var(--space-3))}
 .rox-br-desktop{display:none}
 }
 @media (max-width:900px){
-/* the split has stacked, so the map is no longer matching a sibling's height */
-.rox-map{height:auto;min-height:0;aspect-ratio:4 / 3}
+/* the split has stacked, so the map has no sibling height left to match */
+.rox-mapwrap .rox-figure__frame{height:auto;min-height:0;aspect-ratio:4 / 3}
 }
 @media (max-width:640px){
 .rox-footer-grid,.rox-services{grid-template-columns:1fr}
@@ -368,7 +374,7 @@ body{padding-bottom:calc(var(--tap) + var(--space-3))}
       <div class="psp-split psp-split--5 psp-split--center psp-split--stack-md" style="--psp-ratio:1.05fr 0.95fr">
         <div class="psp-stack psp-stack--3 psp-stack--start">
           <p class="psp-eyebrow psp-eyebrow--brand rox-enter">Anthem, Arizona · Live a little, smile a lot</p>
-          <h1 class="psp-heading psp-heading--lg psp-heading--balance rox-enter rox-h1" style="max-width:22ch">Braces &amp; Invisalign <span class="rox-hl">in Anthem</span>, <span class="rox-h1-sub">for every age in your family</span></h1>
+          <h1 class="psp-heading psp-heading--lg psp-heading--balance rox-enter rox-h1" style="max-width:22ch">Braces &amp; Invisalign <span class="rox-hl">in Anthem</span> <span class="rox-h1-sub">for every age in your family</span></h1>
           <!-- The old lede opened with board-certified and 7+ years, which the
                trust bar repeats verbatim two hundred pixels below. It carries
                the thing nothing else on the page says instead. -->
@@ -513,7 +519,7 @@ body{padding-bottom:calc(var(--tap) + var(--space-3))}
          hairline instead of filled: the mark is one continuous ribbon, which is
          an archwire. Oversized, bled off the edge, parallaxed slowly. -->
     <svg class="rox-cta-mark" viewBox="20 0 232 160" aria-hidden="true" focusable="false">
-      <path d="M224.86,26.67c-10.71-10.4-24.09-15.67-39.77-15.67s-29.06,5.27-39.77,15.67c-10.69,10.38-16.11,23.5-16.11,38.98,0,13.43,4.08,25.1,12.13,34.69l14.01,18.84c2.13,2.92,2.98,6.5,2.41,10.08-.57,3.59-2.49,6.73-5.41,8.84-6.07,4.38-14.59,3.04-19-2.99l-39.75-54.44.07-.02-10.65-14.53c-3.13.78-7,1.18-11.55,1.18h-20.35V30.11h20.83c8.48,0,14.36,1.22,17.95,3.72,3.8,2.65,5.73,7.38,5.73,14.08,0,2.79-.33,5.31-.98,7.52l12.96,17.69c5.74-5.78,8.65-14.27,8.65-25.28,0-12.03-3.41-20.82-10.15-26.13-6.9-5.43-18.82-8.18-35.43-8.18H30.97v105.68h20.15v-35.16h20.51l45.74,62.63c6.25,8.56,16.36,13.67,27.04,13.67,7.07,0,13.84-2.19,19.57-6.33,1.74-1.26,5.11-4.02,8.15-8.43,1.52-2.21,5.09-7.37,6.02-15.1.92-7.69-1.21-14.02-3.21-18.04l-20.39-27.87c-3.02-5.58-4.55-11.93-4.55-18.85,0-10.37,3.4-19.35,10.1-26.68,6.76-7.4,15.2-11.15,25.07-11.15s18.31,3.75,25.07,11.15c6.7,7.34,10.1,16.32,10.1,26.68s-3.4,19.32-10.11,26.61c-6.16,6.69-13.7,10.37-22.46,10.98l11.31,15.45c9.74-2.23,18.41-6.99,25.77-14.14,10.69-10.39,16.11-23.5,16.11-38.98s-5.42-28.59-16.11-38.98h0Z" stroke-linecap="butt" stroke-width="8px"></path>
+      <path d="M224.86,26.67c-10.71-10.4-24.09-15.67-39.77-15.67s-29.06,5.27-39.77,15.67c-10.69,10.38-16.11,23.5-16.11,38.98,0,13.43,4.08,25.1,12.13,34.69l14.01,18.84c2.13,2.92,2.98,6.5,2.41,10.08-.57,3.59-2.49,6.73-5.41,8.84-6.07,4.38-14.59,3.04-19-2.99l-39.75-54.44.07-.02-10.65-14.53c-3.13.78-7,1.18-11.55,1.18h-20.35V30.11h20.83c8.48,0,14.36,1.22,17.95,3.72,3.8,2.65,5.73,7.38,5.73,14.08,0,2.79-.33,5.31-.98,7.52l12.96,17.69c5.74-5.78,8.65-14.27,8.65-25.28,0-12.03-3.41-20.82-10.15-26.13-6.9-5.43-18.82-8.18-35.43-8.18H30.97v105.68h20.15v-35.16h20.51l45.74,62.63c6.25,8.56,16.36,13.67,27.04,13.67,7.07,0,13.84-2.19,19.57-6.33,1.74-1.26,5.11-4.02,8.15-8.43,1.52-2.21,5.09-7.37,6.02-15.1.92-7.69-1.21-14.02-3.21-18.04l-20.39-27.87c-3.02-5.58-4.55-11.93-4.55-18.85,0-10.37,3.4-19.35,10.1-26.68,6.76-7.4,15.2-11.15,25.07-11.15s18.31,3.75,25.07,11.15c6.7,7.34,10.1,16.32,10.1,26.68s-3.4,19.32-10.11,26.61c-6.16,6.69-13.7,10.37-22.46,10.98l11.31,15.45c9.74-2.23,18.41-6.99,25.77-14.14,10.69-10.39,16.11-23.5,16.11-38.98s-5.42-28.59-16.11-38.98h0Z" stroke-linecap="butt" stroke-width="4px"></path>
     </svg>
     <div class="psp-container">
       <div class="psp-stack psp-stack--4 psp-stack--start rox-cta-stack">
@@ -601,11 +607,13 @@ body{padding-bottom:calc(var(--tap) + var(--space-3))}
   <!-- 09 · Locations. NAP anchor; directions is the primary action. -->
   <section class="psp-band psp-band--alt psp-band--edge-both" id="locations">
     <div class="psp-container">
-      <div class="psp-stack psp-stack--4 psp-stack--start">
-        <p class="psp-eyebrow psp-eyebrow--muted">Our address</p>
-        <h2 class="psp-heading psp-heading--md" style="max-width:28ch">The Anthem office</h2>
-        <div class="psp-split psp-split--5 psp-split--stack-md" style="--psp-ratio:1fr 1fr">
+      <!-- The eyebrow and heading live inside the left column, not above the
+           split: with them outside, the map could only start level with the
+           ledger and the whole top-right corner of the band sat empty. -->
+      <div class="psp-split psp-split--5 psp-split--stack-md" style="--psp-ratio:1fr 1fr">
           <div class="psp-stack psp-stack--4 psp-stack--start">
+            <p class="psp-eyebrow psp-eyebrow--muted">Our address</p>
+            <h2 class="psp-heading psp-heading--md" style="max-width:28ch">The Anthem office</h2>
             <address class="rox-nap">
               <div class="rox-nap-row">
                 <span class="rox-nap-label">Address</span>
@@ -629,8 +637,15 @@ body{padding-bottom:calc(var(--tap) + var(--space-3))}
             </address>
             <a class="psp-button" href="https://www.google.com/maps/dir/?api=1&amp;destination=3618+W.+Anthem+Way+Suite+D120+Anthem+AZ+85086">Get directions</a>
           </div>
-          <iframe class="rox-map" title="Map showing Romans Orthodontics at 3618 W. Anthem Way, Suite D120, Anthem, AZ 85086" src="https://www.google.com/maps?q=3618+W.+Anthem+Way+Suite+D120,+Anthem,+AZ+85086&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-        </div>
+          <!-- The map gets the same treatment as the photography: hairline
+               frame, copper frame offset behind it, and a grade that pulls
+               Google's tile palette toward the page's paper and slate. -->
+          <figure class="rox-figure rox-mapwrap">
+            <span class="rox-figure__frame">
+              <iframe class="rox-map" title="Map showing Romans Orthodontics at 3618 W. Anthem Way, Suite D120, Anthem, AZ 85086" src="https://www.google.com/maps?q=3618+W.+Anthem+Way+Suite+D120,+Anthem,+AZ+85086&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+              <span class="rox-map-tint" aria-hidden="true"></span>
+            </span>
+          </figure>
       </div>
     </div>
   </section>
@@ -754,7 +769,7 @@ body{padding-bottom:calc(var(--tap) + var(--space-3))}
         var r = band.getBoundingClientRect();
         var centred = (r.top + r.height / 2 - window.innerHeight / 2) / window.innerHeight;
         var clamped = Math.max(-1, Math.min(1, centred));
-        band.style.setProperty('--rox-par', (clamped * -64).toFixed(1) + 'px');
+        band.style.setProperty('--rox-par', (clamped * -118).toFixed(1) + 'px');
       });
     };
     if (band) { window.addEventListener('scroll', onScroll, { passive: true }); onScroll(); }
