@@ -35,32 +35,36 @@ address{font-style:normal}
 
 /* ── photography. Every photo is framed by a hairline and nothing else: the
       design has no shadows and no radius, so the frame is how an image gets
-      an edge. Aspect is declared on the frame, never left to the file. ───── */
-.rox-figure{margin:0;width:100%}
-.rox-figure__frame{position:relative;display:block;width:100%;border:1px solid var(--line);background:var(--surface-alt);overflow:hidden}
+      an edge. Aspect is declared on the frame, never left to the file.
+      Behind each one, the same frame again in copper, offset by an equal
+      amount down and right — the page's only ornament, and it is still just
+      a hairline. ────────────────────────────────────────────────────────── */
+.rox-figure{position:relative;margin:0;width:100%}
+.rox-figure::before{content:"";position:absolute;inset:0;border:1px solid var(--brand);transform:translate(var(--space-2),var(--space-2));pointer-events:none}
+.rox-figure__frame{position:relative;z-index:1;display:block;width:100%;border:1px solid var(--line);background:var(--surface-alt);overflow:hidden}
 .rox-figure__frame img{display:block;width:100%;height:100%;object-fit:cover}
 .rox-figure--portrait .rox-figure__frame{aspect-ratio:4 / 5}
 .rox-figure--wide .rox-figure__frame{aspect-ratio:3 / 2}
-.rox-figure__caption{display:flex;gap:var(--space-2);padding-top:var(--space-2);font-family:var(--font-mono);font-size:var(--step-small);letter-spacing:var(--tracking-label);text-transform:uppercase;color:var(--ink-muted)}
-.rox-figure__caption::before{content:"";flex:0 0 var(--space-3);border-top:1px solid var(--brand);margin-top:.55em}
 
-/* ── header. No nav-bar, dropdown or utility-strip primitive exists. ───── */
+/* ── header. Sticky as a whole: the sticky used to sit on the inner bar,
+      whose containing block ended immediately below it, so it unstuck the
+      moment the header scrolled past. ──────────────────────────────────── */
 .rox-icon{width:var(--step-body-sm);height:var(--step-body-sm);flex:0 0 auto}
 .rox-chev{width:var(--step-small);height:var(--step-small);flex:0 0 auto;transition:transform var(--dur) var(--ease)}
-.rox-header{position:relative;z-index:300}
-.rox-utility{background:var(--surface-alt);border-bottom:1px solid var(--line)}
-.rox-utility-inner{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:var(--space-2);padding-block:var(--space-1);font-family:var(--font-mono);font-size:var(--step-small);letter-spacing:var(--tracking-label);color:var(--ink-muted)}
-.rox-utility-text{display:flex;align-items:center;gap:var(--space-1)}
-.rox-utility-tel{display:flex;align-items:center;gap:var(--space-1);min-height:var(--tap);color:var(--ink);text-decoration:none}
-.rox-utility-tel:hover{color:var(--brand)}
-.rox-bar{position:sticky;top:0;z-index:300;background:var(--surface);border-bottom:1px solid var(--line)}
-.rox-bar-inner{display:grid;grid-template-columns:auto 1fr auto;align-items:center;column-gap:var(--space-4);min-height:var(--space-6)}
+.rox-header{position:sticky;top:0;z-index:300}
+.rox-bar{background:var(--surface);border-bottom:1px solid var(--line)}
+.rox-bar-inner{display:grid;grid-template-columns:auto 1fr auto auto;align-items:center;column-gap:var(--space-3);min-height:var(--space-6)}
+/* the one tel: link in the desktop header, per the kit's header rule */
+.rox-bar-tel{display:flex;align-items:center;gap:var(--space-1);min-height:var(--tap);padding-inline:var(--space-2);justify-self:end;font-family:var(--font-mono);font-size:var(--step-small);letter-spacing:var(--tracking-label);color:var(--ink);text-decoration:none;white-space:nowrap}
+.rox-bar-tel:hover{color:var(--brand)}
 .rox-logo{display:flex;align-items:center;min-height:var(--tap);text-decoration:none}
-.rox-mark{display:block;width:auto;height:var(--space-4)}
+.rox-mark{display:block;width:auto;height:var(--space-4);max-width:none}
 .rox-nav-wrap{justify-self:end}
-.rox-nav{display:flex;align-items:center;gap:var(--space-1);list-style:none;margin:0;padding:0}
+.rox-nav{display:flex;align-items:center;list-style:none;margin:0;padding:0}
 .rox-nav-item{position:relative}
-.rox-nav-link{display:flex;align-items:center;gap:var(--space-1);min-height:var(--tap);padding-inline:var(--space-2);border:0;background:none;cursor:pointer;font-family:var(--font-mono);font-size:var(--step-small);letter-spacing:var(--tracking-label);text-transform:uppercase;color:var(--ink);text-decoration:none}
+/* mono uppercase at .1em tracking is wide; without nowrap the two-word items
+   break across lines as soon as the bar gets busy */
+.rox-nav-link{display:flex;align-items:center;gap:var(--space-1);min-height:var(--tap);padding-inline:var(--space-2);border:0;background:none;cursor:pointer;font-family:var(--font-mono);font-size:var(--step-small);letter-spacing:var(--tracking-label);text-transform:uppercase;white-space:nowrap;color:var(--ink);text-decoration:none}
 .rox-nav-link:hover{color:var(--brand)}
 .rox-menu{position:absolute;top:100%;left:0;min-width:calc(var(--container) / 5);padding:var(--space-2);background:var(--surface);border:1px solid var(--line);opacity:0;visibility:hidden;transition:opacity var(--dur) var(--ease),visibility var(--dur)}
 .rox-nav-item:hover .rox-menu,.rox-nav-item:focus-within .rox-menu{opacity:1;visibility:visible}
@@ -82,6 +86,18 @@ address{font-style:normal}
       headline rather than on a band of empty paper under the sticky bar. ── */
 .rox-hero{padding-block:calc(var(--section-y) * .72) var(--section-y)}
 .rox-actions{display:flex;flex-wrap:wrap;gap:var(--space-2)}
+/* the qualifier is a second thought, not a second headline */
+.rox-h1-sub{display:block;font-size:.62em;letter-spacing:-.022em}
+.rox-hl{color:var(--brand)}
+/* the one entrance on the page. The reduced-motion block below collapses it. */
+@keyframes rox-rise{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+.rox-h1{animation:rox-rise .85s var(--ease) both}
+
+/* ── the doctor's credentials. A ruled list, deliberately not a repeat of the
+      trust bar's four-cell layout: this is a dossier, that is a headline. ── */
+.rox-creds{display:grid;gap:0;list-style:none;margin:0;padding:0;width:100%;max-width:54ch;border-bottom:1px solid var(--line)}
+.rox-cred{display:grid;grid-template-columns:var(--space-3) 1fr;gap:var(--space-2);padding-block:var(--space-2);border-top:1px solid var(--line);font-size:var(--step-body-sm);color:var(--ink-muted)}
+.rox-cred::before{content:"";border-top:1px solid var(--brand);margin-top:.72em}
 
 /* ── trust bar. Typography only per TRUST-BAR-SPEC: no icons. Each cell is a
       copper tick + mono ordinal label + claim + one-line gloss. Four repeated
@@ -130,11 +146,18 @@ address{font-style:normal}
 .psp-linkarrow{position:relative}
 .psp-linkarrow::after{content:"";position:absolute;left:0;right:0;top:50%;transform:translateY(-50%);height:var(--tap)}
 
-/* ── locations. The map is the only third-party embed on the page. ─────── */
+/* ── locations. Was a loose stack of four unrelated blocks with the map
+      floating beside it at its own height. Now a ruled NAP ledger — one
+      hairline row per fact, mono label in a fixed column — and the map
+      stretches to match it. ────────────────────────────────────────────── */
+.rox-nap{width:100%;border-bottom:1px solid var(--line)}
+.rox-nap-row{display:grid;grid-template-columns:var(--space-6) 1fr;gap:var(--space-2) var(--space-3);padding-block:var(--space-3);border-top:1px solid var(--line)}
+.rox-nap-label{font-family:var(--font-mono);font-size:var(--step-small);letter-spacing:var(--tracking-label);text-transform:uppercase;color:var(--ink-muted);padding-top:.3em}
+.rox-nap-value{display:grid;gap:var(--space-1);justify-items:start}
+.rox-hours{display:grid;gap:var(--space-1)}
 /* Google's tile palette is louder than anything else on the page. Pulling the
    saturation back sits it with the graded photography instead of against it. */
-.rox-map{display:block;width:100%;aspect-ratio:4 / 3;border:1px solid var(--line);background:var(--surface-alt);filter:saturate(.78) contrast(.96)}
-.rox-hours{display:grid;gap:var(--space-1)}
+.rox-map{display:block;width:100%;height:100%;min-height:calc(var(--space-6) * 4);border:1px solid var(--line);background:var(--surface-alt);filter:saturate(.78) contrast(.96)}
 
 /* ── footer. No footer primitive exists. ──────────────────────────────── */
 .rox-footer-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1.1fr;gap:var(--space-5) var(--space-4)}
@@ -149,9 +172,12 @@ address{font-style:normal}
 
 /* ── sticky bar: the kit requires Book to be the widest centre segment. ── */
 .psp-stickybar{grid-template-columns:1fr 1.6fr 1fr}
+/* the DS turns the sticky bar on at 1000px; the drawer now starts at 1100,
+   so bring the bar with it — the two are one mobile affordance */
+@media (max-width:1150px){.psp-stickybar{display:grid}}
 body[data-kb="1"] .psp-stickybar{display:none}
 
-@media (max-width:1000px){
+@media (max-width:1150px){
 /* the sticky action bar appears at this width, so the page needs clearance
    below the footer's legal line — not below <main>, which the footer follows */
 body{padding-bottom:calc(var(--tap) + var(--space-3))}
@@ -166,14 +192,23 @@ body{padding-bottom:calc(var(--tap) + var(--space-3))}
 .rox-services{grid-template-columns:repeat(2,minmax(0,1fr))}
 .rox-cta-stack{max-width:none}
 .rox-trust{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:var(--space-4)}
+.rox-bar-tel{display:none}
+.rox-br-desktop{display:none}
+}
+@media (max-width:900px){
+/* the split has stacked, so the map is no longer matching a sibling's height */
+.rox-map{height:auto;min-height:0;aspect-ratio:4 / 3}
 }
 @media (max-width:640px){
-.rox-utility-text{display:none}
-.rox-utility-inner{justify-content:flex-end}
 .rox-footer-grid,.rox-services{grid-template-columns:1fr}
+.rox-nap-row{grid-template-columns:1fr}
+.rox-nap-label{padding-top:0}
 }
 @media (prefers-reduced-motion:reduce){
 *{animation-duration:.01ms !important;animation-iteration-count:1 !important;transition-duration:.01ms !important}
+/* the blanket .01ms rule still runs the first frame of the entrance, which is
+   opacity 0 — a flash of invisible headline. Remove the animation instead. */
+.rox-h1{animation:none !important}
 }
 </style>
 </head>
@@ -183,20 +218,6 @@ body{padding-bottom:calc(var(--tap) + var(--space-3))}
 <a class="psp-skiplink" href="#main">Skip to content</a>
 
 <header class="rox-header">
-  <div class="rox-utility">
-    <div class="psp-container">
-      <div class="rox-utility-inner">
-        <span class="rox-utility-text">
-          <svg class="rox-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s7-5.7 7-11a7 7 0 1 0-14 0c0 5.3 7 11 7 11Z"></path><circle cx="12" cy="10" r="2.6"></circle></svg>
-          3618 W. Anthem Way, Suite D120 · Anthem, AZ
-        </span>
-        <a class="rox-utility-tel" href="tel:+16233201222">
-          <svg class="rox-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15.5 21A12.5 12.5 0 0 1 3 8.5 2.5 2.5 0 0 1 5.5 6h1.8a1 1 0 0 1 1 .8l.7 3a1 1 0 0 1-.5 1.1l-1.3.7a9.4 9.4 0 0 0 4.2 4.2l.7-1.3a1 1 0 0 1 1.1-.5l3 .7a1 1 0 0 1 .8 1v1.8A2.5 2.5 0 0 1 15.5 21Z"></path></svg>
-          (623) 320-1222
-        </a>
-      </div>
-    </div>
-  </div>
   <div class="rox-bar">
     <div class="psp-container">
       <div class="rox-bar-inner">
@@ -231,6 +252,10 @@ body{padding-bottom:calc(var(--tap) + var(--space-3))}
             <li class="rox-nav-item"><a class="rox-nav-link" href="#locations">Our Address</a></li>
           </ul>
         </nav>
+        <a class="rox-bar-tel" href="tel:+16233201222">
+          <svg class="rox-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15.5 21A12.5 12.5 0 0 1 3 8.5 2.5 2.5 0 0 1 5.5 6h1.8a1 1 0 0 1 1 .8l.7 3a1 1 0 0 1-.5 1.1l-1.3.7a9.4 9.4 0 0 0 4.2 4.2l.7-1.3a1 1 0 0 1 1.1-.5l3 .7a1 1 0 0 1 .8 1v1.8A2.5 2.5 0 0 1 15.5 21Z"></path></svg>
+          (623) 320-1222
+        </a>
         <div class="rox-bar-cta">
           <a class="psp-button" href="free-consult.html">Book a free consult</a>
         </div>
@@ -284,7 +309,7 @@ body{padding-bottom:calc(var(--tap) + var(--space-3))}
       <div class="psp-split psp-split--5 psp-split--center psp-split--stack-md" style="--psp-ratio:1.05fr 0.95fr">
         <div class="psp-stack psp-stack--3 psp-stack--start">
           <p class="psp-eyebrow psp-eyebrow--brand">Anthem, Arizona · Live a little, smile a lot</p>
-          <h1 class="psp-heading psp-heading--lg psp-heading--balance" style="max-width:26ch">Braces and Invisalign in Anthem, for every age in your family</h1>
+          <h1 class="psp-heading psp-heading--lg psp-heading--balance rox-h1" style="max-width:22ch">Braces &amp; Invisalign <span class="rox-hl">in Anthem</span>, <span class="rox-h1-sub">for every age in your family</span></h1>
           <p class="psp-body psp-body--lede psp-body--muted" style="max-width:50ch">Dr. Nicholas Romans is a board-certified orthodontist with more than 7 years dedicated to orthodontics, including advanced specialty training. This is a solo practice, so the orthodontist who plans your treatment is the one who finishes it.</p>
           <div class="rox-actions">
             <a class="psp-button" href="free-consult.html">Book a free consult</a>
@@ -297,7 +322,6 @@ body{padding-bottom:calc(var(--tap) + var(--space-3))}
           <span class="rox-figure__frame">
             <img src="../assets/web/hero-dr-romans-reception.webp" width="1000" height="1250" fetchpriority="high" decoding="async" alt="Dr. Nicholas Romans standing at the front desk of Romans Orthodontics in Anthem, Arizona">
           </span>
-          <figcaption class="rox-figure__caption">Dr. Nicholas Romans, DMD, MSD</figcaption>
         </figure>
       </div>
     </div>
@@ -315,7 +339,7 @@ body{padding-bottom:calc(var(--tap) + var(--space-3))}
         </li>
         <li class="rox-trust-cell">
           <p class="psp-eyebrow psp-eyebrow--brand">02 / Degrees</p>
-          <p class="psp-heading psp-heading--sm">DMD, MSD</p>
+          <p class="psp-heading psp-heading--sm">DMD,<br class="rox-br-desktop"> MSD</p>
           <p class="psp-body psp-body--small psp-body--muted">A dental doctorate plus a master’s degree in orthodontics.</p>
         </li>
         <li class="rox-trust-cell">
@@ -325,7 +349,7 @@ body{padding-bottom:calc(var(--tap) + var(--space-3))}
         </li>
         <li class="rox-trust-cell">
           <p class="psp-eyebrow psp-eyebrow--brand">04 / First visit</p>
-          <p class="psp-heading psp-heading--sm">Free consultation</p>
+          <p class="psp-heading psp-heading--sm">Free<br class="rox-br-desktop"> consultation</p>
           <p class="psp-body psp-body--small psp-body--muted">Every first visit, at no charge, for any age.</p>
         </li>
       </ul>
@@ -342,12 +366,21 @@ body{padding-bottom:calc(var(--tap) + var(--space-3))}
             <span class="rox-figure__frame">
               <img src="../assets/web/dr-romans-with-patient.webp" width="900" height="1125" loading="lazy" decoding="async" alt="Dr. Romans with a young patient in a treatment room at the Anthem office">
             </span>
-            <figcaption class="rox-figure__caption">At the Anthem office</figcaption>
           </figure>
           <div class="psp-stack psp-stack--3 psp-stack--start">
             <p class="psp-eyebrow psp-eyebrow--muted">Meet your orthodontist</p>
-            <h2 class="psp-heading psp-heading--md" style="max-width:22ch">Dr. Nicholas Romans</h2>
+            <h2 class="psp-heading psp-heading--md" style="max-width:22ch">Dr. Nicholas <span class="rox-hl">Romans</span></h2>
             <p class="psp-body psp-body--muted" style="max-width:54ch">Dr. Romans opened his own practice here in Anthem in 2026, though he has been straightening teeth a good while longer than that — more than 5,000 patients over his career so far. He treats kids, teens and adults in the same chairs on the same afternoon, which is how a family ends up with one orthodontist instead of three. Come by and say hello before you decide anything.</p>
+            <!-- MEET-THE-DOCTOR-SPEC wants 3–6 credentials in this section, so
+                 they run here as a ruled list rather than being left to the
+                 trust bar alone. Every line traces to CLIENT-BRIEF.md. -->
+            <ul class="rox-creds">
+              <li class="rox-cred">Board-certified orthodontist</li>
+              <li class="rox-cred">DMD — Doctor of Dental Medicine</li>
+              <li class="rox-cred">MSD — Master of Science in orthodontics</li>
+              <li class="rox-cred">7+ years dedicated to orthodontics, including advanced specialty training</li>
+              <li class="rox-cred">Solo practice — the orthodontist who plans your treatment finishes it</li>
+            </ul>
             <a class="psp-button psp-button--ghost" href="dr-romans.html">Read Dr. Romans’s story</a>
           </div>
         </div>
@@ -368,7 +401,6 @@ body{padding-bottom:calc(var(--tap) + var(--space-3))}
               <span class="rox-figure__frame">
                 <img src="../assets/web/office-reception.webp" width="1080" height="720" loading="lazy" decoding="async" alt="The reception area at Romans Orthodontics, with the practice name on a wood wall behind the front desk">
               </span>
-              <figcaption class="rox-figure__caption">Reception</figcaption>
             </figure>
             <div class="psp-stack psp-stack--2 psp-stack--start">
               <h2 class="psp-heading psp-heading--md" style="max-width:24ch">One office for the whole family</h2>
@@ -384,7 +416,6 @@ body{padding-bottom:calc(var(--tap) + var(--space-3))}
               <span class="rox-figure__frame">
                 <img src="../assets/web/office-treatment-bay.webp" width="1080" height="720" loading="lazy" decoding="async" alt="The open treatment bay at the Anthem office, a row of chairs beside a wall of windows">
               </span>
-              <figcaption class="rox-figure__caption">Treatment bay</figcaption>
             </figure>
             <div class="psp-stack psp-stack--2 psp-stack--start">
               <h2 class="psp-heading psp-heading--md" style="max-width:24ch">Your insurance, checked while you sit there</h2>
@@ -400,7 +431,6 @@ body{padding-bottom:calc(var(--tap) + var(--space-3))}
               <span class="rox-figure__frame">
                 <img src="../assets/web/office-suite-entrance.webp" width="1080" height="720" loading="lazy" decoding="async" alt="The Suite D-120 entrance to Romans Orthodontics at street level on West Anthem Way">
               </span>
-              <figcaption class="rox-figure__caption">Suite D-120</figcaption>
             </figure>
             <div class="psp-stack psp-stack--2 psp-stack--start">
               <h2 class="psp-heading psp-heading--md" style="max-width:24ch">Ground level, with parking out front</h2>
@@ -513,19 +543,29 @@ body{padding-bottom:calc(var(--tap) + var(--space-3))}
       <div class="psp-stack psp-stack--4 psp-stack--start">
         <p class="psp-eyebrow psp-eyebrow--muted">Our address</p>
         <h2 class="psp-heading psp-heading--md" style="max-width:28ch">The Anthem office</h2>
-        <div class="psp-split psp-split--5 psp-split--start psp-split--stack-md" style="--psp-ratio:1fr 1fr">
-          <div class="psp-stack psp-stack--3 psp-stack--start">
-            <address class="psp-stack psp-stack--1 psp-stack--start">
-              <h3 class="psp-heading psp-heading--sm">Romans Orthodontics</h3>
-              <p class="psp-body psp-body--muted">3618 W. Anthem Way, Suite D120</p>
-              <p class="psp-body psp-body--muted">Anthem, AZ 85086</p>
-              <a class="psp-linkarrow" href="tel:+16233201222">(623) 320-1222 →</a>
+        <div class="psp-split psp-split--5 psp-split--stack-md" style="--psp-ratio:1fr 1fr">
+          <div class="psp-stack psp-stack--4 psp-stack--start">
+            <address class="rox-nap">
+              <div class="rox-nap-row">
+                <span class="rox-nap-label">Address</span>
+                <span class="rox-nap-value">
+                  <span class="psp-body">3618 W. Anthem Way, Suite D120</span>
+                  <span class="psp-body">Anthem, AZ 85086</span>
+                </span>
+              </div>
+              <div class="rox-nap-row">
+                <span class="rox-nap-label">Phone</span>
+                <span class="rox-nap-value"><a class="psp-linkarrow" href="tel:+16233201222">(623) 320-1222 →</a></span>
+              </div>
+              <div class="rox-nap-row">
+                <span class="rox-nap-label">Hours</span>
+                <span class="rox-nap-value"><span class="psp-eyebrow psp-eyebrow--brand">[CONFIRM: office hours]</span></span>
+              </div>
+              <div class="rox-nap-row">
+                <span class="rox-nap-label">Parking</span>
+                <span class="rox-nap-value"><span class="psp-body psp-body--muted">Ground level, reserved spaces right outside the door. Look for the Suite D-120 sign on West Anthem Way.</span></span>
+              </div>
             </address>
-            <p class="psp-body psp-body--muted" style="max-width:44ch">Ground-level office with reserved parking right outside the door — look for the Suite D-120 sign on West Anthem Way.</p>
-            <div class="rox-hours">
-              <p class="psp-eyebrow psp-eyebrow--muted">Office hours</p>
-              <p class="psp-eyebrow psp-eyebrow--brand">[CONFIRM: office hours]</p>
-            </div>
             <a class="psp-button" href="https://www.google.com/maps/dir/?api=1&amp;destination=3618+W.+Anthem+Way+Suite+D120+Anthem+AZ+85086">Get directions</a>
           </div>
           <iframe class="rox-map" title="Map showing Romans Orthodontics at 3618 W. Anthem Way, Suite D120, Anthem, AZ 85086" src="https://www.google.com/maps?q=3618+W.+Anthem+Way+Suite+D120,+Anthem,+AZ+85086&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
@@ -544,7 +584,7 @@ body{padding-bottom:calc(var(--tap) + var(--space-3))}
       <div class="rox-footer-grid">
         <div class="rox-footer-brand">
           <img class="rox-mark" src="../assets/romans-orthodontics-lockup-horizontal.svg" alt="Romans Orthodontics" width="853" height="167">
-          <p class="psp-body psp-body--small psp-body--muted" style="max-width:34ch">Braces and Invisalign in Anthem, Arizona, with Dr. Nicholas Romans — a family orthodontic practice for kids, teens and adults.</p>
+          <p class="psp-body psp-body--small psp-body--muted" style="max-width:34ch">Braces &amp; Invisalign in Anthem, Arizona, with Dr. Nicholas Romans — a family orthodontic practice for kids, teens and adults.</p>
         </div>
         <nav class="rox-footer-col" aria-label="Treatments">
           <p class="psp-eyebrow psp-eyebrow--muted">Treatments</p>
