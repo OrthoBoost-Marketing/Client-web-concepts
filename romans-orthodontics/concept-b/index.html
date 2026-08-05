@@ -28,6 +28,13 @@ body{overflow-x:hidden;font-family:var(--font-body);color:var(--ink)}
 a{color:var(--brand);text-decoration-thickness:1px;text-underline-offset:2px}
 a:hover{color:var(--brand-ink)}
 img{max-width:100%}
+/* The DS ships .psp-reveal at opacity 0 and waits for a script to set
+   data-seen. Invert that: content is visible by default, and only a page that
+   actually got its runtime opts in to reveal-on-scroll. Without this, a
+   scripting failure takes five sections off the page silently. */
+.psp-reveal{opacity:1;transform:none}
+html.js-reveal .psp-reveal:not([data-seen="true"]){opacity:0;transform:translateY(18px)}
+
 /* Concept-B rhythm overrides: looser section rhythm and a slightly airier
    display leading. Palette, typefaces and geometry untouched (brand-invariant). */
 .psp-root{--section-y:clamp(96px,9vw,136px);--leading-tight:1.08;--rob-step-hero:clamp(44px, 4.6vw, 76px)}
@@ -552,5 +559,66 @@ main{padding-bottom:var(--space-6)}
 
 </div>
 
+<script>
+/* Production runtime. Replaces the design tool's preview component runtime:
+   the reveals, the drawer, the hero parallax and the keyboard-aware sticky
+   bar all lived in it, so a page without this script renders five blocks at
+   opacity 0. Progressive enhancement — CSS shows everything by default and
+   this opts in to the hidden-then-revealed state. */
+(function () {
+  var root = document.documentElement
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+  var reveals = document.querySelectorAll('.psp-reveal')
+
+  if (!reduce && 'IntersectionObserver' in window) {
+    root.classList.add('js-reveal')
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (!e.isIntersecting) return
+        e.target.setAttribute('data-seen', 'true')
+        io.unobserve(e.target)
+      })
+    }, { rootMargin: '0px 0px -12% 0px' })
+    for (var i = 0; i < reveals.length; i++) io.observe(reveals[i])
+  } else {
+    for (var j = 0; j < reveals.length; j++) reveals[j].setAttribute('data-seen', 'true')
+  }
+
+  var trigger = document.querySelector('.rob-drawer-trigger')
+  var panel = document.getElementById('rob-drawer')
+  if (trigger && panel) {
+    trigger.addEventListener('click', function () {
+      var open = trigger.getAttribute('aria-expanded') !== 'true'
+      trigger.setAttribute('aria-expanded', String(open))
+      trigger.textContent = open ? 'Close' : 'Menu'
+      panel.setAttribute('data-open', String(open))
+    })
+  }
+
+  var hero = document.querySelector('.rob-hero')
+  if (hero && !reduce) {
+    var raf = 0
+    var onScroll = function () {
+      if (raf) return
+      raf = requestAnimationFrame(function () {
+        raf = 0
+        var r = hero.getBoundingClientRect()
+        var p = Math.max(0, Math.min(1, -r.top / (r.height || 1)))
+        hero.style.setProperty('--rob-par', (p * r.height * 0.12).toFixed(1) + 'px')
+      })
+    }
+    window.addEventListener('scroll', onScroll, { passive: true })
+    onScroll()
+  }
+
+  var vv = window.visualViewport
+  if (vv) {
+    var base = vv.height
+    vv.addEventListener('resize', function () {
+      document.body.setAttribute('data-kb', vv.height < base * 0.78 ? '1' : '0')
+    })
+  }
+})()
+</script>
 </body>
 </html>
