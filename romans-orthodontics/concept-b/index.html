@@ -10,7 +10,8 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
 <meta name="robots" content="noindex">
 <link rel="canonical" href="https://romansorthodontics.com/">
-<link rel="preload" href="../assets/office-reception-02.webp" as="image" fetchpriority="high">
+<link rel="preload" as="image" href="../assets/web/hero-dr-romans-office-wide.webp" media="(min-width:1000px)" fetchpriority="high">
+<link rel="preload" as="image" href="../assets/web/hero-dr-romans-office-tall.webp" media="(max-width:999px)" fetchpriority="high">
 <link rel="stylesheet" href="design-system.css">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"LocalBusiness","name":"Romans Orthodontics","url":"https://romansorthodontics.com/","telephone":"+1-623-320-1222","slogan":"Live a little, smile a lot","address":{"@type":"PostalAddress","streetAddress":"3618 W. Anthem Way, Suite D120","addressLocality":"Anthem","addressRegion":"AZ","postalCode":"85086","addressCountry":"US"}}
@@ -37,7 +38,7 @@ html.js-reveal .psp-reveal:not([data-seen="true"]){opacity:0;transform:translate
 
 /* Concept-B rhythm overrides: looser section rhythm and a slightly airier
    display leading. Palette, typefaces and geometry untouched (brand-invariant). */
-.psp-root{--section-y:clamp(96px,9vw,136px);--leading-tight:1.08;--rob-step-hero:clamp(44px, 4.6vw, 76px)}
+.psp-root{--section-y:clamp(96px,9vw,136px);--leading-tight:1.08;--rob-step-hero:clamp(44px, 4.6vw, 76px);--rob-bar-h:calc(var(--space-6) + 1px)}
 
 /* ── header: center-logo premium variant (approved in the kit; CTA stays
       top-right). No utility strip on this concept. ─────────────────────── */
@@ -89,7 +90,11 @@ html.js-reveal .psp-reveal:not([data-seen="true"]){opacity:0;transform:translate
 /* ── hero: full-viewport parallax photograph under a slate scrim, content
       centered — kicker, display headline, lede, actions, and the credential
       row (the kit's trust bar) inline beneath the actions. ────────────── */
-.rob-hero{position:relative;display:grid;place-items:center;min-height:min(94vh,900px);overflow:hidden;background:var(--surface-dark);text-align:center}
+/* The hero owns exactly the viewport the header does not. The old
+   min(94vh,900px) capped it at 900px, so on any screen taller than ~1000px a
+   strip of the next band showed above the fold on load. svh, not vh, so the
+   mobile URL bar does not push the same strip back into view. */
+.rob-hero{position:relative;display:grid;place-items:center;min-height:calc(100vh - var(--rob-bar-h));min-height:calc(100svh - var(--rob-bar-h));overflow:hidden;background:var(--surface-dark);text-align:center}
 .rob-hero-img{position:absolute;left:0;top:-8%;width:100%;height:116%;object-fit:cover;filter:saturate(.85);will-change:transform;transform:translate3d(0,var(--rob-par,0px),0)}
 /* Scrim stops are the in-editor tuning, expressed against the token instead of
    the literal slate that was pasted into the element's style attribute. */
@@ -116,7 +121,12 @@ html.js-reveal .psp-reveal:not([data-seen="true"]){opacity:0;transform:translate
 .rob-slot{display:grid;gap:var(--space-1);align-content:center;justify-items:start;aspect-ratio:4 / 5;padding:var(--space-3);border:1px solid var(--line);background:var(--surface-alt)}
 .rob-slot[data-ratio="wide"]{aspect-ratio:4 / 3}
 .rob-slot .psp-eyebrow{color:var(--brand)}
-.rob-photo{display:block;width:100%;height:auto;border:1px solid var(--line)}
+/* One frame for every photo on the page: the aspect is the frame's, not the
+   file's, so a row never sets its own height. Portrait 4:5 for the doctor,
+   landscape 4:3 for the zigzag — the three rows now match each other
+   regardless of what the client sends to fill them. */
+.rob-photo{display:block;width:100%;height:auto;aspect-ratio:4 / 3;object-fit:cover;border:1px solid var(--line);background:var(--surface-alt)}
+.rob-photo[data-ratio="portrait"]{aspect-ratio:4 / 5}
 
 /* ── zigzag rows with mono ordinals — the page's numbered walk ──────────── */
 .rob-row-head{display:flex;align-items:baseline;gap:var(--space-3);border-top:1px solid var(--line);padding-top:var(--space-2)}
@@ -131,6 +141,15 @@ html.js-reveal .psp-reveal:not([data-seen="true"]){opacity:0;transform:translate
 .rob-cta-card--brand{background:color-mix(in srgb,var(--brand) 88%,var(--ink));border-color:transparent;color:var(--ink-inverse)}
 .rob-cta-mark{display:block;margin-inline:auto;width:var(--space-5);height:auto}
 
+/* ── ghost button hover ─────────────────────────────────────────────────
+   The DS ships `.psp-button--ghost:hover{color:var(--surface);background:
+   currentColor}`. currentColor resolves to the element's *own* colour, which
+   that same rule is setting to --surface — so the fill and the label both
+   land on paper and the button disappears into the band. Fill with ink and
+   keep the label on paper; the border stays so the shape never drops out. */
+.psp-button--ghost:hover,.psp-button--ghost:focus-visible{background:var(--ink);border-color:var(--ink);color:var(--ink-inverse)}
+.psp-band--dark .psp-button--ghost:hover,.psp-band--dark .psp-button--ghost:focus-visible{background:var(--ink-inverse);border-color:var(--ink-inverse);color:var(--ink)}
+
 /* ── services: ruled-grid cards — hairline gaps, whole card clickable ───── */
 .rob-services{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);list-style:none;margin:0;padding:0;width:100%}
 .rob-services[data-cols="2"]{grid-template-columns:repeat(2,minmax(0,1fr))}
@@ -140,6 +159,17 @@ html.js-reveal .psp-reveal:not([data-seen="true"]){opacity:0;transform:translate
 .rob-card-title{display:flex;align-items:baseline;justify-content:space-between;gap:var(--space-2)}
 .rob-card-arrow{font-family:var(--font-mono);font-size:var(--step-body-sm);color:var(--brand);transition:transform var(--dur) var(--ease)}
 .rob-card:hover .rob-card-arrow{transform:translateX(var(--space-1))}
+
+/* ── locations: one split card, NAP on the paper half, live map flush to
+      the other. The map bleeds to the card's edge — it is the photograph of
+      this section, so it gets no padding of its own. ────────────────────── */
+.rob-loc-card{display:grid;grid-template-columns:1fr 1fr;align-items:stretch;width:100%;border:1px solid var(--line);background:var(--surface)}
+.rob-loc-body{display:grid;align-content:center;padding:var(--space-5) var(--space-4)}
+.rob-loc-map{position:relative;min-height:100%;background:var(--surface-alt);border-left:1px solid var(--line)}
+.rob-loc-map iframe{display:block;position:absolute;inset:0;width:100%;height:100%;border:0;filter:saturate(.85)}
+
+/* ── services card image: same ruled frame the slot had ─────────────────── */
+.rob-card-img{display:block;width:100%;height:auto;aspect-ratio:4 / 3;object-fit:cover;border:1px solid var(--line);background:var(--surface-alt)}
 
 /* ── footer ─────────────────────────────────────────────────────────────── */
 .rob-footer-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1.1fr;gap:var(--space-5) var(--space-4)}
@@ -171,16 +201,20 @@ body[data-kb="1"] .psp-stickybar{display:none}
 /* The lockup stays visible at every width — the practice name is never a
    casualty of the breakpoint. The Menu trigger gives back the room. */
 .rob-lockup{height:var(--space-3)}
+.psp-root{--rob-bar-h:calc(var(--space-5) + 1px)}
 .rob-bar-inner>.psp-drawer__panel{grid-column:1 / -1;margin-inline:calc(var(--gutter) * -1)}
 }
 
 @media (max-width:1000px){
-.rob-hero{min-height:min(92vh,720px)}
 .rob-trust{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:var(--space-4)}
 .rob-trust-cell:nth-child(odd){padding-left:0;border-left:0}
 .rob-trust-cell:nth-child(2){padding-right:0}
 .rob-services{grid-template-columns:repeat(2,minmax(0,1fr))}
 .rob-footer-grid{grid-template-columns:1fr 1fr}
+/* Card stacks: map under the address, given a fixed height since it no
+   longer has a column to fill. */
+.rob-loc-card{grid-template-columns:1fr}
+.rob-loc-map{min-height:320px;border-left:0;border-top:1px solid var(--line)}
 }
 @media (max-width:640px){
 .rob-footer-grid,.rob-services{grid-template-columns:1fr}
@@ -317,7 +351,10 @@ main{padding-bottom:var(--space-6)}
        bar) sits beneath the actions. Single office → city in the H1. Swap the
        exterior for a doctor-with-patient frame when the Drive set lands. -->
   <section class="rob-hero" id="hero" data-screen-label="Hero">
-    <img class="rob-hero-img" src="../assets/office-reception-02.webp" alt="The reception area inside the Romans Orthodontics office in Anthem, Arizona" width="1600" height="1200" fetchpriority="high">
+    <picture>
+      <source media="(min-width:1000px)" srcset="../assets/web/hero-dr-romans-office-wide.webp" width="1800" height="1059">
+      <img class="rob-hero-img" src="../assets/web/hero-dr-romans-office-tall.webp" alt="Dr. Nicholas Romans at the front desk of his orthodontic office in Anthem, Arizona" width="1000" height="1250" fetchpriority="high">
+    </picture>
     <div class="rob-hero-scrim" aria-hidden="true"></div>
     <div class="rob-hero-inner">
       <div class="psp-container">
@@ -346,10 +383,7 @@ main{padding-bottom:var(--space-6)}
     <div class="psp-container">
       <div class="psp-reveal" data-seen="false">
         <div class="psp-split psp-split--5 psp-split--center psp-split--stack-md" style="--psp-ratio:0.85fr 1.15fr">
-          <div class="rob-slot">
-            <p class="psp-eyebrow psp-eyebrow--brand">[PHOTO NEEDED — assets/team-headshot-dr-romans-01.webp]</p>
-            <p class="psp-body psp-body--small psp-body--muted">Dr. Romans portrait, given a full 4:5 frame. Not the hero image reused.</p>
-          </div>
+          <img class="rob-photo" data-ratio="portrait" src="../assets/team-headshot-dr-romans-01.webp" alt="Dr. Nicholas Romans in the reception area of the Anthem office" width="1400" height="1867" loading="lazy">
           <div class="psp-stack psp-stack--3 psp-stack--start">
             <p class="psp-eyebrow psp-eyebrow--muted">Meet your orthodontist</p>
             <h2 class="psp-heading psp-heading--md" style="max-width:22ch">Dr. Nicholas Romans</h2>
@@ -369,10 +403,7 @@ main{padding-bottom:var(--space-6)}
 
         <div class="psp-reveal" data-seen="false">
           <div class="psp-split psp-split--5 psp-split--center psp-split--stack-md" style="--psp-ratio:1fr 1fr">
-            <div class="rob-slot" data-ratio="wide">
-              <p class="psp-eyebrow psp-eyebrow--brand">[PHOTO NEEDED — assets/office-reception-02.webp]</p>
-              <p class="psp-body psp-body--small psp-body--muted">The reception area — a distinct subject per row so the three read as a walk through the practice.</p>
-            </div>
+            <img class="rob-photo" src="../assets/office-reception-02.webp" alt="The reception area at Romans Orthodontics in Anthem" width="1400" height="1050" loading="lazy">
             <div class="psp-stack psp-stack--2 psp-stack--start">
               <div class="rob-row-head"><span class="psp-ordinal psp-ordinal--brand">01</span></div>
               <h2 class="psp-heading psp-heading--md" style="max-width:24ch">The same doctor at every single visit</h2>
@@ -384,10 +415,7 @@ main{padding-bottom:var(--space-6)}
 
         <div class="psp-reveal" data-seen="false">
           <div class="psp-split psp-split--5 psp-split--center psp-split--stack-md psp-split--reverse" style="--psp-ratio:1fr 1fr">
-            <div class="rob-slot" data-ratio="wide">
-              <p class="psp-eyebrow psp-eyebrow--brand">[PHOTO NEEDED — assets/office-treatment-02.webp]</p>
-              <p class="psp-body psp-body--small psp-body--muted">A treatment chair — a distinct subject per row so the three read as a walk through the practice.</p>
-            </div>
+            <img class="rob-photo" src="../assets/office-treatment-02.webp" alt="The open treatment bay at Romans Orthodontics, with chairs looking out over the parking lot" width="1400" height="1050" loading="lazy">
             <div class="psp-stack psp-stack--2 psp-stack--start">
               <div class="rob-row-head"><span class="psp-ordinal psp-ordinal--brand">02</span></div>
               <h2 class="psp-heading psp-heading--md" style="max-width:24ch">Insurance checked before you leave the chair</h2>
@@ -433,20 +461,14 @@ main{padding-bottom:var(--space-6)}
   <!-- 07 · Authority logos omitted: adjacent credential trust bar, and no
        official credential logo files exist. -->
 
-  <!-- 08 · Reviews. 0 Google reviews — visible flagged gap, never a written quote. -->
-  <section class="psp-band" data-screen-label="Reviews">
-    <div class="psp-container">
-      <div class="psp-stack psp-stack--4 psp-stack--start">
-        <p class="psp-eyebrow psp-eyebrow--muted">Reviews</p>
-        <h2 class="psp-heading psp-heading--md" style="max-width:28ch">What Anthem families are saying</h2>
-        <div class="psp-stack psp-stack--2 psp-stack--start">
-          <hr class="psp-rule">
-          <p class="psp-eyebrow psp-eyebrow--brand">[REVIEW QUOTES NEEDED — 0 Google reviews as of 2026-08-04]</p>
-          <p class="psp-body psp-body--small psp-body--muted" style="max-width:62ch">Brand-new practice with no Google reviews yet; the brief rules out written or placeholder testimonials. Replace this block with a 3, 6 or 9 card grid of verbatim Google reviews once five or more genuine reviews exist. No aggregateRating and no Review schema on Google-sourced quotes.</p>
-        </div>
-      </div>
-    </div>
-  </section>
+  <!-- 08 · Reviews — SECTION INTENTIONALLY ABSENT.
+       The practice had 0 Google reviews as of 2026-08-04 and the brief rules
+       out written or placeholder testimonials, so there is nothing truthful to
+       put here and an empty band only advertises the gap. This marker holds
+       the slot: restore the section between the CTA band and the services grid
+       once five or more genuine reviews exist, as a static grid of 3, 6 or 9
+       verbatim Google quotes with names as displayed. Never an aggregateRating
+       and never a Review object in the JSON-LD for Google-sourced quotes. -->
 
   <!-- 09 · Services grid. 6 cards, ruled grid, whole card clickable,
        searchable H3s. The one section where stock imagery is permitted. -->
@@ -458,42 +480,42 @@ main{padding-bottom:var(--space-6)}
         <ul class="rob-services" data-cols="3">
           <li>
             <a class="rob-card" href="braces-for-kids.html">
-              <span class="rob-card-slot">[STOCK IMAGE NEEDED]</span>
+              <img class="rob-card-img" src="../assets/services/svc-kid-visit.jpg" alt="A young patient at a routine braces check" width="1200" height="900" loading="lazy">
               <span class="rob-card-title"><h3 class="psp-heading psp-heading--sm">Braces for Kids</h3><span class="rob-card-arrow" aria-hidden="true">→</span></span>
               <p class="psp-body psp-body--small psp-body--muted">Metal and clear braces for growing smiles, checked at every stage. Short visits, each one explained to you and your child.</p>
             </a>
           </li>
           <li>
             <a class="rob-card" href="braces-for-adults.html">
-              <span class="rob-card-slot">[STOCK IMAGE NEEDED]</span>
+              <img class="rob-card-img" src="../assets/services/svc-senior-smile.jpg" alt="An adult patient smiling after treatment" width="1200" height="900" loading="lazy">
               <span class="rob-card-title"><h3 class="psp-heading psp-heading--sm">Braces for Adults</h3><span class="rob-card-arrow" aria-hidden="true">→</span></span>
               <p class="psp-body psp-body--small psp-body--muted">It is never too late, and plenty of our patients are grown-ups. Discreet options that fit around work and family life.</p>
             </a>
           </li>
           <li>
             <a class="rob-card" href="invisalign.html">
-              <span class="rob-card-slot">[STOCK IMAGE NEEDED]</span>
+              <img class="rob-card-img" src="../assets/services/svc-aligner-adult.jpg" alt="A clear aligner held between finger and thumb" width="1200" height="900" loading="lazy">
               <span class="rob-card-title"><h3 class="psp-heading psp-heading--sm">Invisalign® &amp; Clear Aligners</h3><span class="rob-card-arrow" aria-hidden="true">→</span></span>
               <p class="psp-body psp-body--small psp-body--muted">Removable clear aligners planned with digital scans, no putty impressions. For teens and adults who would rather skip brackets.</p>
             </a>
           </li>
           <li>
             <a class="rob-card" href="early-treatment.html">
-              <span class="rob-card-slot">[STOCK IMAGE NEEDED]</span>
+              <img class="rob-card-img" src="../assets/services/svc-early-kid.jpg" alt="A child at a first orthodontic evaluation" width="1200" height="900" loading="lazy">
               <span class="rob-card-title"><h3 class="psp-heading psp-heading--sm">Early Treatment</h3><span class="rob-card-arrow" aria-hidden="true">→</span></span>
               <p class="psp-body psp-body--small psp-body--muted">A first look around age seven, when small problems are still small. Often the visit ends with nothing to do but check back.</p>
             </a>
           </li>
           <li>
             <a class="rob-card" href="retainers.html">
-              <span class="rob-card-slot">[STOCK IMAGE NEEDED]</span>
+              <img class="rob-card-img" src="../assets/services/svc-retainer.jpg" alt="A finished retainer in its case" width="1200" height="900" loading="lazy">
               <span class="rob-card-title"><h3 class="psp-heading psp-heading--sm">Retainers &amp; Retention</h3><span class="rob-card-arrow" aria-hidden="true">→</span></span>
               <p class="psp-body psp-body--small psp-body--muted">The part that keeps the result. Fitted retainers, replacements, and a wearing plan people actually follow.</p>
             </a>
           </li>
           <li>
             <a class="rob-card" href="airway-tmj.html">
-              <span class="rob-card-slot">[STOCK IMAGE NEEDED]</span>
+              <img class="rob-card-img" src="../assets/services/svc-sleep.jpg" alt="A patient resting, illustrating airway and sleep assessment" width="1200" height="900" loading="lazy">
               <span class="rob-card-title"><h3 class="psp-heading psp-heading--sm">Airway &amp; TMJ</h3><span class="rob-card-arrow" aria-hidden="true">→</span></span>
               <p class="psp-body psp-body--small psp-body--muted">Breathing, bite and jaw comfort assessed as part of your evaluation. Sometimes the jaw, not the teeth, is the thing to treat.</p>
             </a>
@@ -509,25 +531,25 @@ main{padding-bottom:var(--space-6)}
       <div class="psp-stack psp-stack--4 psp-stack--start">
         <p class="psp-eyebrow psp-eyebrow--muted">Our address</p>
         <h2 class="psp-heading psp-heading--md" style="max-width:28ch">The Anthem office</h2>
-        <div class="psp-split psp-split--5 psp-split--start psp-split--stack-md" style="--psp-ratio:1fr 1fr">
-          <div class="psp-stack psp-stack--3 psp-stack--start">
-            <address class="psp-stack psp-stack--1 psp-stack--start">
-              <h3 class="psp-heading psp-heading--sm">Romans Orthodontics</h3>
-              <p class="psp-body psp-body--muted">3618 W. Anthem Way, Suite D120</p>
-              <p class="psp-body psp-body--muted">Anthem, AZ 85086</p>
-              <a class="psp-linkarrow" href="tel:+16233201222">(623) 320-1222 →</a>
-            </address>
-            <p class="psp-body psp-body--muted" style="max-width:44ch">Ground-level office with reserved parking right outside the door — look for the Suite D-120 sign on West Anthem Way.</p>
-            <div class="psp-stack psp-stack--1 psp-stack--start">
-              <p class="psp-eyebrow psp-eyebrow--muted">Office hours</p>
-              <p class="psp-eyebrow psp-eyebrow--brand">[CONFIRM: office hours]</p>
+        <div class="rob-loc-card">
+          <div class="rob-loc-body">
+            <div class="psp-stack psp-stack--3 psp-stack--start">
+              <address class="psp-stack psp-stack--1 psp-stack--start">
+                <h3 class="psp-heading psp-heading--sm">Romans Orthodontics</h3>
+                <p class="psp-body psp-body--muted">3618 W. Anthem Way, Suite D120</p>
+                <p class="psp-body psp-body--muted">Anthem, AZ 85086</p>
+                <a class="psp-linkarrow" href="tel:+16233201222">(623) 320-1222 →</a>
+              </address>
+              <p class="psp-body psp-body--muted" style="max-width:44ch">Ground-level office with reserved parking right outside the door — look for the Suite D-120 sign on West Anthem Way.</p>
+              <div class="psp-stack psp-stack--1 psp-stack--start">
+                <p class="psp-eyebrow psp-eyebrow--muted">Office hours</p>
+                <p class="psp-eyebrow psp-eyebrow--brand">[CONFIRM: office hours]</p>
+              </div>
+              <a class="psp-button" href="https://www.google.com/maps/dir/?api=1&amp;destination=3618+W.+Anthem+Way+Suite+D120+Anthem+AZ+85086">Get directions</a>
             </div>
-            <a class="psp-button" href="https://www.google.com/maps/dir/?api=1&amp;destination=3618+W.+Anthem+Way+Suite+D120+Anthem+AZ+85086">Get directions</a>
           </div>
-          <div class="psp-stack psp-stack--2 psp-stack--start">
-            <hr class="psp-rule">
-            <p class="psp-eyebrow psp-eyebrow--brand">[MAP EMBED NEEDED]</p>
-            <p class="psp-body psp-body--small psp-body--muted" style="max-width:62ch">Lazy-loaded Google Maps iframe for 3618 W. Anthem Way, Suite D120, Anthem, AZ 85086 — held as a gap because the output constraint permits only the Google Fonts link as an external resource; add at build time.</p>
+          <div class="rob-loc-map">
+            <iframe title="Map showing Romans Orthodontics at 3618 W. Anthem Way, Suite D120, Anthem, AZ 85086" src="https://www.google.com/maps?q=3618+W.+Anthem+Way+Suite+D120,+Anthem,+AZ+85086&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
           </div>
         </div>
       </div>
