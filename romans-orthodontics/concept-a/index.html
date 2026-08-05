@@ -82,16 +82,36 @@ address{font-style:normal}
 .rox-drawer-top{font-size:var(--step-body)}
 .rox-drawer-link:hover,.rox-drawer-top:hover{color:var(--brand)}
 
-/* ── hero. Slightly tighter above than below, so the page starts on the
-      headline rather than on a band of empty paper under the sticky bar. ── */
-.rox-hero{padding-block:calc(var(--section-y) * .72) var(--section-y)}
-.rox-actions{display:flex;flex-wrap:wrap;gap:var(--space-2)}
+/* ── hero. Header + hero + trust bar have to clear the fold together, so the
+      hero's vertical space is viewport-relative rather than fixed: padding in
+      svh, and the portrait yields height on short screens instead of setting
+      it. --rox-reserve is what the header, the trust bar and the hero's own
+      padding need; whatever is left over is the photo's. ─────────────────── */
+.rox-hero{--rox-reserve:430px;padding-block:clamp(var(--space-3),3.4svh,calc(var(--section-y) * .62)) clamp(var(--space-4),4.6svh,calc(var(--section-y) * .78))}
+.rox-hero .psp-stack{gap:var(--space-2)}
+.rox-hero .rox-figure__frame{max-height:max(250px,calc(100svh - var(--rox-reserve)))}
+/* when the frame is squeezed shorter than 4:5, cover crops from the centre
+   and takes his head off. Bias the crop to the top of the portrait. */
+.rox-hero .rox-figure__frame img{object-position:50% 18%}
+/* short laptops: the display scale is the last thing left to give. This
+   retunes the DS clamp inside the hero only — no palette, typeface or
+   radius is touched, so brand identity is unchanged. */
+@media (max-height:720px){.rox-hero{--step-h1:clamp(32px,3.3vw,46px)}
+/* 1366x645 otherwise clears the trust bar by 3px, which one font fallback
+   would eat. The photo is already at its floor there and the text column is
+   what sets the hero's height, so the margin comes from the band padding. */
+.rox-hero .rox-figure__frame{max-height:230px}}
+.rox-actions{display:flex;flex-wrap:wrap;gap:var(--space-2);margin-top:var(--space-1)}
 /* the qualifier is a second thought, not a second headline */
 .rox-h1-sub{display:block;font-size:.62em;letter-spacing:-.022em}
 .rox-hl{color:var(--brand)}
-/* the one entrance on the page. The reduced-motion block below collapses it. */
+
+/* ── the hero cascade. Four elements enter in sequence, 16px and a fade each,
+      70ms apart — enough to read as one movement rather than four. Collapsed
+      entirely under reduced motion by the block at the end. ─────────────── */
 @keyframes rox-rise{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
-.rox-h1{animation:rox-rise .85s var(--ease) both}
+.rox-enter{animation:rox-rise .8s var(--ease) both;animation-delay:var(--rox-d,0ms)}
+.rox-h1{--rox-d:70ms}
 
 /* ── the doctor's credentials. A ruled list, deliberately not a repeat of the
       trust bar's four-cell layout: this is a dossier, that is a headline. ── */
@@ -102,6 +122,9 @@ address{font-style:normal}
 /* ── trust bar. Typography only per TRUST-BAR-SPEC: no icons. Each cell is a
       copper tick + mono ordinal label + claim + one-line gloss. Four repeated
       copper ticks are the brand mark; no vertical dividers. ─────────────── */
+/* part of the above-the-fold budget, so its padding is viewport-relative too */
+.rox-trustband{padding-block:clamp(var(--space-3),3.2svh,calc(var(--section-y) * .45))}
+@media (max-height:720px){.rox-trustband{padding-block:var(--space-2)}}
 .rox-trust{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:var(--space-1) var(--space-4);list-style:none;margin:0;padding:0;width:100%}
 /* subgrid rows: tick / label / claim / gloss share baselines across cells, so
    a two-line claim in one cell no longer knocks its neighbours askew */
@@ -170,6 +193,41 @@ address{font-style:normal}
 .rox-legal-link{display:flex;align-items:center;min-height:var(--tap);color:var(--ink-muted);text-decoration:none}
 .rox-legal-link:hover{color:var(--brand)}
 
+/* ── charm. Small gestures only, and every one of them is a hairline, a
+      4px nudge or a colour the brand already owns — nothing here introduces a
+      shape, a shadow or a radius the design does not already use. The block
+      at the very end switches all of it off under reduced motion. ───────── */
+
+/* a copper hairline draws in under a nav, footer or legal link on hover */
+.rox-nav-link,.rox-footer-link,.rox-legal-link,.rox-bar-tel{position:relative}
+.rox-nav-link::after,.rox-footer-link::after,.rox-legal-link::after,.rox-bar-tel::after{content:"";position:absolute;bottom:calc(50% - .95em);border-top:1px solid var(--brand);transform:scaleX(0);transform-origin:left;transition:transform var(--dur) var(--ease)}
+.rox-nav-link::after,.rox-bar-tel::after{left:var(--space-2);right:var(--space-2)}
+.rox-footer-link::after,.rox-legal-link::after{left:0;right:0}
+.rox-nav-link:hover::after,.rox-nav-link:focus-visible::after,
+.rox-footer-link:hover::after,.rox-footer-link:focus-visible::after,
+.rox-legal-link:hover::after,.rox-legal-link:focus-visible::after,
+.rox-bar-tel:hover::after,.rox-bar-tel:focus-visible::after{transform:scaleX(1)}
+
+/* the copper frame steps in toward its photo on hover */
+.rox-figure::before{transition:transform var(--dur) var(--ease)}
+.rox-figure:hover::before{transform:translate(calc(var(--space-1) / 2),calc(var(--space-1) / 2))}
+
+/* the four copper ticks draw themselves in, left to right, once — the trust
+   bar is above the fold, so this happens on load rather than on scroll */
+@keyframes rox-tick{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+.rox-trust-cell::before{transform-origin:left;animation:rox-tick .55s var(--ease) both;animation-delay:calc(340ms + var(--rox-i,0) * 90ms)}
+
+/* link-arrows nudge like the service cards already do, so the one gesture
+   means the same thing everywhere on the page */
+.rox-arw{display:inline-block;transition:transform var(--dur) var(--ease)}
+.psp-linkarrow:hover .rox-arw{transform:translateX(4px)}
+
+::selection{background:var(--brand-tint);color:var(--brand-ink)}
+
+/* jumping to an anchor used to land underneath the sticky header */
+#main,#locations{scroll-margin-top:calc(var(--space-6) + var(--space-2))}
+@media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
+
 /* ── sticky bar: the kit requires Book to be the widest centre segment. ── */
 .psp-stickybar{grid-template-columns:1fr 1.6fr 1fr}
 /* the DS turns the sticky bar on at 1000px; the drawer now starts at 1100,
@@ -208,7 +266,8 @@ body{padding-bottom:calc(var(--tap) + var(--space-3))}
 *{animation-duration:.01ms !important;animation-iteration-count:1 !important;transition-duration:.01ms !important}
 /* the blanket .01ms rule still runs the first frame of the entrance, which is
    opacity 0 — a flash of invisible headline. Remove the animation instead. */
-.rox-h1{animation:none !important}
+.rox-enter{animation:none !important}
+.rox-trust-cell::before{animation:none !important;transform:none !important}
 }
 </style>
 </head>
@@ -308,14 +367,16 @@ body{padding-bottom:calc(var(--tap) + var(--space-3))}
     <div class="psp-container">
       <div class="psp-split psp-split--5 psp-split--center psp-split--stack-md" style="--psp-ratio:1.05fr 0.95fr">
         <div class="psp-stack psp-stack--3 psp-stack--start">
-          <p class="psp-eyebrow psp-eyebrow--brand">Anthem, Arizona · Live a little, smile a lot</p>
-          <h1 class="psp-heading psp-heading--lg psp-heading--balance rox-h1" style="max-width:22ch">Braces &amp; Invisalign <span class="rox-hl">in Anthem</span>, <span class="rox-h1-sub">for every age in your family</span></h1>
-          <p class="psp-body psp-body--lede psp-body--muted" style="max-width:50ch">Dr. Nicholas Romans is a board-certified orthodontist with more than 7 years dedicated to orthodontics, including advanced specialty training. This is a solo practice, so the orthodontist who plans your treatment is the one who finishes it.</p>
-          <div class="rox-actions">
+          <p class="psp-eyebrow psp-eyebrow--brand rox-enter">Anthem, Arizona · Live a little, smile a lot</p>
+          <h1 class="psp-heading psp-heading--lg psp-heading--balance rox-enter rox-h1" style="max-width:22ch">Braces &amp; Invisalign <span class="rox-hl">in Anthem</span>, <span class="rox-h1-sub">for every age in your family</span></h1>
+          <!-- The old lede opened with board-certified and 7+ years, which the
+               trust bar repeats verbatim two hundred pixels below. It carries
+               the thing nothing else on the page says instead. -->
+          <p class="psp-body psp-body--lede psp-body--muted rox-enter" style="--rox-d:140ms;max-width:56ch">Dr. Nicholas Romans, board-certified orthodontist. A solo practice, so the one who plans your treatment is the one who finishes it.</p>
+          <div class="rox-actions rox-enter" style="--rox-d:210ms">
             <a class="psp-button" href="free-consult.html">Book a free consult</a>
             <a class="psp-button psp-button--ghost" href="tel:+16233201222">Call (623) 320-1222</a>
           </div>
-          <p class="psp-body psp-body--small psp-body--muted" style="max-width:56ch">Your first visit is a free consultation · Kids, teens and adults · Anthem, AZ</p>
         </div>
         <!-- LCP image: preloaded, high priority, never lazy. -->
         <figure class="rox-figure rox-figure--portrait">
@@ -329,25 +390,25 @@ body{padding-bottom:calc(var(--tap) + var(--space-3))}
 
   <!-- 02 · Trust bar. Credential variant: new practice, 0 reviews, no stat bar.
        One line, four cells, no icons, no dividers. -->
-  <section class="psp-band psp-band--alt psp-band--edge-both psp-band--pad-tight">
+  <section class="psp-band psp-band--alt psp-band--edge-both rox-trustband">
     <div class="psp-container">
       <ul class="rox-trust">
-        <li class="rox-trust-cell">
+        <li class="rox-trust-cell" style="--rox-i:0">
           <p class="psp-eyebrow psp-eyebrow--brand">01 / Certified</p>
           <p class="psp-heading psp-heading--sm">Board-certified orthodontist</p>
           <p class="psp-body psp-body--small psp-body--muted">The specialty’s voluntary certification. Dr. Romans holds it.</p>
         </li>
-        <li class="rox-trust-cell">
+        <li class="rox-trust-cell" style="--rox-i:1">
           <p class="psp-eyebrow psp-eyebrow--brand">02 / Degrees</p>
           <p class="psp-heading psp-heading--sm">DMD,<br class="rox-br-desktop"> MSD</p>
           <p class="psp-body psp-body--small psp-body--muted">A dental doctorate plus a master’s degree in orthodontics.</p>
         </li>
-        <li class="rox-trust-cell">
+        <li class="rox-trust-cell" style="--rox-i:2">
           <p class="psp-eyebrow psp-eyebrow--brand">03 / Experience</p>
           <p class="psp-heading psp-heading--sm">7+ years in orthodontics</p>
           <p class="psp-body psp-body--small psp-body--muted">Including advanced specialty training beyond dental school.</p>
         </li>
-        <li class="rox-trust-cell">
+        <li class="rox-trust-cell" style="--rox-i:3">
           <p class="psp-eyebrow psp-eyebrow--brand">04 / First visit</p>
           <p class="psp-heading psp-heading--sm">Free<br class="rox-br-desktop"> consultation</p>
           <p class="psp-body psp-body--small psp-body--muted">Every first visit, at no charge, for any age.</p>
@@ -405,7 +466,7 @@ body{padding-bottom:calc(var(--tap) + var(--space-3))}
             <div class="psp-stack psp-stack--2 psp-stack--start">
               <h2 class="psp-heading psp-heading--md" style="max-width:24ch">One office for the whole family</h2>
               <p class="psp-body psp-body--muted" style="max-width:52ch">Kids in their first braces, teens in aligners, parents finally doing the thing they put off, grandparents in for a retainer check. Booking one practice for all of it saves a working parent more time than any single appointment ever will.</p>
-              <a class="psp-linkarrow" href="braces-for-kids.html">See braces for kids →</a>
+              <a class="psp-linkarrow" href="braces-for-kids.html">See braces for kids <span class="rox-arw">→</span></a>
             </div>
           </div>
         </div>
@@ -420,7 +481,7 @@ body{padding-bottom:calc(var(--tap) + var(--space-3))}
             <div class="psp-stack psp-stack--2 psp-stack--start">
               <h2 class="psp-heading psp-heading--md" style="max-width:24ch">Your insurance, checked while you sit there</h2>
               <p class="psp-body psp-body--muted" style="max-width:52ch">We take major PPO plans and check them on the spot rather than mailing you an estimate. FSA and HSA dollars are welcome, and if there is a balance left we finance it in house. The consult is free, and the number you leave with is exact.</p>
-              <a class="psp-linkarrow" href="financial.html">See how insurance and financing work →</a>
+              <a class="psp-linkarrow" href="financial.html">See how insurance and financing work <span class="rox-arw">→</span></a>
             </div>
           </div>
         </div>
@@ -435,7 +496,7 @@ body{padding-bottom:calc(var(--tap) + var(--space-3))}
             <div class="psp-stack psp-stack--2 psp-stack--start">
               <h2 class="psp-heading psp-heading--md" style="max-width:24ch">Ground level, with parking out front</h2>
               <p class="psp-body psp-body--muted" style="max-width:52ch">Suite D120 on West Anthem Way, at street level with reserved spaces by the door. No garage, no elevator, no wrestling a stroller down a stairwell on the way to a fifteen-minute adjustment.</p>
-              <a class="psp-linkarrow" href="contact.html">Get directions to the Anthem office →</a>
+              <a class="psp-linkarrow" href="contact.html">Get directions to the Anthem office <span class="rox-arw">→</span></a>
             </div>
           </div>
         </div>
@@ -555,7 +616,7 @@ body{padding-bottom:calc(var(--tap) + var(--space-3))}
               </div>
               <div class="rox-nap-row">
                 <span class="rox-nap-label">Phone</span>
-                <span class="rox-nap-value"><a class="psp-linkarrow" href="tel:+16233201222">(623) 320-1222 →</a></span>
+                <span class="rox-nap-value"><a class="psp-linkarrow" href="tel:+16233201222">(623) 320-1222 <span class="rox-arw">→</span></a></span>
               </div>
               <div class="rox-nap-row">
                 <span class="rox-nap-label">Hours</span>
@@ -613,7 +674,7 @@ body{padding-bottom:calc(var(--tap) + var(--space-3))}
           <address class="psp-stack psp-stack--1 psp-stack--start">
             <p class="psp-body psp-body--small psp-body--muted">3618 W. Anthem Way, Suite D120</p>
             <p class="psp-body psp-body--small psp-body--muted">Anthem, AZ 85086</p>
-            <a class="psp-linkarrow" href="tel:+16233201222">(623) 320-1222 →</a>
+            <a class="psp-linkarrow" href="tel:+16233201222">(623) 320-1222 <span class="rox-arw">→</span></a>
           </address>
           <div class="rox-hours">
             <p class="psp-eyebrow psp-eyebrow--muted">Office hours</p>
