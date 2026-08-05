@@ -34,9 +34,14 @@
   .concepts { display:grid; grid-template-columns:repeat(3, 1fr); gap:clamp(12px, 1.6vw, 18px); align-items:stretch; }
   .concept {
     background:var(--card); border:1px solid var(--line); border-radius:2px;
-    border-top:3px solid var(--copper);
     padding:clamp(16px, 2.4vh, 22px) clamp(16px, 1.6vw, 22px);
     display:flex; flex-direction:column;
+    transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+  }
+  .concept:hover {
+    transform:translateY(-4px);
+    border-color:var(--copper);
+    box-shadow:0 1px 2px rgba(38,70,83,.04), 0 16px 32px -20px rgba(38,70,83,.22);
   }
   .concept-head { display:flex; justify-content:space-between; align-items:center; gap:10px; }
   .concept-head h2 { font-family:"Fraunces", serif; font-weight:600; font-size:clamp(.98rem, 1.9vh, 1.08rem); }
