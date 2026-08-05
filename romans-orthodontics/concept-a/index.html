@@ -208,6 +208,15 @@ address{font-style:normal}
 .rox-footer-list{display:grid;gap:var(--space-1);list-style:none;margin:0;padding:0}
 .rox-footer-link{display:flex;align-items:center;min-height:var(--tap);font-family:var(--font-body);font-size:var(--step-body-sm);color:var(--ink-muted);text-decoration:none}
 .rox-footer-link:hover{color:var(--brand)}
+/* Six rows at the 46px tap minimum plus gaps is 324px of mostly empty column,
+   which is why the footer read as enormous. That minimum exists for thumbs.
+   Where the pointer is a mouse AND the desktop layout is in play, the list
+   goes back to a normal reading rhythm; every touch device, and every width
+   below the drawer breakpoint, keeps the full 46px. */
+@media (min-width:1151px) and (pointer:fine){
+.rox-footer-link{min-height:0;padding-block:5px;line-height:1.35}
+footer .psp-stack--5{gap:var(--space-4)}
+}
 .rox-legal{display:flex;flex-wrap:wrap;align-items:center;gap:var(--space-1) var(--space-4);font-family:var(--font-mono);font-size:var(--step-small);letter-spacing:var(--tracking-label);color:var(--ink-muted)}
 .rox-legal-link{display:flex;align-items:center;min-height:var(--tap);color:var(--ink-muted);text-decoration:none}
 .rox-legal-link:hover{color:var(--brand)}
