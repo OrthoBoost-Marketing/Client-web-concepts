@@ -142,7 +142,7 @@ function Header() {
       <div className="roc-bar">
         <Container>
           <div className="roc-bar-inner">
-            <a className="roc-logo" href="index.html"><img src="../assets/romans-orthodontics-lockup-horizontal.svg" alt="Romans Orthodontics" width="200" height="40" /></a>
+            <a className="roc-logo" href="index.html"><img src="../assets/romans-orthodontics-lockup-horizontal-reversed-copper-mark.svg" alt="Romans Orthodontics" width="200" height="40" /></a>
             <nav className="roc-nav-wrap" aria-label="Main">
               <ul className="roc-nav">
                 <NavMenu label="Services" items={NAV_SERVICES} />
@@ -168,7 +168,7 @@ function Header() {
                   </Disclosure>
                   <a className="roc-drawer-top" href="financial.html">Financial</a>
                   <a className="roc-drawer-top" href="#locations">Our Address</a>
-                  <Rule />
+                  <Rule tone="inverse" />
                   <a className="roc-drawer-tel roc-drawer-top" href={NAP.phoneHref}>{NAP.phoneDisplay}</a>
                   <Button href="free-consult.html" full>Book a consultation</Button>
                 </Stack>
@@ -436,12 +436,12 @@ function Locations() {
 
 function Footer() {
   return (
-    <Band tone="surface" edge="top" as="footer" pad="tight">
+    <Band tone="dark" edge="top" as="footer" pad="tight">
       <Container>
         <Stack gap={5}>
           <div className="roc-footer-grid">
             <div className="roc-footer-brand">
-              <img className="roc-footer-logo" src="../assets/romans-orthodontics-lockup-horizontal.svg" alt="Romans Orthodontics" width="200" height="40" />
+              <img className="roc-footer-logo" src="../assets/romans-orthodontics-lockup-horizontal-reversed-copper-mark.svg" alt="Romans Orthodontics" width="200" height="40" />
               <p className="roc-footer-blurb">Braces and Invisalign in Anthem, Arizona. One board-certified orthodontist, treating kids, teens, and adults.</p>
             </div>
             <nav className="roc-footer-col" aria-label="Treatments">
@@ -472,7 +472,7 @@ function Footer() {
               <p className="roc-gap-flag">[SOCIAL PROFILE LINKS NEEDED]</p>
             </div>
           </div>
-          <Rule />
+          <Rule tone="inverse" />
           <div className="roc-legal">
             <span>© 2026 Romans Orthodontics</span>
             <a className="roc-legal-link" href="privacy.html">Privacy Policy</a>
