@@ -15,7 +15,7 @@
 {"@context":"https://schema.org","@type":"LocalBusiness","name":"Romans Orthodontics","url":"https://romansorthodontics.com/","telephone":"+1-623-320-1222","slogan":"Live a little, smile a lot","address":{"@type":"PostalAddress","streetAddress":"3618 W. Anthem Way, Suite D120","addressLocality":"Anthem","addressRegion":"AZ","postalCode":"85086","addressCountry":"US"}}
 </script>
 <style>
-/* Page glue only. design-system.css owns every token and every .psp-* rule —
+/* Page glue only. design-system.css owns every token and every .psp-* rule.
    nothing here restyles a component, and no value below is a literal: they all
    read var(--*). No :root block; the DS ships the tokens (Fraunces / Archivo /
    IBM Plex Mono, radius 0, no shadows, hairline rules). */
@@ -26,7 +26,7 @@ body{overflow-x:hidden;font-family:var(--font-body);color:var(--ink)}
 a{color:var(--brand);text-decoration-thickness:1px;text-underline-offset:2px}
 a:hover{color:var(--brand-ink)}
 /* The DS ghost hover sets background:currentColor with color:var(--surface),
-   which paints the whole button one colour — the text vanishes. Fill with the
+   which paints the whole button one colour, so the text vanishes. Fill with the
    brand instead, matching the solid button's palette. */
 .psp-button--ghost:hover,.psp-button--ghost:focus-visible{background:var(--brand);border-color:var(--brand);color:var(--ink-inverse)}
 img{max-width:100%}
@@ -37,7 +37,7 @@ address{font-style:normal}
       design has no shadows and no radius, so the frame is how an image gets
       an edge. Aspect is declared on the frame, never left to the file.
       Behind each one, the same frame again in copper, offset by an equal
-      amount down and right — the page's only ornament, and it is still just
+      amount down and right, the page's only ornament, and it is still just
       a hairline. ────────────────────────────────────────────────────────── */
 .rox-figure{position:relative;margin:0;width:100%}
 .rox-figure::before{content:"";position:absolute;inset:0;border:1px solid var(--brand);transform:translate(var(--space-2),var(--space-2));pointer-events:none}
@@ -94,7 +94,7 @@ address{font-style:normal}
    and takes his head off. Bias the crop to the top of the portrait. */
 .rox-hero .rox-figure__frame img{object-position:50% 18%}
 /* short laptops: the display scale is the last thing left to give. This
-   retunes the DS clamp inside the hero only — no palette, typeface or
+   retunes the DS clamp inside the hero only. No palette, typeface or
    radius is touched, so brand identity is unchanged. */
 @media (max-height:720px){.rox-hero{--step-h1:clamp(32px,3.3vw,46px)}
 /* 1366x645 otherwise clears the trust bar by 3px, which one font fallback
@@ -107,7 +107,7 @@ address{font-style:normal}
 .rox-hl{color:var(--brand)}
 
 /* ── the hero cascade. Four elements enter in sequence, 16px and a fade each,
-      70ms apart — enough to read as one movement rather than four. Collapsed
+      70ms apart, enough to read as one movement rather than four. Collapsed
       entirely under reduced motion by the block at the end. ─────────────── */
 @keyframes rox-rise{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
 .rox-enter{animation:rox-rise .8s var(--ease) both;animation-delay:var(--rox-d,0ms)}
@@ -125,8 +125,8 @@ address{font-style:normal}
 /* part of the above-the-fold budget, so its padding is viewport-relative too */
 .rox-trustband{padding-block:clamp(var(--space-3),3.2svh,calc(var(--section-y) * .45))}
 @media (max-height:720px){.rox-trustband{padding-block:var(--space-2)}}
-/* The cell used to carry three typographic voices — mono ordinal, Fraunces
-   claim, Archivo gloss at full body size and paragraph leading — stacked
+/* The cell used to carry three typographic voices: mono ordinal, Fraunces
+   claim, Archivo gloss at full body size and paragraph leading, stacked
    tight, four times across. The gloss read as a paragraph competing with the
    claim rather than as a footnote under it. Two voices now: mono for the
    meta, Fraunces for the claim, and the gloss sits quietly beneath as small,
@@ -154,7 +154,7 @@ address{font-style:normal}
    rule in the DS is more specific, so it still wins and lands at none. */
 .rox-from-left{transform:translateX(-44px);transition-duration:.72s}
 .rox-cta-rule{width:var(--space-5);margin-inline:0}
-/* the button widens a little on approach — the one gesture in the band */
+/* the button widens a little on approach, the one gesture in the band */
 .rox-cta-button{padding-inline:var(--space-5);transition:background var(--dur) var(--ease),padding-inline var(--dur) var(--ease)}
 .rox-cta-button:hover,.rox-cta-button:focus-visible{padding-inline:var(--space-6)}
 
@@ -180,8 +180,8 @@ address{font-style:normal}
 .psp-linkarrow::after{content:"";position:absolute;left:0;right:0;top:50%;transform:translateY(-50%);height:var(--tap)}
 
 /* ── locations. Was a loose stack of four unrelated blocks with the map
-      floating beside it at its own height. Now a ruled NAP ledger — one
-      hairline row per fact, mono label in a fixed column — and the map
+      floating beside it at its own height. Now a ruled NAP ledger: one
+      hairline row per fact, mono label in a fixed column, and the map
       stretches to match it. ────────────────────────────────────────────── */
 .rox-nap{width:100%;border-bottom:1px solid var(--line)}
 .rox-nap-row{display:grid;grid-template-columns:var(--space-6) 1fr;gap:var(--space-2) var(--space-3);padding-block:var(--space-3);border-top:1px solid var(--line)}
@@ -192,7 +192,7 @@ address{font-style:normal}
    third-party box dropped in: same hairline frame, same copper frame offset
    behind it, and the tiles graded toward the paper and slate the rest of the
    page is made of. The tint is a low-opacity colour blend, not a heavy
-   overlay — Google's attribution and logo stay legible underneath. */
+   overlay, so Google's attribution and logo stay legible underneath. */
 .rox-mapwrap{height:100%}
 .rox-mapwrap .rox-figure__frame{height:100%;min-height:calc(var(--space-6) * 4)}
 .rox-map{display:block;width:100%;height:100%;border:0;background:var(--surface-alt);filter:saturate(.52) contrast(.94) brightness(1.04) sepia(.16)}
@@ -219,7 +219,7 @@ footer .psp-stack--5{gap:var(--space-4)}
 .rox-legal-link:hover{color:var(--brand)}
 
 /* ── charm. Small gestures only, and every one of them is a hairline, a
-      4px nudge or a colour the brand already owns — nothing here introduces a
+      4px nudge or a colour the brand already owns. Nothing here introduces a
       shape, a shadow or a radius the design does not already use. The block
       at the very end switches all of it off under reduced motion. ───────── */
 
@@ -237,7 +237,7 @@ footer .psp-stack--5{gap:var(--space-4)}
 .rox-figure::before{transition:transform var(--dur) var(--ease)}
 .rox-figure:hover::before{transform:translate(calc(var(--space-1) / 2),calc(var(--space-1) / 2))}
 
-/* the four copper ticks draw themselves in, left to right, once — the trust
+/* the four copper ticks draw themselves in, left to right, once. The trust
    bar is above the fold, so this happens on load rather than on scroll */
 @keyframes rox-tick{from{transform:scaleX(0)}to{transform:scaleX(1)}}
 .rox-trust-cell::before{transform-origin:left;animation:rox-tick .55s var(--ease) both;animation-delay:calc(340ms + var(--rox-i,0) * 90ms)}
@@ -256,13 +256,13 @@ footer .psp-stack--5{gap:var(--space-4)}
 /* ── sticky bar: the kit requires Book to be the widest centre segment. ── */
 .psp-stickybar{grid-template-columns:1fr 1.6fr 1fr}
 /* the DS turns the sticky bar on at 1000px; the drawer now starts at 1100,
-   so bring the bar with it — the two are one mobile affordance */
+   so bring the bar with it, the two are one mobile affordance */
 @media (max-width:1150px){.psp-stickybar{display:grid}}
 body[data-kb="1"] .psp-stickybar{display:none}
 
 @media (max-width:1150px){
 /* the sticky action bar appears at this width, so the page needs clearance
-   below the footer's legal line — not below <main>, which the footer follows */
+   below the footer's legal line, not below <main>, which the footer follows */
 body{padding-bottom:calc(var(--tap) + var(--space-3))}
 .rox-nav-wrap,.rox-bar-cta{display:none}
 .rox-mobile-tel{display:flex;align-items:center;justify-content:center;min-width:var(--tap);min-height:var(--tap);justify-self:end;color:var(--ink);text-decoration:none}
@@ -290,7 +290,7 @@ body{padding-bottom:calc(var(--tap) + var(--space-3))}
 @media (prefers-reduced-motion:reduce){
 *{animation-duration:.01ms !important;animation-iteration-count:1 !important;transition-duration:.01ms !important}
 /* the blanket .01ms rule still runs the first frame of the entrance, which is
-   opacity 0 — a flash of invisible headline. Remove the animation instead. */
+   opacity 0, a flash of invisible headline. Remove the animation instead. */
 .rox-enter{animation:none !important}
 .rox-trust-cell::before{animation:none !important;transform:none !important}
 .rox-from-left{transform:none !important;transition:none !important}
@@ -457,16 +457,16 @@ body{padding-bottom:calc(var(--tap) + var(--space-3))}
           <div class="psp-stack psp-stack--3 psp-stack--start">
             <p class="psp-eyebrow psp-eyebrow--muted">Meet your orthodontist</p>
             <h2 class="psp-heading psp-heading--md" style="max-width:22ch">Dr. Nicholas <span class="rox-hl">Romans</span></h2>
-            <p class="psp-body psp-body--muted" style="max-width:54ch">Dr. Romans opened his own practice here in Anthem, though he has been straightening teeth a good while longer than that — more than 5,000 patients over his career so far. He treats kids, teens and adults in the same office, which is how a family ends up with one orthodontist instead of three. Come by and say hello before you decide anything.</p>
+            <p class="psp-body psp-body--muted" style="max-width:54ch">Dr. Romans opened his own practice here in Anthem, though he has been straightening teeth a good while longer than that: more than 5,000 patients over his career so far. He treats kids, teens and adults in the same office, which is how a family ends up with one orthodontist instead of three. Come by and say hello before you decide anything.</p>
             <!-- MEET-THE-DOCTOR-SPEC wants 3–6 credentials in this section, so
                  they run here as a ruled list rather than being left to the
                  trust bar alone. Every line traces to CLIENT-BRIEF.md. -->
             <ul class="rox-creds">
               <li class="rox-cred">Board-certified orthodontist</li>
-              <li class="rox-cred">DMD — Doctor of Dental Medicine</li>
-              <li class="rox-cred">MSD — Master of Science in orthodontics</li>
+              <li class="rox-cred">DMD, Doctor of Dental Medicine</li>
+              <li class="rox-cred">MSD, Master of Science in orthodontics</li>
               <li class="rox-cred">More than 7 years dedicated to orthodontics, including advanced specialty training</li>
-              <li class="rox-cred">Solo practice — the orthodontist who plans your treatment finishes it</li>
+              <li class="rox-cred">Solo practice, so the orthodontist who plans your treatment is the one who finishes it</li>
             </ul>
             <a class="psp-button psp-button--ghost" href="dr-romans.html">Read Dr. Romans’s story</a>
           </div>
@@ -674,7 +674,7 @@ body{padding-bottom:calc(var(--tap) + var(--space-3))}
       <div class="rox-footer-grid">
         <div class="rox-footer-brand">
           <img class="rox-mark" src="../assets/romans-orthodontics-lockup-horizontal.svg" alt="Romans Orthodontics" width="853" height="167">
-          <p class="psp-body psp-body--small psp-body--muted" style="max-width:34ch">Braces &amp; Invisalign in Anthem, Arizona, with Dr. Nicholas Romans — a family orthodontic practice for kids, teens and adults.</p>
+          <p class="psp-body psp-body--small psp-body--muted" style="max-width:34ch">Braces &amp; Invisalign in Anthem, Arizona, with Dr. Nicholas Romans. A family orthodontic practice for kids, teens and adults.</p>
         </div>
         <nav class="rox-footer-col" aria-label="Treatments">
           <p class="psp-eyebrow psp-eyebrow--muted">Treatments</p>
