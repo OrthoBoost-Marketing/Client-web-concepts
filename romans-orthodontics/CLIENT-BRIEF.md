@@ -1,5 +1,19 @@
 # CLIENT BRIEF — Romans Orthodontics
-Generated 2026-08-04 · status: DRAFT
+Generated 2026-08-04 · status: APPROVED for design (blockers resolved 2026-08-05)
+
+> **Blocker resolutions, 2026-08-05** (Jules's decisions, recorded so the build
+> does not re-ask):
+> 1. **Office hours:** ship a visible `[CONFIRM: office hours]` placeholder in
+>    footer and contact. **Omit `openingHours` from the schema entirely** rather
+>    than guessing. Carried to the launch-blockers list.
+> 2. **Patient-care photos:** consent **CONFIRMED** by the client. The three
+>    `Pt Examples/` images are cleared for web use.
+> 3. **Services grid:** resolves to **6** by adding Airway & TMJ (see Services).
+> 4. **Visual direction:** concept-b **deliberately differs** from concept A.
+>    Hometown warm (family), persona `dr-m-rogers`.
+> 5. **Assets:** build against the **local processed set** (see Assets). The
+>    richer Drive set needs a manual download; it is an enhancement, not a
+>    blocker.
 
 > This brief targets a **second build** of this practice's site, output to
 > `romans-orthodontics/concept-b/` (replacing the current single-page concept-b
@@ -39,8 +53,9 @@ doctor hub page: no (solo doctor)
 ## Locations
 primary phone (sitewide default): (623) 320-1222
 - Anthem, AZ: 3618 W. Anthem Way, Suite D120, Anthem, AZ 85086 · (623)
-  320-1222 · hours: **[CONFIRM — open blocker, not yet provided by client:
-  exact office hours including any extended/weekend hours]** · landmark:
+  320-1222 · hours: **`[CONFIRM: office hours]` — ship as a visible placeholder
+  in footer and contact; OMIT `openingHours` from the JSON-LD rather than
+  guessing (resolved 2026-08-05, still a launch blocker)** · landmark:
   ground-level office, reserved parking
   areaServed: omit (client has not confirmed a served-area list beyond
   Anthem; do not invent from general geographic knowledge)
@@ -88,13 +103,34 @@ All of the above are phone photos (iPhone `IMG_####` filenames), not
 professionally shot — expect to color-correct/crop at build time, not just
 drop them in raw.
 
-**Pre-build action required:** these are Drive-hosted only — no local file
-path exists yet. Per kit rule, an asset without a real local path is treated
-as not existing, so download + convert (webp, kebab-case rename following
-the existing `romans-orthodontics-*` / `office-*` / `team-headshot-*`
-convention) into a `concept-b`-scoped assets location before the
-page-builder agents run. Do not silently fall back to the narrower local
-`assets/` set without doing this.
+**RESOLVED 2026-08-05 — build against the local processed set.** The Drive
+files cannot be fetched in this environment: the Drive connector's base64
+download only handles files under roughly 100KB and these are multi-megabyte
+iPhone photos. Getting the richer 16-photo set requires Jules to download it
+by hand. That is an enhancement, not a blocker.
+
+**Use these paths** (verified 2026-08-05: all valid WebP, all under the kit's
+200KB hero budget, already kebab-named and converted):
+
+| Path | What it is | Bytes |
+|---|---|---|
+| `assets/team-headshot-dr-romans-01.webp` | Dr. Romans headshot | 194,382 |
+| `assets/team-headshot-dr-romans-03.webp` | Dr. Romans headshot (alt) | 95,036 |
+| `assets/office-exterior-01.webp` | office exterior | 191,598 |
+| `assets/office-signage-01.webp` | storefront signage | 184,604 |
+| `assets/office-reception-02.webp` | reception interior | 125,766 |
+| `assets/office-treatment-02.webp` | treatment area | 156,090 |
+| `assets/lifestyle-patient-care-01.webp` | patient care | 181,512 |
+| `assets/lifestyle-patient-care-02.webp` | patient care | 167,930 |
+
+Eight real photos: 2 doctor, 2 exterior/signage, 2 interior, 2 patient-care.
+Enough for a homepage. The zigzag wants a distinct subject per row, so with
+only two interiors, vary rows using the exterior and signage rather than
+repeating a frame.
+
+**Still outstanding (enhancement):** Jules downloads the Drive set by hand to
+gain 2 more doctor shots and 5 more interiors. Convert to WebP and follow the
+same kebab convention.
 
 **Logo:** the Drive `Logo/` subfolder only has two raster exports
 ("smaller logo.png", "medium logo.png") and one SVG that is actually a
@@ -131,14 +167,31 @@ reuse as-is — do not redesign the mark)
 colors/fonts (existing build, concept A slot): copper/slate/paper palette,
 Fraunces/Archivo/IBM Plex Mono
 direction for THIS build (concept-b slot): **hometown warm (family)** —
-ASSUMED/chosen by Claude per client instruction to pick a direction distinct
-from concept A's warm-editorial and concept C's plain Source Sans pairing;
-fits the growth-stage, all-ages, casual-tagline positioning better than
-bright-value, quiet-luxury, or playful-bold. Brand colors/logo stay the
-official Romans assets above; only type pairing, layout personality, and
-imagery treatment should shift for this direction — confirm with client
-before finalizing new color/font tokens if a genuinely different palette is
-wanted.
+CONFIRMED 2026-08-05: concept-b deliberately differs from concept A. Persona
+file is `dr-m-rogers` (family-focused community ortho): neighbor not brand,
+multi-generational, local specificity, warm humanist type, candid over posed,
+soft over sharp. Explicitly avoid ultra-modern geometric coldness and thin
+luxury type.
+
+**CORRECTED 2026-08-05.** The earlier wording here told the build not to reuse
+concept A's "signature moves" including radius 0 and the mono voice. That was
+wrong: those are not concept A's moves, they are the practice's brand system.
+Acting on it produced a homepage in Bitter and Nunito Sans with 12px rounded
+buttons, which read as off-brand because it was.
+
+**Brand-invariant — identical in every concept, never overridden:**
+palette (copper `#A6613C` / slate `#264653` / paper `#FAF6F1` and their
+variants) · typefaces (Fraunces display, Archivo body, IBM Plex Mono labels) ·
+`--radius: 0` · no shadows · the logo suite.
+
+**What a concept may vary:** section arrangement and order within the kit's
+rules · hero pattern · imagery treatment and crop · density and rhythm
+(`--section-y`, the space ramp) · type scale and leading · copy register and
+voice · which optional sections run.
+
+In other words, concepts differ in **composition**, not in **identity**. If two
+concepts are hard to tell apart, vary the layout and rhythm harder — never the
+palette, typefaces, or geometry.
 
 **Design pattern reference (client instruction 2026-08-04):** build every
 section of **this concept-b build** against its approved pattern in the
@@ -154,16 +207,16 @@ back and retrofit kit patterns onto `concept-a/`, `concept-c/`, or the
 existing 17-page `site/` build, and do not treat this as a standing rule for
 future Romans work. Those stay exactly as they are unless separately asked.
 
-## Services (grid count: 5 today — NOT a valid kit count; resolve to 6 by
-adding "Airway & TMJ" as a 6th card, since Airway/TMJ/Functional services
-already exist in the Notion service list but have no page yet — OR resolve to
-3 if the build wants tighter scope. Flagging for build-time decision, not
-guessing silently.)
+## Services (grid count: **6** — RESOLVED 2026-08-05)
 1. Braces for Kids (money page: yes)
 2. Braces for Adults (money page: yes)
 3. Invisalign & Clear Aligners (money page: yes)
 4. Early Treatment (money page: no)
 5. Retainers & Retention (money page: no)
+6. **Airway & TMJ (money page: no)** — added 2026-08-05 to reach a valid kit
+   count. Already exists in the Notion service list with no page yet, so this
+   promotes real capability rather than inventing one. Needs a service page
+   added to the inventory below.
 — Deferred (no dedicated page yet, awaiting SEO's Master Site Map per prior
 decision): Airway/TMJ/Functional Orthodontics, sleep appliances, laser gum
 recontouring, additional aligner brand variants (Invisalign First/Teen,
@@ -190,9 +243,11 @@ dr-romans, contact, financial) uses the real Drive photos.
 missing: before/after cases, professional (non-phone) photography, team
 photos (n/a, solo)
 shoot planned: not recorded — flag to AM/client, per media-pipeline notes
-constraints this creates: patient-care photos need a consent check before
-use (see Assets table); phone-quality images likely need color/crop work
-before they read as edited
+constraints this creates: **patient-care photo consent CONFIRMED by the client
+2026-08-05** — `lifestyle-patient-care-01/02` are cleared for web use.
+Phone-quality images still need color and crop work before they read as
+edited. With only 8 local photos, no single frame should appear twice on the
+homepage; the zigzag needs a distinct subject per row.
 
 ## Team
 tier: minimal (solo doctor, one assistant part-time per sales notes — role
@@ -227,14 +282,15 @@ romansorthodontics.com with /about-us /treatments /early-treatment
 /refund-policy /accessibility-statement — 301 mapping needed at launch)
 
 ## Page inventory
-Same 17-page inventory as the validated `site/` build, output this time to
-`concept-b/`:
+18 pages (the validated `site/` build's 17 plus `airway-tmj.html` from the
+services resolution), output this time to `concept-b/`:
 - [ ] index.html
 - [ ] braces-for-kids.html
 - [ ] braces-for-adults.html
 - [ ] invisalign.html
 - [ ] early-treatment.html
 - [ ] retainers.html
+- [ ] airway-tmj.html
 - [ ] free-consult.html
 - [ ] why-romans.html
 - [ ] dr-romans.html
@@ -248,22 +304,32 @@ Same 17-page inventory as the validated `site/` build, output this time to
 - [ ] accessibility.html
 
 ## Open questions / assumptions
-- ASSUMED: founding year 2026 (exact month unknown)
-- ASSUMED: "hometown warm (family)" visual direction for concept-b — not
-  explicitly named by client, chosen to differentiate from concept A/C;
-  confirm before finalizing new color/font tokens
-- TBD: exact office hours (open blocker carried from prior build, still
-  unresolved)
-- TBD: 60 words from Dr. Romans on hobbies/family/Saturday routine for the
-  "away from the office" section (open blocker carried from prior build)
-- TBD: GoHighLevel webhook URL for form wiring
-- TBD: whether concept-b targets the same 2026-08-06 launch date or is a
-  comparison track evaluated after launch
-- OPEN: services grid is 5 today, not a valid kit count (3/6/9) — resolve at
-  build time, don't guess silently
-- OPEN: professional shoot planned? — no answer on file; current Drive
-  photos are all phone snapshots
-- OPEN: patient-care photos in Drive `Pt Examples/` need a consent check
-  before use on any page
-- TBD: Drive assets must be downloaded and converted to real local paths
-  before build — do not build against Drive URLs directly
+
+**Resolved 2026-08-05 (no longer blocking design):**
+- ~~services grid count~~ → 6, adding Airway & TMJ
+- ~~patient-care photo consent~~ → confirmed by client, cleared for web use
+- ~~concept-b visual direction~~ → confirmed distinct, hometown warm,
+  persona `dr-m-rogers`
+- ~~Drive assets need local paths~~ → building against the 8 local processed
+  WebP files; the Drive set needs a manual download and is an enhancement
+- ~~office hours block the build~~ → visible placeholder, omitted from schema
+
+**Still open — launch blockers (must clear before the site goes live):**
+- **Office hours.** Placeholder ships; the real hours must land before launch.
+  Third build cycle carrying this one. Worth escalating to the client directly.
+- **GoHighLevel webhook URL** for form wiring. Also needs the leads-platform
+  backup. Both are Phase 5 and both are currently manual, since the five
+  handoff skills the kit calls for are not installed.
+
+**Still open — content, not blocking the homepage:**
+- 60 words from Dr. Romans on hobbies, family, or a Saturday routine for the
+  "away from the office" section. Affects the doctor bio page only.
+- Professional (non-phone) photo shoot: no answer on file. Every current image
+  is an iPhone snapshot.
+- Whether concept-b targets the 2026-08-06 launch date or is a comparison
+  track evaluated after launch. Ask the AM.
+
+**Assumptions standing:**
+- Founding year 2026, exact month unknown.
+- Patients treated "5,000+" is a client-held stat retained despite the
+  new-practice status. Do not round it up further.
