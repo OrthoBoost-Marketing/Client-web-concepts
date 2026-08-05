@@ -3,10 +3,12 @@
    <style> block, and the head extras flatten does not know about (noindex,
    canonical, the two hero preloads, the LocalBusiness JSON-LD). */
 import { readFileSync, writeFileSync, mkdirSync } from 'node:fs'
-import { join } from 'node:path'
+import { join, dirname } from 'node:path'
+import { fileURLToPath } from 'node:url'
 
-const BUILD = 'C:/Users/Chris/AppData/Local/Temp/claude/C--Program-Files-TiXL-TiXL-4-0-6-3/10524a90-93e3-4786-8c0d-0e7d4ca4e4b4/scratchpad/build'
-const OUT = 'C:/Users/Chris/Projects/cwc-audit/romans-orthodontics/concept-c'
+/* Resolved from this file's own location, so a checkout anywhere works. */
+const BUILD = dirname(fileURLToPath(import.meta.url))
+const OUT = join(BUILD, '../concept-c')
 const flat = readFileSync(join(BUILD, 'flat.html'), 'utf8')
 
 mkdirSync(OUT, { recursive: true })

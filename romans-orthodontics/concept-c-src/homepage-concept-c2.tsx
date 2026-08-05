@@ -18,9 +18,9 @@
       files in ../assets/web/. The handoff's .roc-photo-missing hero fallback is
       dropped with them: it was preview-only and must never ship as a state.
 
-   Flagged placeholders that REMAIN on purpose: review quotes (0 Google reviews),
-   office hours (twice, and omitted from the JSON-LD rather than guessed),
-   social profile URLs. */
+   Flagged placeholders that REMAIN on purpose: office hours (twice, and omitted
+   from the JSON-LD rather than guessed) and social profile URLs. There is no
+   reviews section — see the note above Services(). */
 import {
   TokenProvider, Band, Container, Stack, Split, Heading, Body, Button,
   Figure, Drawer, StickyBar, LinkArrow, Rule, SkipLink, Disclosure,
@@ -257,7 +257,7 @@ function Doctor() {
   return (
     <Band tone="dark">
       <Container>
-        <Stack gap={5}>
+        <Stack gap={4}>
           <div className="roc-intro roc-anim">
             <p className="roc-intro-label">Your orthodontist</p>
             <Heading level={2} size="md" measure={26} balance>One orthodontist, start to finish.</Heading>
@@ -344,7 +344,7 @@ function Zigzag() {
    mobile sticky bar covers calling. */
 function CtaBand() {
   return (
-    <Band tone="dark">
+    <Band tone="dark" pad="tight">
       <Container>
         <div className="roc-intro roc-anim">
           <Heading level={2} size="md" measure={24} balance>Start with a consultation, then decide.</Heading>
@@ -358,24 +358,14 @@ function CtaBand() {
   )
 }
 
-function Reviews() {
-  return (
-    <Band tone="surface" edge="both">
-      <Container>
-        <Stack gap={4}>
-          <div className="roc-intro roc-anim">
-            <p className="roc-intro-label">Reviews</p>
-            <Heading level={2} size="md" measure={26} balance>What Anthem patients say</Heading>
-          </div>
-          <div className="roc-gap roc-anim">
-            <p className="roc-gap-flag">[REVIEW QUOTES NEEDED — 0 Google reviews as of 2026-08-05]</p>
-            <p className="roc-gap-note">The practice has no Google reviews yet. Per CLIENT-BRIEF, no written or placeholder testimonial ships. Replace this block with 3, 6, or 9 verbatim Google reviews once 5 or more exist, and add the “read more reviews” link at that point. Never add aggregateRating or Review schema to Google-sourced quotes.</p>
-          </div>
-        </Stack>
-      </Container>
-    </Band>
-  )
-}
+/* NO REVIEWS SECTION. The practice had 0 Google reviews as of 2026-08-05 and
+   CLIENT-BRIEF forbids writing or placeholdering one, so the section does not
+   run at all rather than shipping a flagged empty box.
+
+   To restore it at 5+ reviews: add a <Reviews /> band here and in Page(), 3, 6
+   or 9 verbatim Google quotes in a static grid with names as displayed, plus the
+   "read more reviews" door. NEVER add aggregateRating or Review schema to
+   Google-sourced quotes. */
 
 function Services() {
   return (
@@ -506,7 +496,6 @@ export default function Page() {
         <Doctor />
         <Zigzag />
         <CtaBand />
-        <Reviews />
         <Services />
         <Locations />
       </main>
