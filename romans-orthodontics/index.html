@@ -4,77 +4,126 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex">
-<title>Romans Orthodontics: Website Concepts</title>
+<title>Romans Orthodontics — Design Previews</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Archivo:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   :root {
-    --copper:#A6613C; --slate:#264653; --paper:#FAF6F1;
-    --slate-soft:#4d6674; --faint:#7b8b93; --line:#e7ded4; --card:#ffffff;
+    --copper:#A6613C; --copper-deep:#7a4529; --slate:#264653; --paper:#FAF6F1;
+    --slate-soft:#4d6674; --faint:#7b8b93; --line:#e7ded4; --card:#ffffff; --tint:#efe6da;
   }
   * { margin:0; box-sizing:border-box; }
   html, body { height:100%; }
   body {
-    font-family:"Source Sans 3", system-ui, sans-serif;
+    font-family:"Archivo", system-ui, -apple-system, sans-serif;
     color:var(--slate); background:var(--paper);
     display:grid; place-items:center;
-    padding:clamp(18px, 3vh, 44px) clamp(18px, 3vw, 44px);
-    font-size:18px;
+    padding:clamp(18px, 3vh, 40px) clamp(18px, 3vw, 40px);
   }
-  main { width:100%; max-width:720px; display:flex; flex-direction:column; gap:clamp(18px, 3vh, 32px); }
+  main { width:100%; max-width:1040px; display:flex; flex-direction:column; gap:clamp(16px, 2.6vh, 28px); }
 
-  .top { display:flex; justify-content:space-between; align-items:center; gap:24px; flex-wrap:wrap; }
-  .top img { height:clamp(34px, 5vh, 46px); width:auto; display:block; }
-  .top .tagline { font-family:"Fraunces", serif; font-style:italic; font-weight:500; color:var(--copper); font-size:clamp(.95rem, 1.9vh, 1.1rem); }
+  .top { display:flex; justify-content:space-between; align-items:flex-end; gap:24px; flex-wrap:wrap; }
+  .brand img { height:clamp(30px, 4.6vh, 40px); width:auto; display:block; }
+  .top .note { font-size:.78rem; color:var(--faint); }
 
-  .panel {
+  .intro h1 { font-family:"Fraunces", serif; font-weight:600; letter-spacing:-.01em; line-height:1.2; font-size:clamp(1.3rem, 3.2vh, 1.75rem); }
+  .intro h1 em { font-style:normal; color:var(--copper); }
+  .intro p { color:var(--slate-soft); line-height:1.55; margin-top:8px; font-size:clamp(.86rem, 1.7vh, .96rem); max-width:78ch; }
+
+  .concepts { display:grid; grid-template-columns:repeat(3, 1fr); gap:clamp(12px, 1.6vw, 18px); align-items:stretch; }
+  .concept {
     background:var(--card); border:1px solid var(--line); border-radius:2px;
     border-top:3px solid var(--copper);
-    padding:clamp(22px, 3.4vh, 34px) clamp(20px, 2.4vw, 32px);
+    padding:clamp(16px, 2.4vh, 22px) clamp(16px, 1.6vw, 22px);
+    display:flex; flex-direction:column;
   }
-  .panel h1 {
-    font-family:"Fraunces", serif; font-weight:600; letter-spacing:-.01em; line-height:1.15;
-    font-size:clamp(1.5rem, 4vh, 2.1rem);
+  .concept-head { display:flex; justify-content:space-between; align-items:center; gap:10px; }
+  .concept-head h2 { font-family:"Fraunces", serif; font-weight:600; font-size:clamp(.98rem, 1.9vh, 1.08rem); }
+  .concept-head .sub { display:block; color:var(--faint); font-weight:400; font-family:"Archivo", sans-serif; font-size:.78rem; margin-top:2px; }
+  .tag {
+    font-size:.66rem; font-weight:600; letter-spacing:.06em; text-transform:uppercase;
+    color:var(--copper-deep); background:var(--tint);
+    border-radius:999px; padding:4px 10px; white-space:nowrap; flex:0 0 auto;
   }
-  .panel h1 em { font-style:normal; color:var(--copper); }
-  .panel p { color:var(--slate-soft); line-height:1.6; margin-top:14px; font-size:clamp(.95rem, 1.9vh, 1.05rem); }
-  .panel .status { color:var(--faint); font-size:.85rem; margin-top:22px; }
-  .panel .open {
-    display:inline-flex; align-items:center; min-height:46px; margin-top:20px;
-    padding:0 24px; background:var(--copper); color:#fff; text-decoration:none;
-    border-radius:2px; font-weight:600; font-size:1rem;
+  .concept p { color:var(--slate-soft); line-height:1.52; font-size:clamp(.8rem, 1.6vh, .88rem); margin-top:10px; }
+  .concept-foot { display:flex; align-items:center; justify-content:space-between; gap:10px; margin-top:auto; padding-top:14px; }
+  .open {
+    text-decoration:none; font-size:.8rem; font-weight:600; color:#fff; background:var(--copper);
+    border-radius:2px; padding:8px 18px; transition:background .15s;
   }
-  .panel .open:hover { background:var(--slate); }
+  .open:hover { background:var(--slate); }
+  .meta { font-size:.72rem; color:var(--faint); white-space:nowrap; }
 
-  footer { display:flex; justify-content:space-between; align-items:center; gap:12px; color:var(--faint); font-size:.82rem; flex-wrap:wrap; border-top:1px solid var(--line); padding-top:16px; }
+  .status { color:var(--faint); font-size:.8rem; }
+
+  footer { display:flex; justify-content:space-between; align-items:center; gap:12px; color:var(--faint); font-size:.78rem; flex-wrap:wrap; border-top:1px solid var(--line); padding-top:16px; }
   footer a { color:var(--slate-soft); text-decoration:none; }
   footer a:hover { color:var(--copper); }
 
-  @media (max-width: 900px) { body { place-items:start center; } }
+  @media (max-width: 900px) {
+    body { place-items:start center; }
+    .concepts { grid-template-columns:1fr; }
+    .concept p { max-width:62ch; }
+  }
 </style>
 </head>
 <body>
 <main>
   <div class="top">
-    <img src="assets/romans-orthodontics-lockup-horizontal.svg" alt="Romans Orthodontics">
-    <span class="tagline">live a little, smile a lot</span>
+    <div class="brand">
+      <img src="assets/romans-orthodontics-lockup-horizontal.svg" alt="Romans Orthodontics">
+    </div>
+    <span class="note">Unlisted previews, just for your team.</span>
   </div>
 
-  <div class="panel">
+  <div class="intro">
     <h1>Three directions for <em>romansorthodontics.com</em></h1>
-    <p>All three are built from the same ingredients: your copper and slate, Fraunces and Archivo, and real photography from the Anthem office. They differ in how the homepage is arranged, not in what the practice looks like. Pick the one that feels more like you and the rest of the pages follow that shell.</p>
-    <p><strong>Concept A</strong> is the editorial one: an open, sectioned layout that walks down the page.</p>
-    <p><a class="open" href="concept-a/">Open Concept A &rarr;</a></p>
-    <p><strong>Concept B</strong> is the quieter, denser one: a full-height photograph to open, your credentials read straight across underneath it, and hairline rules doing the dividing.</p>
-    <p><a class="open" href="concept-b/">Open Concept B &rarr;</a></p>
-    <p><strong>Concept C</strong> is the most photographic: your reception photo runs edge to edge behind the opening headline, the page is centred rather than left-aligned, and two deep slate bands break it up. Photographs wipe up into place as you scroll.</p>
-    <p><a class="open" href="concept-c/">Open Concept C &rarr;</a></p>
-    <p class="status">Homepages only for now · office hours still to confirm · your logo, colors, photography and tagline carry over to all three.</p>
+    <p>All three are built from the same ingredients: your copper and slate, Fraunces and Archivo, and real photography from the Anthem office. They differ in how the homepage is arranged, not in what the practice looks like. Pick the one that feels more like you, and the rest of the pages follow that shell.</p>
   </div>
+
+  <div class="concepts">
+    <div class="concept">
+      <div class="concept-head">
+        <h2>Concept A<span class="sub">editorial</span></h2>
+        <span class="tag">Sectioned</span>
+      </div>
+      <p>An open, sectioned layout that walks down the page — the most traditional of the three, giving each part of your story its own room.</p>
+      <div class="concept-foot">
+        <a class="open" href="concept-a/">Open &rarr;</a>
+        <span class="meta">Homepage</span>
+      </div>
+    </div>
+
+    <div class="concept">
+      <div class="concept-head">
+        <h2>Concept B<span class="sub">quiet &amp; dense</span></h2>
+        <span class="tag">Hairline rules</span>
+      </div>
+      <p>A full-height photograph opens the page, your credentials read straight across underneath it, and hairline rules do the dividing throughout.</p>
+      <div class="concept-foot">
+        <a class="open" href="concept-b/">Open &rarr;</a>
+        <span class="meta">Homepage</span>
+      </div>
+    </div>
+
+    <div class="concept">
+      <div class="concept-head">
+        <h2>Concept C<span class="sub">photographic</span></h2>
+        <span class="tag">Full-bleed</span>
+      </div>
+      <p>The most photographic of the three. Your reception photo runs edge to edge behind the headline, the page is centred, and deep slate bands break it up as you scroll.</p>
+      <div class="concept-foot">
+        <a class="open" href="concept-c/">Open &rarr;</a>
+        <span class="meta">Homepage</span>
+      </div>
+    </div>
+  </div>
+
+  <p class="status">Homepages only for now · office hours still to confirm · your logo, colors, photography and tagline carry over to all three.</p>
 
   <footer>
-    <span>Unlisted preview for the Romans Orthodontics team · prepared by OrthoBoost</span>
+    <span>Prepared for Dr. Romans and the Romans Orthodontics team</span>
     <a href="../">All clients &rarr;</a>
   </footer>
 </main>
