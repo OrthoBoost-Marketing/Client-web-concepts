@@ -8,7 +8,7 @@
 <meta name="robots" content="noindex">
 <meta property="og:title" content="Orthodontist in Anthem, AZ | Romans Orthodontics">
 <meta property="og:description" content="Board-certified orthodontist Dr. Nicholas Romans offers braces, Invisalign, and early treatment for kids, teens, and adults in Anthem, AZ. Free consultations.">
-<meta property="og:image" content="../assets/lifestyle-patient-care-01.webp">
+<meta property="og:image" content="../assets/lifestyle-patient-care-02.webp">
 <link rel="icon" type="image/svg+xml" href="../assets/romans-orthodontics-icon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -231,11 +231,98 @@
   .fcol { padding: 56px 34px 44px; border-right: 1px solid var(--rule-light); display: flex; flex-direction: column; gap: 11px; }
   .fcol:first-child { padding-left: 0; gap: 16px; }
   .fcol:last-child { padding-right: 0; border-right: 0; }
-  .fcol a { font-size: 18px; color: var(--paper); }
+  .fcol a { font-size: 18px; color: var(--paper); overflow-wrap: anywhere; }
+  /* the email address is a single unbreakable string and was overflowing the
+     footer column between roughly 940px and 1100px wide, giving the whole page
+     a horizontal scrollbar. Pre-existing, fixed here across every page. */
   .fcol a:hover { color: var(--paper); text-decoration: underline; }
   .flegal { display: grid; grid-template-columns: 1fr auto; gap: 16px 32px; align-items: center; padding: 22px 0 28px; border-top: 1px solid var(--rule-light); }
   .flegal .lbl-l { letter-spacing: 0.05em; }
   .flinks { display: flex; gap: 12px 24px; flex-wrap: wrap; min-width: 0; }
+
+  /* ── hero, edge-ledger ────────────────────────────────────────────────────
+     Asymmetric editorial split. The text column aligns to the 1200px container
+     on the left; the photo column runs off the right viewport edge. Height is
+     driven by the text and clamped to the viewport, so the hero cannot push its
+     own CTA below the fold, and the portrait source gets a tall box instead of
+     being letterboxed into whatever space is left over.
+     Deliberately not a kit pattern and deliberately not .rv, so the H1 paints
+     immediately rather than waiting on JS.                                    */
+  .hero2 {
+    border-bottom: 1px solid var(--rule);
+    /* Aligns the text column to the 1200px container while letting the photo
+       column bleed off the right edge. Uses % (resolved against the body's
+       content box) rather than vw, because vw includes the scrollbar and was
+       reporting ~16px of phantom horizontal overflow at middling widths. */
+    padding-left: max(var(--pad), calc((100% - 1200px) / 2 + var(--pad)));
+  }
+  .hero2-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.04fr) minmax(0, 0.96fr);
+    align-items: stretch;
+    min-height: clamp(500px, calc(100svh - 76px), 700px);
+  }
+  .hero2-text {
+    display: flex; flex-direction: column; justify-content: center;
+    padding: clamp(30px, 3.4vw, 52px) clamp(30px, 3.2vw, 54px) clamp(30px, 3.4vw, 52px) 0;
+  }
+  .hero2-kick {
+    display: flex; align-items: center; gap: 14px;
+    font-family: var(--mono); font-size: 13px; letter-spacing: 0.14em;
+    text-transform: uppercase; color: rgba(38,70,83,0.72); margin-bottom: 20px;
+  }
+  .hero2-kick::before { content: ''; width: 34px; height: 1px; background: var(--copper); flex: none; }
+  .hero2 .setup { margin-bottom: 2px; }
+  .hero2 .h1 { font-size: clamp(38px, 4.3vw, 66px); max-width: 21ch; }
+  .hero2 .lede { font-size: clamp(18px, 1.35vw, 21px); max-width: 34ch; margin-top: 18px; }
+  .hero2-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 14px 26px; margin-top: 28px; }
+  .hero2-actions .callwrap { display: inline-flex; align-items: baseline; gap: 9px; white-space: nowrap; }
+  .hero2-actions .or {
+    font-family: var(--mono); font-size: 13px; letter-spacing: 0.06em;
+    text-transform: uppercase; color: rgba(38,70,83,0.6);
+  }
+  .hero2-actions .phone { border-bottom: 1px solid rgba(38,70,83,0.35); padding-bottom: 2px; }
+  /* the ledger is the hero's proof block: three checkable facts, no invented numbers */
+  .hero2-ledger {
+    display: grid; grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0 clamp(14px, 1.6vw, 30px);
+    margin: clamp(26px, 3vw, 40px) 0 0; padding-top: 18px;
+    border-top: 1px solid var(--rule);
+  }
+  .hero2-ledger dt {
+    font-family: var(--mono); font-size: 12px; letter-spacing: 0.11em;
+    text-transform: uppercase; color: rgba(38,70,83,0.6); margin-bottom: 5px;
+  }
+  .hero2-ledger dd { margin: 0; font-size: 16px; line-height: 1.32; }
+  .hero2-fig { margin: 0; position: relative; overflow: hidden; background: var(--paper-2); }
+  /* absolutely positioned so the photo's intrinsic aspect cannot dictate the row
+     height: the text column governs, and the photo fills whatever that comes to.
+     Without this a 1400x1867 source stretches the hero to ~920px and pushes its
+     own CTA toward the fold. */
+  .hero2-fig img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 20%; }
+  .hero2-cap {
+    position: absolute; left: 0; bottom: 0; right: 0;
+    font-family: var(--mono); font-size: 12px; letter-spacing: 0.05em;
+    color: var(--paper); padding: 30px 22px 14px;
+    background: linear-gradient(to top, rgba(38,70,83,0.78), rgba(38,70,83,0));
+  }
+  @media (max-width: 900px) {
+    .hero2 { padding-left: 0; }
+    .hero2-grid { grid-template-columns: 1fr; min-height: 0; }
+    .hero2-text { padding: 22px var(--pad) 20px; }
+    .hero2-kick { margin-bottom: 14px; }
+    .hero2 .h1 { font-size: clamp(30px, 7.4vw, 42px); max-width: 26ch; }
+    .hero2 .lede { font-size: 17px; line-height: 1.5; max-width: 48ch; margin-top: 12px; }
+    .hero2-actions { margin-top: 20px; gap: 12px 22px; }
+    .hero2-ledger { margin-top: 20px; padding-top: 14px; gap: 0 14px; }
+    .hero2-ledger dd { font-size: 14px; }
+    /* back to static flow on mobile so the photo sits below the text as a banner */
+    .hero2-fig img { position: static; inset: auto; aspect-ratio: 16 / 9; height: auto; }
+  }
+  @media (max-width: 420px) {
+    .hero2-ledger { grid-template-columns: 1fr 1fr; row-gap: 14px; }
+    .hero2-ledger > div:last-child { grid-column: 1 / -1; }
+  }
 
   /* motion */
   .rv { opacity: 0; transform: translateY(18px); transition: opacity 340ms ease-out, transform 340ms ease-out; }
@@ -308,7 +395,7 @@
   "areaServed": ["Anthem, AZ", "Carefree, AZ", "Tramonto, AZ", "New River, AZ", "Desert Hills, AZ"]
 }
 </script>
-  <link rel="preload" as="image" href="../assets/lifestyle-patient-care-01.webp" fetchpriority="high">
+  <link rel="preload" as="image" href="../assets/lifestyle-patient-care-02.webp" fetchpriority="high">
 </head>
 <body>
 
@@ -375,30 +462,27 @@
   </div>
 </header>
 
-<section class="wrap hero-sec">
-  <div class="hero-top rv">
-    <div class="hero-head">
+<section class="hero2">
+  <div class="hero2-grid">
+    <div class="hero2-text">
+      <p class="hero2-kick">3618 W. Anthem Way, Suite D120 &middot; Anthem, AZ</p>
       <p class="setup">Live a little.</p>
       <h1 class="h1">Smile a lot: braces and Invisalign in Anthem, AZ.</h1>
+      <p class="lede">Independent and doctor-owned. One orthodontist plans your treatment, checks it and finishes it, and your free consult ends with an exact written price.</p>
+      <div class="hero2-actions">
+        <a class="btn" href="free-consult.html">Book your free consult</a>
+        <span class="callwrap"><span class="or">or call</span><a class="phone" href="tel:+16233201222">(623) 320-1222</a></span>
+      </div>
+      <dl class="hero2-ledger">
+        <div><dt>The consult</dt><dd>Free, no obligation</dd></div>
+        <div><dt>The doctor</dt><dd>Board-certified, ABO</dd></div>
+        <div><dt>Languages</dt><dd>English &amp; Polish</dd></div>
+      </dl>
     </div>
-    <div class="hero-cta">
-      <div class="hero-actions">
-      <a class="btn" href="free-consult.html">Book your free consult</a>
-      <span class="callwrap"><span class="or">or call</span><a class="phone" href="tel:+16233201222">(623) 320-1222</a></span>
-    </div>
-      <p class="hero-assure">Free consult · 30 minutes · exact price up front</p>
-    </div>
-    <div class="hero-sub">
-      <p class="lede">Romans Orthodontics is independent and doctor-owned. One doctor, one office, and a treatment plan built around how you actually live.</p>
-      <p class="hero-nap">3618 W. Anthem Way, Suite D120 · Anthem, AZ 85086</p>
-    </div>
-  </div>
-  <div class="rv">
-    <div class="hero-img"><img src="../assets/lifestyle-patient-care-01.webp" alt="Dr. Romans checking a young patient's braces in the treatment area" width="1200" height="1600" fetchpriority="high"></div>
-    <div class="figrow cap">
-      <span>A patient visit at Romans Orthodontics</span>
-      <span class="hide-sm">Anthem, Arizona</span>
-    </div>
+    <figure class="hero2-fig">
+      <img src="../assets/lifestyle-patient-care-02.webp" alt="Dr. Romans standing with a young patient in braces at Romans Orthodontics in Anthem, Arizona" width="1400" height="1867" fetchpriority="high" decoding="async">
+      <figcaption class="hero2-cap">Dr. Romans with a patient &middot; Anthem, Arizona</figcaption>
+    </figure>
   </div>
 </section>
 
@@ -487,7 +571,7 @@
 
 <section class="band">
   <div class="band-inner">
-    <h2>Your free consult takes 30 minutes. The smile sticks around.</h2>
+    <h2>Your free consult costs you nothing. The smile sticks around.</h2>
     <a class="btn btn-invert" href="free-consult.html">Book your free consult</a>
     <div class="band-assure">
       <span>Free consult</span>

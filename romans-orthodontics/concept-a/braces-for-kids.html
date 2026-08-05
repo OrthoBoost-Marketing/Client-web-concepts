@@ -171,7 +171,10 @@
   .fcol { padding: 56px 34px 44px; border-right: 1px solid var(--rule-light); display: flex; flex-direction: column; gap: 11px; }
   .fcol:first-child { padding-left: 0; gap: 16px; }
   .fcol:last-child { padding-right: 0; border-right: 0; }
-  .fcol a { font-size: 18px; color: var(--paper); }
+  .fcol a { font-size: 18px; color: var(--paper); overflow-wrap: anywhere; }
+  /* the email address is a single unbreakable string and was overflowing the
+     footer column between roughly 940px and 1100px wide, giving the whole page
+     a horizontal scrollbar. Pre-existing, fixed here across every page. */
   .fcol a:hover { color: var(--paper); text-decoration: underline; }
   .flegal { display: grid; grid-template-columns: 1fr auto; gap: 16px 32px; align-items: center; padding: 22px 0 28px; border-top: 1px solid var(--rule-light); }
   .flegal .lbl-l { letter-spacing: 0.05em; }
@@ -406,7 +409,7 @@
 
 <section class="band">
   <div class="band-inner">
-    <h2>Wondering about the timing? A free consult settles it in 30 minutes.</h2>
+    <h2>Wondering about the timing? A free consult settles it.</h2>
     <a class="btn btn-invert" href="free-consult.html">Book your free consult</a>
   </div>
 </section>
