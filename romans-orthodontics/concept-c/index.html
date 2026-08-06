@@ -258,7 +258,9 @@ body[data-kb="1"] .roc-sticky{display:none}
 .roc-intro{justify-items:start;text-align:left}
 .roc-hero-actions,.roc-intro-actions{width:100%;justify-content:flex-start}
 .roc-hero-actions>*,.roc-intro-actions>*{flex:1 1 100%;justify-content:center}
-.roc-footer-grid,.roc-services,.roc-credentials{grid-template-columns:1fr}
+.roc-footer-grid,.roc-services{grid-template-columns:1fr}
+/* TRUST-BAR-SPEC rule 5: four cells go 2x2 on mobile, never a single stack. */
+.roc-credentials{grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--space-4) var(--space-3)}
 .roc-credential{padding-left:0;border-left:0}
 .roc-meta>div{grid-template-columns:1fr;gap:2px}
 main{padding-bottom:var(--space-6)}
