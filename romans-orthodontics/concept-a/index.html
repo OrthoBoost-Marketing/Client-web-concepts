@@ -326,9 +326,16 @@ body{padding-bottom:calc(var(--tap) + var(--space-3))}
 .rox-bar-inner{grid-template-columns:minmax(0,1fr) auto auto;column-gap:var(--space-2);min-height:var(--space-5)}
 /* the logo track was a bare 1fr, whose auto minimum is the lockup's 164px
    min-content: wider than the 121px left after the tel and menu buttons, so the
-   bar pushed 19px past the viewport at 320. Let the track and the mark shrink. */
+   bar pushed 19px past the viewport at 320. Let the track and the mark shrink.
+   The mark keeps a FIXED height while it does. An earlier pass fixed the same
+   overflow with height:auto, which let the lockup scale with the track instead
+   of the type ramp: 121px tall at 820 and 157px at 1000, filling the whole bar
+   and dwarfing the tel and Menu controls beside it. max-width still lets it
+   shrink at 320, and object-fit keeps the aspect while it does. The logo link
+   is already var(--tap) tall, so a 20px mark sits centred with 13px of air
+   above and below it without the bar needing padding of its own. */
 .rox-logo{min-width:0}
-.rox-mark{max-width:100%;height:auto}
+.rox-mark{height:var(--space-3);width:auto;max-width:100%;object-fit:contain;object-position:left center}
 .rox-bar-inner>.psp-drawer__panel{grid-column:1 / -1;margin-inline:calc(var(--gutter) * -1)}
 .rox-footer-grid{grid-template-columns:1fr 1fr}
 .rox-services{grid-template-columns:repeat(2,minmax(0,1fr))}
