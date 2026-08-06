@@ -347,7 +347,7 @@ function CtaBand() {
     <Band tone="dark" pad="tight">
       <Container>
         <div className="roc-intro roc-anim">
-          <Heading level={2} size="md" measure={24} balance>Start with a consultation, then decide.</Heading>
+          <Heading level={2} size="md" measure={24} balance>Ready to come & say hello?</Heading>
           <p className="roc-intro-lede">Free consultation with Dr. Romans in Anthem, Arizona.</p>
           <div className="roc-intro-actions">
             <Button href="free-consult.html" variant="invert">Book a consultation</Button>
