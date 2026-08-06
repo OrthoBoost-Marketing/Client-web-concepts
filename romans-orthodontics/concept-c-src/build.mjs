@@ -4,7 +4,7 @@
  *   node <path-to-this-file>/build.mjs --primitives ~/Projects/practice-site-primitives
  *
  * Runs flatten.mjs from the primitives repo, then assemble.mjs from here.
- * Exits non-zero if flatten does — exit 2 means an inline style attribute
+ * Exits non-zero if flatten does. Exit 2 means an inline style attribute
  * carries a literal colour, or a brand-identity token was overridden. */
 import { spawnSync } from 'node:child_process'
 import { fileURLToPath } from 'node:url'
@@ -22,7 +22,7 @@ const args = Object.fromEntries(
 const PRIMITIVES = resolve(args.primitives ?? join(HERE, '../../../practice-site-primitives'))
 
 /* The page's <title> and <meta name="description">. Edit them HERE, never on a
-   command line — this is the only copy under version control. */
+   command line, and this is the only copy under version control. */
 const TITLE = 'Braces &amp; Invisalign in Anthem, AZ | Romans Orthodontics'
 const DESCRIPTION =
   'Romans Orthodontics is an orthodontic practice in Anthem, AZ. Dr. Nicholas Romans, ' +

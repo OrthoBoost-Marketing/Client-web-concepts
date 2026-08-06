@@ -5,7 +5,7 @@ re-run the pipeline instead, or the next regeneration silently reverts your chan
 
 | File | What it is |
 |---|---|
-| `homepage-concept-c2.tsx` | the page composition — the flatten entry, imports from `practice-site-primitives` |
+| `homepage-concept-c2.tsx` | the page composition: the flatten entry, imports from `practice-site-primitives` |
 | `concept-c.css` | the concept's own CSS, which becomes the single inline `<style>` block |
 | `build.mjs` | the one command; also the only copy of the `<title>` and `<meta description>` |
 | `assemble.mjs` | post-processes the flatten output into the repo's page shape |
@@ -42,7 +42,7 @@ never reports, everything is forced visible after 1.2s.
 **The clip-path goes on `.roc-wipe`'s child, never on `.roc-wipe` itself.**
 Chrome clips an IntersectionObserver target's intersection rect by the target's
 own `clip-path`, so a self-clipped element reports ratio 0 forever and never
-reveals. The handoff shipped it that way and all five media blocks — the doctor
-portrait, the three zigzag photos, and the map — were permanently invisible. The
+reveals. The handoff shipped it that way and all five media blocks (the doctor
+portrait, the three zigzag photos, and the map) were permanently invisible. The
 fail-open timeout does not catch it either, because the plain `.roc-anim`
 elements do fire, so `fired` is never 0.

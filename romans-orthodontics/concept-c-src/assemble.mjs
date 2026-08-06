@@ -97,7 +97,7 @@ let html = flat
   .replace(/\n  <link rel="preconnect"/, '\n<link rel="preconnect"')
   /* React passes these through verbatim as unknown props. HTML parses attribute
      names case-insensitively so they work either way, but the emitted file is
-     the thing the page-builders copy chrome from — keep it valid HTML. */
+     the thing the page-builders copy chrome from, so keep it valid HTML. */
   .replace(/ srcSet=/g, ' srcset=')
   .replace(/ fetchPriority=/g, ' fetchpriority=')
   .replace(/ referrerPolicy=/g, ' referrerpolicy=')
