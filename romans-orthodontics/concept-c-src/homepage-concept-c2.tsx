@@ -77,7 +77,7 @@ const SERVICES: Service[] = [
   {
     name: 'Retainers & Retention',
     href: 'retainers.html',
-    desc: 'Fitted retainers, replacements, and a wear schedule in writing. Retention is where results hold or fail.',
+    desc: 'Fitted retainers, replacements, and a wear schedule set out at the finish. Retention is where results hold or fail.',
     img: '../assets/web/svc-retainers.webp',
     alt: 'A clear retainer in its open case, held in one hand',
   },
@@ -261,7 +261,7 @@ function Doctor() {
           <div className="roc-intro roc-anim">
             <p className="roc-intro-label">Your orthodontist</p>
             <Heading level={2} size="md" measure={26} balance>One orthodontist, start to finish.</Heading>
-            <p className="roc-intro-lede">Dr. Nicholas Romans opened this practice in Anthem and treats every patient in it himself. Treatment is planned in full, in writing, before it starts.</p>
+            <p className="roc-intro-lede">Dr. Nicholas Romans opened this practice in Anthem and treats every patient in it himself, from a first evaluation through to the last retainer check.</p>
           </div>
           <Split ratio="0.85fr 1fr" gap={5} align="center" stackAt="md">
             <div className="roc-wipe roc-anim">
@@ -272,7 +272,7 @@ function Doctor() {
                 {DOCTOR_CREDENTIALS.map((c) => <li key={c}>{c}</li>)}
               </ul>
               <p className="roc-dark-body">Kids, teens, and adults are all treated here, which is how one family keeps one orthodontist instead of three. Dr. Romans owns this practice outright, so the person who plans your treatment is the person you see at every visit and the person who finishes it.</p>
-              <p className="roc-dark-body">Come in, ask what you want to ask, and leave with the plan written down. Nothing starts until you have read it.</p>
+              <p className="roc-dark-body">Come in, ask what you want to ask, and leave with a clear picture of what treatment would involve. The consultation is free, at any age.</p>
               <LinkArrow href="dr-romans.html" tone="inverse">Read Dr. Romans’s background</LinkArrow>
             </Stack>
           </Split>
