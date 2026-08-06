@@ -8,9 +8,14 @@
 <meta name="description" content="Romans Orthodontics is a family orthodontic practice in Anthem, AZ. Dr. Nicholas Romans, board-certified orthodontist, treats kids, teens and adults. First visit is a free consultation.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600&family=Fraunces:ital,opsz,wght,SOFT@0,9..144,300..700,100;1,9..144,300..600,100&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600&family=Fraunces:ital,opsz,wght,SOFT@0,9..144,300..700,100;1,9..144,300..600,100&family=IBM+Plex+Mono:wght@400;500&display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600&family=Fraunces:ital,opsz,wght,SOFT@0,9..144,300..700,100;1,9..144,300..600,100&family=IBM+Plex+Mono:wght@400;500&display=swap"></noscript>
+<link rel="icon" href="../assets/romans-orthodontics-icon.svg" type="image/svg+xml">
+<link rel="icon" href="../assets/romans-orthodontics-favicon-48.png" sizes="48x48" type="image/png">
+<link rel="apple-touch-icon" href="../assets/romans-orthodontics-apple-touch-icon-180.png">
 <link rel="stylesheet" href="design-system.css">
 <link rel="preload" as="image" href="../assets/web/hero-dr-romans-reception.webp" fetchpriority="high">
-<link rel="icon" href="../assets/romans-orthodontics-icon.svg" type="image/svg+xml">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"LocalBusiness","name":"Romans Orthodontics","url":"https://romansorthodontics.com/","telephone":"+1-623-320-1222","slogan":"Live a little, smile a lot","address":{"@type":"PostalAddress","streetAddress":"3618 W. Anthem Way, Suite D120","addressLocality":"Anthem","addressRegion":"AZ","postalCode":"85086","addressCountry":"US"}}
 </script>
@@ -109,7 +114,7 @@ address{font-style:normal}
 /* ── the hero cascade. Four elements enter in sequence, 16px and a fade each,
       70ms apart, enough to read as one movement rather than four. Collapsed
       entirely under reduced motion by the block at the end. ─────────────── */
-@keyframes rox-rise{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+@keyframes rox-rise{from{opacity:.01;transform:translateY(16px)}to{opacity:1;transform:none}}
 .rox-enter{animation:rox-rise .8s var(--ease) both;animation-delay:var(--rox-d,0ms)}
 .rox-h1{--rox-d:70ms}
 
@@ -175,20 +180,33 @@ address{font-style:normal}
       line, muted to a single tone on a tinted band, small quiet label. It sits
       five sections below the credential trust bar, which is what rule 4 asks
       for: the two never run adjacent.
-      INTERIM ARTWORK. Rule 5 wants each organisation's official logo file,
-      untouched. None are on file, and an approximated trademark is worse than
-      none, so each cell is set type plus a generic line mark that belongs to
-      nobody. Swap in the official SVGs when they arrive and the layout holds:
-      drop the <svg> for an <img class="rox-affil-mark">. ─────────────────── */
-.rox-affil{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:var(--space-2) var(--space-4);list-style:none;margin:0;padding:0;width:100%}
-/* one tone for the whole set, per rule 3. The band is the only colour here */
-.rox-affil-cell{display:grid;grid-row:span 3;grid-template-rows:subgrid;gap:var(--space-2);align-content:start;color:var(--ink-muted)}
+      3 columns x 2 rows: the credential marks on top, the training lines below.
+      Row 1 carries real logo artwork, row 2 is set type, and one tone covers
+      both so the two rows read as one object. ─────────────────────────────── */
+.rox-affil{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--space-5) var(--space-4);list-style:none;margin:0;padding:0;width:100%}
+/* One tone for the whole set, per rule 3. Row 1 of each cell holds either a
+   masked mark or the organisation's name, whichever the cell has, so their
+   baselines line up across the row; row 2 is always what is held. */
+.rox-affil-cell{display:grid;grid-row:span 2;grid-template-rows:subgrid;gap:var(--space-2);align-content:start;color:var(--ink-muted)}
 @supports not (grid-template-rows:subgrid){
-.rox-affil-cell{grid-row:auto;grid-template-rows:auto auto auto}
+.rox-affil-cell{grid-row:auto;grid-template-rows:auto auto}
 }
-.rox-affil-mark{display:block;width:var(--space-4);height:var(--space-4);color:var(--ink-muted);opacity:.72}
-.rox-affil-name{font-family:var(--font-body);font-size:var(--step-body);font-weight:600;line-height:1.25;color:var(--ink)}
-.rox-affil-role{font-family:var(--font-mono);font-size:var(--step-small);letter-spacing:var(--tracking-label);text-transform:uppercase;line-height:1.4;color:var(--ink-muted)}
+/* ── the marks. The single muted tone is baked into each PNG: slate at the same
+      .85 alpha --ink-muted carries, multiplied by the mark's own alpha, so the
+      knockouts (the ABO letters inside the seal, the gaps in the AAO rings) stay
+      real holes rather than white shapes on a paper band.
+      Baked rather than done in CSS on purpose. A grayscale filter would map each
+      logo's own ink to a DIFFERENT grey, so the set would not be one colour; and
+      mask-image + currentColor, which would have been exact, is dead on arrival
+      because Chromium refuses to load a mask subresource from a file:// page, so
+      the strip would render blank for anyone opening these files locally and
+      only appear on the deployed URL. Measured, not assumed.
+      Heights are tuned per mark so the three read as one optical weight rather
+      than one measurement: the seal and the AAO lockup are tall and square-ish,
+      the Invisalign wordmark is a wide single line. ───────────────────────── */
+.rox-affil-mark{display:block;width:auto;height:var(--rox-mark-h,72px);max-width:100%}
+.rox-affil-name{margin:0;align-self:end;font-family:var(--font-body);font-size:var(--step-body);font-weight:600;line-height:1.25;color:inherit}
+.rox-affil-role{margin:0;font-family:var(--font-mono);font-size:var(--step-small);letter-spacing:var(--tracking-label);text-transform:uppercase;line-height:1.4;color:inherit}
 
 /* ── review grid (Section 07). REVIEWS-SPEC: a static grid of 3, 6 or 9, never
       a carousel, and the card runs stars, then text, then name. Six cards at
@@ -301,13 +319,17 @@ body{padding-bottom:calc(var(--tap) + var(--space-3))}
 .rox-mobile-tel:hover{color:var(--brand)}
 .rox-mobile-tel .rox-icon{width:var(--step-body);height:var(--step-body)}
 .rox-mobile-trigger{display:inline-flex}
-.rox-bar-inner{grid-template-columns:1fr auto auto;column-gap:var(--space-2);min-height:var(--space-5)}
+.rox-bar-inner{grid-template-columns:minmax(0,1fr) auto auto;column-gap:var(--space-2);min-height:var(--space-5)}
+/* the logo track was a bare 1fr, whose auto minimum is the lockup's 164px
+   min-content: wider than the 121px left after the tel and menu buttons, so the
+   bar pushed 19px past the viewport at 320. Let the track and the mark shrink. */
+.rox-logo{min-width:0}
+.rox-mark{max-width:100%;height:auto}
 .rox-bar-inner>.psp-drawer__panel{grid-column:1 / -1;margin-inline:calc(var(--gutter) * -1)}
 .rox-footer-grid{grid-template-columns:1fr 1fr}
 .rox-services{grid-template-columns:repeat(2,minmax(0,1fr))}
 .rox-cta-stack{max-width:none}
 .rox-trust{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:var(--space-4)}
-.rox-affil{grid-template-columns:repeat(3,minmax(0,1fr));row-gap:var(--space-4)}
 .rox-proof{grid-template-columns:repeat(2,minmax(0,1fr))}
 .rox-bar-tel{display:none}
 .rox-br-desktop{display:none}
@@ -317,12 +339,17 @@ body{padding-bottom:calc(var(--tap) + var(--space-3))}
 .rox-mapwrap .rox-figure__frame{height:auto;min-height:0;aspect-ratio:4 / 3}
 }
 @media (max-width:900px){
-/* rule 6: wrap to two rows, never a scroller. Five cells go 3 + 2 above,
-   then 2 + 2 + 1 here, and the marks never shrink below 28px. */
-.rox-affil{grid-template-columns:repeat(2,minmax(0,1fr))}
+/* rule 6: wrap rows, never a scroller, and the marks never shrink below 28px.
+   3 x 2 above, 2 x 3 here, and the logo row stops sharing a row with the
+   training lines, which is fine: the two groups were never one sequence. */
+.rox-affil{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:var(--space-4)}
 }
 @media (max-width:640px){
 .rox-footer-grid,.rox-services,.rox-proof{grid-template-columns:1fr}
+/* one up. The seal eases to 64px so it never dominates a phone column,
+   still well clear of rule 6's 28px floor. */
+.rox-affil{grid-template-columns:1fr;row-gap:var(--space-3)}
+.rox-affil-mark{--rox-mark-h:64px}
 .rox-nap-row{grid-template-columns:1fr}
 .rox-nap-label{padding-top:0}
 }
@@ -581,8 +608,21 @@ body{padding-bottom:calc(var(--tap) + var(--space-3))}
     </div>
   </section>
 
-  <!-- 06 · Affiliations strip. AUTHORITY-LOGOS-SPEC: 5 marks, one tone, down
-       the page and nowhere near the Section 02 credential bar.
+  <!-- 06 · Affiliations strip = the kit's Section 07 Authority Logos, in the
+       slot the kit's homepage order gives it: header, hero, trust bar, meet the
+       doctor, USP zigzag, CTA band, AUTHORITY LOGOS, REVIEWS, services grid,
+       locations, footer. Everything below this comment is numbered to that
+       order, offset by one because the header is not numbered here.
+
+       Note for whoever reads the spec next and thinks this is misplaced:
+       AUTHORITY-LOGOS-SPEC rule 4 has a parenthetical saying "after services
+       grid", which contradicts the kit's own section order in README.md and in
+       build-site/SKILL.md. The numbered order wins, and it also satisfies the
+       part of rule 4 that carries the actual reasoning: never adjacent to the
+       Section 03 credential text bar, so only one of the two carries
+       top-of-page authority. Here that bar is five sections up.
+
+       AUTHORITY-LOGOS-SPEC: 5 marks, one tone, down the page.
        Every cell is a credential this practice actually holds:
          · Board certification and both degrees are on the office signage
            (IMG_8902) and on romansorthodontics.com/about-us.
@@ -593,41 +633,75 @@ body{padding-bottom:calc(var(--tap) + var(--space-3))}
        AAO membership is the sixth cell Dr. Ty asked for and is commented out
        directly below cell 01, not omitted: it is almost certainly held, but
        "almost certainly" is what rule 1 bans. Uncomment on client confirmation.
-       Artwork is interim; see the CSS note above .rox-affil. -->
+
+       ARTWORK PROVENANCE. Three real marks, one muted tone, on Jules's call of
+       2026-08-06 that a single muted colour across the set is permitted.
+         · ABO Board Certified Seal, from the ABO's own site
+           (americanboardortho.com/media/hjcn4qnz/abo_seal_blue.jpg). Their
+           preferred source is the ABO Storefront at https://abo.roc-p.com/,
+           which needs Dr. Romans's login, so replace this with the Storefront
+           file before launch if the two differ.
+         · AAO Member mark, the standard members' logo, which is already
+           single-colour and already carries "Member" in the artwork.
+         · Invisalign wordmark. Align's own standards prefer full colour and
+           permit 1-colour "if the application limits the ability to reproduce
+           the logo in full-color", so the muted set is a deliberate departure
+           agreed with Jules. The approved provider file lives behind
+           practicedev.aligntech.com; swap it in if Align objects.
+       Nothing is redrawn or traced by hand. Each mark is the official artwork
+       turned into an alpha mask, which is also why the tone is exact: see the
+       .rox-affil-mark note in the <style> block.
+
+       TWO RULES FROM THE ABO'S GUIDELINES THAT STILL BIND THE MARKUP:
+         1. "Only individuals may achieve board certification ... must not be
+            used to suggest that a practice or entity has achieved board
+            certification." Cell 01 therefore names Dr. Romans in its role
+            line. Do not shorten it back to a bare "Board certified".
+         2. Marks "may not be displayed larger or more prominently than the
+            Authorized User's own name or branding", which is why the seal is
+            52px next to a 40px header lockup and sits six sections down.
+       The generic line icons that shipped here earlier are gone: a drawn
+       rosette beside the ABO's name was a hand-drawn approximation of their
+       seal, which their guidelines name explicitly.
+
+       STILL NOT LOGOS, and deliberately: Saint Louis University, A.T. Still
+       University and St. Louis Children's Hospital, in row 2. University marks
+       imply institutional endorsement nobody has granted, and SLU's own portal
+       restricts its logos to "the Saint Louis University community" with
+       off-campus use needing written permission from marcom@slu.edu. Stating
+       where he trained is an unrestricted factual claim; showing their logos is
+       not. Do not add them without that permission in writing. -->
   <section class="psp-band psp-band--alt psp-band--edge-both psp-band--pad-tight">
     <div class="psp-container">
       <div class="psp-stack psp-stack--4 psp-stack--start psp-reveal" data-seen="false">
         <p class="psp-eyebrow psp-eyebrow--brand">Certifications &amp; affiliations</p>
         <ul class="rox-affil">
           <li class="rox-affil-cell">
-            <svg class="rox-affil-mark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="9.5" r="6"></circle><path d="m9 14.5-1.5 7L12 19l4.5 2.5-1.5-7"></path><path d="m9.6 9.4 1.7 1.8 3.1-3.4"></path></svg>
-            <p class="rox-affil-name">American Board of Orthodontics</p>
-            <p class="rox-affil-role">Board certified</p>
+            <img class="rox-affil-mark" src="../assets/affiliations/abo-board-certified-seal.png" width="377" height="320" loading="lazy" decoding="async" alt="American Board of Orthodontics, Board Certified">
+            <p class="rox-affil-role">Dr. Nicholas Romans, ABO-Board Certified™</p>
           </li>
-          <!-- 01b · AAO. Uncomment the moment the client confirms membership.
+          <!-- AAO. THE ONE UNCONFIRMED CLAIM IN THIS STRIP. The artwork is the
+               AAO's own member mark and it reads "Member" in the logo itself, so
+               running it asserts a membership nobody has confirmed in writing.
+               Shipping it is Jules's call of 2026-08-06; one reply from the
+               client closes it. If the answer is no, delete this cell. -->
           <li class="rox-affil-cell">
-            <svg class="rox-affil-mark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 4 6v6c0 4.3 3.2 7.9 8 9 4.8-1.1 8-4.7 8-9V6Z"></path><path d="m8.8 11.7 2.1 2.2 4-4.3"></path></svg>
-            <p class="rox-affil-name">American Association of Orthodontists</p>
-            <p class="rox-affil-role">Member</p>
+            <img class="rox-affil-mark" src="../assets/affiliations/aao-member.png" width="495" height="320" loading="lazy" decoding="async" alt="Member, American Association of Orthodontists">
+            <p class="rox-affil-role">Dr. Nicholas Romans, member</p>
           </li>
-          -->
           <li class="rox-affil-cell">
-            <svg class="rox-affil-mark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 8.5c0-1.4 1-2.5 2.4-2.5 1.9 0 2.9 1 5.6 1s3.7-1 5.6-1c1.4 0 2.4 1.1 2.4 2.5 0 3-1.1 4.6-1.6 7.4-.3 1.7-1.5 2.6-3 2.6-1.4 0-2.2-.8-3.4-.8s-2 .8-3.4.8c-1.5 0-2.7-.9-3-2.6C5.1 13.1 4 11.5 4 8.5Z"></path><path d="M8.2 6.6c0 4 .4 7.2 3.8 7.2s3.8-3.2 3.8-7.2"></path></svg>
-            <p class="rox-affil-name">Invisalign<sup>®</sup></p>
+            <img class="rox-affil-mark" src="../assets/affiliations/invisalign.png" width="600" height="132" loading="lazy" decoding="async" alt="Invisalign" style="--rox-mark-h:26px">
             <p class="rox-affil-role">Clear aligner provider</p>
           </li>
           <li class="rox-affil-cell">
-            <svg class="rox-affil-mark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 9 12 4.5 21.5 9 12 13.5Z"></path><path d="M6.5 11v5.2c0 1.5 2.5 2.8 5.5 2.8s5.5-1.3 5.5-2.8V11"></path></svg>
             <p class="rox-affil-name">Saint Louis University</p>
             <p class="rox-affil-role">Orthodontic residency · MSD</p>
           </li>
           <li class="rox-affil-cell">
-            <svg class="rox-affil-mark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4.5h6.2c1 0 1.8.8 1.8 1.8v13c0-1-.8-1.8-1.8-1.8H4Z"></path><path d="M20 4.5h-6.2c-1 0-1.8.8-1.8 1.8v13c0-1 .8-1.8 1.8-1.8H20Z"></path></svg>
             <p class="rox-affil-name">A.T. Still University</p>
             <p class="rox-affil-role">Doctor of Dental Medicine</p>
           </li>
           <li class="rox-affil-cell">
-            <svg class="rox-affil-mark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 20V6.5c0-1.1.9-2 2-2h11c1.1 0 2 .9 2 2V20"></path><path d="M2.5 20h19"></path><path d="M12 8v5"></path><path d="M9.5 10.5h5"></path></svg>
             <p class="rox-affil-name">St. Louis Children’s Hospital</p>
             <p class="rox-affil-role">Craniofacial cleft &amp; palate fellowship</p>
           </li>

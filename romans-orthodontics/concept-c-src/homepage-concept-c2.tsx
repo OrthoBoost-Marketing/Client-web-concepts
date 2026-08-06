@@ -359,9 +359,20 @@ function CtaBand() {
   )
 }
 
-/* Affiliations strip, AUTHORITY-LOGOS-SPEC. Five marks, one muted tone, sitting
-   five bands below the TrustBar so rule 4 is satisfied: only one of the two
-   carries top-of-page authority.
+/* Affiliations strip = the kit's Section 07 Authority Logos. Page() runs the
+   kit's homepage order verbatim: Header, Hero, TrustBar, Doctor (meet the
+   doctor), Zigzag (USP), CtaBand, Affiliations (authority logos), Reviews,
+   Services (services grid), Locations, Footer.
+
+   Note for whoever reads the spec next and thinks this is misplaced:
+   AUTHORITY-LOGOS-SPEC rule 4 has a parenthetical saying "after services grid",
+   which contradicts the kit's own section order in README.md and in
+   build-site/SKILL.md. The numbered order wins, and it also satisfies the part
+   of rule 4 that carries the actual reasoning: never adjacent to the credential
+   text bar, so only one of the two carries top-of-page authority. Here the
+   TrustBar is five bands up.
+
+   AUTHORITY-LOGOS-SPEC: five marks, one muted tone.
 
    Every cell is a credential this practice holds. Board certification and both
    degrees are on the office signage (IMG_8902) and on
@@ -373,26 +384,70 @@ function CtaBand() {
    AAO membership is the sixth mark Dr. Ty asked for. It is held back rather than
    dropped: rule 1 allows only credentials genuinely held, and nobody has
    confirmed the membership. Add this entry to AFFILIATIONS on confirmation:
-     ['aao', 'American Association of Orthodontists', 'Member']
-   with the shield mark from MARKS below. */
-const AFFILIATIONS: [string, string, string][] = [
-  ['seal', 'American Board of Orthodontics', 'Board certified'],
-  ['tray', 'Invisalign®', 'Clear aligner provider'],
-  ['cap', 'Saint Louis University', 'Orthodontic residency · MSD'],
-  ['book', 'A.T. Still University', 'Doctor of Dental Medicine'],
-  ['hospital', 'St. Louis Children’s Hospital', 'Craniofacial cleft & palate fellowship'],
-]
+     ['American Association of Orthodontists®', 'Dr. Nicholas Romans, member']
 
-/* Generic line drawings, deliberately nobody's trademark. See the CSS note
-   above .roc-affil for why, and what replaces them. */
-const MARKS: Record<string, JSX.Element> = {
-  seal: <><circle cx="12" cy="9.5" r="6" /><path d="m9 14.5-1.5 7L12 19l4.5 2.5-1.5-7" /><path d="m9.6 9.4 1.7 1.8 3.1-3.4" /></>,
-  aao: <><path d="M12 3 4 6v6c0 4.3 3.2 7.9 8 9 4.8-1.1 8-4.7 8-9V6Z" /><path d="m8.8 11.7 2.1 2.2 4-4.3" /></>,
-  tray: <><path d="M4 8.5c0-1.4 1-2.5 2.4-2.5 1.9 0 2.9 1 5.6 1s3.7-1 5.6-1c1.4 0 2.4 1.1 2.4 2.5 0 3-1.1 4.6-1.6 7.4-.3 1.7-1.5 2.6-3 2.6-1.4 0-2.2-.8-3.4-.8s-2 .8-3.4.8c-1.5 0-2.7-.9-3-2.6C5.1 13.1 4 11.5 4 8.5Z" /><path d="M8.2 6.6c0 4 .4 7.2 3.8 7.2s3.8-3.2 3.8-7.2" /></>,
-  cap: <><path d="M2.5 9 12 4.5 21.5 9 12 13.5Z" /><path d="M6.5 11v5.2c0 1.5 2.5 2.8 5.5 2.8s5.5-1.3 5.5-2.8V11" /></>,
-  book: <><path d="M4 4.5h6.2c1 0 1.8.8 1.8 1.8v13c0-1-.8-1.8-1.8-1.8H4Z" /><path d="M20 4.5h-6.2c-1 0-1.8.8-1.8 1.8v13c0-1 .8-1.8 1.8-1.8H20Z" /></>,
-  hospital: <><path d="M4.5 20V6.5c0-1.1.9-2 2-2h11c1.1 0 2 .9 2 2V20" /><path d="M2.5 20h19" /><path d="M12 8v5" /><path d="M9.5 10.5h5" /></>,
+   ARTWORK PROVENANCE. Three real marks in one muted tone, on Jules's call of
+   2026-08-06 that a single muted colour across the set is permitted.
+     · ABO Board Certified Seal, from the ABO's own site
+       (americanboardortho.com/media/hjcn4qnz/abo_seal_blue.jpg). Their preferred
+       source is the ABO Storefront at https://abo.roc-p.com/, which needs
+       Dr. Romans's login, so replace this before launch if the files differ.
+     · AAO Member mark, the standard members' logo, already single-colour and
+       already carrying "Member" in the artwork.
+     · Invisalign wordmark. Align's own standards prefer full colour and permit
+       1-colour "if the application limits the ability to reproduce the logo in
+       full-color", so the muted set is a deliberate departure agreed with Jules.
+       The approved provider file is behind practicedev.aligntech.com.
+   Nothing is redrawn by hand: each is the official artwork with its tone baked
+   in. See the .roc-affil-mark note in concept-c.css for why baked, not filtered.
+
+   TWO RULES FROM THE ABO'S GUIDELINES THAT STILL BIND THE MARKUP:
+     1. "Only individuals may achieve board certification ... must not be used to
+        suggest that a practice or entity has achieved board certification." Row
+        01 therefore names Dr. Romans in its role line. Do not shorten it back to
+        a bare "Board certified".
+     2. Marks "may not be displayed larger or more prominently than the
+        Authorized User's own name or branding", which is why the seal is 72px and
+        sits six bands below the header lockup.
+   The generic line drawings that shipped here earlier are gone: a drawn rosette
+   beside the ABO's name was a hand-drawn approximation of their seal, which their
+   guidelines name explicitly.
+
+   STILL NOT LOGOS, deliberately: Saint Louis University, A.T. Still University
+   and St. Louis Children's Hospital. University marks imply institutional
+   endorsement nobody has granted, and SLU's own portal restricts its logos to
+   "the Saint Louis University community", with off-campus use needing written
+   permission from marcom@slu.edu. Stating where he trained is an unrestricted
+   factual claim; showing their logos is not. */
+type Affil = {
+  role: string
+  /* one of the two, never both: a mark for the credential rows, a name for the
+     training rows whose logos we may not run */
+  mark?: { src: string; w: number; h: number; alt: string; height?: string }
+  name?: string
 }
+
+const AFFILIATIONS: Affil[] = [
+  {
+    mark: { src: '../assets/affiliations/abo-board-certified-seal.png', w: 377, h: 320, alt: 'American Board of Orthodontics, Board Certified' },
+    role: 'Dr. Nicholas Romans, ABO-Board Certified™',
+  },
+  /* AAO: THE ONE UNCONFIRMED CLAIM IN THIS STRIP. The artwork is the AAO's own
+     member mark and reads "Member" in the logo itself, so running it asserts a
+     membership nobody has confirmed in writing. Shipping it is Jules's call of
+     2026-08-06; one client reply closes it. If the answer is no, delete this. */
+  {
+    mark: { src: '../assets/affiliations/aao-member.png', w: 495, h: 320, alt: 'Member, American Association of Orthodontists' },
+    role: 'Dr. Nicholas Romans, member',
+  },
+  {
+    mark: { src: '../assets/affiliations/invisalign.png', w: 600, h: 132, alt: 'Invisalign', height: '26px' },
+    role: 'Clear aligner provider',
+  },
+  { name: 'Saint Louis University', role: 'Orthodontic residency · MSD' },
+  { name: 'A.T. Still University', role: 'Doctor of Dental Medicine' },
+  { name: 'St. Louis Children’s Hospital', role: 'Craniofacial cleft & palate fellowship' },
+]
 
 function Affiliations() {
   return (
@@ -403,11 +458,12 @@ function Affiliations() {
             <p className="roc-intro-label">Certifications &amp; affiliations</p>
           </div>
           <ul className="roc-affil">
-            {AFFILIATIONS.map(([mark, name, role], i) => (
-              <li className="roc-anim" style={{ '--i': i } as never} key={name}>
-                <svg className="roc-affil-mark" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">{MARKS[mark]}</svg>
-                <p className="roc-affil-name">{name}</p>
-                <p className="roc-affil-role">{role}</p>
+            {AFFILIATIONS.map((a, i) => (
+              <li className="roc-anim" style={{ '--i': i % 3 } as never} key={a.name ?? a.mark!.src}>
+                {a.mark
+                  ? <img className="roc-affil-mark" src={a.mark.src} width={a.mark.w} height={a.mark.h} loading="lazy" decoding="async" alt={a.mark.alt} style={a.mark.height ? ({ '--roc-mark-h': a.mark.height } as never) : undefined} />
+                  : <p className="roc-affil-name">{a.name}</p>}
+                <p className="roc-affil-role">{a.role}</p>
               </li>
             ))}
           </ul>

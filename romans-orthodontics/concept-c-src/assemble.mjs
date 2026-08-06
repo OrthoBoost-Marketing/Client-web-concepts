@@ -95,6 +95,16 @@ let html = flat
   .replace('</body>', `${scripts}\n</body>`)
   /* flatten emits a bare newline-indented font link block; normalise it */
   .replace(/\n  <link rel="preconnect"/, '\n<link rel="preconnect"')
+  /* site-launch-audit rule 14: a real PNG favicon and a 180px apple-touch-icon
+     alongside the SVG. flatten is client-agnostic and does not know the asset
+     path, so the icon set is appended here. */
+  .replace(
+    /(<link rel="stylesheet" href="design-system\.css">)/,
+    `$1
+<link rel="icon" href="../assets/romans-orthodontics-icon.svg" type="image/svg+xml">
+<link rel="icon" href="../assets/romans-orthodontics-favicon-48.png" sizes="48x48" type="image/png">
+<link rel="apple-touch-icon" href="../assets/romans-orthodontics-apple-touch-icon-180.png">`,
+  )
   /* React passes these through verbatim as unknown props. HTML parses attribute
      names case-insensitively so they work either way, but the emitted file is
      the thing the page-builders copy chrome from, so keep it valid HTML. */

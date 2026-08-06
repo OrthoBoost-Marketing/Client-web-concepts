@@ -41,7 +41,7 @@ img,iframe{max-width:100%}
 
 /* scroll-in motion: opacity plus a short rise, and a hard-edged clip wipe on
    media. Transform, opacity and clip-path only: no blur, shadow or gradient. */
-.roc-js .roc-anim{opacity:0;transform:translateY(16px);transition:opacity var(--roc-in) var(--ease),transform var(--roc-in) var(--ease);transition-delay:calc(var(--i,0) * var(--roc-stagger))}
+.roc-js .roc-anim{opacity:.01;transform:translateY(16px);transition:opacity var(--roc-in) var(--ease),transform var(--roc-in) var(--ease);transition-delay:calc(var(--i,0) * var(--roc-stagger))}
 .roc-js .roc-anim.is-in{opacity:1;transform:none}
 /* The clip goes on the CHILD, never on .roc-wipe itself. Chrome clips an
    IntersectionObserver target's intersection rect by the target's own
@@ -177,20 +177,31 @@ main[id],section[id]{scroll-margin-top:calc(var(--roc-topbar) + var(--space-2))}
 /* affiliations strip: AUTHORITY-LOGOS-SPEC, 4 to 7 marks in one muted tone on
    the tinted band, small quiet label above. It runs five bands below the
    Section 03 credential bar, which is what rule 4 asks for.
-   INTERIM ARTWORK: rule 5 wants each organisation's official logo file
-   untouched, and none are on file. An approximated trademark is worse than no
-   mark, so each cell is set type plus a generic line drawing that belongs to
-   nobody. When the official SVGs arrive, swap the inline <svg> for an
-   <img className="roc-affil-mark"> and nothing else moves. */
-.roc-affil{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:var(--space-2) var(--space-4);list-style:none;margin:0;padding:0;width:100%}
-.roc-affil>li{display:grid;grid-row:span 3;grid-template-rows:subgrid;gap:var(--space-2);align-content:start;padding-left:var(--space-4);border-left:var(--roc-hair)}
-.roc-affil>li:first-child{padding-left:0;border-left:0}
+   TYPE ONLY, and that is a compliance decision rather than a styling one. The
+   ABO Certification Marks Usage Guidelines (July 2025) forbid altering or hand
+   drawing the seal, require the artwork to come from the ABO Storefront, and
+   require the mark to name the certified individual rather than the practice.
+   The TSX comment above Affiliations() carries the full reasoning.
+   .roc-affil-mark is the drop-in slot for real files once the client pulls
+   them. */
+.roc-affil{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--space-5) var(--space-4);list-style:none;margin:0;padding:0;width:100%}
+.roc-affil>li{display:grid;grid-row:span 2;grid-template-rows:subgrid;gap:var(--space-2);align-content:start;padding-left:var(--space-4);border-left:var(--roc-hair);color:var(--ink-muted)}
+.roc-affil>li:nth-child(3n+1){padding-left:0;border-left:0}
 @supports not (grid-template-rows:subgrid){
-.roc-affil>li{grid-row:auto;grid-template-rows:auto auto auto}
+.roc-affil>li{grid-row:auto;grid-template-rows:auto auto}
 }
-.roc-affil-mark{display:block;width:32px;height:32px;color:var(--ink-muted);opacity:.72}
-.roc-affil-name{margin:0;font-family:var(--font-body);font-size:var(--step-body);font-weight:600;line-height:var(--leading-tight);color:var(--ink)}
-.roc-affil-role{margin:0;font-family:var(--font-mono);font-size:var(--step-small);font-weight:500;letter-spacing:var(--tracking-label);text-transform:uppercase;line-height:1.4;color:var(--ink-muted)}
+/* The single muted tone is baked into each PNG: slate at the same .85 alpha
+   --ink-muted carries, times the mark's own alpha, so the knockouts stay real
+   holes rather than white shapes on the tinted band. Baked rather than done in
+   CSS because a grayscale filter maps each logo's ink to a DIFFERENT grey, and
+   mask-image plus currentColor, which would have been exact, is dead on arrival:
+   Chromium refuses to load a mask subresource from a file:// page, so the strip
+   would go blank for anyone opening these files locally. Measured, not assumed. */
+.roc-affil-mark{display:block;width:auto;height:var(--roc-mark-h,72px);max-width:100%}
+/* one tone for the whole set per rule 3, and with no artwork the type is the
+   mark, so hierarchy inside a row comes from size and typeface alone */
+.roc-affil-name{margin:0;align-self:end;font-family:var(--font-body);font-size:var(--step-body);font-weight:600;line-height:var(--leading-tight);color:inherit}
+.roc-affil-role{margin:0;font-family:var(--font-mono);font-size:var(--step-small);font-weight:500;letter-spacing:var(--tracking-label);text-transform:uppercase;line-height:1.4;color:inherit}
 
 /* reviews: REVIEWS-SPEC card anatomy, stars then text then name, in a static
    grid of 3, 6 or 9 and never a carousel. Built on the same seamless hairline
@@ -261,10 +272,11 @@ body[data-kb="1"] .roc-sticky{display:none}
 .roc-bar-inner>.psp-drawer__panel{grid-column:1 / -1;margin-inline:calc(var(--gutter) * -1);padding-inline:var(--gutter)}
 .roc-footer-grid,.roc-services,.roc-credentials,.roc-proof{grid-template-columns:repeat(2,minmax(0,1fr))}
 .roc-credential:nth-child(2n+1){padding-left:0;border-left:0}
-/* AUTHORITY-LOGOS-SPEC rule 6: wrap to two rows, never a scroller, and the
-   marks hold their 32px. Five cells go 3 + 2 here, 2 + 2 + 1 on a phone. */
-.roc-affil{grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--space-4) var(--space-3)}
-.roc-affil>li:nth-child(3n+1){padding-left:0;border-left:0}
+/* AUTHORITY-LOGOS-SPEC rule 6: wrap rows, never a scroller, marks never under
+   28px. 3 up above, 2 up here, 1 up on a phone. */
+.roc-affil{grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--space-4) var(--space-3)}
+.roc-affil>li{padding-left:0;border-left:0}
+.roc-affil>li:nth-child(2n){padding-left:var(--space-3);border-left:var(--roc-hair)}
 .roc-credentials{gap:var(--space-4) 0}
 }
 @media (max-width:640px){
@@ -277,12 +289,13 @@ body[data-kb="1"] .roc-sticky{display:none}
 .roc-hero-actions,.roc-intro-actions{width:100%;justify-content:flex-start}
 .roc-hero-actions>*,.roc-intro-actions>*{flex:1 1 100%;justify-content:center}
 .roc-footer-grid,.roc-services,.roc-proof{grid-template-columns:1fr}
-/* 2 up. The 3n+1 rule from the tier above would clear the divider on cell 4,
-   which is a right-hand cell here, so every cell is reset and then only the
-   right-hand column takes one back. */
-.roc-affil{grid-template-columns:repeat(2,minmax(0,1fr))}
-.roc-affil>li{padding-left:0;border-left:0}
-.roc-affil>li:nth-child(2n){padding-left:var(--space-3);border-left:var(--roc-hair)}
+/* 1 up, so no vertical dividers at all, and the seal eases down for a phone
+   column while staying clear of rule 6's 28px floor. The reset has to match the
+   2n selector from the tier above, not just the bare li: same specificity wins
+   on order, lower loses, and cells 2/4/6 kept their divider and indent. */
+.roc-affil{grid-template-columns:1fr}
+.roc-affil>li,.roc-affil>li:nth-child(2n){padding-left:0;border-left:0}
+.roc-affil-mark{--roc-mark-h:64px}
 /* TRUST-BAR-SPEC rule 5: four cells go 2x2 on mobile, never a single stack. */
 .roc-credentials{grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--space-4) var(--space-3)}
 .roc-credential{padding-left:0;border-left:0}
