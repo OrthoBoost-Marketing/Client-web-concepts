@@ -16,8 +16,7 @@
 <link rel="apple-touch-icon" href="../assets/romans-orthodontics-apple-touch-icon-180.png">
 <meta name="robots" content="noindex">
 <link rel="canonical" href="https://romansorthodontics.com/">
-<link rel="preload" as="image" href="../assets/web/hero-dr-romans-office-wide.webp" media="(min-width:1000px)" fetchpriority="high">
-<link rel="preload" as="image" href="../assets/web/hero-dr-romans-office-tall.webp" media="(max-width:999px)" fetchpriority="high">
+<link rel="preload" as="image" href="../assets/web/hero-dr-romans-office-tall.webp" fetchpriority="high">
 <link rel="stylesheet" href="design-system.css">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"LocalBusiness","name":"Romans Orthodontics","url":"https://romansorthodontics.com/","telephone":"+1-623-320-1222","slogan":"Live a little, smile a lot","address":{"@type":"PostalAddress","streetAddress":"3618 W. Anthem Way, Suite D120","addressLocality":"Anthem","addressRegion":"AZ","postalCode":"85086","addressCountry":"US"}}
@@ -93,24 +92,33 @@ html.js-reveal .psp-reveal:not([data-seen="true"]){opacity:.01;transform:transla
 .rob-drawer-body .psp-disclosure__summary,.rob-drawer-body .psp-disclosure__sign{color:var(--ink-inverse)}
 .rob-drawer-trigger{color:var(--ink-inverse)}
 
-/* ── hero: full-viewport parallax photograph under a slate scrim, content
-      centered: kicker, display headline, lede, actions, and the credential
-      row (the kit's trust bar) inline beneath the actions. ────────────── */
-/* The hero owns exactly the viewport the header does not. The old
-   min(94vh,900px) capped it at 900px, so on any screen taller than ~1000px a
-   strip of the next band showed above the fold on load. svh, not vh, so the
-   mobile URL bar does not push the same strip back into view. */
-.rob-hero{position:relative;display:grid;place-items:center;min-height:calc(100vh - var(--rob-bar-h));min-height:calc(100svh - var(--rob-bar-h));overflow:hidden;background:var(--surface-dark);text-align:center}
-.rob-hero-img{position:absolute;left:0;top:-8%;width:100%;height:116%;object-fit:cover;filter:saturate(.85);will-change:transform;transform:translate3d(0,var(--rob-par,0px),0)}
-/* Scrim stops are the in-editor tuning, expressed against the token instead of
-   the literal slate that was pasted into the element's style attribute. */
-.rob-hero-scrim{position:absolute;inset:0;background:linear-gradient(to bottom,color-mix(in srgb,var(--surface-dark) 57%,transparent),color-mix(in srgb,var(--surface-dark) 60%,transparent) 45%,color-mix(in srgb,var(--surface-dark) 90%,transparent))}
-.rob-hero-inner{position:relative;z-index:1;width:100%;padding-block:calc(var(--section-y) * .7) var(--space-6)}
+/* ── hero: split. Photograph in the left column, the argument in the right,
+      the credential row spanning both beneath.
+      Concept A runs a split too, so this one differs deliberately on every axis
+      a concept is allowed to vary: the slate band instead of paper, the photo on
+      the left instead of the right, a single hairline frame with no copper offset
+      behind it, ragged-left type instead of a centred stack, and the credential
+      row inside the hero instead of in a band of its own. Identity is untouched:
+      same palette, same three typefaces, radius 0, no shadow.
+      The old full-viewport parallax photograph under a scrim is gone with it, and
+      so is the scroll handler that drove it. ────────────────────────────────── */
+/* The hero no longer owns the whole viewport, but the credential row still has
+   to clear the fold: that was true of the old full-bleed hero and losing it
+   would be a regression. The photo is what sets the height here, so it is what
+   gives: 4:5 on paper, capped so the whole hero fits the viewport the header
+   leaves behind, and cropped rather than letterboxed. --rob-hero-reserve is the
+   header, both paddings and the credential row added up. */
+.rob-hero{--rob-hero-reserve:420px;position:relative;background:var(--surface-dark);padding-block:calc(var(--section-y) * .6) calc(var(--section-y) * .8)}
+.rob-hero-split{display:grid;grid-template-columns:0.92fr 1.08fr;gap:var(--space-5);align-items:center}
+/* DOM order is text then photo, which is the phone order HERO-SPEC rule 7 wants
+   (H1, sub, CTA, then photo). order:-1 lifts the photo into the left column on
+   desktop, so one block of markup serves both. */
+.rob-hero-photo{order:-1;display:block;width:100%;height:auto;aspect-ratio:4 / 5;max-height:max(340px,calc(100svh - var(--rob-hero-reserve)));object-fit:cover;object-position:50% 22%;border:1px solid var(--line-inverse);background:var(--surface-dark);filter:saturate(.85)}
 .rob-h1{font-size:var(--rob-step-hero);color:var(--ink-inverse)}
 .rob-h1 em{font-style:normal;font-weight:500;color:color-mix(in srgb,var(--brand) 52%,var(--ink-inverse))}
-.rob-hero .rob-trust{margin-top:var(--space-4);border-top:1px solid var(--line-inverse);padding-top:var(--space-4)}
-.rob-hero .rob-trust-cell{justify-items:center}
-.rob-actions{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:var(--space-3)}
+/* the credential row spans the whole hero, under both columns */
+.rob-hero .rob-trust{margin-top:var(--space-4);border-top:1px solid var(--line-inverse);padding-top:var(--space-3)}
+.rob-actions{display:flex;flex-wrap:wrap;align-items:center;gap:var(--space-3)}
 
 /* ── trust bar: credential variant, typography only. The words are the
       visual. Dark band, hairline dividers, Fraunces line over a mono line. ── */
@@ -266,6 +274,9 @@ body[data-kb="1"] .psp-stickybar{display:none}
 }
 
 @media (max-width:1000px){
+/* the split stacks, and the photo goes back to following the argument */
+.rob-hero-split{grid-template-columns:1fr;gap:var(--space-5)}
+.rob-hero-photo{order:0;aspect-ratio:3 / 2}
 .rob-trust{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:var(--space-4)}
 .rob-trust-cell:nth-child(odd){padding-left:0;border-left:0}
 .rob-trust-cell:nth-child(2){padding-right:0}
@@ -286,7 +297,7 @@ body[data-kb="1"] .psp-stickybar{display:none}
    sizes, rather than any one thing collapsing. The cells stay 2×2 and the
    type stays on the scale. */
 @media (max-width:640px){
-.rob-hero-inner{padding-block:var(--space-4) var(--space-5)}
+.rob-hero{padding-block:var(--space-5) var(--space-6)}
 .rob-hero .psp-stack--3{gap:var(--space-2)}
 .rob-h1{font-size:clamp(32px,8.4vw,40px)}
 .rob-hero .psp-body--lede{font-size:var(--step-body-sm)}
@@ -299,7 +310,7 @@ body[data-kb="1"] .psp-stickybar{display:none}
    scarce here, so the query asks about height, since a 360×740 handset keeps the
    roomier tier above. Tap targets are untouched either way. */
 @media (max-width:640px) and (max-height:720px){
-.rob-hero-inner{padding-block:var(--space-2) var(--space-4)}
+.rob-hero{padding-block:var(--space-4) var(--space-5)}
 .rob-hero .psp-stack--3{gap:var(--space-1)}
 .rob-h1{font-size:28px}
 .rob-actions{gap:var(--space-1)}
@@ -442,34 +453,36 @@ main{padding-bottom:var(--space-6)}
 
 <main id="main">
 
-  <!-- 02+03 · Hero with inline trust bar. Full-viewport parallax photo under a
-       slate scrim, content centered; the credential row (typography-only trust
-       bar) sits beneath the actions. Single office → city in the H1. Swap the
-       exterior for a doctor-with-patient frame when the Drive set lands. -->
+  <!-- 02+03 · Split hero with the credential row inline. Photograph left,
+       argument right, credentials spanning both beneath the actions, which keeps
+       all four of HERO-SPEC's questions above the fold without a second band.
+       Single office, so the city sits in the H1. Deliberately a different split
+       from concept A's: see the .rob-hero note in the <style> block. -->
   <section class="rob-hero" id="hero" data-screen-label="Hero">
-    <picture>
-      <source media="(min-width:1000px)" srcset="../assets/web/hero-dr-romans-office-wide.webp" width="1800" height="1059">
-      <img class="rob-hero-img" src="../assets/web/hero-dr-romans-office-tall.webp" alt="Dr. Nicholas Romans at the front desk of his orthodontic office in Anthem, Arizona" width="1000" height="1250" fetchpriority="high">
-    </picture>
-    <div class="rob-hero-scrim" aria-hidden="true"></div>
-    <div class="rob-hero-inner">
-      <div class="psp-container">
-        <div class="psp-stack psp-stack--3 psp-stack--center">
+    <div class="psp-container">
+      <div class="rob-hero-split">
+        <div class="psp-stack psp-stack--3 psp-stack--start">
           <p class="psp-eyebrow psp-eyebrow--inverse">Anthem, Arizona · Kids, teens &amp; adults</p>
-          <h1 class="psp-heading psp-heading--balance rob-h1" style="max-width: 16ch; font-style: normal">Braces &amp; Invisalign in Anthem, for <em>your whole family</em></h1>
+          <h1 class="psp-heading psp-heading--balance rob-h1" style="max-width:20ch;font-style:normal">Braces &amp; Invisalign in Anthem, for <em>your whole family</em></h1>
           <p class="psp-body psp-body--lede psp-body--inverse" style="max-width:46ch">Dr. Nicholas Romans is a board-certified orthodontist, and he personally plans and finishes every treatment in this office.</p>
           <div class="rob-actions">
             <a class="psp-button" href="free-consult.html">Book a free consult</a>
             <a class="psp-linkarrow psp-linkarrow--inverse" href="tel:+16233201222">Or call (623) 320-1222 →</a>
           </div>
-          <ul class="rob-trust">
-            <li class="rob-trust-cell"><p class="rob-trust-title">Board-certified</p><p class="rob-trust-sub">Orthodontist</p></li>
-            <li class="rob-trust-cell"><p class="rob-trust-title">DMD, MSD</p><p class="rob-trust-sub">Advanced specialty training</p></li>
-            <li class="rob-trust-cell"><p class="rob-trust-title">7+ years</p><p class="rob-trust-sub">Dedicated to orthodontics</p></li>
-            <li class="rob-trust-cell"><p class="rob-trust-title">Free</p><p class="rob-trust-sub">First consultation</p></li>
-          </ul>
         </div>
+        <!-- LCP element: preloaded in the head, high priority, never lazy. -->
+        <img class="rob-hero-photo" src="../assets/web/hero-dr-romans-office-tall.webp" width="1000" height="1250" fetchpriority="high" decoding="async" alt="Dr. Nicholas Romans at the front desk of his orthodontic office in Anthem, Arizona">
       </div>
+      <!-- The credential variant of the kit's trust bar, per TRUST-BAR-SPEC:
+           new practice, so credentials rather than stats, typography only, no
+           icons. Cell 03 carries the condensed value; the approved quote runs
+           verbatim once in the doctor block below and must not be pasted here. -->
+      <ul class="rob-trust">
+        <li class="rob-trust-cell"><p class="rob-trust-title">Board-certified</p><p class="rob-trust-sub">American Board of Orthodontics</p></li>
+        <li class="rob-trust-cell"><p class="rob-trust-title">DMD, MSD</p><p class="rob-trust-sub">Doctorate and master&rsquo;s degree</p></li>
+        <li class="rob-trust-cell"><p class="rob-trust-title">7+ years</p><p class="rob-trust-sub">In the orthodontic specialty</p></li>
+        <li class="rob-trust-cell"><p class="rob-trust-title">Complimentary</p><p class="rob-trust-sub">Initial consultation</p></li>
+      </ul>
     </div>
   </section>
 
@@ -484,11 +497,17 @@ main{padding-bottom:var(--space-6)}
             <p class="psp-eyebrow psp-eyebrow--muted">Meet your orthodontist</p>
             <h2 class="psp-heading psp-heading--md" style="max-width:22ch">Dr. Nicholas Romans</h2>
             <p class="psp-body psp-body--muted" style="max-width:54ch">Dr. Romans opened this practice in Anthem after more than 5,000 patients elsewhere, because he wanted an office where he knows every name on the schedule. Kids, teens and parents are all treated here: one orthodontist for the whole family, start to finish.</p>
+            <!-- MEET-THE-DOCTOR-SPEC wants 3 to 6 credentials here. Line 3 is
+                 CLIENT-BRIEF's approved quote and appears VERBATIM exactly once
+                 on the page, which is here: never paste it into the trust bar,
+                 which carries the condensed value instead. Degree names are
+                 spelled out from romansorthodontics.com/about-us. -->
             <ul class="rob-creds">
               <li>Board-certified orthodontist</li>
-              <li>DMD, MSD</li>
+              <li>DMD, Doctor of Dental Medicine</li>
+              <li>MSD, Master of Science in Dentistry, with a certificate in orthodontics</li>
               <li>More than 7 years dedicated to orthodontics, including advanced specialty training</li>
-              <li>Solo practice, one orthodontist start to finish</li>
+              <li>Sole practitioner, so one orthodontist carries a case from diagnosis through retention</li>
             </ul>
             <a class="psp-button psp-button--ghost" href="dr-romans.html">Meet Dr. Romans</a>
           </div>
@@ -898,7 +917,7 @@ main{padding-bottom:var(--space-6)}
 
 <script>
 /* Production runtime. Replaces the design tool's preview component runtime:
-   the reveals, the drawer, the hero parallax and the keyboard-aware sticky
+   the reveals, the drawer and the keyboard-aware sticky
    bar all lived in it, so a page without this script renders five blocks at
    opacity 0. Progressive enhancement: CSS shows everything by default and
    this opts in to the hidden-then-revealed state. */
@@ -960,22 +979,6 @@ main{padding-bottom:var(--space-6)}
   document.addEventListener('click', function (e) {
     if (!e.target.closest || !e.target.closest('.rob-nav-item')) closeNav(null)
   })
-
-  var hero = document.querySelector('.rob-hero')
-  if (hero && !reduce) {
-    var raf = 0
-    var onScroll = function () {
-      if (raf) return
-      raf = requestAnimationFrame(function () {
-        raf = 0
-        var r = hero.getBoundingClientRect()
-        var p = Math.max(0, Math.min(1, -r.top / (r.height || 1)))
-        hero.style.setProperty('--rob-par', (p * r.height * 0.12).toFixed(1) + 'px')
-      })
-    }
-    window.addEventListener('scroll', onScroll, { passive: true })
-    onScroll()
-  }
 
   var vv = window.visualViewport
   if (vv) {
