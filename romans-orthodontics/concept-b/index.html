@@ -194,20 +194,22 @@ html.js-reveal .psp-reveal:not([data-seen="true"]){opacity:0;transform:translate
 .rob-affil-name{font-family:var(--font-body);font-size:var(--step-body);font-weight:600;line-height:1.25;color:var(--ink)}
 .rob-affil-role{font-family:var(--font-mono);font-size:var(--step-small);letter-spacing:var(--tracking-label);text-transform:uppercase;line-height:1.4;color:var(--ink-muted)}
 
-/* ── social proof grid (Section 08) ──────────────────────────────────────
-   REVIEWS-SPEC card anatomy and its static 3/6/9 grid, on this concept's
-   ruled construction. The review variant commented into the markup reuses this
-   exact shell: same grid, same cell, stars and a name instead of the ordinal
-   and the organisation. */
+/* ── review grid (Section 08) ────────────────────────────────────────────
+   REVIEWS-SPEC: a static grid of 3, 6 or 9, never a carousel, and the card runs
+   stars, then text, then name. Built on this concept's ruled construction, so
+   six cells at three columns make two rows inside one hairline frame. The
+   middle row of the cell template takes the slack, which puts every reviewer's
+   name on one line across a row however long the quotes are. */
 .rob-proof{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);list-style:none;margin:0;padding:0;width:100%}
-.rob-proof li{display:grid;gap:var(--space-2);align-content:start;padding:var(--space-4) var(--space-3);background:var(--surface)}
+.rob-proof li{display:grid;grid-template-rows:auto 1fr auto;gap:var(--space-2);padding:var(--space-4) var(--space-3);background:var(--surface)}
 .rob-proof-head{display:flex;align-items:baseline;gap:var(--space-2)}
-.rob-proof-ord{font-family:var(--font-mono);font-size:var(--step-small);letter-spacing:var(--tracking-label);color:var(--brand)}
-/* review variant only: stars take the ordinal's slot at the same size, so the
-   swap does not move the cell's first baseline */
-.rob-stars{display:flex;gap:.18em;font-size:var(--step-body-sm);letter-spacing:.06em;color:var(--brand)}
-.rob-quote{margin:0;font-family:var(--font-body)}
-.rob-quote-name{font-family:var(--font-mono);font-size:var(--step-small);letter-spacing:var(--tracking-label);text-transform:uppercase;color:var(--ink-muted)}
+/* copper, at the size the mono labels run at everywhere else. Five spans rather
+   than one string, so the gap has something to act on */
+.rob-stars{display:flex;gap:.18em;font-size:var(--step-body-sm);color:var(--brand)}
+/* a blockquote, because that is what it is. No quotation-mark ornament: the
+   stars already open the cell and the design decorates nothing else */
+.rob-quote{margin:0}
+.rob-quote-name{margin:0;font-family:var(--font-mono);font-size:var(--step-small);letter-spacing:var(--tracking-label);text-transform:uppercase;color:var(--ink-muted)}
 
 /* ── footer ─────────────────────────────────────────────────────────────── */
 .rob-footer-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1.1fr;gap:var(--space-5) var(--space-4)}
@@ -590,54 +592,81 @@ main{padding-bottom:var(--space-6)}
     </div>
   </section>
 
-  <!-- 08 · Social proof. Sits adjacent to the affiliations strip, where
+  <!-- 08 · Reviews. Sits adjacent to the affiliations strip, where
        AUTHORITY-LOGOS-SPEC rule 4 wants that strip to be.
 
-       WHY THIS IS NOT A REVIEW GRID YET. Rechecked 2026-08-06 across Google,
-       Bing, Yelp, Healthgrades and the practice's own site: the practice and
-       Dr. Romans personally have ZERO published reviews anywhere. Healthgrades
-       says "Be the first to review this provider"; romansorthodontics.com has a
-       "Real Stories. Real Smiles." heading with nothing beneath it.
-       REVIEWS-SPEC bans fabricated and paraphrased reviews, so the grid runs on
-       proof that does exist. Every line below is quoted from
-       romansorthodontics.com/about-us. That is a NEW SOURCE, not in
-       CLIENT-BRIEF.md, so it wants one client sign-off.
+       All six quotes are VERBATIM Google reviews, supplied 2026-08-06 from the
+       practice's Google Business Profile (data id
+       0x872c9d16d8288341:0xcf7111a685c99048, cid 14947748045126209608), names
+       exactly as Google displays them. Two end in an ellipsis because Google
+       truncated them in the source list; each is cut at a sentence boundary and
+       nothing was added or reworded. Pull the full text from the profile if it
+       is wanted. Never reconstruct it.
 
-       THE SWAP, once 3+ real Google reviews exist: keep the section, the grid
-       and the cell. Heading becomes "What Anthem families are saying",
-       .rob-proof-ord becomes .rob-stars, each body becomes a verbatim Google
-       review (trim with "…", never rewrite) and .rob-quote-name carries the
-       name exactly as Google shows it. That CSS already ships in the <style>
-       block. Add the door beneath: <a class="psp-linkarrow" href="[GBP review
-       URL]">Read more reviews on Google →</a>, and per rule 5 no count line
-       until the count is worth showing. NEVER aggregateRating or Review JSON-LD
-       on Google-sourced quotes. Six cards is the better target, three the
-       floor. Rule 6 card jobs to harvest for: the price story, the anxious
-       patient, the result, the kindness, the emergency, the loyalty. -->
-  <section class="psp-band" data-screen-label="In the community">
+       Rule 6, six cards doing six jobs, five of them corroborating a claim this
+       page already makes:
+         Fortier   · never been to an orthodontist, put at ease, and she names
+                     board certification and owner-operated in her own words
+         Schmitt   · the plan-and-price story, against the free consult
+         McGhee    · insurance handled, against zigzag row 02
+         Herkelman · a hard case coordinated across three practices
+         Shemirani · explained clearly, never rushed, informed decision
+         Shelley   · a fellow orthodontist who worked with him for 2 years
+       No loyalty or finished-result card: the practice is weeks old, so no
+       truthful one exists yet. Do not fill that gap with a weaker quote.
+
+       TWO THINGS STILL OPEN, both one look at the profile:
+       1. STARS ARE ASSERTED AT 5, not verified. The supplied list carried no
+          per-review rating. Every text here is unambiguously top-rated, but
+          confirm before launch and correct any that is not a 5.
+       2. No rating eyebrow and no count line, though rule 4 and rule 5 allow
+          both and the count is now worth showing. TRUST-BAR rule 1 requires a
+          displayed figure to match the live profile exactly, and that figure is
+          not confirmed. Add "X.X ★ on Google · NN reviews" as the eyebrow here
+          once it is.
+       Do NOT add aggregateRating or Review JSON-LD to these. Google's
+       self-serving-review policy: display, do not mark up.
+
+       The volunteer-work band that held this slot before the reviews arrived is
+       preserved in commit 26f7a25 and belongs on dr-romans.html. -->
+  <section class="psp-band" data-screen-label="Reviews">
     <div class="psp-container">
       <div class="psp-stack psp-stack--4 psp-stack--start psp-reveal" data-seen="false">
-        <p class="psp-eyebrow psp-eyebrow--muted">In the community</p>
-        <h2 class="psp-heading psp-heading--md" style="max-width:26ch">Free care he was giving before he had a practice</h2>
-        <p class="psp-body psp-body--muted" style="max-width:56ch">Three of the programs Dr. Romans has volunteered with over his career, all of them treating people who would otherwise go without. Closer to home, he volunteers with the Arizona Humane Society.</p>
+        <p class="psp-eyebrow psp-eyebrow--muted">Reviews</p>
+        <h2 class="psp-heading psp-heading--md" style="max-width:26ch">What Anthem families are saying</h2>
         <ul class="rob-proof">
           <li>
-            <div class="rob-proof-head"><span class="rob-proof-ord">01</span></div>
-            <h3 class="psp-heading psp-heading--sm">Give Kids A Smile</h3>
-            <p class="psp-body psp-body--small psp-body--muted">A day of free dental care for children whose families cannot cover it, run through dental schools and volunteer practices.</p>
+            <div class="rob-proof-head"><span class="rob-stars" role="img" aria-label="Rated 5 out of 5"><span aria-hidden="true">★</span><span aria-hidden="true">★</span><span aria-hidden="true">★</span><span aria-hidden="true">★</span><span aria-hidden="true">★</span></span></div>
+            <blockquote class="rob-quote psp-body psp-body--small">I recently saw Dr. Romans for the first time and was very impressed with his warm personality and his ability to make me feel at ease. I’ve never been to an orthodontist before…</blockquote>
+            <p class="rob-quote-name">Janice Fortier</p>
           </li>
           <li>
-            <div class="rob-proof-head"><span class="rob-proof-ord">02</span></div>
-            <h3 class="psp-heading psp-heading--sm">Missions of Mercy</h3>
-            <p class="psp-body psp-body--small psp-body--muted">Large free clinics set up for a weekend at a time, treating whoever is in the queue for as long as the queue lasts.</p>
+            <div class="rob-proof-head"><span class="rob-stars" role="img" aria-label="Rated 5 out of 5"><span aria-hidden="true">★</span><span aria-hidden="true">★</span><span aria-hidden="true">★</span><span aria-hidden="true">★</span><span aria-hidden="true">★</span></span></div>
+            <blockquote class="rob-quote psp-body psp-body--small">We had a great consultation with Dr Romans. He was thorough and kind. My daughter felt really comfortable and we thought his treatment plan was solid and fairly priced.</blockquote>
+            <p class="rob-quote-name">Mariel Schmitt</p>
           </li>
           <li>
-            <div class="rob-proof-head"><span class="rob-proof-ord">03</span></div>
-            <h3 class="psp-heading psp-heading--sm">Dentures for Veterans</h3>
-            <p class="psp-body psp-body--small psp-body--muted">Dentures made and fitted at no charge for veterans, so a bill is not the reason someone goes without them.</p>
+            <div class="rob-proof-head"><span class="rob-stars" role="img" aria-label="Rated 5 out of 5"><span aria-hidden="true">★</span><span aria-hidden="true">★</span><span aria-hidden="true">★</span><span aria-hidden="true">★</span><span aria-hidden="true">★</span></span></div>
+            <blockquote class="rob-quote psp-body psp-body--small">I have nothing but good things to say about this office and team. They went above and beyond to resolve my insurance claim and talk me through the process. The space is professional and clean. Kazja and Dr Romans are amazing!</blockquote>
+            <p class="rob-quote-name">Isabelle McGhee</p>
+          </li>
+          <li>
+            <div class="rob-proof-head"><span class="rob-stars" role="img" aria-label="Rated 5 out of 5"><span aria-hidden="true">★</span><span aria-hidden="true">★</span><span aria-hidden="true">★</span><span aria-hidden="true">★</span><span aria-hidden="true">★</span></span></div>
+            <blockquote class="rob-quote psp-body psp-body--small">Very excited to get started with my treatment! I have a difficult case with a missing tooth and canine stuck high up, but Dr Romans coordinated everything with the periodontist and general dentist. Gorgeous office and well run.</blockquote>
+            <p class="rob-quote-name">Halle Herkelman</p>
+          </li>
+          <li>
+            <div class="rob-proof-head"><span class="rob-stars" role="img" aria-label="Rated 5 out of 5"><span aria-hidden="true">★</span><span aria-hidden="true">★</span><span aria-hidden="true">★</span><span aria-hidden="true">★</span><span aria-hidden="true">★</span></span></div>
+            <blockquote class="rob-quote psp-body psp-body--small">Dr. Romans has a way of explaining things clearly and honestly. You never feel rushed, and it’s obvious he wants people to make informed decisions about their care.</blockquote>
+            <p class="rob-quote-name">Bijan Shemirani</p>
+          </li>
+          <li>
+            <div class="rob-proof-head"><span class="rob-stars" role="img" aria-label="Rated 5 out of 5"><span aria-hidden="true">★</span><span aria-hidden="true">★</span><span aria-hidden="true">★</span><span aria-hidden="true">★</span><span aria-hidden="true">★</span></span></div>
+            <blockquote class="rob-quote psp-body psp-body--small">As a fellow orthodontist, I had the privilege of working with Dr. Romans for over 2 years. Dr. Romans knows how to deliver a beautiful smile AND a healthy bite that will last a lifetime…</blockquote>
+            <p class="rob-quote-name">Jacob Shelley</p>
           </li>
         </ul>
-        <a class="psp-linkarrow" href="dr-romans.html">Meet Dr. Romans →</a>
+        <a class="psp-linkarrow" href="https://www.google.com/maps?cid=14947748045126209608">Read more reviews on Google →</a>
       </div>
     </div>
   </section>

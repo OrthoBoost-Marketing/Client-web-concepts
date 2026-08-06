@@ -192,18 +192,19 @@ main[id],section[id]{scroll-margin-top:calc(var(--roc-topbar) + var(--space-2))}
 .roc-affil-name{margin:0;font-family:var(--font-body);font-size:var(--step-body);font-weight:600;line-height:var(--leading-tight);color:var(--ink)}
 .roc-affil-role{margin:0;font-family:var(--font-mono);font-size:var(--step-small);font-weight:500;letter-spacing:var(--tracking-label);text-transform:uppercase;line-height:1.4;color:var(--ink-muted)}
 
-/* social proof: REVIEWS-SPEC card anatomy and its static 3/6/9 grid, built on
-   the same seamless hairline grid the services section uses. The review variant
-   noted in the TSX reuses this shell exactly: stars and a name take the places
-   the ordinal and the organisation hold now. */
+/* reviews: REVIEWS-SPEC card anatomy, stars then text then name, in a static
+   grid of 3, 6 or 9 and never a carousel. Built on the same seamless hairline
+   grid the services section uses, so six cells at three columns read as two
+   rows of one object. The middle template row takes the slack, which lands
+   every reviewer's name on one line across a row however long the quotes run. */
 .roc-proof{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;list-style:none;margin:0;padding:0;width:100%;background:var(--line);border-block:var(--roc-hair)}
-.roc-proof>li{display:grid;gap:var(--space-2);align-content:start;padding:var(--space-4);background:var(--surface)}
-.roc-proof-num{font-family:var(--font-mono);font-size:var(--step-small);font-weight:500;letter-spacing:var(--tracking-label);color:var(--ink-muted)}
-.roc-proof-desc{margin:0;font-family:var(--font-body);font-size:var(--step-body-sm);line-height:var(--leading-body);color:var(--ink-muted)}
-/* review variant only: stars take the ordinal's slot at the same size, so the
-   swap never shifts a card's first baseline */
-.roc-stars{display:flex;gap:.18em;font-size:var(--step-body-sm);letter-spacing:.06em;color:var(--brand)}
-.roc-quote{margin:0;font-family:var(--font-body);font-size:var(--step-body);line-height:var(--leading-body);color:var(--ink)}
+.roc-proof>li{display:grid;grid-template-rows:auto 1fr auto;gap:var(--space-2);padding:var(--space-4);background:var(--surface)}
+/* copper, at the size the mono labels run at everywhere else. Five spans rather
+   than one string, so the gap has something to act on. */
+.roc-stars{display:flex;gap:.18em;font-size:var(--step-body-sm);color:var(--brand)}
+/* a blockquote, because that is what it is. No quotation-mark ornament: the
+   stars already open the cell and this design decorates nothing. */
+.roc-quote{margin:0;font-family:var(--font-body);font-size:var(--step-body-sm);line-height:var(--leading-body);color:var(--ink)}
 .roc-quote-name{font-family:var(--font-mono);font-size:var(--step-small);font-weight:500;letter-spacing:var(--tracking-label);text-transform:uppercase;color:var(--ink-muted)}
 
 /* locations */

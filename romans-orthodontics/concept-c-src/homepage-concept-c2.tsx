@@ -19,9 +19,9 @@
       dropped with them: it was preview-only and must never ship as a state.
 
    Flagged placeholders that REMAIN on purpose: office hours (twice, and omitted
-   from the JSON-LD rather than guessed) and social profile URLs. There is still
-   no review grid, because there are still no reviews; SocialProof() carries the
-   proof that does exist and the note above it holds the swap instructions. */
+   from the JSON-LD rather than guessed) and social profile URLs. Reviews() runs
+   six verbatim Google reviews as of 2026-08-06; see the note above it for what
+   is still unconfirmed about them. */
 import {
   TokenProvider, Band, Container, Stack, Split, Heading, Body, Button,
   Figure, Drawer, StickyBar, LinkArrow, Rule, SkipLink, Disclosure,
@@ -417,55 +417,76 @@ function Affiliations() {
   )
 }
 
-/* STILL NOT A REVIEW GRID, and this is the third build cycle to say so.
-   Rechecked 2026-08-06 against Google, Bing, Yelp, Healthgrades and the
-   practice's own site: Romans Orthodontics and Dr. Romans personally have ZERO
-   published reviews anywhere. Healthgrades reads "Be the first to review this
-   provider"; romansorthodontics.com carries a "Real Stories. Real Smiles."
-   heading with nothing under it. REVIEWS-SPEC bans fabricated and paraphrased
-   reviews, so the section runs on proof that does exist instead of not running
-   at all, which is the change Dr. Ty asked for on 2026-08-06.
+/* Reviews. All six quotes are VERBATIM Google reviews, supplied 2026-08-06 from
+   the practice's Google Business Profile (data id
+   0x872c9d16d8288341:0xcf7111a685c99048, cid 14947748045126209608), names
+   exactly as Google displays them. Two end in an ellipsis because Google
+   truncated them in the source list; each is cut at a sentence boundary and
+   nothing was added or reworded. Pull the full text off the profile if it is
+   wanted. Never reconstruct it.
 
-   Every line below is quoted from romansorthodontics.com/about-us. That is a
-   NEW SOURCE, not in CLIENT-BRIEF, so it wants one client sign-off.
+   Rule 6, six cards doing six jobs, and five corroborate a claim this page
+   already makes, which is the point of the rule: the page ends up auditing
+   itself true in a patient's voice.
+     Fortier   · never been to an orthodontist, put at ease. She names board
+                 certification and owner-operated, which is what the
+                 affiliations strip and the trust bar assert on our authority
+     Schmitt   · the plan-and-price story, against the free consult
+     McGhee    · insurance handled, against the zigzag's insurance row
+     Herkelman · a hard case coordinated across three practices
+     Shemirani · explained clearly, never rushed, informed decision, which is
+                 this concept's whole spine
+     Shelley   · a fellow orthodontist who worked with him for 2 years
+   No loyalty or finished-result card: the practice is weeks old, so no truthful
+   one exists yet. Do not fill that gap with a weaker quote.
 
-   THE SWAP, once 3+ real Google reviews exist: keep this component, this band
-   and this grid. Heading becomes "What Anthem families are saying",
-   .roc-proof-num becomes .roc-stars, each .roc-proof-desc becomes a verbatim
-   Google review (trim with "…", never rewrite) and .roc-quote-name carries the
-   name exactly as Google displays it. All of that CSS already ships in
-   concept-c.css. Add the door beneath the grid, a LinkArrow to the GBP review
-   URL, and per rule 5 no count line until the count is worth showing. NEVER
-   aggregateRating or Review schema on Google-sourced quotes. Six cards is the
-   better target and three is the floor; rule 6 wants a different job per card,
-   so harvest for the price story, the anxious patient, the result, the
-   kindness, the emergency and the loyalty. */
-const COMMUNITY: [string, string][] = [
-  ['Give Kids A Smile', 'A day of free dental care for children whose families cannot cover it, run through dental schools and volunteer practices.'],
-  ['Missions of Mercy', 'Large free clinics set up for a weekend at a time, treating whoever is in the queue for as long as the queue lasts.'],
-  ['Dentures for Veterans', 'Dentures made and fitted at no charge for veterans, so a bill is not the reason someone goes without them.'],
+   TWO THINGS STILL OPEN, both one look at the profile:
+   1. STARS ARE ASSERTED AT 5, not verified. The supplied list carried no
+      per-review rating. Every text here is unambiguously top-rated, but confirm
+      before launch and correct any that is not a 5.
+   2. No rating eyebrow and no count line, though rule 4 and rule 5 allow both
+      and the count is now worth showing. TRUST-BAR rule 1 requires a displayed
+      figure to match the live profile exactly and that figure is unconfirmed.
+      Once it is, the roc-intro-label becomes "X.X ★ on Google · NN reviews".
+   Do NOT add aggregateRating or Review schema to these. Google's
+   self-serving-review policy: display, do not mark up.
+
+   The volunteer-work band that held this slot before the reviews arrived
+   (Give Kids A Smile, Missions of Mercy, Dentures for Veterans, quoted from
+   romansorthodontics.com/about-us) is preserved in commit 26f7a25 and belongs
+   on dr-romans.html when that page is built. */
+const GBP_REVIEWS = 'https://www.google.com/maps?cid=14947748045126209608'
+
+const REVIEWS: [string, string][] = [
+  ['Janice Fortier', 'I recently saw Dr. Romans for the first time and was very impressed with his warm personality and his ability to make me feel at ease. I’ve never been to an orthodontist before…'],
+  ['Mariel Schmitt', 'We had a great consultation with Dr Romans. He was thorough and kind. My daughter felt really comfortable and we thought his treatment plan was solid and fairly priced.'],
+  ['Isabelle McGhee', 'I have nothing but good things to say about this office and team. They went above and beyond to resolve my insurance claim and talk me through the process. The space is professional and clean. Kazja and Dr Romans are amazing!'],
+  ['Halle Herkelman', 'Very excited to get started with my treatment! I have a difficult case with a missing tooth and canine stuck high up, but Dr Romans coordinated everything with the periodontist and general dentist. Gorgeous office and well run.'],
+  ['Bijan Shemirani', 'Dr. Romans has a way of explaining things clearly and honestly. You never feel rushed, and it’s obvious he wants people to make informed decisions about their care.'],
+  ['Jacob Shelley', 'As a fellow orthodontist, I had the privilege of working with Dr. Romans for over 2 years. Dr. Romans knows how to deliver a beautiful smile AND a healthy bite that will last a lifetime…'],
 ]
 
-function SocialProof() {
+function Reviews() {
   return (
     <Band tone="surface">
       <Container>
         <Stack gap={5}>
           <div className="roc-intro roc-anim">
-            <p className="roc-intro-label">In the community</p>
-            <Heading level={2} size="md" measure={26} balance>Care given away, before there was a practice.</Heading>
-            <p className="roc-intro-lede">Three of the programs Dr. Romans has volunteered with over his career, each one treating people who would otherwise go without. Closer to home, he volunteers with the Arizona Humane Society.</p>
+            <p className="roc-intro-label">Reviews</p>
+            <Heading level={2} size="md" measure={26} balance>What Anthem families are saying.</Heading>
           </div>
           <ul className="roc-proof">
-            {COMMUNITY.map(([name, desc], i) => (
-              <li className="roc-anim" style={{ '--i': i } as never} key={name}>
-                <span className="roc-proof-num">{String(i + 1).padStart(2, '0')}</span>
-                <Heading level={3} size="sm">{name}</Heading>
-                <p className="roc-proof-desc">{desc}</p>
+            {REVIEWS.map(([name, text], i) => (
+              <li className="roc-anim" style={{ '--i': i % 3 } as never} key={name}>
+                <span className="roc-stars" role="img" aria-label="Rated 5 out of 5">
+                  {[0, 1, 2, 3, 4].map((s) => <span aria-hidden="true" key={s}>★</span>)}
+                </span>
+                <blockquote className="roc-quote">{text}</blockquote>
+                <span className="roc-quote-name">{name}</span>
               </li>
             ))}
           </ul>
-          <LinkArrow href="dr-romans.html">Read Dr. Romans&rsquo;s story</LinkArrow>
+          <LinkArrow href={GBP_REVIEWS}>Read more reviews on Google</LinkArrow>
         </Stack>
       </Container>
     </Band>
@@ -602,7 +623,7 @@ export default function Page() {
         <Zigzag />
         <CtaBand />
         <Affiliations />
-        <SocialProof />
+        <Reviews />
         <Services />
         <Locations />
       </main>
