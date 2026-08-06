@@ -429,7 +429,7 @@ type Affil = {
 
 const AFFILIATIONS: Affil[] = [
   {
-    mark: { src: '../assets/affiliations/abo-board-certified-seal.png', w: 377, h: 320, alt: 'American Board of Orthodontics, Board Certified' },
+    mark: { src: '../assets/affiliations/abo-board-certified-seal.png', w: 378, h: 320, alt: 'American Board of Orthodontics, Board Certified' },
     role: 'Dr. Nicholas Romans, ABO-Board Certified™',
   },
   /* AAO: THE ONE UNCONFIRMED CLAIM IN THIS STRIP. The artwork is the AAO's own
@@ -441,7 +441,7 @@ const AFFILIATIONS: Affil[] = [
     role: 'Dr. Nicholas Romans, member',
   },
   {
-    mark: { src: '../assets/affiliations/invisalign.png', w: 600, h: 132, alt: 'Invisalign', height: '26px' },
+    mark: { src: '../assets/affiliations/invisalign.png', w: 708, h: 156, alt: 'Invisalign', height: '26px' },
     role: 'Clear aligner provider',
   },
   { name: 'Saint Louis University', role: 'Orthodontic residency · MSD' },
@@ -453,7 +453,7 @@ function Affiliations() {
   return (
     <Band tone="alt" edge="both" pad="tight">
       <Container>
-        <Stack gap={4}>
+        <Stack gap={3}>
           <div className="roc-intro roc-anim">
             <p className="roc-intro-label">Certifications &amp; affiliations</p>
           </div>

@@ -193,7 +193,7 @@ html.js-reveal .psp-reveal:not([data-seen="true"]){opacity:.01;transform:transla
    The section comment carries the full reasoning. .rob-affil-mark is the
    drop-in slot for real files once the client pulls them. */
 .rob-affil{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);list-style:none;margin:0;padding:0;width:100%}
-.rob-affil li{display:grid;grid-row:span 2;grid-template-rows:subgrid;gap:var(--space-2);align-content:start;padding:var(--space-4) var(--space-3);background:var(--surface);color:var(--ink-muted)}
+.rob-affil li{display:grid;grid-row:span 2;grid-template-rows:subgrid;gap:var(--space-1);align-content:start;padding:var(--space-3);background:var(--surface);color:var(--ink-muted)}
 @supports not (grid-template-rows:subgrid){
 .rob-affil li{grid-row:auto;grid-template-rows:auto auto}
 }
@@ -204,7 +204,11 @@ html.js-reveal .psp-reveal:not([data-seen="true"]){opacity:.01;transform:transla
    currentColor, which would have been exact, is dead on arrival: Chromium
    refuses to load a mask subresource from a file:// page, so the strip would go
    blank for anyone opening these files locally. Measured, not assumed. */
-.rob-affil-mark{display:block;width:auto;height:var(--rob-mark-h,72px);max-width:100%}
+/* Bottom-aligned in the subgrid row, not top. The seal and the AAO lockup fill
+   the 72px row but the Invisalign wordmark is 26px, so top-aligning left it
+   floating with a gap above its descriptor while the other two sat tight. All
+   three now share one baseline just above the line they label. */
+.rob-affil-mark{display:block;align-self:end;width:auto;height:var(--rob-mark-h,72px);max-width:100%}
 /* one tone for the whole set per rule 3, and with no artwork the type is the
    mark, so hierarchy inside a cell comes from size and typeface alone */
 .rob-affil-name{margin:0;align-self:end;font-family:var(--font-body);font-size:var(--step-body);font-weight:600;line-height:1.25;color:inherit}
@@ -624,7 +628,7 @@ main{padding-bottom:var(--space-6)}
         <p class="psp-eyebrow psp-eyebrow--brand">The grown-up credentials</p>
         <ul class="rob-affil">
           <li>
-            <img class="rob-affil-mark" src="../assets/affiliations/abo-board-certified-seal.png" width="377" height="320" loading="lazy" decoding="async" alt="American Board of Orthodontics, Board Certified">
+            <img class="rob-affil-mark" src="../assets/affiliations/abo-board-certified-seal.png" width="378" height="320" loading="lazy" decoding="async" alt="American Board of Orthodontics, Board Certified">
             <p class="rob-affil-role">Dr. Nicholas Romans, ABO-Board Certified™</p>
           </li>
           <!-- AAO. THE ONE UNCONFIRMED CLAIM IN THIS STRIP. The artwork is the
@@ -637,7 +641,7 @@ main{padding-bottom:var(--space-6)}
             <p class="rob-affil-role">Dr. Nicholas Romans, member</p>
           </li>
           <li>
-            <img class="rob-affil-mark" src="../assets/affiliations/invisalign.png" width="600" height="132" loading="lazy" decoding="async" alt="Invisalign" style="--rob-mark-h:26px">
+            <img class="rob-affil-mark" src="../assets/affiliations/invisalign.png" width="708" height="156" loading="lazy" decoding="async" alt="Invisalign" style="--rob-mark-h:26px">
             <p class="rob-affil-role">Clear aligner provider</p>
           </li>
           <li>

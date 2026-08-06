@@ -183,11 +183,11 @@ address{font-style:normal}
       3 columns x 2 rows: the credential marks on top, the training lines below.
       Row 1 carries real logo artwork, row 2 is set type, and one tone covers
       both so the two rows read as one object. ─────────────────────────────── */
-.rox-affil{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--space-5) var(--space-4);list-style:none;margin:0;padding:0;width:100%}
+.rox-affil{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--space-4) var(--space-4);list-style:none;margin:0;padding:0;width:100%}
 /* One tone for the whole set, per rule 3. Row 1 of each cell holds either a
    masked mark or the organisation's name, whichever the cell has, so their
    baselines line up across the row; row 2 is always what is held. */
-.rox-affil-cell{display:grid;grid-row:span 2;grid-template-rows:subgrid;gap:var(--space-2);align-content:start;color:var(--ink-muted)}
+.rox-affil-cell{display:grid;grid-row:span 2;grid-template-rows:subgrid;gap:var(--space-1);align-content:start;color:var(--ink-muted)}
 @supports not (grid-template-rows:subgrid){
 .rox-affil-cell{grid-row:auto;grid-template-rows:auto auto}
 }
@@ -204,7 +204,11 @@ address{font-style:normal}
       Heights are tuned per mark so the three read as one optical weight rather
       than one measurement: the seal and the AAO lockup are tall and square-ish,
       the Invisalign wordmark is a wide single line. ───────────────────────── */
-.rox-affil-mark{display:block;width:auto;height:var(--rox-mark-h,72px);max-width:100%}
+/* Bottom-aligned in the subgrid row, not top. The seal and the AAO lockup fill
+   the 72px row but the Invisalign wordmark is 26px, so top-aligning left it
+   floating with a gap above its descriptor while the other two sat tight. All
+   three now share one baseline just above the line they label. */
+.rox-affil-mark{display:block;align-self:end;width:auto;height:var(--rox-mark-h,72px);max-width:100%}
 .rox-affil-name{margin:0;align-self:end;font-family:var(--font-body);font-size:var(--step-body);font-weight:600;line-height:1.25;color:inherit}
 .rox-affil-role{margin:0;font-family:var(--font-mono);font-size:var(--step-small);letter-spacing:var(--tracking-label);text-transform:uppercase;line-height:1.4;color:inherit}
 
@@ -673,11 +677,11 @@ body{padding-bottom:calc(var(--tap) + var(--space-3))}
        not. Do not add them without that permission in writing. -->
   <section class="psp-band psp-band--alt psp-band--edge-both psp-band--pad-tight">
     <div class="psp-container">
-      <div class="psp-stack psp-stack--4 psp-stack--start psp-reveal" data-seen="false">
+      <div class="psp-stack psp-stack--3 psp-stack--start psp-reveal" data-seen="false">
         <p class="psp-eyebrow psp-eyebrow--brand">Certifications &amp; affiliations</p>
         <ul class="rox-affil">
           <li class="rox-affil-cell">
-            <img class="rox-affil-mark" src="../assets/affiliations/abo-board-certified-seal.png" width="377" height="320" loading="lazy" decoding="async" alt="American Board of Orthodontics, Board Certified">
+            <img class="rox-affil-mark" src="../assets/affiliations/abo-board-certified-seal.png" width="378" height="320" loading="lazy" decoding="async" alt="American Board of Orthodontics, Board Certified">
             <p class="rox-affil-role">Dr. Nicholas Romans, ABO-Board Certified™</p>
           </li>
           <!-- AAO. THE ONE UNCONFIRMED CLAIM IN THIS STRIP. The artwork is the
@@ -690,7 +694,7 @@ body{padding-bottom:calc(var(--tap) + var(--space-3))}
             <p class="rox-affil-role">Dr. Nicholas Romans, member</p>
           </li>
           <li class="rox-affil-cell">
-            <img class="rox-affil-mark" src="../assets/affiliations/invisalign.png" width="600" height="132" loading="lazy" decoding="async" alt="Invisalign" style="--rox-mark-h:26px">
+            <img class="rox-affil-mark" src="../assets/affiliations/invisalign.png" width="708" height="156" loading="lazy" decoding="async" alt="Invisalign" style="--rox-mark-h:26px">
             <p class="rox-affil-role">Clear aligner provider</p>
           </li>
           <li class="rox-affil-cell">

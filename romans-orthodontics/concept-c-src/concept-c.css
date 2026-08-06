@@ -184,8 +184,8 @@ main[id],section[id]{scroll-margin-top:calc(var(--roc-topbar) + var(--space-2))}
    The TSX comment above Affiliations() carries the full reasoning.
    .roc-affil-mark is the drop-in slot for real files once the client pulls
    them. */
-.roc-affil{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--space-5) var(--space-4);list-style:none;margin:0;padding:0;width:100%}
-.roc-affil>li{display:grid;grid-row:span 2;grid-template-rows:subgrid;gap:var(--space-2);align-content:start;padding-left:var(--space-4);border-left:var(--roc-hair);color:var(--ink-muted)}
+.roc-affil{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--space-4) var(--space-4);list-style:none;margin:0;padding:0;width:100%}
+.roc-affil>li{display:grid;grid-row:span 2;grid-template-rows:subgrid;gap:var(--space-1);align-content:start;padding-left:var(--space-4);border-left:var(--roc-hair);color:var(--ink-muted)}
 .roc-affil>li:nth-child(3n+1){padding-left:0;border-left:0}
 @supports not (grid-template-rows:subgrid){
 .roc-affil>li{grid-row:auto;grid-template-rows:auto auto}
@@ -197,7 +197,11 @@ main[id],section[id]{scroll-margin-top:calc(var(--roc-topbar) + var(--space-2))}
    mask-image plus currentColor, which would have been exact, is dead on arrival:
    Chromium refuses to load a mask subresource from a file:// page, so the strip
    would go blank for anyone opening these files locally. Measured, not assumed. */
-.roc-affil-mark{display:block;width:auto;height:var(--roc-mark-h,72px);max-width:100%}
+/* Bottom-aligned in the subgrid row, not top. The seal and the AAO lockup fill
+   the 72px row but the Invisalign wordmark is 26px, so top-aligning left it
+   floating with a gap above its descriptor while the other two sat tight. All
+   three now share one baseline just above the line they label. */
+.roc-affil-mark{display:block;align-self:end;width:auto;height:var(--roc-mark-h,72px);max-width:100%}
 /* one tone for the whole set per rule 3, and with no artwork the type is the
    mark, so hierarchy inside a row comes from size and typeface alone */
 .roc-affil-name{margin:0;align-self:end;font-family:var(--font-body);font-size:var(--step-body);font-weight:600;line-height:var(--leading-tight);color:inherit}
