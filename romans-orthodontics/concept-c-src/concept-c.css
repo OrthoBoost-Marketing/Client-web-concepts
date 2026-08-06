@@ -1,7 +1,7 @@
-/* Concept C2 — Dr. Yang persona, Stillpoint layout and motion cues.
+/* Concept C2, Dr. Yang persona, Stillpoint layout and motion cues.
    Same brand system as every Romans concept: design-system.css owns the
    palette, Fraunces / Archivo / IBM Plex Mono, and --radius 0. This concept
-   varies composition only — type scale, space ramp, section rhythm, hero
+   varies composition only: type scale, space ramp, section rhythm, hero
    pattern, motion. No :root block, no literal colour, font or length below:
    every value reads a var(--*) or derives from one via color-mix.
 
@@ -40,19 +40,19 @@ img,iframe{max-width:100%}
 .roc-chev{width:13px;height:13px;flex:0 0 auto;transition:transform var(--dur) var(--ease)}
 
 /* scroll-in motion: opacity plus a short rise, and a hard-edged clip wipe on
-   media. Transform, opacity and clip-path only — no blur, shadow or gradient. */
+   media. Transform, opacity and clip-path only: no blur, shadow or gradient. */
 .roc-js .roc-anim{opacity:0;transform:translateY(16px);transition:opacity var(--roc-in) var(--ease),transform var(--roc-in) var(--ease);transition-delay:calc(var(--i,0) * var(--roc-stagger))}
 .roc-js .roc-anim.is-in{opacity:1;transform:none}
 /* The clip goes on the CHILD, never on .roc-wipe itself. Chrome clips an
    IntersectionObserver target's intersection rect by the target's own
    clip-path, so a self-clipped element reports ratio 0 forever and never
-   reveals — the handoff shipped it that way and all five media blocks stayed
+   reveals. The handoff shipped it that way and all five media blocks stayed
    invisible. The fail-open timeout does not catch it either, because the
    plain .roc-anim elements do fire and `fired` is never 0. */
 .roc-js .roc-wipe>*{clip-path:inset(0 0 100% 0);transition:clip-path .78s var(--ease);transition-delay:calc(var(--i,0) * var(--roc-stagger))}
 .roc-js .roc-wipe.is-in>*{clip-path:inset(0 0 0 0)}
 
-/* header — the whole header is the sticky element, offset upward by exactly the
+/* header: the whole header is the sticky element, offset upward by exactly the
    utility strip's height so the strip scrolls away and the main bar lands at 0.
    Sticking .roc-bar instead does NOT work: a sticky element cannot leave its
    parent's box, so it unpinned the moment <header> scrolled out of view. */
@@ -68,13 +68,13 @@ img,iframe{max-width:100%}
 .roc-utility>.psp-container{flex:1 1 auto;min-width:0;align-self:stretch;display:flex;align-items:center}
 .roc-utility-inner{display:flex;flex:1 1 auto;align-self:stretch;flex-wrap:nowrap;align-items:center;gap:var(--space-3);white-space:nowrap;font-family:var(--font-mono);font-size:var(--step-small);font-weight:500;letter-spacing:var(--tracking-label);text-transform:uppercase;color:var(--ink-inverse-muted)}
 .roc-utility-sep{width:1px;height:11px;background:var(--line-inverse);flex:0 0 auto}
-/* align-self:stretch, not min-height — the strip's 1px bottom border makes its
+/* align-self:stretch, not min-height, because the strip's 1px bottom border makes its
    content box 43px, so a 44px min-height overflowed by half a pixel each way. */
 .roc-utility-tel{margin-left:auto;display:flex;align-items:center;align-self:stretch;font-family:var(--font-mono);font-size:var(--step-small);font-weight:500;letter-spacing:var(--tracking-label);color:var(--ink-inverse);text-decoration:none}
 .roc-utility-tel:hover{color:var(--brand-tint)}
 .roc-bar{background:var(--surface-dark);border-bottom:var(--roc-hair-inv)}
 /* Now that the bar pins, an anchor jump would land the section's heading
-   underneath it. Only the main bar persists — the utility strip has scrolled
+   underneath it. Only the main bar persists. The utility strip has scrolled
    away by the time any in-page link is clicked. */
 main[id],section[id]{scroll-margin-top:calc(var(--roc-topbar) + var(--space-2))}
 .roc-bar-inner{display:grid;grid-template-columns:auto 1fr auto;align-items:center;column-gap:var(--space-5);min-height:var(--roc-topbar)}
@@ -110,7 +110,7 @@ main[id],section[id]{scroll-margin-top:calc(var(--roc-topbar) + var(--space-2))}
 /* full-bleed photographic hero with centred overlaid type */
 /* The hero owns the fold: exactly the viewport less the header above it, so the
    photograph and the H1 are what a visitor sees and nothing peeks up from below.
-   min-height, not height — on a short phone the content wins and overflows
+   min-height, not height, so on a short phone the content wins and overflows
    rather than being crushed. svh, so mobile browser chrome does not add a
    phantom scroll; the vh line is the fallback for anything without svh. */
 .roc-hero{position:relative;display:grid;align-items:center;isolation:isolate;background:var(--surface-dark);min-height:calc(100vh - var(--roc-topbar) - var(--roc-utility-h));min-height:calc(100svh - var(--roc-topbar) - var(--roc-utility-h))}
@@ -124,7 +124,7 @@ main[id],section[id]{scroll-margin-top:calc(var(--roc-topbar) + var(--space-2))}
 .roc-hero-ghost{display:inline-flex;align-items:center;justify-content:center;white-space:nowrap;min-height:var(--tap);padding-inline:var(--space-3);border:1px solid var(--ink-inverse);font-family:var(--font-mono);font-size:var(--step-small);font-weight:500;letter-spacing:var(--tracking-label);text-transform:uppercase;color:var(--ink-inverse);text-decoration:none;transition:background var(--dur) var(--ease),color var(--dur) var(--ease)}
 .roc-hero-ghost:hover{background:var(--ink-inverse);color:var(--ink)}
 
-/* centred section intro — the recurring statement block */
+/* centred section intro, the recurring statement block */
 .roc-intro{display:grid;justify-items:center;gap:var(--space-3);text-align:center;margin-inline:auto;max-width:84ch;width:100%}
 .roc-intro .psp-heading{text-align:center}
 
@@ -142,7 +142,7 @@ main[id],section[id]{scroll-margin-top:calc(var(--roc-topbar) + var(--space-2))}
 /* dark-band body copy */
 .roc-dark-body{margin:0;max-width:56ch;font-family:var(--font-body);font-size:var(--step-body);line-height:var(--leading-body);color:var(--ink-inverse-soft)}
 
-/* the doctor block's own credential list — hairline-separated rows in the mono
+/* the doctor block's own credential list: hairline-separated rows in the mono
    label voice, so it reads as a caption and not as a second trust bar */
 .roc-doc-creds{display:grid;list-style:none;margin:0;padding:0;width:100%;border-top:var(--roc-hair-inv)}
 .roc-doc-creds li{padding-block:var(--space-1);border-bottom:var(--roc-hair-inv);font-family:var(--font-mono);font-size:var(--step-small);font-weight:500;letter-spacing:var(--tracking-label);text-transform:uppercase;color:var(--ink-inverse-muted)}
@@ -158,12 +158,12 @@ main[id],section[id]{scroll-margin-top:calc(var(--roc-topbar) + var(--space-2))}
 /* row labels */
 .roc-row-label{margin:0;font-family:var(--font-mono);font-size:var(--step-small);font-weight:500;letter-spacing:var(--tracking-label);text-transform:uppercase;color:var(--brand)}
 
-/* gap flags — the client-answer placeholders that ship visible on purpose */
+/* gap flags: the client-answer placeholders that ship visible on purpose */
 .roc-gap{display:grid;gap:var(--space-2);padding:var(--space-4);border:1px dashed var(--line);width:100%}
 .roc-gap-flag{margin:0;font-family:var(--font-mono);font-size:var(--step-small);font-weight:500;letter-spacing:var(--tracking-label);text-transform:uppercase;color:var(--brand-ink)}
 .roc-gap-note{margin:0;font-family:var(--font-body);font-size:var(--step-body-sm);line-height:var(--leading-body);color:var(--ink-muted);max-width:64ch}
 
-/* services — six cards in one seamless hairline grid, whole card clickable */
+/* services: six cards in one seamless hairline grid, whole card clickable */
 .roc-services{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;list-style:none;margin:0;padding:0;width:100%;background:var(--line);border-block:var(--roc-hair)}
 .roc-services>li{background:var(--surface)}
 .roc-card{display:grid;gap:var(--space-2);align-content:start;height:100%;padding:var(--space-4);text-decoration:none;color:var(--ink);transition:background var(--dur) var(--ease)}
@@ -205,11 +205,11 @@ main[id],section[id]{scroll-margin-top:calc(var(--roc-topbar) + var(--space-2))}
 .roc-legal-link{display:flex;align-items:center;min-height:var(--tap);color:var(--ink-inverse-muted);text-decoration:none}
 .roc-legal-link:hover{color:var(--brand-tint)}
 
-/* sticky bar — Call · Book · Directions, Book the wide centre segment */
+/* sticky bar: Call · Book · Directions, Book the wide centre segment */
 /* !important is the only lever here: StickyBar writes
    grid-template-columns:repeat(3, 1fr) as an inline style attribute, and the
    spec wants Book as the wide centre segment. The real fix is a ratio prop on
-   the component upstream — do not fork it to work around this. */
+   the component upstream. Do not fork it to work around this. */
 .roc-sticky{grid-template-columns:1fr 1.7fr 1fr !important;gap:1px}
 body[data-kb="1"] .roc-sticky{display:none}
 

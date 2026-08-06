@@ -1,4 +1,4 @@
-/* Romans Orthodontics — homepage, Concept C2.
+/* Romans Orthodontics, homepage, Concept C2.
    Flatten entry. Ported from the Claude Design handoff bundle
    "Romans Orthodontics Concept C" (C2 variant, the one marked to ship).
 
@@ -10,8 +10,8 @@
       typefaces (Fraunces / Archivo / IBM Plex Mono) and the palette are
       brand-invariant across every concept, and it names Bitter + Nunito Sans as
       the exact off-brand mistake concept-b made. flatten.mjs fails the build on
-      those overrides. Every non-brand token the concept does own — type scale,
-      leading, space ramp, section rhythm, motion — lives in the page's own
+      those overrides. Every non-brand token the concept does own, type scale,
+      leading, space ramp, section rhythm, motion, lives in the page's own
       <style> under .psp-root, where a media query can still reach it.
 
    2. Real photography, not flagged slots. All eleven images resolve to graded
@@ -20,7 +20,7 @@
 
    Flagged placeholders that REMAIN on purpose: office hours (twice, and omitted
    from the JSON-LD rather than guessed) and social profile URLs. There is no
-   reviews section — see the note above Services(). */
+   reviews section, see the note above Services(). */
 import {
   TokenProvider, Band, Container, Stack, Split, Heading, Body, Button,
   Figure, Drawer, StickyBar, LinkArrow, Rule, SkipLink, Disclosure,
@@ -123,7 +123,7 @@ function NavMenu({ label, items }: { label: string; items: [string, string][] })
   )
 }
 
-/* One tel: link in the desktop header — the utility strip. The main bar's phone
+/* One tel: link in the desktop header, the utility strip. The main bar's phone
    icon and the drawer's number are mobile-only and named so, which is both true
    and what the header-cardinality check reads. */
 function Header() {
@@ -212,7 +212,7 @@ function Hero() {
 }
 
 /* Every line here traces to CLIENT-BRIEF. Cell 03 is the brief's approved
-   quote, used verbatim as the brief requires — an earlier cut paraphrased it as
+   quote, used verbatim as the brief requires, an earlier cut paraphrased it as
    "7+ years in orthodontics" and added "beyond dental school", which the quote
    does not say. */
 const CREDENTIALS: [string, string, string][] = [
@@ -250,8 +250,8 @@ function TrustBar() {
 }
 
 /* First dark band. Centred statement intro above the photo. The portrait is a
-   different frame from the hero — the brief allows no frame to appear twice on
-   the homepage — so it runs at the photo's own 4:5 rather than being cropped
+   different frame from the hero, the brief allows no frame to appear twice on
+   the homepage, so it runs at the photo's own 4:5 rather than being cropped
    into a landscape it does not contain. */
 function Doctor() {
   return (
@@ -340,7 +340,7 @@ function Zigzag() {
   )
 }
 
-/* Second dark band: the closing statement. Three lines and nothing more — the
+/* Second dark band: the closing statement. Three lines and nothing more, the
    mobile sticky bar covers calling. */
 function CtaBand() {
   return (
