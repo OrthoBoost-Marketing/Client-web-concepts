@@ -218,7 +218,7 @@ function Hero() {
 const CREDENTIALS: [string, string, string][] = [
   ['01', 'Board-certified orthodontist', 'The specialty’s voluntary certification, held by Dr. Romans.'],
   ['02', 'DMD, MSD', 'A dental doctorate plus a master’s degree in orthodontics.'],
-  ['03', 'More than 7 years dedicated to orthodontics', 'Including advanced specialty training.'],
+  ['03', '7+ years in orthodontics', 'Including advanced specialty training.'],
   ['04', '5,000+ patients treated', 'Across kids, teens, and adults to date.'],
 ]
 
@@ -228,7 +228,7 @@ const CREDENTIALS: [string, string, string][] = [
 const DOCTOR_CREDENTIALS = [
   'Board-certified orthodontist',
   'DMD, MSD',
-  'More than 7 years dedicated to orthodontics',
+  'More than 7 years dedicated to orthodontics, including advanced specialty training',
 ]
 
 function TrustBar() {
