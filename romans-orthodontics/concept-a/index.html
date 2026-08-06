@@ -133,13 +133,12 @@ address{font-style:normal}
    tighter-leaded, more muted text with real air above it. */
 .rox-trust{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:var(--space-1) var(--space-5);list-style:none;margin:0;padding:0;width:100%}
 .rox-trust-claim{font-size:calc(var(--step-h3) * .88)}
-.rox-trust-gloss{font-size:var(--step-body-sm);line-height:1.42;opacity:.72;margin-top:var(--space-1)}
 /* subgrid rows: tick / label / claim / gloss share baselines across cells, so
    a two-line claim in one cell no longer knocks its neighbours askew */
-.rox-trust-cell{display:grid;grid-row:span 4;grid-template-rows:subgrid;gap:var(--space-1);align-content:start}
-.rox-trust-cell::before{content:"";width:var(--space-3);border-top:1px solid var(--brand);margin-bottom:var(--space-1)}
+.rox-trust-cell{display:grid;grid-row:span 2;grid-template-rows:subgrid;gap:var(--space-1);align-content:start}
+
 @supports not (grid-template-rows:subgrid){
-.rox-trust-cell{grid-row:auto;grid-template-rows:auto auto 1fr auto}
+.rox-trust-cell{grid-row:auto;grid-template-rows:auto auto}
 }
 
 /* ── mid-page CTA band. Text holds the left half; the monogram, embossed at
@@ -239,8 +238,7 @@ footer .psp-stack--5{gap:var(--space-4)}
 
 /* the four copper ticks draw themselves in, left to right, once. The trust
    bar is above the fold, so this happens on load rather than on scroll */
-@keyframes rox-tick{from{transform:scaleX(0)}to{transform:scaleX(1)}}
-.rox-trust-cell::before{transform-origin:left;animation:rox-tick .55s var(--ease) both;animation-delay:calc(340ms + var(--rox-i,0) * 90ms)}
+
 
 /* link-arrows nudge like the service cards already do, so the one gesture
    means the same thing everywhere on the page */
@@ -292,7 +290,7 @@ body{padding-bottom:calc(var(--tap) + var(--space-3))}
 /* the blanket .01ms rule still runs the first frame of the entrance, which is
    opacity 0, a flash of invisible headline. Remove the animation instead. */
 .rox-enter{animation:none !important}
-.rox-trust-cell::before{animation:none !important;transform:none !important}
+
 .rox-from-left{transform:none !important;transition:none !important}
 }
 </style>
@@ -422,22 +420,18 @@ body{padding-bottom:calc(var(--tap) + var(--space-3))}
         <li class="rox-trust-cell" style="--rox-i:0">
           <p class="psp-eyebrow psp-eyebrow--brand">01 / Certified</p>
           <p class="psp-heading psp-heading--sm rox-trust-claim">Board-certified orthodontist</p>
-          <p class="psp-body psp-body--muted rox-trust-gloss">The specialty’s voluntary certification.</p>
         </li>
         <li class="rox-trust-cell" style="--rox-i:1">
           <p class="psp-eyebrow psp-eyebrow--brand">02 / Degrees</p>
           <p class="psp-heading psp-heading--sm rox-trust-claim">DMD,<br class="rox-br-desktop"> MSD</p>
-          <p class="psp-body psp-body--muted rox-trust-gloss">A doctorate plus a master’s in orthodontics.</p>
         </li>
         <li class="rox-trust-cell" style="--rox-i:2">
           <p class="psp-eyebrow psp-eyebrow--brand">03 / Experience</p>
           <p class="psp-heading psp-heading--sm rox-trust-claim">7+ years in orthodontics</p>
-          <p class="psp-body psp-body--muted rox-trust-gloss">Including advanced specialty training.</p>
         </li>
         <li class="rox-trust-cell" style="--rox-i:3">
           <p class="psp-eyebrow psp-eyebrow--brand">04 / First visit</p>
           <p class="psp-heading psp-heading--sm rox-trust-claim">Free<br class="rox-br-desktop"> consultation</p>
-          <p class="psp-body psp-body--muted rox-trust-gloss">Every first visit, at no charge, any age.</p>
         </li>
       </ul>
     </div>
