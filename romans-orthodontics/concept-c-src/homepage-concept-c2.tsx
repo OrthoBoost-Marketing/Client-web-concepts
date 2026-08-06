@@ -19,8 +19,9 @@
       dropped with them: it was preview-only and must never ship as a state.
 
    Flagged placeholders that REMAIN on purpose: office hours (twice, and omitted
-   from the JSON-LD rather than guessed) and social profile URLs. There is no
-   reviews section, see the note above Services(). */
+   from the JSON-LD rather than guessed) and social profile URLs. There is still
+   no review grid, because there are still no reviews; SocialProof() carries the
+   proof that does exist and the note above it holds the swap instructions. */
 import {
   TokenProvider, Band, Container, Stack, Split, Heading, Body, Button,
   Figure, Drawer, StickyBar, LinkArrow, Rule, SkipLink, Disclosure,
@@ -358,14 +359,118 @@ function CtaBand() {
   )
 }
 
-/* NO REVIEWS SECTION. The practice had 0 Google reviews as of 2026-08-05 and
-   CLIENT-BRIEF forbids writing or placeholdering one, so the section does not
-   run at all rather than shipping a flagged empty box.
+/* Affiliations strip, AUTHORITY-LOGOS-SPEC. Five marks, one muted tone, sitting
+   five bands below the TrustBar so rule 4 is satisfied: only one of the two
+   carries top-of-page authority.
 
-   To restore it at 5+ reviews: add a <Reviews /> band here and in Page(), 3, 6
-   or 9 verbatim Google quotes in a static grid with names as displayed, plus the
-   "read more reviews" door. NEVER add aggregateRating or Review schema to
-   Google-sourced quotes. */
+   Every cell is a credential this practice holds. Board certification and both
+   degrees are on the office signage (IMG_8902) and on
+   romansorthodontics.com/about-us. Invisalign is service 3 in CLIENT-BRIEF with
+   its own page in this nav, and no tier is claimed because no tier is
+   confirmed. The two schools and the hospital are quoted from the practice's own
+   about-us page.
+
+   AAO membership is the sixth mark Dr. Ty asked for. It is held back rather than
+   dropped: rule 1 allows only credentials genuinely held, and nobody has
+   confirmed the membership. Add this entry to AFFILIATIONS on confirmation:
+     ['aao', 'American Association of Orthodontists', 'Member']
+   with the shield mark from MARKS below. */
+const AFFILIATIONS: [string, string, string][] = [
+  ['seal', 'American Board of Orthodontics', 'Board certified'],
+  ['tray', 'Invisalign®', 'Clear aligner provider'],
+  ['cap', 'Saint Louis University', 'Orthodontic residency · MSD'],
+  ['book', 'A.T. Still University', 'Doctor of Dental Medicine'],
+  ['hospital', 'St. Louis Children’s Hospital', 'Craniofacial cleft & palate fellowship'],
+]
+
+/* Generic line drawings, deliberately nobody's trademark. See the CSS note
+   above .roc-affil for why, and what replaces them. */
+const MARKS: Record<string, JSX.Element> = {
+  seal: <><circle cx="12" cy="9.5" r="6" /><path d="m9 14.5-1.5 7L12 19l4.5 2.5-1.5-7" /><path d="m9.6 9.4 1.7 1.8 3.1-3.4" /></>,
+  aao: <><path d="M12 3 4 6v6c0 4.3 3.2 7.9 8 9 4.8-1.1 8-4.7 8-9V6Z" /><path d="m8.8 11.7 2.1 2.2 4-4.3" /></>,
+  tray: <><path d="M4 8.5c0-1.4 1-2.5 2.4-2.5 1.9 0 2.9 1 5.6 1s3.7-1 5.6-1c1.4 0 2.4 1.1 2.4 2.5 0 3-1.1 4.6-1.6 7.4-.3 1.7-1.5 2.6-3 2.6-1.4 0-2.2-.8-3.4-.8s-2 .8-3.4.8c-1.5 0-2.7-.9-3-2.6C5.1 13.1 4 11.5 4 8.5Z" /><path d="M8.2 6.6c0 4 .4 7.2 3.8 7.2s3.8-3.2 3.8-7.2" /></>,
+  cap: <><path d="M2.5 9 12 4.5 21.5 9 12 13.5Z" /><path d="M6.5 11v5.2c0 1.5 2.5 2.8 5.5 2.8s5.5-1.3 5.5-2.8V11" /></>,
+  book: <><path d="M4 4.5h6.2c1 0 1.8.8 1.8 1.8v13c0-1-.8-1.8-1.8-1.8H4Z" /><path d="M20 4.5h-6.2c-1 0-1.8.8-1.8 1.8v13c0-1 .8-1.8 1.8-1.8H20Z" /></>,
+  hospital: <><path d="M4.5 20V6.5c0-1.1.9-2 2-2h11c1.1 0 2 .9 2 2V20" /><path d="M2.5 20h19" /><path d="M12 8v5" /><path d="M9.5 10.5h5" /></>,
+}
+
+function Affiliations() {
+  return (
+    <Band tone="alt" edge="both" pad="tight">
+      <Container>
+        <Stack gap={4}>
+          <div className="roc-intro roc-anim">
+            <p className="roc-intro-label">Certifications &amp; affiliations</p>
+          </div>
+          <ul className="roc-affil">
+            {AFFILIATIONS.map(([mark, name, role], i) => (
+              <li className="roc-anim" style={{ '--i': i } as never} key={name}>
+                <svg className="roc-affil-mark" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">{MARKS[mark]}</svg>
+                <p className="roc-affil-name">{name}</p>
+                <p className="roc-affil-role">{role}</p>
+              </li>
+            ))}
+          </ul>
+        </Stack>
+      </Container>
+    </Band>
+  )
+}
+
+/* STILL NOT A REVIEW GRID, and this is the third build cycle to say so.
+   Rechecked 2026-08-06 against Google, Bing, Yelp, Healthgrades and the
+   practice's own site: Romans Orthodontics and Dr. Romans personally have ZERO
+   published reviews anywhere. Healthgrades reads "Be the first to review this
+   provider"; romansorthodontics.com carries a "Real Stories. Real Smiles."
+   heading with nothing under it. REVIEWS-SPEC bans fabricated and paraphrased
+   reviews, so the section runs on proof that does exist instead of not running
+   at all, which is the change Dr. Ty asked for on 2026-08-06.
+
+   Every line below is quoted from romansorthodontics.com/about-us. That is a
+   NEW SOURCE, not in CLIENT-BRIEF, so it wants one client sign-off.
+
+   THE SWAP, once 3+ real Google reviews exist: keep this component, this band
+   and this grid. Heading becomes "What Anthem families are saying",
+   .roc-proof-num becomes .roc-stars, each .roc-proof-desc becomes a verbatim
+   Google review (trim with "…", never rewrite) and .roc-quote-name carries the
+   name exactly as Google displays it. All of that CSS already ships in
+   concept-c.css. Add the door beneath the grid, a LinkArrow to the GBP review
+   URL, and per rule 5 no count line until the count is worth showing. NEVER
+   aggregateRating or Review schema on Google-sourced quotes. Six cards is the
+   better target and three is the floor; rule 6 wants a different job per card,
+   so harvest for the price story, the anxious patient, the result, the
+   kindness, the emergency and the loyalty. */
+const COMMUNITY: [string, string][] = [
+  ['Give Kids A Smile', 'A day of free dental care for children whose families cannot cover it, run through dental schools and volunteer practices.'],
+  ['Missions of Mercy', 'Large free clinics set up for a weekend at a time, treating whoever is in the queue for as long as the queue lasts.'],
+  ['Dentures for Veterans', 'Dentures made and fitted at no charge for veterans, so a bill is not the reason someone goes without them.'],
+]
+
+function SocialProof() {
+  return (
+    <Band tone="surface">
+      <Container>
+        <Stack gap={5}>
+          <div className="roc-intro roc-anim">
+            <p className="roc-intro-label">In the community</p>
+            <Heading level={2} size="md" measure={26} balance>Care given away, before there was a practice.</Heading>
+            <p className="roc-intro-lede">Three of the programs Dr. Romans has volunteered with over his career, each one treating people who would otherwise go without. Closer to home, he volunteers with the Arizona Humane Society.</p>
+          </div>
+          <ul className="roc-proof">
+            {COMMUNITY.map(([name, desc], i) => (
+              <li className="roc-anim" style={{ '--i': i } as never} key={name}>
+                <span className="roc-proof-num">{String(i + 1).padStart(2, '0')}</span>
+                <Heading level={3} size="sm">{name}</Heading>
+                <p className="roc-proof-desc">{desc}</p>
+              </li>
+            ))}
+          </ul>
+          <LinkArrow href="dr-romans.html">Read Dr. Romans&rsquo;s story</LinkArrow>
+        </Stack>
+      </Container>
+    </Band>
+  )
+}
 
 function Services() {
   return (
@@ -496,6 +601,8 @@ export default function Page() {
         <Doctor />
         <Zigzag />
         <CtaBand />
+        <Affiliations />
+        <SocialProof />
         <Services />
         <Locations />
       </main>

@@ -175,6 +175,40 @@ html.js-reveal .psp-reveal:not([data-seen="true"]){opacity:0;transform:translate
 /* ── services card image: same ruled frame the slot had ─────────────────── */
 .rob-card-img{display:block;width:100%;height:auto;aspect-ratio:4 / 3;object-fit:cover;border:1px solid var(--line);background:var(--surface-alt)}
 
+/* ── affiliations strip (Section 07) ─────────────────────────────────────
+   AUTHORITY-LOGOS-SPEC: 4 to 7 marks, one line, muted to a single tone, small
+   quiet label, well away from the hero's inline credential bar per rule 4.
+   Built on this concept's ruled grid rather than concept A's open columns:
+   hairline gaps, one cell per credential, same construction as .rob-services.
+   INTERIM ARTWORK. Rule 5 wants each organisation's official logo file
+   untouched, and none are on file. Redrawing a trademark is worse than not
+   running it, so each cell is set type plus a generic line mark that belongs
+   to nobody. When the official SVGs land, swap the inline <svg> for
+   <img class="rob-affil-mark"> and the strip is unchanged otherwise. */
+.rob-affil{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);list-style:none;margin:0;padding:0;width:100%}
+.rob-affil li{display:grid;grid-row:span 3;grid-template-rows:subgrid;gap:var(--space-2);align-content:start;padding:var(--space-3);background:var(--surface)}
+@supports not (grid-template-rows:subgrid){
+.rob-affil li{grid-row:auto;grid-template-rows:auto auto auto}
+}
+.rob-affil-mark{display:block;width:var(--space-4);height:var(--space-4);color:var(--ink-muted);opacity:.7}
+.rob-affil-name{font-family:var(--font-body);font-size:var(--step-body);font-weight:600;line-height:1.25;color:var(--ink)}
+.rob-affil-role{font-family:var(--font-mono);font-size:var(--step-small);letter-spacing:var(--tracking-label);text-transform:uppercase;line-height:1.4;color:var(--ink-muted)}
+
+/* ── social proof grid (Section 08) ──────────────────────────────────────
+   REVIEWS-SPEC card anatomy and its static 3/6/9 grid, on this concept's
+   ruled construction. The review variant commented into the markup reuses this
+   exact shell: same grid, same cell, stars and a name instead of the ordinal
+   and the organisation. */
+.rob-proof{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);list-style:none;margin:0;padding:0;width:100%}
+.rob-proof li{display:grid;gap:var(--space-2);align-content:start;padding:var(--space-4) var(--space-3);background:var(--surface)}
+.rob-proof-head{display:flex;align-items:baseline;gap:var(--space-2)}
+.rob-proof-ord{font-family:var(--font-mono);font-size:var(--step-small);letter-spacing:var(--tracking-label);color:var(--brand)}
+/* review variant only: stars take the ordinal's slot at the same size, so the
+   swap does not move the cell's first baseline */
+.rob-stars{display:flex;gap:.18em;font-size:var(--step-body-sm);letter-spacing:.06em;color:var(--brand)}
+.rob-quote{margin:0;font-family:var(--font-body)}
+.rob-quote-name{font-family:var(--font-mono);font-size:var(--step-small);letter-spacing:var(--tracking-label);text-transform:uppercase;color:var(--ink-muted)}
+
 /* ── footer ─────────────────────────────────────────────────────────────── */
 .rob-footer-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1.1fr;gap:var(--space-5) var(--space-4)}
 .rob-footer-brand{display:grid;gap:var(--space-2);align-content:start;justify-items:start}
@@ -214,6 +248,9 @@ body[data-kb="1"] .psp-stickybar{display:none}
 .rob-trust-cell:nth-child(odd){padding-left:0;border-left:0}
 .rob-trust-cell:nth-child(2){padding-right:0}
 .rob-services{grid-template-columns:repeat(2,minmax(0,1fr))}
+/* rule 6: two rows, never a scroller, marks never under 28px */
+.rob-affil{grid-template-columns:repeat(3,minmax(0,1fr))}
+.rob-proof{grid-template-columns:repeat(2,minmax(0,1fr))}
 .rob-footer-grid{grid-template-columns:1fr 1fr}
 /* Card stacks: map under the address, given a fixed height since it no
    longer has a column to fill. */
@@ -252,7 +289,8 @@ body[data-kb="1"] .psp-stickybar{display:none}
 }
 
 @media (max-width:640px){
-.rob-footer-grid,.rob-services{grid-template-columns:1fr}
+.rob-footer-grid,.rob-services,.rob-proof{grid-template-columns:1fr}
+.rob-affil{grid-template-columns:repeat(2,minmax(0,1fr))}
 .rob-cta-card{padding:var(--space-4) var(--space-3)}
 main{padding-bottom:var(--space-6)}
 }
@@ -498,17 +536,111 @@ main{padding-bottom:var(--space-6)}
     </div>
   </section>
 
-  <!-- 07 · Authority logos omitted: adjacent credential trust bar, and no
-       official credential logo files exist. -->
+  <!-- 07 · Affiliations strip. AUTHORITY-LOGOS-SPEC: 5 marks, one tone, sitting
+       far below the hero's inline credential bar, which is what rule 4 asks.
+       Every cell is a credential the practice holds. Board certification and
+       both degrees are on the office signage (IMG_8902) and on
+       romansorthodontics.com/about-us; Invisalign is service 3 in
+       CLIENT-BRIEF.md with its own page in this nav, and no tier is claimed
+       because no tier is confirmed; the two schools and the hospital are quoted
+       from the practice's own about-us page.
+       AAO membership is the sixth cell Dr. Ty asked for. It is commented out
+       below cell 01 rather than dropped: near-certain is exactly what rule 1
+       forbids. Uncomment on client confirmation. Artwork is interim; see the
+       CSS note above .rob-affil. -->
+  <section class="psp-band psp-band--edge-top psp-band--pad-tight" data-screen-label="Affiliations">
+    <div class="psp-container">
+      <div class="psp-stack psp-stack--4 psp-stack--start psp-reveal" data-seen="false">
+        <p class="psp-eyebrow psp-eyebrow--brand">The grown-up credentials</p>
+        <ul class="rob-affil">
+          <li>
+            <svg class="rob-affil-mark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="9.5" r="6"></circle><path d="m9 14.5-1.5 7L12 19l4.5 2.5-1.5-7"></path><path d="m9.6 9.4 1.7 1.8 3.1-3.4"></path></svg>
+            <p class="rob-affil-name">American Board of Orthodontics</p>
+            <p class="rob-affil-role">Board certified</p>
+          </li>
+          <!-- 01b · AAO. Uncomment the moment the client confirms membership.
+          <li>
+            <svg class="rob-affil-mark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 4 6v6c0 4.3 3.2 7.9 8 9 4.8-1.1 8-4.7 8-9V6Z"></path><path d="m8.8 11.7 2.1 2.2 4-4.3"></path></svg>
+            <p class="rob-affil-name">American Association of Orthodontists</p>
+            <p class="rob-affil-role">Member</p>
+          </li>
+          -->
+          <li>
+            <svg class="rob-affil-mark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 8.5c0-1.4 1-2.5 2.4-2.5 1.9 0 2.9 1 5.6 1s3.7-1 5.6-1c1.4 0 2.4 1.1 2.4 2.5 0 3-1.1 4.6-1.6 7.4-.3 1.7-1.5 2.6-3 2.6-1.4 0-2.2-.8-3.4-.8s-2 .8-3.4.8c-1.5 0-2.7-.9-3-2.6C5.1 13.1 4 11.5 4 8.5Z"></path><path d="M8.2 6.6c0 4 .4 7.2 3.8 7.2s3.8-3.2 3.8-7.2"></path></svg>
+            <p class="rob-affil-name">Invisalign<sup>®</sup></p>
+            <p class="rob-affil-role">Clear aligner provider</p>
+          </li>
+          <li>
+            <svg class="rob-affil-mark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 9 12 4.5 21.5 9 12 13.5Z"></path><path d="M6.5 11v5.2c0 1.5 2.5 2.8 5.5 2.8s5.5-1.3 5.5-2.8V11"></path></svg>
+            <p class="rob-affil-name">Saint Louis University</p>
+            <p class="rob-affil-role">Orthodontic residency · MSD</p>
+          </li>
+          <li>
+            <svg class="rob-affil-mark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4.5h6.2c1 0 1.8.8 1.8 1.8v13c0-1-.8-1.8-1.8-1.8H4Z"></path><path d="M20 4.5h-6.2c-1 0-1.8.8-1.8 1.8v13c0-1 .8-1.8 1.8-1.8H20Z"></path></svg>
+            <p class="rob-affil-name">A.T. Still University</p>
+            <p class="rob-affil-role">Doctor of Dental Medicine</p>
+          </li>
+          <li>
+            <svg class="rob-affil-mark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 20V6.5c0-1.1.9-2 2-2h11c1.1 0 2 .9 2 2V20"></path><path d="M2.5 20h19"></path><path d="M12 8v5"></path><path d="M9.5 10.5h5"></path></svg>
+            <p class="rob-affil-name">St. Louis Children’s Hospital</p>
+            <p class="rob-affil-role">Craniofacial cleft &amp; palate fellowship</p>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
 
-  <!-- 08 · Reviews. SECTION INTENTIONALLY ABSENT.
-       The practice had 0 Google reviews as of 2026-08-04 and the brief rules
-       out written or placeholder testimonials, so there is nothing truthful to
-       put here and an empty band only advertises the gap. This marker holds
-       the slot: restore the section between the CTA band and the services grid
-       once five or more genuine reviews exist, as a static grid of 3, 6 or 9
-       verbatim Google quotes with names as displayed. Never an aggregateRating
-       and never a Review object in the JSON-LD for Google-sourced quotes. -->
+  <!-- 08 · Social proof. Sits adjacent to the affiliations strip, where
+       AUTHORITY-LOGOS-SPEC rule 4 wants that strip to be.
+
+       WHY THIS IS NOT A REVIEW GRID YET. Rechecked 2026-08-06 across Google,
+       Bing, Yelp, Healthgrades and the practice's own site: the practice and
+       Dr. Romans personally have ZERO published reviews anywhere. Healthgrades
+       says "Be the first to review this provider"; romansorthodontics.com has a
+       "Real Stories. Real Smiles." heading with nothing beneath it.
+       REVIEWS-SPEC bans fabricated and paraphrased reviews, so the grid runs on
+       proof that does exist. Every line below is quoted from
+       romansorthodontics.com/about-us. That is a NEW SOURCE, not in
+       CLIENT-BRIEF.md, so it wants one client sign-off.
+
+       THE SWAP, once 3+ real Google reviews exist: keep the section, the grid
+       and the cell. Heading becomes "What Anthem families are saying",
+       .rob-proof-ord becomes .rob-stars, each body becomes a verbatim Google
+       review (trim with "…", never rewrite) and .rob-quote-name carries the
+       name exactly as Google shows it. That CSS already ships in the <style>
+       block. Add the door beneath: <a class="psp-linkarrow" href="[GBP review
+       URL]">Read more reviews on Google →</a>, and per rule 5 no count line
+       until the count is worth showing. NEVER aggregateRating or Review JSON-LD
+       on Google-sourced quotes. Six cards is the better target, three the
+       floor. Rule 6 card jobs to harvest for: the price story, the anxious
+       patient, the result, the kindness, the emergency, the loyalty. -->
+  <section class="psp-band" data-screen-label="In the community">
+    <div class="psp-container">
+      <div class="psp-stack psp-stack--4 psp-stack--start psp-reveal" data-seen="false">
+        <p class="psp-eyebrow psp-eyebrow--muted">In the community</p>
+        <h2 class="psp-heading psp-heading--md" style="max-width:26ch">Free care he was giving before he had a practice</h2>
+        <p class="psp-body psp-body--muted" style="max-width:56ch">Three of the programs Dr. Romans has volunteered with over his career, all of them treating people who would otherwise go without. Closer to home, he volunteers with the Arizona Humane Society.</p>
+        <ul class="rob-proof">
+          <li>
+            <div class="rob-proof-head"><span class="rob-proof-ord">01</span></div>
+            <h3 class="psp-heading psp-heading--sm">Give Kids A Smile</h3>
+            <p class="psp-body psp-body--small psp-body--muted">A day of free dental care for children whose families cannot cover it, run through dental schools and volunteer practices.</p>
+          </li>
+          <li>
+            <div class="rob-proof-head"><span class="rob-proof-ord">02</span></div>
+            <h3 class="psp-heading psp-heading--sm">Missions of Mercy</h3>
+            <p class="psp-body psp-body--small psp-body--muted">Large free clinics set up for a weekend at a time, treating whoever is in the queue for as long as the queue lasts.</p>
+          </li>
+          <li>
+            <div class="rob-proof-head"><span class="rob-proof-ord">03</span></div>
+            <h3 class="psp-heading psp-heading--sm">Dentures for Veterans</h3>
+            <p class="psp-body psp-body--small psp-body--muted">Dentures made and fitted at no charge for veterans, so a bill is not the reason someone goes without them.</p>
+          </li>
+        </ul>
+        <a class="psp-linkarrow" href="dr-romans.html">Meet Dr. Romans →</a>
+      </div>
+    </div>
+  </section>
 
   <!-- 09 · Services grid. 6 cards, ruled grid, whole card clickable,
        searchable H3s. The one section where stock imagery is permitted. -->
