@@ -274,9 +274,19 @@ body[data-kb="1"] .psp-stickybar{display:none}
 }
 
 @media (max-width:1000px){
-/* the split stacks, and the photo goes back to following the argument */
-.rob-hero-split{grid-template-columns:1fr;gap:var(--space-5)}
-.rob-hero-photo{order:0;aspect-ratio:3 / 2}
+/* The split stacks, and the credential row moves BETWEEN the argument and the
+   photo. That is what HERO-SPEC rule 7 actually asks for: "H1 -> sub -> CTA
+   (+proof) -> photo", with proof grouped with the CTA rather than after the
+   image. It is also the only way all four credentials clear a phone fold, which
+   the old full-bleed hero managed and this one has to keep.
+   display:contents dissolves the split so its two children become items of the
+   container's grid alongside the credential row, which is what makes a
+   three-way order possible without a second block of markup. */
+.rob-hero>.psp-container{display:grid;gap:var(--space-5)}
+.rob-hero-split{display:contents}
+.rob-hero-text{order:1}
+.rob-hero .rob-trust{order:2;margin-top:0}
+.rob-hero-photo{order:3;aspect-ratio:3 / 2}
 .rob-trust{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:var(--space-4)}
 .rob-trust-cell:nth-child(odd){padding-left:0;border-left:0}
 .rob-trust-cell:nth-child(2){padding-right:0}
@@ -291,31 +301,35 @@ body[data-kb="1"] .psp-stickybar{display:none}
 .rob-loc-map{min-height:320px;border-left:0;border-top:1px solid var(--line)}
 }
 /* ── phone hero: all four credentials above the fold ─────────────────────
-   The 2×2 credential grid used to end 114px past the usable bottom (the
-   viewport less the 47px sticky bar), so the second row was never seen on
-   load. Everything above it gives back a little: padding, gaps, display
-   sizes, rather than any one thing collapsing. The cells stay 2×2 and the
-   type stays on the scale. */
+   Measured against the usable bottom, which is the viewport less the 47px
+   sticky bar, not the viewport. Everything above the row gives back a little,
+   padding, gaps and display sizes, rather than any one thing collapsing. The
+   cells stay 2x2 and the type stays on the scale. The photo sits below the row
+   and below the fold, per the order rules in the tier above. */
 @media (max-width:640px){
 .rob-hero{padding-block:var(--space-5) var(--space-6)}
 .rob-hero .psp-stack--3{gap:var(--space-2)}
 .rob-h1{font-size:clamp(32px,8.4vw,40px)}
 .rob-hero .psp-body--lede{font-size:var(--step-body-sm)}
 .rob-actions{gap:var(--space-2)}
-.rob-hero .rob-trust{margin-top:var(--space-3);padding-top:var(--space-3);row-gap:var(--space-3)}
+.rob-hero .rob-trust{padding-top:var(--space-3);row-gap:var(--space-3)}
 .rob-trust-title{font-size:var(--step-lede)}
 }
 
-/* Short phones (SE, mini) need another ~40px. Height, not width, is what is
-   scarce here, so the query asks about height, since a 360×740 handset keeps the
-   roomier tier above. Tap targets are untouched either way. */
-@media (max-width:640px) and (max-height:720px){
-.rob-hero{padding-block:var(--space-4) var(--space-5)}
+/* Short phones need more room than the tier above gives. Height, not width, is
+   what is scarce, so the query asks about height.
+   The threshold is 780px, not the 720 it used to be: at 720 a 360x740 handset
+   fell through to the roomier tier and its credential row landed 55px past the
+   usable bottom. Measured, on 390x844, 375x667 and 360x740, against the viewport
+   less the 47px sticky bar. Tap targets are untouched at every tier. */
+@media (max-width:640px) and (max-height:780px){
+.rob-hero{padding-block:var(--space-3) var(--space-5)}
+.rob-hero>.psp-container{gap:var(--space-4)}
 .rob-hero .psp-stack--3{gap:var(--space-1)}
 .rob-h1{font-size:28px}
 .rob-actions{gap:var(--space-1)}
 .rob-hero .psp-body--lede{line-height:1.35}
-.rob-hero .rob-trust{margin-top:var(--space-2);padding-top:var(--space-2);row-gap:var(--space-2)}
+.rob-hero .rob-trust{padding-top:var(--space-2);row-gap:var(--space-2)}
 .rob-hero .rob-trust-cell{gap:4px}
 .rob-hero .rob-trust-sub{line-height:1.15}
 .rob-trust-title{font-size:var(--step-body)}
@@ -461,7 +475,7 @@ main{padding-bottom:var(--space-6)}
   <section class="rob-hero" id="hero" data-screen-label="Hero">
     <div class="psp-container">
       <div class="rob-hero-split">
-        <div class="psp-stack psp-stack--3 psp-stack--start">
+        <div class="rob-hero-text psp-stack psp-stack--3 psp-stack--start">
           <p class="psp-eyebrow psp-eyebrow--inverse">Anthem, Arizona · Kids, teens &amp; adults</p>
           <h1 class="psp-heading psp-heading--balance rob-h1" style="max-width:20ch;font-style:normal">Braces &amp; Invisalign in Anthem, for <em>your whole family</em></h1>
           <p class="psp-body psp-body--lede psp-body--inverse" style="max-width:46ch">Dr. Nicholas Romans is a board-certified orthodontist, and he personally plans and finishes every treatment in this office.</p>
