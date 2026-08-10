@@ -9,8 +9,7 @@ One folder per practice, one `concept-*/` subfolder per design direction. Every 
 | Downtown Orthodontics | [/downtown-orthodontics/](https://orthoboost-marketing.github.io/Client-web-concepts/downtown-orthodontics/) | 3 | [client record](https://app.notion.com/p/31232d9551dd81aeb086cd14a2d107ce) |
 | Siouxland Orthodontics | [/siouxland-orthodontics/](https://orthoboost-marketing.github.io/Client-web-concepts/siouxland-orthodontics/) | 3 | [client record](https://app.notion.com/p/39632d9551dd802fb5f1fc06c8478199) |
 | Elite Dental & Wellness | [/elite-dental-wellness/](https://orthoboost-marketing.github.io/Client-web-concepts/elite-dental-wellness/) | 1 | [client record](https://app.notion.com/p/31232d9551dd8149a5b3e428ea272491) |
-| Chang Orthodontics | [/chang-orthodontics/](https://orthoboost-marketing.github.io/Client-web-concepts/chang-orthodontics/) | 3 | [client record](https://app.notion.com/p/31232d9551dd81c3bef9dd3cfab1f108) |
-| Romans Orthodontics | [/romans-orthodontics/](https://orthoboost-marketing.github.io/Client-web-concepts/romans-orthodontics/) | 1 | client record `3a532d95-51dd-80bf…` |
+| Chang Orthodontics | [/chang-orthodontics/](https://orthoboost-marketing.github.io/Client-web-concepts/chang-orthodontics/) | 1 | [client record](https://app.notion.com/p/31232d9551dd81c3bef9dd3cfab1f108) |
 
 Concept copies also remain on the dev account (`dev-orthoboost.github.io`); links already shared with clients from there keep working. This repo is the canonical home.
 
@@ -62,20 +61,8 @@ Concept copies also remain on the dev account (`dev-orthoboost.github.io`); link
 
 **Status (Notion snapshot, Jul 27 2026):** Stage 1 · Intake, working · [project](https://app.notion.com/p/3a332d9551dd81fe998af84b482386e6)
 
-| Concept | Style | Themes |
-| --- | --- | --- |
-| [concept-1](https://orthoboost-marketing.github.io/Client-web-concepts/chang-orthodontics/concept-1/) | Clinical instrument: data-led, schematic diagrams (26 pages) | light only |
-| [concept-2](https://orthoboost-marketing.github.io/Client-web-concepts/chang-orthodontics/concept-2/) | Editorial precision on IBM Carbon (26 pages) | light only |
-| [concept-3](https://orthoboost-marketing.github.io/Client-web-concepts/chang-orthodontics/concept-3/) | Calm clinical: warm, rounded, serif (26 pages) | light only |
+| Concept | Direction | Notes |
+|---|---|---|
+| [concept-a](https://orthoboost-marketing.github.io/Client-web-concepts/chang-orthodontics/concept-a/) | Clinical instrument: data-led, precise, real photography | homepage only |
 
-## Romans Orthodontics
-
-Notion client record `3a532d95-51dd-80bf…` (only the truncated id is on file) · Dr. Nicholas Romans, DMD, MSD · Anthem, AZ · [romansorthodontics.com](https://romansorthodontics.com)
-
-**Status (Aug 5 2026):** rebuild after the first three concepts were retired · concept A homepage up for review · sibling pages not built yet · office hours still unconfirmed
-
-| Concept | Style | Themes |
-| --- | --- | --- |
-| [concept-a](https://orthoboost-marketing.github.io/Client-web-concepts/romans-orthodontics/concept-a/) | Editorial, hairline-ruled: Fraunces + Archivo + IBM Plex Mono, copper on paper, no radius, no shadows (homepage only) | light only |
-
-**Notes:** built on the `practice-site-primitives` design system — `concept-a/design-system.css` is that bundle verbatim and carries every token, so the page has no colour or type overrides of its own. Photography lives in the shared `assets/` folder: originals at the top level, and the graded web-ready crops the page actually loads in `assets/web/`. Every photo except the six service cards is a real frame from the Anthem office; the service cards are stock by client instruction. No review section by design — the practice has zero Google reviews and the brief rules out placeholder testimonials, so there is a comment marker in the page where the review grid drops in later.
+**State (Aug 10 2026):** walked back to a single concept. Concept A's homepage is the design system of record (`concept-a/DESIGN.md`, `concept-a/site.css`); every other page is being rebuilt through the current workflow, tracked in `concept-a/BUILD-QUEUE.md` and governed by `chang-orthodontics/CLIENT-BRIEF.md`. Concepts B and C, and Concept A's original 26 pages, were deleted and remain recoverable on `chang-preserve-2026-08-10`. Blocked on verbatim Google review quotes.
