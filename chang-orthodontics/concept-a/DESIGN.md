@@ -36,6 +36,38 @@ Scale: H1 `clamp(36px,4.6vw,62px)` · H2 `clamp(28px,5vw,46px)` · H3 26 to 38px
 - Radius: pills `999px` for buttons and nav, `22px` cards, `14px` photos.
 - Photos carry a `1px` hairline border and a hard offset shadow (`5px 6px 0 #1b1c1c`) in the hero, softer elsewhere. This is the signature of the original Concept A shell; keep it.
 
+## Spacing and units
+
+4-point scale, tokens `--space-1` (4px) through `--space-28` (112px). Every new page uses tokens, not literals. The homepage predates the scale and keeps its literals; do not retrofit it.
+
+## Breakpoints
+
+`640px` · `768px` · `900px` · `1024px` · `1100px`. Five, and no more. `1100px` is the nav switch: below it the pill nav becomes the drawer and the sticky bottom bar appears. Do not invent a sixth breakpoint for one stubborn section.
+
+## Elevation
+
+| Token | Use |
+|---|---|
+| `--shadow-hard` | hero photo, the signature offset |
+| `--shadow-hard-sm` | split-section media |
+| `--shadow-1` | resting pill CTA |
+| `--shadow-2` | cards at rest |
+| `--shadow-3` | dropdowns, drawer, anything overlaying content |
+
+Z-index is a closed set: `--z-grain` 0, `--z-content` 5, `--z-nav` 50, `--z-bar` 55. Nothing else gets a z-index.
+
+## Motion
+
+Easing is always `--ease-out`. Durations are `--dur-fast` .2s (color and background), `--dur-base` .25s (transforms, menus), `--dur-slow` .7s (scroll reveals). Reveals are opacity plus a 30px translate, once, never looping. `prefers-reduced-motion: reduce` disables every transition and forces revealed elements visible. That block is non-negotiable, carry it to every page.
+
+## Iconography
+
+Inline SVG only, `viewBox="0 0 24 24"`, `fill:currentColor`, drawn on a 24px box so it pairs with the type scale. Rendered at 15 to 19px. Outlined-solid hybrid, matching the existing set. Every icon is decorative and carries `aria-hidden="true"`; the adjacent text is the accessible name. If an icon ever has to stand alone, it needs an `aria-label` on the control, not on the SVG. Icons never appear in a grid above the stats band, and never as a substitute for a photograph.
+
+## Semantic colors
+
+`--c-focus` (focus ring, currently navy), `--c-error` / `--c-error-bg`, `--c-success` / `--c-success-bg`, `--c-disabled` / `--c-disabled-bg`. These exist for the appointment and contact forms. All four foregrounds clear 4.5:1 on their paired background and on white.
+
 ## Voice
 
 Premium, plain, unhurried. Marlowe register: state the fact, stop. The client is a boutique practice making its first real marketing spend and is skeptical of hype, so:
@@ -69,3 +101,15 @@ Ratios: `0.75` → 1200×1600 · `1.3333` → 1200×900 · `0.6654` → 1200×18
 - **No exterior photo.** The locations section leans on the map.
 - **No staff names or headshots.** Team stays at the minimal tier.
 - **No founding year.** The footer copyright is a single year, not a range.
+
+## Explicit non-goals
+
+- **No dark mode.** Light only, deliberately. There is no `prefers-color-scheme` block and no dark palette. Do not add one page by page.
+- **No component library.** This is a static site, not a product. Components live in the page markup and are copied verbatim per `DESIGN.md`, not imported.
+- **No icon font, no icon sprite.** Inline SVG only.
+
+## Open pre-launch items
+
+- **Fonts load from the Google Fonts CDN and are render-blocking.** `display=swap` and `preconnect` are set, so there is no invisible-text flash, but there is a swap reflow. Self-host both families before launch, see the static-site-deploy skill.
+- **No OG image.** Needs a 1200x630 asset.
+- **No favicon set.** Currently reusing the logo SVG; needs a 32px ICO and a 180px apple-touch-icon.
