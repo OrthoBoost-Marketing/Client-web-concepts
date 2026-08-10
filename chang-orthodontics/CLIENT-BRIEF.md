@@ -8,6 +8,12 @@ practice: Chang Orthodontics | founded: TBD (not published anywhere; do not prin
 
 ## Avatar & voice
 avatar: premium-ortho
+persona slots (assigned 2026-08-10):
+- concept-a: `dr-g-house` (Premium Family Ortho), the existing live homepage, built and refined before this assignment; recorded for the slot, not redesigned.
+- concept-b: `dr-c-yang` (High-Expertise Clinical Ortho), authority axis: UCSF professorship, board certification, published research, complex cases. The practice as the referral-grade specialist.
+- concept-c: `dr-b-nye` (Science-Driven Holistic Clinic), evidence axis: the published 3-D airway research leads; orthodontics framed as airway and whole-child health with scientific backing.
+
+composition boundary (applies to every concept, name it in any instruction that says "differ"): brand-invariant = navy #005DAA and the logo. Everything else, type system, surface language, radii, shadows, section order, hero pattern, density, copy register, is concept-level and MUST differ across slots.
 kit avatar: **Marlowe Orthodontics** (https://orthoboost-website-kit.vercel.app/pages/marlowe.html) — follow its structure, nav naming, voice, and restraint. Match on: single location, one doctor, complimentary consultation, boutique positioning, no offers, credential-forward proof, async "request a consultation" form rather than a real-time scheduler.
 diverge from Marlowe on: **treatment mix and age skew.** Marlowe is adult/hidden-braces led; Chang is mostly kids across all ages, so the services grid and imagery stay family-weighted. Also diverge on **page count** (Marlowe is 12 pages, Chang is 27 — see Page inventory) and on **proof**, where Chang has real volume stats (100 reviews, 10,000 patients) to run alongside credentials rather than credentials alone.
 voice notes: Boutique San Francisco Peninsula practice. Notion brand persona = **Premium Family Ortho ("Dr. G. House")**. Mostly kids but treats all ages, so premium must not read as adults-only. Doctor is a UCSF clinical professor and published airway researcher: credibility and precision are the positioning, not price. Sales note: **first real marketing spend, very skeptical, go slow, no discounts or offers**. Never write a promotional/urgency tone. Never advertise in Spanish (practice speaks it, but explicitly does not want Spanish advertising).
