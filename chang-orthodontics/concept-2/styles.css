@@ -2,14 +2,14 @@
   --interactive:#005daa; --hover:#004a88; --active:#003b6e;
   --tint:#c1e4ea; --ink:#0d0d0d; --text:#0d0d0d; --text-2:#585959; --placeholder:#939598;
   --layer:#f4f4f4; --border:#e0e0e0; --border-strong:#8d8d8d; --error:#da1e28; --success:#24a148;
-  --sans:'Public Sans',system-ui,sans-serif; --serif:'Spectral',Georgia,serif; --mono:'Chivo Mono',ui-monospace,monospace;
+  --sans:'IBM Plex Sans',system-ui,sans-serif; --serif:'IBM Plex Serif',Georgia,serif; --mono:'Azeret Mono',ui-monospace,monospace;
   --container:1312px; --gutter:32px;
   --ease-productive:cubic-bezier(.2,0,.38,.9); --ease-expressive:cubic-bezier(.4,.14,.3,1);
 }
 *,*::before,*::after{box-sizing:border-box;border-radius:0}
 html{scroll-behavior:smooth}
 ::selection{background:var(--tint);color:var(--ink)}
-body{margin:0;font-family:var(--sans);font-size:18px;line-height:1.56;color:var(--text);background:#fff;-webkit-font-smoothing:antialiased}
+body{margin:0;font-family:var(--sans);font-size:16px;line-height:1.5;color:var(--text);background:#fff;-webkit-font-smoothing:antialiased}
 h1,h2,h3,h4{margin:0;font-weight:300;letter-spacing:0}
 p{margin:0}
 img{display:block;max-width:100%}
@@ -42,10 +42,10 @@ a{color:var(--interactive)}
 .display{font-family:var(--serif);font-weight:300;font-size:clamp(38px,4.6vw,60px);line-height:1.08;letter-spacing:-.012em}
 .display--sm{font-size:clamp(32px,3.4vw,44px);line-height:1.14;letter-spacing:-.008em}
 .h2{font-size:clamp(24px,2.4vw,30px);line-height:1.25;font-weight:400}
-.h3{font-size:22px;line-height:30px;font-weight:400}
-.lede{font-size:20px;line-height:30px;color:var(--text-2)}
-.body{font-size:18px;line-height:28px;color:var(--text-2)}
-.small{font-size:16px;line-height:24px;color:var(--text-2)}
+.h3{font-size:20px;line-height:28px;font-weight:400}
+.lede{font-size:18px;line-height:28px;color:var(--text-2)}
+.body{font-size:16px;line-height:24px;color:var(--text-2)}
+.small{font-size:14px;line-height:22px;color:var(--text-2)}
 .mono{font-family:var(--mono);font-size:11px;line-height:16px;letter-spacing:.06em;text-transform:uppercase;color:var(--text-2);font-weight:500}
 .measure{max-width:60ch}
 .section--ink .body,.section--ink .lede{color:rgba(255,255,255,.78)}
@@ -112,7 +112,6 @@ a{color:var(--interactive)}
 .step__body{margin-top:12px}
 .display--tint{color:var(--tint)}
 .hero__media{position:relative;background:var(--tint);align-self:stretch;min-height:420px}
-.hero__media--wide{align-self:start;min-height:0;aspect-ratio:4/3}
 .hero__media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .hero--compact{grid-template-columns:1fr;background:var(--layer)}
 .hero--compact .hero__copy{padding:64px 0}
@@ -190,26 +189,6 @@ a.tile:hover{border-color:var(--interactive)}
 .faq-group>.h2{margin-bottom:8px}
 
 /* cta band */
-/* proof band — flat interactive blue, exactly three verified points, reused under
-   the hero of every money page. Content-sized columns so the text never wraps;
-   stacks vertically when narrow (site-conversion-blueprint). */
-.proofband{background:var(--interactive);color:#fff}
-.proofband__row{display:flex;flex-wrap:wrap;justify-content:space-between;gap:26px 44px;padding-top:28px;padding-bottom:28px}
-.proofband__item{display:flex;align-items:center;gap:14px;flex:0 1 auto}
-.proofband__ic{display:inline-flex;color:var(--tint);flex:0 0 auto}
-.proofband__lead{font:600 17px/1.3 var(--sans);color:#fff;white-space:nowrap}
-/* .88 not .76 — at 14px on this blue, anything under ~.76 drops below AA 4.5:1 */
-.proofband__sub{font:400 14px/1.4 var(--mono);color:rgba(255,255,255,.88);white-space:nowrap;margin-top:4px}
-@media (max-width:940px){.proofband__row{flex-direction:column;align-items:flex-start;gap:20px}}
-
-.split--top{align-items:start}
-.callcol{border-top:1px solid var(--border);padding-top:24px}
-
-/* location map embed */
-.map-embed{border:1px solid var(--border);background:var(--layer)}
-.map-embed iframe{display:block;width:100%;height:430px;border:0}
-@media (max-width:680px){.map-embed iframe{height:320px}}
-
 .cta-band{background:var(--interactive);color:#fff;padding:80px 0}
 .cta-band .display{color:#fff}
 .cta-band .body{color:rgba(255,255,255,.85)}
@@ -304,50 +283,11 @@ a.tile:hover .arrow{transform:translateX(4px)}
 .nav a{transition:color 110ms var(--ease-productive)}
 .hero__media img{transition:transform 900ms var(--ease-expressive)}
 
-/* grouped nav dropdowns (blueprint: Treatments · Why choose us · Resources · Location) */
-.nav-grp{position:relative}
-.nav-grp>a .caret{font-size:9px;opacity:.55;margin-left:5px}
-.nav-drop{position:absolute;left:0;top:100%;min-width:236px;background:#fff;border:1px solid var(--border);
-  border-top:2px solid var(--interactive);padding:6px 0;opacity:0;visibility:hidden;z-index:80;
-  transition:opacity 110ms var(--ease-productive)}
-.nav-grp:hover .nav-drop,.nav-grp:focus-within .nav-drop{opacity:1;visibility:visible}
-.nav .nav-drop a{display:block;padding:12px 18px}
-.menu__panel .grp-label{margin:16px 32px 2px;font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--text-2)}
-
-/* photo service tiles */
-.tile--media{padding:0;overflow:hidden}
-.tile--media img{width:100%;height:190px;object-fit:cover;display:block}
-.tile--media .tile__pad{display:block;padding:28px}
-
-/* credentials bar + review stars */
-.trust{display:flex;flex-wrap:wrap;gap:14px 48px;align-items:center;justify-content:space-between;
-  border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:26px 0;margin-top:56px}
-.stars{color:var(--interactive);letter-spacing:4px;font-size:15px}
-.section--ink .stars{color:var(--tint)}
-
-/* bento treatments + wide tile */
-.tiles--feature{grid-template-columns:1fr 1fr}
-.tiles+.tiles{margin-top:16px}
-.tile--media--lg img{height:280px}
-.tile--wide{margin-top:16px;display:flex;align-items:center;justify-content:space-between;gap:24px}
-@media (max-width:900px){.tiles--feature{grid-template-columns:1fr}}
-
-/* trust logos */
-.trust img{width:auto;filter:grayscale(1);opacity:.72}
-.trust .logo-abo{height:48px}
-.trust .logo-inv{height:30px}
-.trust .logo-ucsf{height:26px}
-
-/* diagnostics split: media left, copy+spec right */
-.split--flip{grid-template-columns:1fr 1.2fr}
-.split--flip .tech-media{margin-bottom:0}
-
-/* long values (addresses) wrap inside the spec box */
-.spec__row dt{flex-shrink:0}
-.spec__row dd{min-width:0;overflow-wrap:break-word}
-
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{transition:none!important;animation:none!important}
   html{scroll-behavior:auto}
   html.js .reveal.pre:not(.is-in){opacity:1;transform:none}
 }
+
+/* portrait crops: keep faces in frame inside fixed-height bands */
+img.obj-top{object-position:center 18%}

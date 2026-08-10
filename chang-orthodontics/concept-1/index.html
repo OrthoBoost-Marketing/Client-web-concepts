@@ -2,7 +2,7 @@
 <html class="light" lang="en"><head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Chang Orthodontics | Orthodontist in San Carlos, CA</title>
+<title>Chang Orthodontics | Precision Clinical Orthodontics</title>
 <meta name="description" content="Chang Orthodontics: clinical-grade precision orthodontics. 3D volumetric imaging, AI-assisted treatment planning, and board-certified expertise for confident, healthy smiles."/>
 <link rel="stylesheet" href="tailwind.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -314,73 +314,8 @@
 </style>
 <noscript><style>[data-reveal]{opacity:1!important;transform:none!important;}</style></noscript>
 
-<style>
-  .offer-strip{position:fixed;top:0;left:0;width:100%;z-index:60;background:var(--c-ink);color:#fff;
-    display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap;padding:7px 16px;text-align:center}
-  .offer-strip span:first-child{color:#c1e4ea}
-  .offer-strip a{color:#c1e4ea}
-  #nav-wrap{top:calc(1rem + 34px)}
-  .page-hero{padding-top:clamp(150px,17vh,210px)}
-  .crumb-row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
-  .crumb-row a{color:var(--navy)}
-  /* grouped pill-nav dropdowns + header phone (blueprint header) */
-  .nav-pill-grp{position:relative}
-  .nav-pill-grp:hover::after{content:'';position:absolute;left:0;right:0;top:100%;height:14px}
-  .pill-caret{font-size:15px;opacity:.55;margin-left:-3px}
-  .pill-drop{position:absolute;left:0;top:calc(100% + 10px);min-width:240px;background:rgba(255,255,255,.96);backdrop-filter:blur(12px);
-    border:1px solid rgba(13,13,13,.1);border-radius:18px;padding:8px;box-shadow:0 18px 40px rgba(13,13,13,.14);
-    opacity:0;visibility:hidden;transform:translateY(-4px);transition:opacity .16s ease,transform .16s ease;z-index:70}
-  .nav-pill-grp:hover .pill-drop,.nav-pill-grp:focus-within .pill-drop{opacity:1;visibility:visible;transform:none}
-  .pill-drop a{display:block;padding:10px 14px;border-radius:12px;font-family:'Hanken Grotesk',sans-serif;font-size:13.5px;font-weight:600;color:var(--c-ink);text-decoration:none}
-  .pill-drop a:hover{background:rgba(0,93,170,.07);color:var(--navy)}
-  .pill-phone{display:none}
-  @media (min-width:1150px){.pill-phone{display:inline-flex;align-items:center;font-family:'JetBrains Mono',monospace;font-size:12.5px;font-weight:700;letter-spacing:.02em;color:var(--c-ink);text-decoration:none;white-space:nowrap;padding:0 10px}}
-  .pill-phone:hover{color:var(--navy)}
-  .menu-grp-label{font-family:'JetBrains Mono',monospace;font-size:10px;text-transform:uppercase;letter-spacing:.18em;color:rgba(13,13,13,.55);padding:12px 12px 4px;margin:0}
-  /* photo service cards */
-  .mod-photo{width:100%;height:170px;object-fit:cover;display:block}
-  /* diagnostics card backgrounds: stock imagery at low opacity under a blue wash */
-  #diagnostics .lift{isolation:isolate}
-  .diag-bg{position:absolute;inset:0;z-index:-1;overflow:hidden}
-  .diag-bg img{width:100%;height:100%;object-fit:cover;opacity:.32;filter:grayscale(45%)}
-  .diag-bg::after{content:'';position:absolute;inset:0;background:rgba(0,93,170,.16)}
-  /* trust bar logos */
-  .trust-logo{width:auto;filter:grayscale(1);opacity:.72}
-  .trust-logo--abo{height:48px}
-  .trust-logo--inv{height:30px}
-  .trust-logo--ucsf{height:26px}
-  /* location map embed */
-  .map-frame{display:block;width:100%;height:430px;border:0}
-  @media (max-width:640px){ .map-frame{height:320px} }
-  /* interior imagery scale — plain classes, NOT Tailwind arbitrary values, because
-     h-[340px]/h-[300px] don't exist in the compiled sheet and would silently no-op */
-  .img-hero{height:340px;width:100%;object-fit:cover}
-  .img-band{height:300px;width:100%;object-fit:cover}
-  @media (max-width:640px){ .img-hero{height:250px} .img-band{height:210px} }
-  /* proof band — flat navy, three verified points, never wraps, stacks when narrow */
-  .proofband{background:var(--navy);color:#fff}
-  /* horizontal padding comes from the same px-5/md:px-grid-margin utilities every
-     other section uses, so the band's content lines up with the page grid */
-  .proofband__row{padding-top:28px;padding-bottom:28px;display:flex;flex-wrap:wrap;
-    justify-content:space-between;gap:24px 44px}
-  .proofband__item{display:flex;align-items:center;gap:14px}
-  .proofband__item .material-symbols-outlined{color:#c1e4ea;font-size:26px;flex:0 0 auto}
-  .proofband__lead{font-family:'Hanken Grotesk',sans-serif;font-weight:700;font-size:17px;line-height:1.3;white-space:nowrap}
-  /* .88 not .75 — at 12px on this navy, anything under ~.76 drops below AA 4.5:1 */
-  .proofband__sub{font-family:'JetBrains Mono',monospace;font-size:12px;color:rgba(255,255,255,.88);white-space:nowrap;margin-top:4px}
-  @media (max-width:940px){ .proofband__row{flex-direction:column;align-items:flex-start;gap:18px} }
-  /* Dr. Ty type floor (site-conversion-blueprint): body copy 18px, ledes 20px.
-     These beat Tailwind's text-sm/text-base utilities on specificity, and this
-     block is injected after tailwind.css so equal-specificity rules win too. */
-  p.font-body-md,li .font-body-md,.text-body-md{font-size:18px;line-height:1.62}
-  .page-hero p.font-body-md{font-size:20px;line-height:1.6}
-  p.font-body-md.text-xs{font-size:15px;line-height:1.55}
-  .offer-strip span.font-body-md,.offer-strip .font-body-md{font-size:13px}
-  input,select,textarea{font-size:17px}
-  @media (max-width:640px){ .offer-strip{font-size:11px} #nav-wrap{top:calc(1rem + 48px)} .page-hero{padding-top:170px} }
-</style>
+
 <script>document.documentElement.classList.add('js');addEventListener('load',function(){setTimeout(function(){[].forEach.call(document.querySelectorAll('[data-reveal]:not(.in)'),function(e){e.classList.add('in')})},5000)})</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"Dentist","name":"Chang Orthodontics","description":"Board-certified orthodontics for kids, teens, and adults in San Carlos. 3D diagnostics, braces, and Invisalign.","medicalSpecialty":"Orthodontic","telephone":"(650) 598-0888","address":{"@type":"PostalAddress","streetAddress":"10 El Camino Real, Ste. 201","addressLocality":"San Carlos","addressRegion":"CA","postalCode":"94070","addressCountry":"US"},"openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday"],"opens":"09:00","closes":"17:00"}],"areaServed":[{"@type":"City","name":"San Carlos"},{"@type":"City","name":"Belmont"},{"@type":"City","name":"Redwood City"},{"@type":"City","name":"Redwood Shores"},{"@type":"City","name":"San Mateo"},{"@type":"City","name":"Foster City"},{"@type":"City","name":"Burlingame"},{"@type":"City","name":"Millbrae"},{"@type":"City","name":"Atherton"},{"@type":"City","name":"Menlo Park"},{"@type":"City","name":"Emerald Hills"}],"employee":{"@type":"Person","name":"Dr. Michael Chang, DDS MS","jobTitle":"Orthodontist"}}</script>
 </head>
 
 <body class="bg-surface text-on-surface selection:bg-primary selection:text-on-primary antialiased">
@@ -389,39 +324,23 @@
 
 <div id="scroll-progress"></div>
 
-<div class="offer-strip">
-  <span class="font-label-sans text-[10px] uppercase tracking-[0.2em]">Back to school</span>
-  <span class="font-body-md text-[13px]">$500 off full treatment with braces or Invisalign. New patients, all ages.</span>
-  <a class="font-label-sans text-[10px] uppercase tracking-widest underline underline-offset-4" href="appointment.html">Book a consult</a>
-</div>
 
 <!-- ===== Frosted pill navigation ===== -->
-<div class="fixed top-4 left-0 w-full z-50 px-4 md:px-grid-margin pointer-events-none" id="nav-wrap">
+<div class="fixed top-4 left-0 w-full z-50 px-5 md:px-grid-margin pointer-events-none" id="nav-wrap">
   <div class="max-w-[1320px] mx-auto pointer-events-auto">
     <div id="site-nav" class="pill-nav transition-transform duration-300">
       <a href="index.html" class="pill-logo" aria-label="Chang Orthodontics — home">
         <img src="assets/chang-logo.svg" alt="Chang Orthodontics" width="150" height="60">
       </a>
       <nav class="nav-pills hidden lg:flex" aria-label="Primary">
-        <div class="nav-pill-grp">
-        <a class="nav-pill" href="treatments.html"><span class="material-symbols-outlined">dentistry</span>Treatments<span class="material-symbols-outlined pill-caret" aria-hidden="true">expand_more</span></a>
-        <div class="pill-drop"><a href="braces.html">Braces</a><a href="invisalign.html">Invisalign</a><a href="early-orthodontics.html">Early orthodontics</a><a href="airway.html">Airway &amp; functional</a><a href="retainers.html">Retainers</a><a href="kids-teens.html">For kids &amp; teens</a><a href="adults.html">For adults</a></div>
-      </div>
-        <div class="nav-pill-grp">
-        <a class="nav-pill" href="about.html"><span class="material-symbols-outlined">badge</span>Why choose us<span class="material-symbols-outlined pill-caret" aria-hidden="true">expand_more</span></a>
-        <div class="pill-drop"><a href="about.html">Meet Dr. Chang</a><a href="technology.html">Technology</a><a href="reviews.html">Reviews</a></div>
-      </div>
-        <div class="nav-pill-grp">
-        <a class="nav-pill" href="new-patients.html"><span class="material-symbols-outlined">folder_open</span>Resources<span class="material-symbols-outlined pill-caret" aria-hidden="true">expand_more</span></a>
-        <div class="pill-drop"><a href="new-patients.html">New patients</a><a href="financing.html">Financing</a><a href="faq.html">FAQ</a><a href="emergencies.html">Emergencies</a><a href="blog.html">Blog</a></div>
-      </div>
-        <div class="nav-pill-grp">
-        <a class="nav-pill" href="contact.html"><span class="material-symbols-outlined">location_on</span>Location<span class="material-symbols-outlined pill-caret" aria-hidden="true">expand_more</span></a>
-        <div class="pill-drop"><a href="contact.html">Contact &amp; directions</a><a href="san-carlos.html">San Carlos office</a></div>
-      </div>
+        <a class="nav-pill" href="treatments.html"><span class="material-symbols-outlined">dentistry</span>Treatments</a>
+        <a class="nav-pill" href="new-patients.html"><span class="material-symbols-outlined">person_add</span>New patients</a>
+        <a class="nav-pill" href="technology.html"><span class="material-symbols-outlined">view_in_ar</span>Technology</a>
+        <a class="nav-pill" href="about.html"><span class="material-symbols-outlined">badge</span>About</a>
+        <a class="nav-pill" href="reviews.html"><span class="material-symbols-outlined">star</span>Reviews</a>
+        <a class="nav-pill" href="contact.html"><span class="material-symbols-outlined">call</span>Contact</a>
       </nav>
       <div class="flex items-center gap-2">
-        <a href="tel:6505980888" class="pill-phone">(650) 598-0888</a>
         <a href="appointment.html" class="pill-cta hidden sm:inline-flex">
           <span class="cta-text">Book Consult</span>
           <span class="cta-dot"><span class="material-symbols-outlined">arrow_outward</span></span>
@@ -433,33 +352,18 @@
     </div>
     <div id="mobile-menu" class="closed lg:hidden mt-2 bg-white/90 backdrop-blur-md border border-outline-variant rounded-3xl p-3 shadow-lg">
       <nav class="flex flex-col" aria-label="Mobile">
-        <p class="menu-grp-label">Treatments</p>
-        <a class="font-label-sans text-[12px] tracking-widest text-on-surface hover:text-primary py-3 px-3 border-b border-outline-variant transition-colors" href="braces.html">Braces</a>
-        <a class="font-label-sans text-[12px] tracking-widest text-on-surface hover:text-primary py-3 px-3 border-b border-outline-variant transition-colors" href="invisalign.html">Invisalign</a>
-        <a class="font-label-sans text-[12px] tracking-widest text-on-surface hover:text-primary py-3 px-3 border-b border-outline-variant transition-colors" href="early-orthodontics.html">Early orthodontics</a>
-        <a class="font-label-sans text-[12px] tracking-widest text-on-surface hover:text-primary py-3 px-3 border-b border-outline-variant transition-colors" href="airway.html">Airway &amp; functional</a>
-        <a class="font-label-sans text-[12px] tracking-widest text-on-surface hover:text-primary py-3 px-3 border-b border-outline-variant transition-colors" href="retainers.html">Retainers</a>
-        <a class="font-label-sans text-[12px] tracking-widest text-on-surface hover:text-primary py-3 px-3 border-b border-outline-variant transition-colors" href="kids-teens.html">For kids &amp; teens</a>
-        <a class="font-label-sans text-[12px] tracking-widest text-on-surface hover:text-primary py-3 px-3 border-b border-outline-variant transition-colors" href="adults.html">For adults</a>
-        <p class="menu-grp-label">Why choose us</p>
-        <a class="font-label-sans text-[12px] tracking-widest text-on-surface hover:text-primary py-3 px-3 border-b border-outline-variant transition-colors" href="about.html">Meet Dr. Chang</a>
-        <a class="font-label-sans text-[12px] tracking-widest text-on-surface hover:text-primary py-3 px-3 border-b border-outline-variant transition-colors" href="technology.html">Technology</a>
-        <a class="font-label-sans text-[12px] tracking-widest text-on-surface hover:text-primary py-3 px-3 border-b border-outline-variant transition-colors" href="reviews.html">Reviews</a>
-        <p class="menu-grp-label">Resources</p>
+        <a class="font-label-sans text-[12px] tracking-widest text-on-surface hover:text-primary py-3 px-3 border-b border-outline-variant transition-colors" href="treatments.html">Treatments</a>
         <a class="font-label-sans text-[12px] tracking-widest text-on-surface hover:text-primary py-3 px-3 border-b border-outline-variant transition-colors" href="new-patients.html">New patients</a>
-        <a class="font-label-sans text-[12px] tracking-widest text-on-surface hover:text-primary py-3 px-3 border-b border-outline-variant transition-colors" href="financing.html">Financing</a>
-        <a class="font-label-sans text-[12px] tracking-widest text-on-surface hover:text-primary py-3 px-3 border-b border-outline-variant transition-colors" href="faq.html">FAQ</a>
-        <a class="font-label-sans text-[12px] tracking-widest text-on-surface hover:text-primary py-3 px-3 border-b border-outline-variant transition-colors" href="emergencies.html">Emergencies</a>
-        <a class="font-label-sans text-[12px] tracking-widest text-on-surface hover:text-primary py-3 px-3 border-b border-outline-variant transition-colors" href="blog.html">Blog</a>
-        <p class="menu-grp-label">Location</p>
-        <a class="font-label-sans text-[12px] tracking-widest text-on-surface hover:text-primary py-3 px-3 border-b border-outline-variant transition-colors" href="contact.html">Contact &amp; directions</a>
-        <a class="font-label-sans text-[12px] tracking-widest text-on-surface hover:text-primary py-3 px-3 border-b border-outline-variant transition-colors" href="san-carlos.html">San Carlos office</a>
+        <a class="font-label-sans text-[12px] tracking-widest text-on-surface hover:text-primary py-3 px-3 border-b border-outline-variant transition-colors" href="technology.html">Technology</a>
+        <a class="font-label-sans text-[12px] tracking-widest text-on-surface hover:text-primary py-3 px-3 border-b border-outline-variant transition-colors" href="about.html">About</a>
+        <a class="font-label-sans text-[12px] tracking-widest text-on-surface hover:text-primary py-3 px-3 border-b border-outline-variant transition-colors" href="reviews.html">Reviews</a>
+        <a class="font-label-sans text-[12px] tracking-widest text-on-surface hover:text-primary py-3 px-3 border-b border-outline-variant transition-colors" href="contact.html">Contact</a>
+        <a class="font-label-sans text-[12px] tracking-widest text-on-surface hover:text-primary py-3 px-3 transition-colors" href="faq.html">FAQ</a>
       </nav>
       <a href="appointment.html" class="pill-cta w-full mt-3 justify-between pl-5">
         <span class="cta-text">Book Consult</span>
         <span class="cta-dot"><span class="material-symbols-outlined">arrow_outward</span></span>
       </a>
-      <a href="tel:6505980888" class="block text-center font-data-point text-sm font-bold text-on-surface py-3">(650) 598-0888</a>
     </div>
   </div>
 </div>
@@ -478,30 +382,27 @@
     <div class="hero-copy-col">
     <div class="clay-hero">
       <h1 class="clay-title">
-        <div class="title-line"><span class="word">PRECISION</span></div>
-        <div class="title-line"><span class="word">ORTHODONTICS</span></div>
-        <div class="title-line"><span class="word">IN SAN CARLOS.</span></div>
+        <div class="title-line"><span class="word">TOTAL CONFIDENCE</span></div>
+        <div class="title-line"><span class="word">IN TECHNICAL</span></div>
+        <div class="title-line"><span class="word">PRECISION.</span></div>
       </h1>
 
     </div>
 
     <!-- supporting line + actions -->
     <div class="hero-actions">
-      <p class="hero-sub">3D diagnostics and board-certified expertise, turned into precise, comfortable treatment plans — for every age on the Peninsula.</p>
+      <p class="hero-sub">3D diagnostics and board-certified expertise, turned into precise, comfortable treatment plans — for every age.</p>
       <div class="hero-cta-row">
-        <a href="appointment.html" class="btn btn-primary group px-7 py-4 font-label-sans text-[12px] uppercase tracking-widest">
+        <a href="#contact" class="btn btn-primary group px-7 py-4 font-label-sans text-[12px] uppercase tracking-widest">
           <span class="swap"><span class="swap__out">Book Your Consult</span><span class="swap__in">Book Your Consult</span></span>
           <span class="arrow-slide"><span class="material-symbols-outlined text-[18px]">arrow_forward</span></span>
-        </a>
-        <a href="tel:6505980888" class="btn btn-outline group px-7 py-4 font-label-sans text-[12px] uppercase tracking-widest">
-          <span class="swap"><span class="swap__out">Call (650) 598-0888</span><span class="swap__in">Call (650) 598-0888</span></span>
         </a>
         <span class="hero-note"><span class="material-symbols-outlined">check_circle</span> Free 3D scan &amp; consult — no obligation</span>
       </div>
     </div>
     </div>
       <figure class="hero-photo">
-        <img src="assets/web/chang-doctor-scanner-01-1200.webp"
+        <img class="obj-top" src="assets/web/chang-doctor-scanner-01-1200.webp"
              srcset="assets/web/chang-doctor-scanner-01-480.webp 480w, assets/web/chang-doctor-scanner-01-768.webp 768w, assets/web/chang-doctor-scanner-01-1200.webp 1200w"
              sizes="(max-width: 1023px) 100vw, 460px" width="1200" height="1803"
              alt="Dr. Michael Chang beside the digital scanner at Chang Orthodontics"
@@ -513,24 +414,6 @@
 </section>
 
 <div class="gradient-rule"></div>
-
-
-<section class="proofband">
-  <div class="proofband__row px-5 md:px-grid-margin max-w-[1320px] mx-auto">
-    <div class="proofband__item">
-      <span class="material-symbols-outlined" aria-hidden="true">schedule</span>
-      <div><p class="proofband__lead">16+ years on the Peninsula</p><p class="proofband__sub">Orthodontics only, every day</p></div>
-    </div>
-    <div class="proofband__item">
-      <span class="material-symbols-outlined" aria-hidden="true">verified</span>
-      <div><p class="proofband__lead">ABO board-certified</p><p class="proofband__sub">Certified orthodontic specialist</p></div>
-    </div>
-    <div class="proofband__item">
-      <span class="material-symbols-outlined" aria-hidden="true">groups</span>
-      <div><p class="proofband__lead">10,000+ patients treated</p><p class="proofband__sub">Kids, teens, and adults</p></div>
-    </div>
-  </div>
-</section>
 
 <!-- ===== Tech marquee ===== -->
 <section class="bg-white border-b border-outline-variant py-5 overflow-hidden" aria-label="Clinical technology">
@@ -546,173 +429,6 @@
   </div>
 </section>
 
-<!-- ===== The Specialist ===== -->
-<section class="py-section-padding px-5 md:px-grid-margin max-w-[1320px] mx-auto" id="doctor">
-  <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
-    <div class="lift bg-white border border-outline-variant rounded-lg overflow-hidden" data-reveal="left">
-      <img src="assets/web/chang-community-01-1200.webp" srcset="assets/web/chang-community-01-480.webp 480w, assets/web/chang-community-01-768.webp 768w, assets/web/chang-community-01-1200.webp 1200w" sizes="(max-width: 1060px) 100vw, 50vw" width="1200" height="1600" alt="Dr. Michael Chang with a young patient at Chang Orthodontics" loading="lazy" decoding="async" class="w-full h-[440px] object-cover object-top"/>
-    </div>
-    <div data-reveal="right">
-      <h2 class="font-headline-lg text-headline-lg text-on-surface leading-tight">Meet Dr. Michael Chang</h2>
-      <p class="font-body-md text-on-surface-variant leading-relaxed mt-5 max-w-md">Board-certified orthodontist, UCSF faculty, with master&#39;s-level training in airway orthodontics. Sixteen years and 10,000+ patients in, he still reviews every scan himself.</p>
-      <dl class="mt-8 border-t border-outline">
-        <div class="flex justify-between gap-4 py-4 border-b border-outline-variant"><dt class="font-label-sans text-[11px] uppercase tracking-widest text-on-surface-variant">Certification</dt><dd class="font-data-point text-sm font-bold text-on-surface">ABO Board-Certified</dd></div>
-        <div class="flex justify-between gap-4 py-4 border-b border-outline-variant"><dt class="font-label-sans text-[11px] uppercase tracking-widest text-on-surface-variant">Faculty</dt><dd class="font-data-point text-sm font-bold text-on-surface">UCSF</dd></div>
-        <div class="flex justify-between gap-4 py-4 border-b border-outline-variant"><dt class="font-label-sans text-[11px] uppercase tracking-widest text-on-surface-variant">Advanced Training</dt><dd class="font-data-point text-sm font-bold text-on-surface">Airway Orthodontics</dd></div>
-        <div class="flex justify-between gap-4 py-4 border-b border-outline-variant"><dt class="font-label-sans text-[11px] uppercase tracking-widest text-on-surface-variant">Invisalign Tier</dt><dd class="font-data-point text-sm font-bold text-on-surface">Platinum Plus</dd></div>
-      </dl>
-      <div class="mt-8" data-reveal="up">
-        <a href="about.html" class="btn btn-outline group px-7 py-4 font-label-sans text-[11px] uppercase tracking-widest">
-          <span class="swap"><span class="swap__out">About Dr. Chang</span><span class="swap__in">About Dr. Chang</span></span>
-          <span class="arrow-slide"><span class="material-symbols-outlined text-[18px]">arrow_forward</span></span>
-        </a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ===== Why Chang (USP zigzag) ===== -->
-<section class="bg-white border-y border-outline-variant py-section-padding" id="why">
-  <div class="px-5 md:px-grid-margin max-w-[1320px] mx-auto">
-    <div class="text-center mb-14 max-w-2xl mx-auto">
-      <h2 class="font-headline-lg text-headline-lg text-on-surface" data-reveal="up" style="--d:.08s">Precision You Can Feel, Care You Can Trust</h2>
-    </div>
-
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center mb-14">
-      <div class="lift bg-white border border-outline-variant rounded-lg overflow-hidden" data-reveal="left">
-        <img src="assets/web/chang-team-01-1200.webp" srcset="assets/web/chang-team-01-480.webp 480w, assets/web/chang-team-01-768.webp 768w, assets/web/chang-team-01-1200.webp 1200w" sizes="(max-width: 1023px) 100vw, 620px" width="1200" height="1600" alt="The team at Chang Orthodontics" loading="lazy" decoding="async" class="w-full h-[400px] object-cover"/>
-      </div>
-      <div data-reveal="right">
-        <h3 class="font-headline-lg text-[26px] uppercase tracking-tight text-on-surface leading-tight">Board-Certified Precision</h3>
-        <p class="font-body-md text-on-surface-variant leading-relaxed mt-5 max-w-md">ABO board-certified clinicians review every plan against measurable clinical targets, so nothing is left to guesswork. Transparent plans, predictable timelines, and progress you can actually see at every visit.</p>
-        <div class="mt-7">
-          <a href="about.html" class="btn btn-outline group px-7 py-4 font-label-sans text-[11px] uppercase tracking-widest">
-            <span class="swap"><span class="swap__out">Why Families Choose Us</span><span class="swap__in">Why Families Choose Us</span></span>
-            <span class="arrow-slide"><span class="material-symbols-outlined text-[18px]">arrow_forward</span></span>
-          </a>
-        </div>
-      </div>
-    </div>
-
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
-      <div class="order-1 lg:order-2 lift bg-white border border-outline-variant rounded-lg overflow-hidden" data-reveal="right">
-        <img src="assets/web/chang-patient-01-1200.webp" srcset="assets/web/chang-patient-01-480.webp 480w, assets/web/chang-patient-01-768.webp 768w, assets/web/chang-patient-01-1200.webp 1200w" sizes="(max-width: 1023px) 100vw, 620px" width="1200" height="1600" alt="A patient at Chang Orthodontics in front of the local school shirt wall" loading="lazy" decoding="async" class="w-full h-[400px] object-cover"/>
-      </div>
-      <div class="order-2 lg:order-1" data-reveal="left">
-        <h3 class="font-headline-lg text-[26px] uppercase tracking-tight text-on-surface leading-tight">Built for Every Age</h3>
-        <p class="font-body-md text-on-surface-variant leading-relaxed mt-5 max-w-md">Children, teens, and adults, with treatment paths tuned to each stage of growth. After-school appointments and protected wait times keep visits from eating the afternoon.</p>
-        <div class="mt-7">
-          <a href="kids-teens.html" class="btn btn-outline group px-7 py-4 font-label-sans text-[11px] uppercase tracking-widest">
-            <span class="swap"><span class="swap__out">Care for Kids &amp; Teens</span><span class="swap__in">Care for Kids &amp; Teens</span></span>
-            <span class="arrow-slide"><span class="material-symbols-outlined text-[18px]">arrow_forward</span></span>
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ===== Mid CTA ===== -->
-<section class="px-5 md:px-grid-margin max-w-[1320px] mx-auto py-16">
-  <div class="relative bg-accent border border-outline-variant rounded-2xl px-5 py-16 overflow-hidden text-center" data-reveal="scale">
-    <div class="absolute inset-0 dot-grid opacity-[0.05] pointer-events-none"></div>
-    <div class="relative z-10 max-w-2xl mx-auto">
-      <h2 class="font-display-xl text-[clamp(1.9rem,4.4vw,3.2rem)] text-on-surface tracking-tight leading-[1.02]" data-reveal="up">Free Consult, Clear Plan.</h2>
-      <p class="font-body-md text-on-surface-variant mt-6 mb-10 max-w-lg mx-auto leading-relaxed" data-reveal="up" style="--d:.1s">The exam, the 3D scan, and the itemized estimate cost nothing. You leave knowing exactly where you stand.</p>
-      <div class="flex flex-wrap gap-3 justify-center" data-reveal="up" style="--d:.2s">
-        <a href="appointment.html" class="btn btn-primary group px-7 py-4 font-label-sans text-[12px] uppercase tracking-widest">
-          <span class="swap"><span class="swap__out">Book Your Consult</span><span class="swap__in">Book Your Consult</span></span>
-          <span class="arrow-slide"><span class="material-symbols-outlined text-[18px]">arrow_forward</span></span>
-        </a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ===== Treatment Modalities ===== -->
-<section class="py-section-padding px-5 md:px-grid-margin max-w-[1320px] mx-auto" id="modalities">
-  <div class="mb-12">
-    <h2 class="font-headline-lg text-headline-lg text-on-surface" data-reveal="up" style="--d:.08s">Treatment Modalities</h2>
-  </div>
-  <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
-    <article class="lift bg-white border border-outline-variant rounded-lg overflow-hidden flex flex-col" data-reveal="scale" style="--d:.05s">
-      <img class="mod-photo" src="assets/web/chang-stock-braces-768.webp" srcset="assets/web/chang-stock-braces-480.webp 480w, assets/web/chang-stock-braces-768.webp 768w" sizes="(max-width: 767px) 100vw, 420px" width="768" height="576" alt="A close-up smile wearing ceramic braces" loading="lazy" decoding="async">
-      <div class="p-8 flex flex-col flex-1">
-        <h3 class="font-headline-lg text-[26px] uppercase tracking-tight text-on-surface mb-6 leading-tight">Braces</h3>
-        <dl class="mb-8">
-          <div class="flex justify-between gap-3 py-3 border-b border-outline-variant"><dt class="font-label-sans text-[11px] uppercase tracking-wide text-on-surface-variant">Systems</dt><dd class="font-data-point text-sm font-bold text-on-surface">Metal · Ceramic · Self-Ligating</dd></div>
-          <div class="flex justify-between gap-3 py-3 border-b border-outline-variant"><dt class="font-label-sans text-[11px] uppercase tracking-wide text-on-surface-variant">Ages</dt><dd class="font-data-point text-sm font-bold text-on-surface">Kids, Teens, Adults</dd></div>
-          <div class="flex justify-between gap-3 py-3 border-b border-outline-variant"><dt class="font-label-sans text-[11px] uppercase tracking-wide text-on-surface-variant">Planning</dt><dd class="font-data-point text-sm font-bold text-on-surface">3D Scan &amp; Imaging</dd></div>
-        </dl>
-        <a href="braces.html" class="mt-auto block text-center rounded-md border border-outline hover:border-primary hover:bg-primary hover:text-white py-3.5 font-label-sans text-[11px] uppercase tracking-widest text-on-surface transition-all">Learn More</a>
-      </div>
-    </article>
-    <article class="lift bg-white border border-outline-variant rounded-lg overflow-hidden flex flex-col" data-reveal="scale" style="--d:.15s">
-      <img class="mod-photo" src="assets/web/chang-doctor-scanner-01-768.webp" srcset="assets/web/chang-doctor-scanner-01-480.webp 480w, assets/web/chang-doctor-scanner-01-768.webp 768w" sizes="(max-width: 767px) 100vw, 420px" width="768" height="1154" alt="Dr. Michael Chang beside the digital scanner at Chang Orthodontics" loading="lazy" decoding="async">
-      <div class="p-8 flex flex-col flex-1">
-        <h3 class="font-headline-lg text-[26px] uppercase tracking-tight text-on-surface mb-6 leading-tight">Invisalign</h3>
-        <dl class="mb-8">
-          <div class="flex justify-between gap-3 py-3 border-b border-outline-variant"><dt class="font-label-sans text-[11px] uppercase tracking-wide text-on-surface-variant">Provider Tier</dt><dd class="font-data-point text-sm font-bold text-on-surface">Platinum Plus</dd></div>
-          <div class="flex justify-between gap-3 py-3 border-b border-outline-variant"><dt class="font-label-sans text-[11px] uppercase tracking-wide text-on-surface-variant">Simulation</dt><dd class="font-data-point text-sm font-bold text-on-surface">Full 3D Preview</dd></div>
-          <div class="flex justify-between gap-3 py-3 border-b border-outline-variant"><dt class="font-label-sans text-[11px] uppercase tracking-wide text-on-surface-variant">Visibility</dt><dd class="font-data-point text-sm font-bold text-on-surface">Near-Invisible</dd></div>
-        </dl>
-        <a href="invisalign.html" class="mt-auto block text-center rounded-md border border-outline hover:border-primary hover:bg-primary hover:text-white py-3.5 font-label-sans text-[11px] uppercase tracking-widest text-on-surface transition-all">Learn More</a>
-      </div>
-    </article>
-    <article class="lift bg-white border border-outline-variant rounded-lg overflow-hidden flex flex-col" data-reveal="scale" style="--d:.25s">
-      <img class="mod-photo" src="assets/web/chang-stock-child-768.webp" srcset="assets/web/chang-stock-child-480.webp 480w, assets/web/chang-stock-child-768.webp 768w" sizes="(max-width: 767px) 100vw, 420px" width="768" height="576" alt="A young patient at a dental checkup" loading="lazy" decoding="async">
-      <div class="p-8 flex flex-col flex-1">
-        <h3 class="font-headline-lg text-[26px] uppercase tracking-tight text-on-surface mb-6 leading-tight">Early Orthodontics</h3>
-        <dl class="mb-8">
-          <div class="flex justify-between gap-3 py-3 border-b border-outline-variant"><dt class="font-label-sans text-[11px] uppercase tracking-wide text-on-surface-variant">First Exam</dt><dd class="font-data-point text-sm font-bold text-on-surface">Age 7 Recommended</dd></div>
-          <div class="flex justify-between gap-3 py-3 border-b border-outline-variant"><dt class="font-label-sans text-[11px] uppercase tracking-wide text-on-surface-variant">Appliances</dt><dd class="font-data-point text-sm font-bold text-on-surface">Expanders · Maintainers</dd></div>
-          <div class="flex justify-between gap-3 py-3 border-b border-outline-variant"><dt class="font-label-sans text-[11px] uppercase tracking-wide text-on-surface-variant">Goal</dt><dd class="font-data-point text-sm font-bold text-on-surface">Guide Growth</dd></div>
-        </dl>
-        <a href="early-orthodontics.html" class="mt-auto block text-center rounded-md border border-outline hover:border-primary hover:bg-primary hover:text-white py-3.5 font-label-sans text-[11px] uppercase tracking-widest text-on-surface transition-all">Learn More</a>
-      </div>
-    </article>
-    <article class="lift bg-white border border-outline-variant rounded-lg overflow-hidden flex flex-col" data-reveal="scale" style="--d:.05s">
-      <img class="mod-photo" src="assets/web/chang-stock-sleeping-768.webp" srcset="assets/web/chang-stock-sleeping-480.webp 480w, assets/web/chang-stock-sleeping-768.webp 768w" sizes="(max-width: 767px) 100vw, 420px" width="768" height="576" alt="A child sleeping soundly beside their parents" loading="lazy" decoding="async">
-      <div class="p-8 flex flex-col flex-1">
-        <h3 class="font-headline-lg text-[26px] uppercase tracking-tight text-on-surface mb-6 leading-tight">Airway &amp; Functional</h3>
-        <dl class="mb-8">
-          <div class="flex justify-between gap-3 py-3 border-b border-outline-variant"><dt class="font-label-sans text-[11px] uppercase tracking-wide text-on-surface-variant">Training</dt><dd class="font-data-point text-sm font-bold text-on-surface">Master&#39;s-Level Airway</dd></div>
-          <div class="flex justify-between gap-3 py-3 border-b border-outline-variant"><dt class="font-label-sans text-[11px] uppercase tracking-wide text-on-surface-variant">Approaches</dt><dd class="font-data-point text-sm font-bold text-on-surface">Expansion · MARPE · MSE</dd></div>
-          <div class="flex justify-between gap-3 py-3 border-b border-outline-variant"><dt class="font-label-sans text-[11px] uppercase tracking-wide text-on-surface-variant">Assessment</dt><dd class="font-data-point text-sm font-bold text-on-surface">Included in Exam</dd></div>
-        </dl>
-        <a href="airway.html" class="mt-auto block text-center rounded-md border border-outline hover:border-primary hover:bg-primary hover:text-white py-3.5 font-label-sans text-[11px] uppercase tracking-widest text-on-surface transition-all">Learn More</a>
-      </div>
-    </article>
-    <article class="lift bg-white border border-outline-variant rounded-lg overflow-hidden flex flex-col" data-reveal="scale" style="--d:.15s">
-      <img class="mod-photo" src="assets/web/chang-stock-retainer-768.webp" srcset="assets/web/chang-stock-retainer-480.webp 480w, assets/web/chang-stock-retainer-768.webp 768w" sizes="(max-width: 767px) 100vw, 420px" width="768" height="576" alt="A clear orthodontic retainer" loading="lazy" decoding="async">
-      <div class="p-8 flex flex-col flex-1">
-        <h3 class="font-headline-lg text-[26px] uppercase tracking-tight text-on-surface mb-6 leading-tight">Retainers</h3>
-        <dl class="mb-8">
-          <div class="flex justify-between gap-3 py-3 border-b border-outline-variant"><dt class="font-label-sans text-[11px] uppercase tracking-wide text-on-surface-variant">Types</dt><dd class="font-data-point text-sm font-bold text-on-surface">Permanent · Clear · Hawley</dd></div>
-          <div class="flex justify-between gap-3 py-3 border-b border-outline-variant"><dt class="font-label-sans text-[11px] uppercase tracking-wide text-on-surface-variant">Made From</dt><dd class="font-data-point text-sm font-bold text-on-surface">Digital Scan</dd></div>
-          <div class="flex justify-between gap-3 py-3 border-b border-outline-variant"><dt class="font-label-sans text-[11px] uppercase tracking-wide text-on-surface-variant">Replacements</dt><dd class="font-data-point text-sm font-bold text-on-surface">Scan on File</dd></div>
-        </dl>
-        <a href="retainers.html" class="mt-auto block text-center rounded-md border border-outline hover:border-primary hover:bg-primary hover:text-white py-3.5 font-label-sans text-[11px] uppercase tracking-widest text-on-surface transition-all">Learn More</a>
-      </div>
-    </article>
-    <article class="lift bg-accent border border-outline-variant rounded-lg p-8 flex flex-col justify-between" data-reveal="scale" style="--d:.25s">
-      <div>
-        <h3 class="font-headline-lg text-[26px] uppercase tracking-tight text-on-surface mb-4 leading-tight">Not Sure Where to Start?</h3>
-        <p class="font-body-md text-sm text-on-surface-variant leading-relaxed">A free consultation and 3D scan will tell you exactly what your case needs — treatment, timeline, and an itemized estimate.</p>
-      </div>
-      <a href="appointment.html" class="mt-8 block text-center rounded-md bg-primary text-white py-3.5 font-label-sans text-[11px] uppercase tracking-widest transition-all">Book a Free Consult</a>
-    </article>
-  </div>
-
-  <!-- credentials bar: borrowed credibility, directly below the service cards -->
-  <div class="mt-10 border-y border-outline-variant py-5 flex flex-wrap items-center justify-between gap-x-8 gap-y-2" data-reveal="up" aria-label="Credentials">
-    <img class="trust-logo trust-logo--abo" src="assets/logos/abo.png" alt="American Board of Orthodontics — Board-Certified" loading="lazy" decoding="async">
-    <img class="trust-logo trust-logo--inv" src="assets/logos/invisalign.svg" alt="Invisalign — Platinum Plus Provider" loading="lazy" decoding="async">
-    <img class="trust-logo trust-logo--ucsf" src="assets/logos/ucsf.svg" alt="UCSF School of Dentistry — Faculty" loading="lazy" decoding="async">
-    <span class="telemetry-readout">iTero — Digital 3D Scanning</span>
-  </div>
-</section>
-
 <!-- ===== Advanced Diagnostics ===== -->
 <section class="py-section-padding px-5 md:px-grid-margin max-w-[1320px] mx-auto" id="diagnostics">
   <div class="flex flex-col md:flex-row md:justify-between md:items-end mb-12 gap-6">
@@ -724,7 +440,6 @@
 
   <div class="grid grid-cols-12 gap-5">
     <div class="col-span-12 md:col-span-8 lift bg-white border border-outline-variant rounded-lg p-8 md:p-10 flex flex-col justify-between min-h-[420px] md:min-h-[440px] relative overflow-hidden group" data-reveal="left">
-      <div class="diag-bg" aria-hidden="true"><img src="assets/web/chang-stock-xray32-1200.webp" srcset="assets/web/chang-stock-xray32-768.webp 768w, assets/web/chang-stock-xray32-1200.webp 1200w" sizes="(max-width: 767px) 100vw, 860px" alt="" loading="lazy" decoding="async"></div>
       <div class="absolute inset-0 dot-grid opacity-[0.05] pointer-events-none"></div>
       <div class="relative z-10 flex justify-between items-start gap-4">
         <div>
@@ -735,6 +450,21 @@
           <div class="w-2.5 h-2.5 rounded-sm bg-primary/20"></div><div class="w-2.5 h-2.5 rounded-sm bg-primary/40"></div><div class="w-2.5 h-2.5 rounded-sm bg-primary"></div>
         </div>
       </div>
+      <div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-md px-8 pointer-events-none opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700">
+        <svg viewBox="0 0 400 280" class="w-full" aria-hidden="true">
+          <g fill="none" stroke="#005DAA">
+            <path d="M60 90 Q200 -10 340 90" stroke-opacity="0.25" stroke-width="1"/><path d="M70 120 Q200 250 330 120" stroke-opacity="0.5" stroke-width="1.5"/>
+            <ellipse cx="200" cy="140" rx="150" ry="100" stroke-opacity="0.12"/><ellipse cx="200" cy="140" rx="110" ry="70" stroke-opacity="0.12"/>
+            <line x1="200" y1="20" x2="200" y2="260" stroke-opacity="0.15" stroke-dasharray="2 6"/><line x1="40" y1="140" x2="360" y2="140" stroke-opacity="0.15" stroke-dasharray="2 6"/>
+          </g>
+          <g fill="#005DAA" fill-opacity="0.85">
+            <rect x="92" y="150" width="14" height="22" rx="2"/><rect x="112" y="168" width="14" height="24" rx="2"/><rect x="135" y="182" width="15" height="26" rx="2"/><rect x="160" y="192" width="16" height="27" rx="2"/><rect x="186" y="196" width="17" height="28" rx="2"/><rect x="213" y="192" width="16" height="27" rx="2"/><rect x="239" y="182" width="15" height="26" rx="2"/><rect x="263" y="168" width="14" height="24" rx="2"/><rect x="284" y="150" width="14" height="22" rx="2"/>
+          </g>
+          <g stroke="#005DAA" stroke-width="1">
+            <circle cx="195" cy="205" r="20" fill="none" stroke-opacity="0.6"/><line x1="195" y1="178" x2="195" y2="232" stroke-opacity="0.4"/><line x1="168" y1="205" x2="222" y2="205" stroke-opacity="0.4"/>
+          </g>
+        </svg>
+      </div>
       <div class="relative z-10 flex justify-between items-end gap-4">
         <p class="font-body-md text-on-surface-variant max-w-xs text-sm leading-relaxed">Low-dose 3D radiographic imaging gives a complete view of skeletal and dental structures, the foundation of every precise plan.</p>
         <div class="flex items-center gap-3 shrink-0"><span class="font-label-sans text-[10px] text-on-surface-variant uppercase tracking-widest">Low-dose</span><span class="material-symbols-outlined text-4xl text-primary font-light" aria-hidden="true">analytics</span></div>
@@ -743,17 +473,145 @@
 
     <div class="col-span-12 md:col-span-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-1 md:grid-rows-2 gap-5">
       <div class="lift bg-accent border border-outline-variant rounded-lg p-8 relative overflow-hidden" data-reveal="right" style="--d:.1s">
-        <div class="diag-bg" aria-hidden="true"><img src="assets/web/chang-doctor-scanner-01-480.webp" alt="" loading="lazy" decoding="async"></div>
         <div class="flex justify-between mb-6"><span class="material-symbols-outlined text-primary text-3xl" aria-hidden="true">view_in_ar</span><span class="telemetry-readout">20µm</span></div>
         <h4 class="font-label-sans text-sm font-bold uppercase tracking-wide mb-3 text-on-surface">Intraoral Scanning</h4>
         <p class="font-data-point text-sm text-on-surface-variant leading-relaxed">Digital iTero impressions at 20-micron accuracy: comfortable, fast, and completely putty-free.</p>
       </div>
       <div class="lift bg-accent border border-outline-variant rounded-lg p-8 relative overflow-hidden" data-reveal="right" style="--d:.22s">
-        <div class="diag-bg" aria-hidden="true"><img src="assets/web/chang-stock-xraypano-768.webp" alt="" loading="lazy" decoding="async"></div>
         <div class="flex justify-between mb-6"><span class="material-symbols-outlined text-primary text-3xl" aria-hidden="true">psychology</span><span class="telemetry-readout">Auto</span></div>
         <h4 class="font-label-sans text-sm font-bold uppercase tracking-wide mb-3 text-on-surface">AI Cephalometrics</h4>
         <p class="font-data-point text-sm text-on-surface-variant leading-relaxed">Automated cephalometric landmarking for consistent, repeatable tracing on every scan.</p>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Treatment Modalities ===== -->
+<section class="py-section-padding px-5 md:px-grid-margin max-w-[1320px] mx-auto" id="modalities">
+  <div class="mb-12">
+    <h2 class="font-headline-lg text-headline-lg text-on-surface" data-reveal="up" style="--d:.08s">Treatment Modalities</h2>
+  </div>
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+    <article class="lift group bg-white border border-outline-variant rounded-lg p-8 flex flex-col hover:bg-primary transition-colors" data-reveal="scale" style="--d:.05s">
+      <h3 class="font-headline-lg text-[26px] uppercase tracking-tight text-on-surface group-hover:text-on-primary transition-colors mb-7 leading-tight min-h-[2.2em]">Precision Brackets</h3>
+      <dl class="mb-8">
+        <div class="flex justify-between gap-3 py-3 border-b border-outline-variant group-hover:border-white/25 transition-colors"><dt class="font-label-sans text-[11px] uppercase tracking-wide text-on-surface-variant group-hover:text-white/60 transition-colors">System</dt><dd class="font-data-point text-sm font-bold text-on-surface group-hover:text-white transition-colors">Self-Ligating</dd></div>
+        <div class="flex justify-between gap-3 py-3 border-b border-outline-variant group-hover:border-white/25 transition-colors"><dt class="font-label-sans text-[11px] uppercase tracking-wide text-on-surface-variant group-hover:text-white/60 transition-colors">Profile</dt><dd class="font-data-point text-sm font-bold text-on-surface group-hover:text-white transition-colors">Low / Discreet</dd></div>
+        <div class="flex justify-between gap-3 py-3 border-b border-outline-variant group-hover:border-white/25 transition-colors"><dt class="font-label-sans text-[11px] uppercase tracking-wide text-on-surface-variant group-hover:text-white/60 transition-colors">Visits</dt><dd class="font-data-point text-sm font-bold text-on-surface group-hover:text-white transition-colors">Fewer, Faster</dd></div>
+      </dl>
+      <a href="#contact" class="mt-auto block text-center rounded-md border border-outline group-hover:border-white py-3.5 font-label-sans text-[11px] uppercase tracking-widest text-on-surface group-hover:bg-white group-hover:text-primary transition-all">Specifications</a>
+    </article>
+    <article class="lift group bg-white border border-outline-variant rounded-lg p-8 flex flex-col hover:bg-primary transition-colors" data-reveal="scale" style="--d:.15s">
+      <h3 class="font-headline-lg text-[26px] uppercase tracking-tight text-on-surface group-hover:text-on-primary transition-colors mb-7 leading-tight min-h-[2.2em]">Clear Aligners</h3>
+      <dl class="mb-8">
+        <div class="flex justify-between gap-3 py-3 border-b border-outline-variant group-hover:border-white/25 transition-colors"><dt class="font-label-sans text-[11px] uppercase tracking-wide text-on-surface-variant group-hover:text-white/60 transition-colors">Simulation</dt><dd class="font-data-point text-sm font-bold text-on-surface group-hover:text-white transition-colors">Full 3D Preview</dd></div>
+        <div class="flex justify-between gap-3 py-3 border-b border-outline-variant group-hover:border-white/25 transition-colors"><dt class="font-label-sans text-[11px] uppercase tracking-wide text-on-surface-variant group-hover:text-white/60 transition-colors">Visibility</dt><dd class="font-data-point text-sm font-bold text-on-surface group-hover:text-white transition-colors">Near-Invisible</dd></div>
+        <div class="flex justify-between gap-3 py-3 border-b border-outline-variant group-hover:border-white/25 transition-colors"><dt class="font-label-sans text-[11px] uppercase tracking-wide text-on-surface-variant group-hover:text-white/60 transition-colors">Control</dt><dd class="font-data-point text-sm font-bold text-on-surface group-hover:text-white transition-colors">Stage Level</dd></div>
+      </dl>
+      <a href="#contact" class="mt-auto block text-center rounded-md border border-outline group-hover:border-white py-3.5 font-label-sans text-[11px] uppercase tracking-widest text-on-surface group-hover:bg-white group-hover:text-primary transition-all">Specifications</a>
+    </article>
+    <article class="lift group bg-white border border-outline-variant rounded-lg p-8 flex flex-col hover:bg-primary transition-colors" data-reveal="scale" style="--d:.25s">
+      <h3 class="font-headline-lg text-[26px] uppercase tracking-tight text-on-surface group-hover:text-on-primary transition-colors mb-7 leading-tight min-h-[2.2em]">Surgical Alignment</h3>
+      <dl class="mb-8">
+        <div class="flex justify-between gap-3 py-3 border-b border-outline-variant group-hover:border-white/25 transition-colors"><dt class="font-label-sans text-[11px] uppercase tracking-wide text-on-surface-variant group-hover:text-white/60 transition-colors">Workflow</dt><dd class="font-data-point text-sm font-bold text-on-surface group-hover:text-white transition-colors">Digital Splint</dd></div>
+        <div class="flex justify-between gap-3 py-3 border-b border-outline-variant group-hover:border-white/25 transition-colors"><dt class="font-label-sans text-[11px] uppercase tracking-wide text-on-surface-variant group-hover:text-white/60 transition-colors">Planning</dt><dd class="font-data-point text-sm font-bold text-on-surface group-hover:text-white transition-colors">3D Predictive</dd></div>
+        <div class="flex justify-between gap-3 py-3 border-b border-outline-variant group-hover:border-white/25 transition-colors"><dt class="font-label-sans text-[11px] uppercase tracking-wide text-on-surface-variant group-hover:text-white/60 transition-colors">Stability</dt><dd class="font-data-point text-sm font-bold text-on-surface group-hover:text-white transition-colors">Long-Term</dd></div>
+      </dl>
+      <a href="#contact" class="mt-auto block text-center rounded-md border border-outline group-hover:border-white py-3.5 font-label-sans text-[11px] uppercase tracking-widest text-on-surface group-hover:bg-white group-hover:text-primary transition-all">Specifications</a>
+    </article>
+  </div>
+</section>
+
+<!-- ===== Process (expanding grid) ===== -->
+<section class="py-section-padding px-5 md:px-grid-margin max-w-[1320px] mx-auto" id="process">
+  <div class="text-center mb-14 max-w-2xl mx-auto">
+    <h2 class="font-headline-lg text-headline-lg text-on-surface" data-reveal="up" style="--d:.08s">Your Treatment, Start to Finish</h2>
+    <p class="font-body-md text-on-surface-variant mt-5 leading-relaxed" data-reveal="up" style="--d:.16s">Four precise steps, all under one roof. Hover a step to see the detail, so you always know what comes next.</p>
+  </div>
+  <div class="proc-row" id="proc-row" data-reveal="up" style="--d:.1s">
+    <article class="proc-card is-active bg-accent border border-outline-variant rounded-lg p-7 min-h-[300px] flex flex-col justify-between" data-proc>
+      <div>
+        <div class="flex items-center justify-between mb-8"><span class="font-label-sans text-[12px] uppercase tracking-widest text-primary font-bold">Step 01</span><span class="material-symbols-outlined text-3xl text-primary" aria-hidden="true">view_in_ar</span></div>
+        <h3 class="font-headline-lg text-[22px] uppercase tracking-tight text-on-surface leading-tight">3D Scanning</h3>
+        <div class="proc-body"><div><p class="font-body-md text-sm text-on-surface-variant leading-relaxed mt-4">CBCT and intraoral capture build a complete anatomical model of your bite, accurate down to the micron.</p></div></div>
+      </div>
+    </article>
+    <article class="proc-card bg-white border border-outline-variant rounded-lg p-7 min-h-[300px] flex flex-col justify-between" data-proc>
+      <div>
+        <div class="flex items-center justify-between mb-8"><span class="font-label-sans text-[12px] uppercase tracking-widest text-primary font-bold">Step 02</span><span class="material-symbols-outlined text-3xl text-primary" aria-hidden="true">psychology</span></div>
+        <h3 class="font-headline-lg text-[22px] uppercase tracking-tight text-on-surface leading-tight">Treatment Planning</h3>
+        <div class="proc-body"><div><p class="font-body-md text-sm text-on-surface-variant leading-relaxed mt-4">We simulate tooth movement and map the precise path to your target bite before treatment begins.</p></div></div>
+      </div>
+    </article>
+    <article class="proc-card bg-white border border-outline-variant rounded-lg p-7 min-h-[300px] flex flex-col justify-between" data-proc>
+      <div>
+        <div class="flex items-center justify-between mb-8"><span class="font-label-sans text-[12px] uppercase tracking-widest text-primary font-bold">Step 03</span><span class="material-symbols-outlined text-3xl text-primary" aria-hidden="true">precision_manufacturing</span></div>
+        <h3 class="font-headline-lg text-[22px] uppercase tracking-tight text-on-surface leading-tight">In-House Fabrication</h3>
+        <div class="proc-body"><div><p class="font-body-md text-sm text-on-surface-variant leading-relaxed mt-4">Aligners and appliances are produced to spec, on site, for faster turnaround and tighter quality control.</p></div></div>
+      </div>
+    </article>
+    <article class="proc-card bg-white border border-outline-variant rounded-lg p-7 min-h-[300px] flex flex-col justify-between" data-proc>
+      <div>
+        <div class="flex items-center justify-between mb-8"><span class="font-label-sans text-[12px] uppercase tracking-widest text-primary font-bold">Step 04</span><span class="material-symbols-outlined text-3xl text-primary" aria-hidden="true">monitor_heart</span></div>
+        <h3 class="font-headline-lg text-[22px] uppercase tracking-tight text-on-surface leading-tight">Digital Monitoring</h3>
+        <div class="proc-body"><div><p class="font-body-md text-sm text-on-surface-variant leading-relaxed mt-4">Progress is checked against the plan at every visit and adjusted as needed to stay on target.</p></div></div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- ===== Why Chang (ruled benefit list) ===== -->
+<section class="bg-white border-y border-outline-variant py-section-padding" id="why">
+  <div class="px-5 md:px-grid-margin max-w-[1320px] mx-auto">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-x-12 gap-y-10">
+      <div class="lg:col-span-4">
+        <h2 class="font-headline-lg text-headline-lg text-on-surface leading-tight" data-reveal="up" style="--d:.08s">Precision You Can Feel, Care You Can Trust</h2>
+        <p class="font-body-md text-on-surface-variant leading-relaxed mt-5 max-w-sm" data-reveal="up" style="--d:.16s">Clinical rigor and a genuinely human practice, built around measurable outcomes for every patient.</p>
+        <div class="why-photo" data-reveal="up" style="--d:.24s">
+          <img src="assets/web/chang-office-consult-01-1200.webp"
+               srcset="assets/web/chang-office-consult-01-480.webp 480w, assets/web/chang-office-consult-01-768.webp 768w, assets/web/chang-office-consult-01-1200.webp 1200w"
+               sizes="(max-width: 1023px) 100vw, 400px" width="1200" height="900"
+               alt="A consultation room at Chang Orthodontics" loading="lazy" decoding="async">
+        </div>
+      </div>
+      <div class="lg:col-span-8 grid grid-cols-1 sm:grid-cols-2 gap-x-10">
+        <div class="group flex items-start gap-5 py-7 border-t border-outline" data-reveal="up" style="--d:.05s">
+          <span class="material-symbols-outlined text-primary text-4xl shrink-0 transition-transform group-hover:scale-105" aria-hidden="true">verified</span>
+          <div><h3 class="font-headline-lg text-[20px] uppercase tracking-tight text-on-surface mb-2 leading-tight">Board-Certified Precision</h3><p class="font-body-md text-sm text-on-surface-variant leading-relaxed">ABO board-certified clinicians review every plan against measurable clinical targets, so nothing is left to guesswork.</p></div>
+        </div>
+        <div class="group flex items-start gap-5 py-7 border-t border-outline" data-reveal="up" style="--d:.12s">
+          <span class="material-symbols-outlined text-primary text-4xl shrink-0 transition-transform group-hover:scale-105" aria-hidden="true">groups</span>
+          <div><h3 class="font-headline-lg text-[20px] uppercase tracking-tight text-on-surface mb-2 leading-tight">Built for Every Age</h3><p class="font-body-md text-sm text-on-surface-variant leading-relaxed">Children, teens, and adults. Treatment paths are tuned to each stage of growth and each set of goals.</p></div>
+        </div>
+        <div class="group flex items-start gap-5 py-7 border-t border-outline" data-reveal="up" style="--d:.05s">
+          <span class="material-symbols-outlined text-primary text-4xl shrink-0 transition-transform group-hover:scale-105" aria-hidden="true">precision_manufacturing</span>
+          <div><h3 class="font-headline-lg text-[20px] uppercase tracking-tight text-on-surface mb-2 leading-tight">Technology Under One Roof</h3><p class="font-body-md text-sm text-on-surface-variant leading-relaxed">3D imaging, treatment planning, and in-house fabrication all in one clinic, for fewer hand-offs and faster results.</p></div>
+        </div>
+        <div class="group flex items-start gap-5 py-7 border-t border-outline" data-reveal="up" style="--d:.12s">
+          <span class="material-symbols-outlined text-primary text-4xl shrink-0 transition-transform group-hover:scale-105" aria-hidden="true">visibility</span>
+          <div><h3 class="font-headline-lg text-[20px] uppercase tracking-tight text-on-surface mb-2 leading-tight">Clarity at Every Step</h3><p class="font-body-md text-sm text-on-surface-variant leading-relaxed">Transparent plans, predictable timelines, and progress you can actually see at every visit.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ===== The Specialist ===== -->
+<section class="py-section-padding px-5 md:px-grid-margin max-w-[1320px] mx-auto" id="doctor">
+  <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+    <div class="lift bg-white border border-outline-variant rounded-lg overflow-hidden" data-reveal="left">
+      <img src="assets/web/chang-doctor-portrait-01-1200.webp" srcset="assets/web/chang-doctor-portrait-01-480.webp 480w, assets/web/chang-doctor-scanner-01-768.webp 768w, assets/web/chang-doctor-scanner-01-1200.webp 1200w" sizes="(max-width: 1060px) 100vw, 50vw" width="1200" height="1803" alt="Dr. Michael Chang beside the digital scanner at Chang Orthodontics" loading="lazy" decoding="async" class="obj-top w-full h-[440px] object-cover"/>
+    </div>
+    <div data-reveal="right">
+      <h2 class="font-headline-lg text-headline-lg text-on-surface leading-tight">Meet Dr. Michael Chang</h2>
+      <p class="font-body-md text-on-surface-variant leading-relaxed mt-5 max-w-md">Board-certified orthodontist, UCSF faculty, with master&#39;s-level training in airway orthodontics. Sixteen years in, he still reviews every scan himself.</p>
+      <dl class="mt-8 border-t border-outline">
+        <div class="flex justify-between gap-4 py-4 border-b border-outline-variant"><dt class="font-label-sans text-[11px] uppercase tracking-widest text-on-surface-variant">Certification</dt><dd class="font-data-point text-sm font-bold text-on-surface">ABO Board-Certified</dd></div>
+        <div class="flex justify-between gap-4 py-4 border-b border-outline-variant"><dt class="font-label-sans text-[11px] uppercase tracking-widest text-on-surface-variant">Faculty</dt><dd class="font-data-point text-sm font-bold text-on-surface">UCSF</dd></div>
+        <div class="flex justify-between gap-4 py-4 border-b border-outline-variant"><dt class="font-label-sans text-[11px] uppercase tracking-widest text-on-surface-variant">Advanced Training</dt><dd class="font-data-point text-sm font-bold text-on-surface">Airway Orthodontics</dd></div>
+        <div class="flex justify-between gap-4 py-4 border-b border-outline-variant"><dt class="font-label-sans text-[11px] uppercase tracking-widest text-on-surface-variant">Invisalign Tier</dt><dd class="font-data-point text-sm font-bold text-on-surface">Platinum Plus</dd></div>
+      </dl>
     </div>
   </div>
 </section>
@@ -792,7 +650,7 @@
   </div>
 </section>
 
-<!-- ===== Patient Stories (review grid) ===== -->
+<!-- ===== Patient Stories (staggered slider) ===== -->
 <section class="bg-on-surface text-surface py-section-padding overflow-hidden" id="reviews" aria-label="Patient testimonials">
   <div class="px-5 md:px-grid-margin max-w-[1320px] mx-auto">
     <div class="relative max-w-2xl mx-auto text-center mb-14">
@@ -800,7 +658,6 @@
       <h2 class="font-headline-lg text-headline-lg text-surface" data-reveal="up" style="--d:.06s">Stories That Speak to <span class="text-primary-bright">Real Results</span></h2>
       <p class="font-body-md text-surface/70 leading-relaxed mt-5" data-reveal="up" style="--d:.12s">Real families, real outcomes. More than 100 five-star reviews from Peninsula families.</p>
     </div>
-
   </div>
 
   <div class="rev-full-bleed rev-viewport" data-reveal="up" style="--d:.16s">
@@ -880,48 +737,6 @@
       </figure>
     </div>
   </div>
-
-  <div class="px-5 md:px-grid-margin max-w-[1320px] mx-auto text-center mt-10" data-reveal="up">
-    <a href="reviews.html" class="font-label-sans text-[12px] uppercase tracking-widest text-primary-bright underline underline-offset-4">Read All 100+ Reviews</a>
-  </div>
-</section>
-
-<!-- ===== Process (expanding grid) ===== -->
-<section class="py-section-padding px-5 md:px-grid-margin max-w-[1320px] mx-auto" id="process">
-  <div class="text-center mb-14 max-w-2xl mx-auto">
-    <h2 class="font-headline-lg text-headline-lg text-on-surface" data-reveal="up" style="--d:.08s">Your Treatment, Start to Finish</h2>
-    <p class="font-body-md text-on-surface-variant mt-5 leading-relaxed" data-reveal="up" style="--d:.16s">Four precise steps, all under one roof. Hover a step to see the detail, so you always know what comes next.</p>
-  </div>
-  <div class="proc-row" id="proc-row" data-reveal="up" style="--d:.1s">
-    <article class="proc-card is-active bg-accent border border-outline-variant rounded-lg p-7 flex flex-col justify-between" data-proc>
-      <div>
-        <div class="flex items-center justify-between mb-8"><span class="font-label-sans text-[12px] uppercase tracking-widest text-primary font-bold">Step 01</span><span class="material-symbols-outlined text-3xl text-primary" aria-hidden="true">view_in_ar</span></div>
-        <h3 class="font-headline-lg text-[22px] uppercase tracking-tight text-on-surface leading-tight">3D Scanning</h3>
-        <div class="proc-body"><div><p class="font-body-md text-sm text-on-surface-variant leading-relaxed mt-4">CBCT and intraoral capture build a complete anatomical model of your bite, accurate down to the micron.</p></div></div>
-      </div>
-    </article>
-    <article class="proc-card bg-white border border-outline-variant rounded-lg p-7 flex flex-col justify-between" data-proc>
-      <div>
-        <div class="flex items-center justify-between mb-8"><span class="font-label-sans text-[12px] uppercase tracking-widest text-primary font-bold">Step 02</span><span class="material-symbols-outlined text-3xl text-primary" aria-hidden="true">psychology</span></div>
-        <h3 class="font-headline-lg text-[22px] uppercase tracking-tight text-on-surface leading-tight">Treatment Planning</h3>
-        <div class="proc-body"><div><p class="font-body-md text-sm text-on-surface-variant leading-relaxed mt-4">We simulate tooth movement and map the precise path to your target bite before treatment begins.</p></div></div>
-      </div>
-    </article>
-    <article class="proc-card bg-white border border-outline-variant rounded-lg p-7 flex flex-col justify-between" data-proc>
-      <div>
-        <div class="flex items-center justify-between mb-8"><span class="font-label-sans text-[12px] uppercase tracking-widest text-primary font-bold">Step 03</span><span class="material-symbols-outlined text-3xl text-primary" aria-hidden="true">precision_manufacturing</span></div>
-        <h3 class="font-headline-lg text-[22px] uppercase tracking-tight text-on-surface leading-tight">In-House Fabrication</h3>
-        <div class="proc-body"><div><p class="font-body-md text-sm text-on-surface-variant leading-relaxed mt-4">Aligners and appliances are produced to spec, on site, for faster turnaround and tighter quality control.</p></div></div>
-      </div>
-    </article>
-    <article class="proc-card bg-white border border-outline-variant rounded-lg p-7 flex flex-col justify-between" data-proc>
-      <div>
-        <div class="flex items-center justify-between mb-8"><span class="font-label-sans text-[12px] uppercase tracking-widest text-primary font-bold">Step 04</span><span class="material-symbols-outlined text-3xl text-primary" aria-hidden="true">monitor_heart</span></div>
-        <h3 class="font-headline-lg text-[22px] uppercase tracking-tight text-on-surface leading-tight">Digital Monitoring</h3>
-        <div class="proc-body"><div><p class="font-body-md text-sm text-on-surface-variant leading-relaxed mt-4">Progress is checked against the plan at every visit and adjusted as needed to stay on target.</p></div></div>
-      </div>
-    </article>
-  </div>
 </section>
 
 <!-- ===== FAQ ===== -->
@@ -957,39 +772,10 @@
   </div>
   <div class="text-center mt-10" data-reveal="up">
     <p class="font-body-md text-on-surface-variant mb-4">Still have questions?</p>
-    <a href="appointment.html" class="btn btn-outline group px-8 py-4 font-label-sans text-[11px] uppercase tracking-widest mx-auto">
+    <a href="#contact" class="btn btn-outline group px-8 py-4 font-label-sans text-[11px] uppercase tracking-widest mx-auto">
       <span class="swap"><span class="swap__out">Book a Consult</span><span class="swap__in">Book a Consult</span></span>
       <span class="arrow-slide"><span class="material-symbols-outlined text-[18px]">arrow_forward</span></span>
     </a>
-  </div>
-</section>
-
-<!-- ===== Location ===== -->
-<section class="py-section-padding px-5 md:px-grid-margin max-w-[1320px] mx-auto" id="location">
-  <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
-    <div class="lift bg-white border border-outline-variant rounded-lg overflow-hidden" data-reveal="left">
-      <img src="assets/web/chang-team-full-01-1200.webp" srcset="assets/web/chang-team-full-01-480.webp 480w, assets/web/chang-team-full-01-768.webp 768w, assets/web/chang-team-full-01-1200.webp 1200w" sizes="(max-width: 1060px) 100vw, 50vw" width="1200" height="1600" alt="The team at Chang Orthodontics" loading="lazy" decoding="async" class="w-full h-[440px] object-cover"/>
-    </div>
-    <div data-reveal="right">
-      <h2 class="font-headline-lg text-headline-lg text-on-surface leading-tight">Visit Us in San Carlos</h2>
-      <p class="font-body-md text-on-surface-variant leading-relaxed mt-5 max-w-md">On El Camino Real in San Carlos, serving families across the Peninsula, with after-school appointments built into the schedule.</p>
-      <dl class="mt-8 border-t border-outline">
-        <div class="flex justify-between gap-4 py-4 border-b border-outline-variant"><dt class="font-label-sans text-[11px] uppercase tracking-widest text-on-surface-variant">Address</dt><dd class="font-data-point text-sm font-bold text-on-surface">10 El Camino Real, Ste. 201, San Carlos, CA 94070</dd></div>
-        <div class="flex justify-between gap-4 py-4 border-b border-outline-variant"><dt class="font-label-sans text-[11px] uppercase tracking-widest text-on-surface-variant">Hours</dt><dd class="font-data-point text-sm font-bold text-on-surface">Mon–Fri 9–5</dd></div>
-        <div class="flex justify-between gap-4 py-4 border-b border-outline-variant"><dt class="font-label-sans text-[11px] uppercase tracking-widest text-on-surface-variant">Phone</dt><dd class="font-data-point text-sm font-bold text-on-surface"><a href="tel:6505980888" class="hover:text-primary transition-colors">(650) 598-0888</a></dd></div>
-        <div class="flex justify-between gap-4 py-4 border-b border-outline-variant"><dt class="font-label-sans text-[11px] uppercase tracking-widest text-on-surface-variant">Consultation</dt><dd class="font-data-point text-sm font-bold text-on-surface">Free, with 3D Scan</dd></div>
-      </dl>
-      <div class="flex flex-wrap gap-3 mt-8" data-reveal="up">
-        <a href="https://maps.google.com/?q=Chang+Orthodontics,+10+El+Camino+Real+Ste+201,+San+Carlos,+CA+94070" class="btn btn-outline group px-7 py-4 font-label-sans text-[11px] uppercase tracking-widest">
-          <span class="swap"><span class="swap__out">Get Directions</span><span class="swap__in">Get Directions</span></span>
-          <span class="arrow-slide"><span class="material-symbols-outlined text-[18px]">arrow_outward</span></span>
-        </a>
-        <a href="san-carlos.html" class="btn btn-outline group px-7 py-4 font-label-sans text-[11px] uppercase tracking-widest">
-          <span class="swap"><span class="swap__out">San Carlos Office</span><span class="swap__in">San Carlos Office</span></span>
-          <span class="arrow-slide"><span class="material-symbols-outlined text-[18px]">arrow_forward</span></span>
-        </a>
-      </div>
-    </div>
   </div>
 </section>
 
@@ -999,17 +785,21 @@
     <div class="absolute inset-0 dot-grid opacity-[0.05] pointer-events-none"></div>
     <div class="relative z-10 max-w-2xl mx-auto">
       <h2 class="font-display-xl text-[clamp(2rem,5vw,3.75rem)] text-on-surface tracking-tight leading-[0.96]" data-reveal="up">Book Your Consult.</h2>
-      <p class="font-body-md text-on-surface-variant mt-6 mb-10 max-w-lg mx-auto leading-relaxed" data-reveal="up" style="--d:.1s">A complimentary consultation and 3D scan with Dr. Chang. You leave with a clear plan and an itemized estimate, with no obligation.</p>
-      <div class="flex flex-wrap gap-3 justify-center" data-reveal="up" style="--d:.2s">
-        <a href="appointment.html" class="btn btn-primary group px-7 py-4 font-label-sans text-[12px] uppercase tracking-widest">
+      <p class="font-body-md text-on-surface-variant mt-6 mb-10 max-w-lg mx-auto leading-relaxed" data-reveal="up" style="--d:.1s">Request your complimentary consultation and 3D scan. Our team will reach out to confirm a time, with no obligation.</p>
+      <form id="consult-form" novalidate class="flex flex-col sm:flex-row gap-3 justify-center items-stretch max-w-xl mx-auto" data-reveal="up" style="--d:.2s">
+        <label for="consult-email" class="sr-only">Email address</label>
+        <input id="consult-email" type="email" required placeholder="your.email@domain.com" autocomplete="email"
+          class="flex-1 bg-white border border-outline-variant rounded-md px-5 py-4 font-label-sans text-[12px] tracking-wide text-on-surface placeholder:text-outline focus:ring-0 focus:border-primary outline-none transition-colors"/>
+        <button type="submit" class="btn btn-primary group px-7 py-4 font-label-sans text-[12px] uppercase tracking-widest shrink-0">
           <span class="swap"><span class="swap__out">Request Consult</span><span class="swap__in">Request Consult</span></span>
           <span class="arrow-slide"><span class="material-symbols-outlined text-[18px]">arrow_forward</span></span>
-        </a>
-        <a href="tel:6505980888" class="btn btn-outline group px-7 py-4 font-label-sans text-[12px] uppercase tracking-widest">
-          <span class="swap"><span class="swap__out">Call (650) 598-0888</span><span class="swap__in">Call (650) 598-0888</span></span>
-        </a>
+        </button>
+      </form>
+      <div id="consult-done" class="hidden mt-8 inline-flex items-center gap-3 bg-white border border-outline-variant rounded-md px-6 py-4">
+        <span class="material-symbols-outlined text-primary text-3xl" aria-hidden="true">verified</span>
+        <p class="font-label-sans text-[11px] uppercase tracking-widest text-on-surface text-left">Request received. We'll be in touch within one business day.</p>
       </div>
-      <div class="mt-9 flex flex-wrap justify-center gap-x-8 gap-y-2"><span class="telemetry-readout">10 El Camino Real, Ste. 201, San Carlos</span><span class="telemetry-readout">Mon–Fri 9–5</span></div>
+      <div class="mt-9 flex flex-wrap justify-center gap-x-8 gap-y-2"><span class="telemetry-readout">Complimentary Consult</span><span class="telemetry-readout">No Obligation</span></div>
     </div>
   </div>
 </section>
@@ -1030,30 +820,30 @@
         <li><a class="font-label-sans text-[11px] uppercase text-on-surface-variant hover:text-primary transition-colors" href="early-orthodontics.html">Early orthodontics</a></li>
         <li><a class="font-label-sans text-[11px] uppercase text-on-surface-variant hover:text-primary transition-colors" href="airway.html">Airway & functional</a></li>
         <li><a class="font-label-sans text-[11px] uppercase text-on-surface-variant hover:text-primary transition-colors" href="retainers.html">Retainers</a></li>
-        <li><a class="font-label-sans text-[11px] uppercase text-on-surface-variant hover:text-primary transition-colors" href="kids-teens.html">For kids &amp; teens</a></li>
-        <li><a class="font-label-sans text-[11px] uppercase text-on-surface-variant hover:text-primary transition-colors" href="adults.html">For adults</a></li>
       </ul>
     </div>
     <div class="col-span-6 md:col-span-2">
-      <h2 class="font-label-sans text-[11px] font-bold uppercase mb-8 text-on-surface tracking-widest">Why Choose Us</h2>
+      <h2 class="font-label-sans text-[11px] font-bold uppercase mb-8 text-on-surface tracking-widest">Patients</h2>
       <ul class="space-y-5">
-        <li><a class="font-label-sans text-[11px] uppercase text-on-surface-variant hover:text-primary transition-colors" href="about.html">Meet Dr. Chang</a></li>
-        <li><a class="font-label-sans text-[11px] uppercase text-on-surface-variant hover:text-primary transition-colors" href="technology.html">Technology</a></li>
+        <li><a class="font-label-sans text-[11px] uppercase text-on-surface-variant hover:text-primary transition-colors" href="new-patients.html">New patients</a></li>
+        <li><a class="font-label-sans text-[11px] uppercase text-on-surface-variant hover:text-primary transition-colors" href="faq.html">FAQ</a></li>
+        <li><a class="font-label-sans text-[11px] uppercase text-on-surface-variant hover:text-primary transition-colors" href="financing.html">Financing</a></li>
+        <li><a class="font-label-sans text-[11px] uppercase text-on-surface-variant hover:text-primary transition-colors" href="emergencies.html">Emergencies</a></li>
         <li><a class="font-label-sans text-[11px] uppercase text-on-surface-variant hover:text-primary transition-colors" href="reviews.html">Reviews</a></li>
       </ul>
     </div>
     <div class="col-span-6 md:col-span-2">
-      <h2 class="font-label-sans text-[11px] font-bold uppercase mb-8 text-on-surface tracking-widest">Resources</h2>
+      <h2 class="font-label-sans text-[11px] font-bold uppercase mb-8 text-on-surface tracking-widest">Practice</h2>
       <ul class="space-y-5">
-        <li><a class="font-label-sans text-[11px] uppercase text-on-surface-variant hover:text-primary transition-colors" href="new-patients.html">New patients</a></li>
-        <li><a class="font-label-sans text-[11px] uppercase text-on-surface-variant hover:text-primary transition-colors" href="financing.html">Financing</a></li>
-        <li><a class="font-label-sans text-[11px] uppercase text-on-surface-variant hover:text-primary transition-colors" href="faq.html">FAQ</a></li>
-        <li><a class="font-label-sans text-[11px] uppercase text-on-surface-variant hover:text-primary transition-colors" href="emergencies.html">Emergencies</a></li>
+        <li><a class="font-label-sans text-[11px] uppercase text-on-surface-variant hover:text-primary transition-colors" href="about.html">About</a></li>
+        <li><a class="font-label-sans text-[11px] uppercase text-on-surface-variant hover:text-primary transition-colors" href="technology.html">Technology</a></li>
+        <li><a class="font-label-sans text-[11px] uppercase text-on-surface-variant hover:text-primary transition-colors" href="kids-teens.html">Kids &amp; teens</a></li>
+        <li><a class="font-label-sans text-[11px] uppercase text-on-surface-variant hover:text-primary transition-colors" href="adults.html">Adults</a></li>
         <li><a class="font-label-sans text-[11px] uppercase text-on-surface-variant hover:text-primary transition-colors" href="blog.html">Blog</a></li>
       </ul>
     </div>
     <div class="col-span-12 md:col-span-2">
-      <h2 class="font-label-sans text-[11px] font-bold uppercase mb-8 text-on-surface tracking-widest">Location</h2>
+      <h2 class="font-label-sans text-[11px] font-bold uppercase mb-8 text-on-surface tracking-widest">Practice Status</h2>
       <div class="bg-accent border border-outline-variant rounded-lg p-7">
         <p class="font-data-point text-[11px] text-on-surface-variant mb-5 flex justify-between"><span>BOOKING:</span><span class="text-primary font-bold">OPEN</span></p>
         <p class="font-data-point text-[11px] text-on-surface-variant mb-5 flex justify-between"><span>HOURS:</span><span class="text-primary font-bold">MON–FRI 9–5</span></p>
@@ -1063,10 +853,6 @@
           <a class="inline-flex items-center justify-center w-11 h-11 rounded-md border border-outline-variant hover:bg-primary hover:text-white hover:border-primary transition-all" href="appointment.html" aria-label="Request an appointment"><span class="material-symbols-outlined text-sm" aria-hidden="true">event</span></a>
         </div>
       </div>
-      <ul class="space-y-5 mt-6">
-        <li><a class="font-label-sans text-[11px] uppercase text-on-surface-variant hover:text-primary transition-colors" href="contact.html">Contact &amp; directions</a></li>
-        <li><a class="font-label-sans text-[11px] uppercase text-on-surface-variant hover:text-primary transition-colors" href="san-carlos.html">San Carlos office</a></li>
-      </ul>
     </div>
     <div class="col-span-12 mt-14 pt-8 border-t border-outline-variant flex flex-col md:flex-row justify-between items-center gap-6">
       <div class="font-label-sans text-[10px] uppercase text-on-surface-variant/80 tracking-[0.2em]">© 2026 Chang Orthodontics. 10 El Camino Real, Ste. 201, San Carlos, CA 94070. (650) 598-0888.</div>
