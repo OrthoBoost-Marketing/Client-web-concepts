@@ -196,13 +196,17 @@ a:focus-visible,button:focus-visible,summary:focus-visible,input:focus-visible{
 
 /* ---- mobile sticky bottom bar: Call · Book · Directions ---- */
 #mobile-bar{ position:fixed; left:0; right:0; bottom:0; z-index:55; display:grid;
-  grid-template-columns:1fr 1.4fr 1fr; align-items:stretch; gap:1px;
+  /* minmax(0,...) not 1fr: a bare fr track floors at min-content, and "DIRECTIONS"
+     is wider than its third of a 390px phone, which pushed the bar to 410px. The bar
+     is position:fixed, so body's overflow-x:hidden does not clip it. */
+  grid-template-columns:minmax(0,1fr) minmax(0,1.4fr) minmax(0,1fr); align-items:stretch; gap:1px;
   background:var(--c-line-2); border-top:1px solid var(--c-line-2);
   padding-bottom:env(safe-area-inset-bottom);
   transition:transform .3s cubic-bezier(.16,1,.3,1); }
 #mobile-bar.is-hidden{ transform:translateY(110%); }
 @media (min-width:1100px){ #mobile-bar{ display:none; } }
 #mobile-bar a{ display:flex; flex-direction:column; align-items:center; justify-content:center; gap:3px;
+  min-width:0; overflow:hidden;
   min-height:var(--bar-h); background:#fff; color:var(--c-ink);
   font-size:10px; font-weight:800; text-transform:uppercase; letter-spacing:.1em; }
 #mobile-bar a svg{ width:19px; height:19px; fill:currentColor; }

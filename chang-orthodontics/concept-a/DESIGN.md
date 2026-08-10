@@ -113,3 +113,11 @@ Ratios: `0.75` → 1200×1600 · `1.3333` → 1200×900 · `0.6654` → 1200×18
 - **Fonts load from the Google Fonts CDN and are render-blocking.** `display=swap` and `preconnect` are set, so there is no invisible-text flash, but there is a swap reflow. Self-host both families before launch, see the static-site-deploy skill.
 - **No OG image.** Needs a 1200x630 asset.
 - **No favicon set.** Currently reusing the logo SVG; needs a 32px ICO and a 180px apple-touch-icon.
+- **Below 360px the page still overflows by about 18px.** At 320px the pill nav, the trust cells, and the sticky bar each exceed the viewport. 390px is the gate this design is measured against and it is clean there, verified. If a 320px floor is ever required, the fix is in the trust-cell padding and the nav pill padding, not in another `minmax` patch.
+
+## Layout traps already paid for
+
+Do not undo these, and repeat them on every new page:
+
+- **Grid tracks that hold text use `minmax(0,1fr)`, never a bare `1fr`.** A bare `fr` track floors at min-content, so a single long uppercase word such as "DIRECTIONS" silently widens the whole grid. This is what pushed the sticky bar to 410px on a 390px phone.
+- **`body { overflow-x: hidden }` does not clip `position: fixed` children.** The sticky bar and the pill nav escape it. Never rely on that rule to hide an overflow; fix the element.
