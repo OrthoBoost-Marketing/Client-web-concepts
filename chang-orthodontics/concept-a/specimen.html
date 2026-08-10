@@ -370,8 +370,8 @@ body{ padding-bottom:0 !important; }
     ['h1.clay-title', '<h1 class="clay-title">Ag</h1>', 'H1', 36, 62, 'h1'],
     ['h2.h2', '<h2 class="h2">Ag</h2>', 'H2', 28, 46, 'h2'],
     ['.cta-band h2', '<div class="cta-band"><h2>Ag</h2></div>', 'CTA band H2', 30, 52, 'h2'],
-    ['.svc-card h3', '<div class="svc-card"><h3>Ag</h3></div>', 'H3 (service card)', 26, 38, 'h3'],
-    ['bare h3', '<h3>Ag</h3>', 'H3 (bare)', 26, 38, 'h3'],
+    ['.svc-card h3', '<div class="svc-card"><h3>Ag</h3></div>', 'H3 (service card, documented exception)', 22, 22, 'h3'],
+    ['bare h3', '<h3>Ag</h3>', 'H3 (bare)', 26, 34, 'h3'],
     ['bare h2', '<h2>Ag</h2>', 'H2 (bare)', 28, 46, 'h2'],
     ['.lede', '<p class="lede">Ag</p>', 'Body', 16, 16, 'p'],
     ['.eyebrow', '<p class="eyebrow">Ag</p>', 'Label', 10, 12, 'p']
@@ -444,19 +444,27 @@ body{ padding-bottom:0 !important; }
       'DESIGN.md documents ' + m.lo + ' to ' + m.hi + 'px for ' + m.sel + '. Either the CSS or the doc is wrong.']);
   });
 
-  // display face usage vs the documented rule
-  var displayUsers = [];
+  /* Display face: DESIGN.md reserves Archivo Black for exactly these. Scan site.css
+     only, never this page's own scaffolding, and flag anything off the list. */
+  var allowedDisplay = ['h1', '.clay-title', '.cta-band h2', '.trust-value', '.authority-row .mark .m1', '.bg-text-mask span'];
+  var strayDisplay = [];
   try {
     [].forEach.call(document.styleSheets, function(ss){
+      if (!ss.href || ss.href.indexOf('site.css') === -1) return;
       var rules; try { rules = ss.cssRules; } catch(e){ return; }
       [].forEach.call(rules, function(r){
-        if (r.selectorText && r.style && /var\(--display\)/.test(r.style.fontFamily || '')) displayUsers.push(r.selectorText);
+        if (r.selectorText && r.style && /var\(--display\)/.test(r.style.fontFamily || '')) {
+          if (allowedDisplay.indexOf(r.selectorText.trim()) === -1) strayDisplay.push(r.selectorText);
+        }
       });
     });
   } catch(e){}
-  if (displayUsers.length > 2) {
-    findings.push(['bad', 'The display face is used in ' + displayUsers.length + ' places, not 2',
-      'DESIGN.md says Archivo Black is for "H1 and the CTA-band headline only". It is actually on: ' + displayUsers.join(', ') + '.']);
+  if (strayDisplay.length) {
+    findings.push(['bad', 'The display face escaped its reserved list',
+      'DESIGN.md reserves Archivo Black for the H1, the CTA-band headline, the trust figures, the authority wordmarks, and the hero background text. Also found on: ' + strayDisplay.join(', ') + '.']);
+  } else {
+    findings.push(['ok', 'Display face is confined to its five reserved uses',
+      'Archivo Black appears only on the H1, the CTA-band headline, the trust figures, the authority wordmarks, and the hero background text.']);
   }
 
   // is there any generic h3 rule?
@@ -471,11 +479,11 @@ body{ padding-bottom:0 !important; }
   } catch(e){}
   if (!hasGenericH3) {
     findings.push(['bad', 'There is no reusable H3 style',
-      'The only h3 rule is scoped to .svc-card. A bare h3 on any of the 24 new pages renders at body size. The system needs an .h3 class, the way it has .h2.']);
+      'A bare h3 on any of the 24 new pages would render at body size. The system needs an h3 default and an .h3 class, the way it has .h2.']);
+  } else {
+    findings.push(['ok', 'Headings carry the scale by default',
+      'h1 to h4 are styled without a class, so an unclassed heading can no longer render silently at body size. Classes and component rules still override on specificity.']);
   }
-
-  findings.push(['warn', 'Headings are opt-in, not default',
-    'site.css:12 resets every heading to inherit. Every heading needs a class or a component ancestor, and forgetting one fails silently and invisibly. Worth deciding now: keep opt-in, or give h1 to h4 sensible defaults and let classes override.']);
 
   findings.push(['todo', 'Four components are missing for the 24 remaining pages',
     'Form field, accordion, breadcrumbs, and an inner-page hero. Proposals are at the bottom of this page. The inner-page hero is the biggest open decision, since all 24 inherit it.']);
@@ -488,8 +496,8 @@ body{ padding-bottom:0 !important; }
       '<span class="pill todo">viewport ' + document.documentElement.clientWidth + 'px</span>' +
     '</div>' +
     '<table class="spec-tbl"><tbody>' + findings.map(function(f){
-      return '<tr><td style="white-space:nowrap"><span class="pill ' + f[0] + '">' +
-        (f[0] === 'bad' ? 'Conflict' : f[0] === 'warn' ? 'Decide' : 'To do') + '</span></td>' +
+      var label = { bad:'Conflict', warn:'Decide', ok:'Resolved', todo:'To do' }[f[0]] || 'To do';
+      return '<tr><td style="white-space:nowrap"><span class="pill ' + f[0] + '">' + label + '</span></td>' +
         '<td><strong>' + f[1] + '</strong><div style="margin-top:.35rem;color:var(--c-ink-2)">' + f[2] + '</div></td></tr>';
     }).join('') + '</tbody></table>';
 

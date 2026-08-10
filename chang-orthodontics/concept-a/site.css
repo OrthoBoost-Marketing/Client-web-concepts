@@ -18,9 +18,9 @@ address{ font-style:normal; }
 
 :root{
   --navy:#005DAA; --navy-bright:#3E90CE; --navy-deep:#003B6E;
-  --clay-soft:#EEF6F8; --surface:#F5F8FE;
-  --c-line:rgba(11,28,60,.08); --c-line-2:rgba(11,28,60,.14);
-  --c-mute:#74747c; --c-mute-2:#9aa0b3; --c-ink:#1b1c1c; --c-ink-2:#434653;
+  --clay-soft:#EEF6F8;
+  --c-line-2:rgba(11,28,60,.14);
+  --c-mute:#74747c; --c-ink:#1b1c1c; --c-ink-2:#434653;
   --display:'Archivo Black','Hanken Grotesk',sans-serif;
   --container:1320px;
   --bar-h:64px; /* mobile sticky bottom bar */
@@ -54,6 +54,22 @@ address{ font-style:normal; }
 body{ font-family:'Hanken Grotesk',sans-serif; letter-spacing:-.01em; overflow-x:hidden; }
 h1,h2,h3{ text-wrap:balance; }
 p{ text-wrap:pretty; }
+
+/* ---- heading defaults ----
+   The reset strips heading typography so components can opt in with a class. That
+   made every unclassed heading fall back to 16px body text, silently and
+   invisibly, which is how a page ships with a body-sized h2 nobody catches. These
+   defaults give any bare heading the documented scale. Every class and component
+   rule below still wins on specificity, so the homepage is unaffected:
+   .clay-title (0,1,0) beats h1, .h2 beats h2, .cta-band h2 and .svc-card h3
+   (0,1,1) beat their bare elements. */
+h1{ font-family:var(--display); font-weight:400; font-size:clamp(34px,4.6vw,60px);
+  line-height:.98; letter-spacing:-.03em; color:var(--c-ink); }
+h2{ font-size:clamp(28px,5vw,46px); line-height:1.04; letter-spacing:-.025em;
+  font-weight:800; color:var(--c-ink); }
+h3,.h3{ font-size:clamp(26px,2.6vw,34px); line-height:1.15; letter-spacing:-.02em;
+  font-weight:800; color:var(--c-ink); }
+h4{ font-size:20px; line-height:1.3; letter-spacing:-.01em; font-weight:800; color:var(--c-ink); }
 html{ scroll-behavior:smooth; }
 section[id]{ scroll-margin-top:110px; }
 

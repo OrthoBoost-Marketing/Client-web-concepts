@@ -12,22 +12,27 @@ Brief: `../CLIENT-BRIEF.md` · Visual shell: this folder, extracted from the ori
 | `--navy-bright` | `#3E90CE` | hover state on primary |
 | `--navy-deep` | `#003B6E` | active state, deepest band |
 | `--clay-soft` | `#EEF6F8` | tinted section bands |
-| `--surface` | `#F5F8FE` | page background |
 | `--c-ink` | `#1b1c1c` | headings, body |
 | `--c-ink-2` | `#434653` | secondary body |
 | `--c-mute` | `#74747c` | labels, captions |
 | `--c-line-2` | `rgba(11,28,60,.14)` | hairlines, card borders |
 
-Contrast: navy on white is 7.0:1, white on navy 7.0:1, `--c-ink-2` on surface 8.6:1. All pass AA. Never set body text in `--c-mute` below 14px.
+The page background is plain white. Bands are tinted with `--clay-soft`. There is no page-background token: a `--surface` token existed but was never applied to anything, so the site has always rendered white. Removed rather than switched on, since white is what has been reviewed.
+
+Contrast, measured rather than estimated: navy on white 6.67:1, `--c-ink` on white 17.08:1, `--c-ink-2` on white 9.38:1, `--c-mute` on white 4.63:1, `--navy-bright` on white 3.45:1 (large text and UI only, never body). All pass at the size they are used. Never set body text in `--c-mute` below 14px. Verify any new pairing on `specimen.html`, which computes these live.
 
 ## Type
 
-- **Display** (`--display`): Archivo Black. H1 and the CTA-band headline only. Tight tracking `-.03em`, line-height `.98`.
+- **Display** (`--display`): Archivo Black, always weight 400, tracking `-.03em`. Reserved for five things and nothing else: the H1, the CTA-band headline, the trust-bar figures, the authority-strip wordmarks, and the outlined hero background text. It is a moment, not a heading face. Never use it for an H2 or H3 in body content.
 - **Headline**: Hanken Grotesk 800. All H2 and H3.
 - **Body**: Hanken Grotesk 400, 16px/24px, `--c-ink-2`.
 - **Label**: Hanken Grotesk 700, 10 to 12px, uppercase, tracking `.1em` to `.18em`. Eyebrows, buttons, nav, stat labels.
 
-Scale: H1 `clamp(36px,4.6vw,62px)` · H2 `clamp(28px,5vw,46px)` · H3 26 to 38px · body 16px · label 10 to 12px.
+Scale: H1 `clamp(34px,4.6vw,60px)` · H2 `clamp(28px,5vw,46px)` · H3 `clamp(26px,2.6vw,34px)` · H4 20px · body 16px · label 10 to 12px.
+
+**Headings are styled by default, not by opt-in.** `h1` to `h4` carry the scale above with no class needed. The classes still exist and still win: `.clay-title` for the hero H1, `.h2`, `.h3`. Use the class when you want the style without the level, never to make a heading look like a different level.
+
+One documented exception: `.svc-card h3` is 22px, deliberately below the H3 scale, because a service card title sitting at 34px would outweigh the section H2 above it. That is the only place a heading departs from the scale. If you need another, it goes in this document first.
 
 ## Layout
 
