@@ -382,6 +382,10 @@ body{ padding-bottom:0; }
 .foot-legal{ margin-top:3rem; padding-top:1.5rem; border-top:1px solid var(--c-line-2);
   display:flex; flex-wrap:wrap; gap:.75rem 1.5rem; align-items:center; justify-content:space-between; }
 .foot-legal p,.foot-legal a{ font-size:13px; color:var(--c-mute); }
+/* 13px text gives a 17px tap target, under the 24px WCAG 2.5.8 floor. The padding
+   buys the height without changing the type or the visible rhythm, since the row
+   is centre-aligned and already has a .75rem row gap. */
+.foot-legal a{ display:inline-flex; align-items:center; min-height:24px; padding-block:.15rem; }
 .foot-legal a:hover{ color:var(--navy); }
 .foot-legal nav{ display:flex; flex-wrap:wrap; gap:.75rem 1.5rem; }
 
