@@ -66,3 +66,5 @@ Concept copies also remain on the dev account (`dev-orthoboost.github.io`); link
 | [concept-1](https://orthoboost-marketing.github.io/Client-web-concepts/chang-orthodontics/concept-1/) | Clinical instrument: data-led, schematic diagrams (26 pages) | light only |
 | [concept-2](https://orthoboost-marketing.github.io/Client-web-concepts/chang-orthodontics/concept-2/) | Editorial precision on IBM Carbon (26 pages) | light only |
 | [concept-3](https://orthoboost-marketing.github.io/Client-web-concepts/chang-orthodontics/concept-3/) | Calm clinical: warm, rounded, serif (26 pages) | light only |
+
+**Build (Aug 4 2026):** concept-1 selected as the visual shell; kit avatar **Marlowe** supplies structure, nav naming, and voice. The production build lives in `chang-orthodontics/site/` and is governed by `chang-orthodontics/CLIENT-BRIEF.md` and `site/DESIGN.md`. Homepage is complete; the remaining 26 pages are not built yet. Blocked on verbatim Google review quotes.

@@ -314,17 +314,7 @@
 </style>
 <noscript><style>[data-reveal]{opacity:1!important;transform:none!important;}</style></noscript>
 
-<style>
-  .offer-strip{position:fixed;top:0;left:0;width:100%;z-index:60;background:var(--c-ink);color:#fff;
-    display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap;padding:7px 16px;text-align:center}
-  .offer-strip span:first-child{color:#c1e4ea}
-  .offer-strip a{color:#c1e4ea}
-  #nav-wrap{top:calc(1rem + 34px)}
-  .page-hero{padding-top:clamp(150px,17vh,210px)}
-  .crumb-row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
-  .crumb-row a{color:var(--navy)}
-  @media (max-width:640px){ .offer-strip{font-size:11px} #nav-wrap{top:calc(1rem + 48px)} .page-hero{padding-top:170px} }
-</style>
+
 <script>document.documentElement.classList.add('js');addEventListener('load',function(){setTimeout(function(){[].forEach.call(document.querySelectorAll('[data-reveal]:not(.in)'),function(e){e.classList.add('in')})},5000)})</script>
 </head>
 
@@ -336,7 +326,7 @@
 
 
 <!-- ===== Frosted pill navigation ===== -->
-<div class="fixed top-4 left-0 w-full z-50 px-4 md:px-grid-margin pointer-events-none" id="nav-wrap">
+<div class="fixed top-4 left-0 w-full z-50 px-5 md:px-grid-margin pointer-events-none" id="nav-wrap">
   <div class="max-w-[1320px] mx-auto pointer-events-auto">
     <div id="site-nav" class="pill-nav transition-transform duration-300">
       <a href="index.html" class="pill-logo" aria-label="Chang Orthodontics — home">
@@ -412,7 +402,7 @@
     </div>
     </div>
       <figure class="hero-photo">
-        <img src="assets/web/chang-doctor-scanner-01-1200.webp"
+        <img class="obj-top" src="assets/web/chang-doctor-scanner-01-1200.webp"
              srcset="assets/web/chang-doctor-scanner-01-480.webp 480w, assets/web/chang-doctor-scanner-01-768.webp 768w, assets/web/chang-doctor-scanner-01-1200.webp 1200w"
              sizes="(max-width: 1023px) 100vw, 460px" width="1200" height="1803"
              alt="Dr. Michael Chang beside the digital scanner at Chang Orthodontics"
@@ -611,7 +601,7 @@
 <section class="py-section-padding px-5 md:px-grid-margin max-w-[1320px] mx-auto" id="doctor">
   <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
     <div class="lift bg-white border border-outline-variant rounded-lg overflow-hidden" data-reveal="left">
-      <img src="assets/web/chang-doctor-portrait-01-1200.webp" srcset="assets/web/chang-doctor-portrait-01-480.webp 480w, assets/web/chang-doctor-scanner-01-768.webp 768w, assets/web/chang-doctor-scanner-01-1200.webp 1200w" sizes="(max-width: 1060px) 100vw, 50vw" width="1200" height="1803" alt="Dr. Michael Chang beside the digital scanner at Chang Orthodontics" loading="lazy" decoding="async" class="w-full h-[440px] object-cover"/>
+      <img src="assets/web/chang-doctor-portrait-01-1200.webp" srcset="assets/web/chang-doctor-portrait-01-480.webp 480w, assets/web/chang-doctor-scanner-01-768.webp 768w, assets/web/chang-doctor-scanner-01-1200.webp 1200w" sizes="(max-width: 1060px) 100vw, 50vw" width="1200" height="1803" alt="Dr. Michael Chang beside the digital scanner at Chang Orthodontics" loading="lazy" decoding="async" class="obj-top w-full h-[440px] object-cover"/>
     </div>
     <div data-reveal="right">
       <h2 class="font-headline-lg text-headline-lg text-on-surface leading-tight">Meet Dr. Michael Chang</h2>

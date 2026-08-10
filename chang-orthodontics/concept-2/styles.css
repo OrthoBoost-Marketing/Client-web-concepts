@@ -288,3 +288,6 @@ a.tile:hover .arrow{transform:translateX(4px)}
   html{scroll-behavior:auto}
   html.js .reveal.pre:not(.is-in){opacity:1;transform:none}
 }
+
+/* portrait crops: keep faces in frame inside fixed-height bands */
+img.obj-top{object-position:center 18%}

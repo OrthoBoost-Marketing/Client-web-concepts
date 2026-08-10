@@ -314,17 +314,7 @@
 </style>
 <noscript><style>[data-reveal]{opacity:1!important;transform:none!important;}</style></noscript>
 
-<style>
-  .offer-strip{position:fixed;top:0;left:0;width:100%;z-index:60;background:var(--c-ink);color:#fff;
-    display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap;padding:7px 16px;text-align:center}
-  .offer-strip span:first-child{color:#c1e4ea}
-  .offer-strip a{color:#c1e4ea}
-  #nav-wrap{top:calc(1rem + 34px)}
-  .page-hero{padding-top:clamp(150px,17vh,210px)}
-  .crumb-row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
-  .crumb-row a{color:var(--navy)}
-  @media (max-width:640px){ .offer-strip{font-size:11px} #nav-wrap{top:calc(1rem + 48px)} .page-hero{padding-top:170px} }
-</style>
+
 <script>document.documentElement.classList.add('js');addEventListener('load',function(){setTimeout(function(){[].forEach.call(document.querySelectorAll('[data-reveal]:not(.in)'),function(e){e.classList.add('in')})},5000)})</script>
 </head>
 
@@ -336,7 +326,7 @@
 
 
 <!-- ===== Frosted pill navigation ===== -->
-<div class="fixed top-4 left-0 w-full z-50 px-4 md:px-grid-margin pointer-events-none" id="nav-wrap">
+<div class="fixed top-4 left-0 w-full z-50 px-5 md:px-grid-margin pointer-events-none" id="nav-wrap">
   <div class="max-w-[1320px] mx-auto pointer-events-auto">
     <div id="site-nav" class="pill-nav transition-transform duration-300">
       <a href="index.html" class="pill-logo" aria-label="Chang Orthodontics — home">
@@ -378,7 +368,7 @@
   </div>
 </div>
 <main id="main">
-<div class="px-5 md:px-grid-margin max-w-[1320px] mx-auto pt-4">
+<div class="crumb-wrap px-5 md:px-grid-margin max-w-[1320px] mx-auto">
   <div class="crumb-row font-label-sans text-[10px] uppercase tracking-widest text-on-surface-variant">
     <a href="index.html">Home</a> <span aria-hidden="true">/</span> <span aria-current="page">Terms</span>
   </div>
