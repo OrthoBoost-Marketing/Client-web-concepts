@@ -107,9 +107,20 @@ a:focus-visible,button:focus-visible,summary:focus-visible,input:focus-visible{
   transition:border-color .25s, color .25s; }
 .tlink:hover{ color:var(--navy-deep); border-color:var(--navy-deep); }
 
-.eyebrow{ display:inline-flex; align-items:center; gap:10px; font-size:11px; font-weight:700;
-  text-transform:uppercase; letter-spacing:.18em; color:var(--navy); }
-.eyebrow::before{ content:""; width:18px; height:1px; background:currentColor; }
+/* ---- eyebrow ----
+   The rule trails the label and runs to the end of the column, so it holds the
+   section open instead of decorating the words. It used to lead: an 18px tick in
+   front of 11px uppercase accent text, which is the most generic section label
+   there is, and it looked worst on the one-word labels (Reviews, Treatments)
+   where the tick just sat there next to nothing. Label is ink, not accent:
+   an accent-coloured eyebrow is the other half of that same tell. */
+.eyebrow{ display:flex; align-items:center; gap:1rem; font-size:12px; font-weight:800;
+  text-transform:uppercase; letter-spacing:.1em; color:var(--c-ink); }
+/* Capped, not just flex:1. Unbounded, the rule ran 1100px next to a 59px word in
+   the full-width sections and stopped reading as a label device at all: it read
+   as a section divider. 320px keeps the same proportion whether the eyebrow sits
+   in a 560px column or the full 1320px container. */
+.eyebrow::after{ content:""; flex:1; max-width:320px; height:1px; background:var(--c-line-2); }
 
 .h2{ font-size:clamp(28px,5vw,46px); line-height:1.04; letter-spacing:-.025em; font-weight:800; color:var(--c-ink); }
 .lede{ font-size:16px; line-height:1.65; color:var(--c-ink-2); }
@@ -325,8 +336,11 @@ body{ padding-bottom:0; }
    AUTHORITY STRIP: typographic wordmarks (placeholder for official files)
    ========================================================================== */
 .authority{ background:var(--clay-soft); border-block:1px solid var(--c-line-2); }
-.authority-label{ text-align:center; font-size:10px; font-weight:700; text-transform:uppercase;
-  letter-spacing:.18em; color:var(--c-mute); }
+/* Same label family as .eyebrow: 12px at .1em rather than 10px at .18em. No rule,
+   because this one is centred and flanking rules on a centred label are their own
+   cliche. */
+.authority-label{ text-align:center; font-size:12px; font-weight:800; text-transform:uppercase;
+  letter-spacing:.1em; color:var(--c-ink); }
 .authority-row{ margin-top:1.75rem; display:flex; flex-wrap:wrap; justify-content:center;
   align-items:center; gap:1rem 2.5rem; }
 .authority-row .mark{ text-align:center; color:rgba(27,28,28,.7); }
