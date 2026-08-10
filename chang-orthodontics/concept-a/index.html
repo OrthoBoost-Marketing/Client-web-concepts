@@ -634,14 +634,13 @@
     }
   });
 
-  /* ---- hide the pill nav on scroll down, restore on scroll up ---- */
-  var last = 0;
+  /* ---- the pill nav stays put ----
+         It used to hide on scroll down and return on scroll up. The Book CTA lives
+         in it, so hiding it took the primary conversion path off screen for most of
+         the page. It is now persistently visible; .is-scrolled just firms up the
+         frosting once it leaves the hero so it stays legible over photography. */
   addEventListener('scroll', function () {
-    var y = scrollY;
-    if (menu.classList.contains('closed')) {
-      nav.classList.toggle('is-hidden', y > 220 && y > last);
-    }
-    last = y;
+    nav.classList.toggle('is-scrolled', scrollY > 24);
   }, { passive: true });
 
   /* ---- sticky bar hides when the footer CTA is in view, per the kit rule that it
