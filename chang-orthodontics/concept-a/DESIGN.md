@@ -121,3 +121,7 @@ Do not undo these, and repeat them on every new page:
 
 - **Grid tracks that hold text use `minmax(0,1fr)`, never a bare `1fr`.** A bare `fr` track floors at min-content, so a single long uppercase word such as "DIRECTIONS" silently widens the whole grid. This is what pushed the sticky bar to 410px on a 390px phone.
 - **`body { overflow-x: hidden }` does not clip `position: fixed` children.** The sticky bar and the pill nav escape it. Never rely on that rule to hide an overflow; fix the element.
+- **The mobile drawer is `position: absolute`, and it must stay that way.** It shares a `pointer-events: auto` wrapper with the pill nav. Left in flow, the closed drawer is a 702px transparent box parked over the hero, and both hero CTAs become unclickable on every phone while looking perfectly fine. The header is copied verbatim to each page, so this breaks the whole site at once.
+- **Hiding is `visibility: hidden`, not `opacity: 0`.** A drawer at `opacity: 0` still holds 22 links and summaries in the tab order. Step visibility at the end of the fade, the way `.nav-menu` already does, so the animation survives.
+
+Both were live defects on this homepage, found by the Gate 4 audit and fixed on 2026-08-10. Verify them on any page that touches the header: closed drawer, wrapper height should be 64px, and `document.elementFromPoint()` at a hero CTA should return the anchor.
