@@ -5,6 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Orthodontist in San Carlos, CA | Chang Orthodontics</title>
 <meta name="description" content="Board-certified orthodontist in San Carlos, CA. Dr. Michael Chang offers braces and Invisalign for children, teens, and adults, with a free consultation at every start.">
+<!-- BUILD NOTE: noindex is for the public GitHub Pages preview only, so it cannot compete
+     with the client's live site at the canonical URL below. Remove at launch on the real domain. -->
+<meta name="robots" content="noindex">
 <link rel="canonical" href="https://changortho.com/">
 
 <meta property="og:type" content="website">
@@ -241,7 +244,10 @@
 </section>
 
 <!-- ==================== USP ZIGZAG ==================== -->
-<section class="section band" style="background:var(--clay-soft)" id="why">
+<!-- One H2 per section: the three zigzag rows are three sibling sections. The section
+     padding is split so the rhythm reads as it did when they shared one band: full
+     padding above the first row and below the last, 5rem between the rows. -->
+<section class="section band" style="background:var(--clay-soft);padding-bottom:0" id="why">
   <div class="wrap">
 
     <div class="split">
@@ -260,7 +266,13 @@
       </div>
     </div>
 
-    <div class="split flip" style="margin-top:5rem">
+  </div>
+</section>
+
+<section class="band" style="background:var(--clay-soft);padding-top:5rem">
+  <div class="wrap">
+
+    <div class="split flip">
       <div data-reveal="right">
         <h2 class="h2">Appointments that fit around a school day.</h2>
         <p class="lede" style="margin-top:1.25rem">Most of our patients are still in school, so after-school appointments are part of how the schedule is built rather than a favor you have to ask for. Wait times are kept short on purpose, because a checked-in patient sitting in a waiting room is a scheduling failure.</p>
@@ -276,7 +288,13 @@
       </div>
     </div>
 
-    <div class="split" style="margin-top:5rem">
+  </div>
+</section>
+
+<section class="section band" style="background:var(--clay-soft);padding-top:5rem">
+  <div class="wrap">
+
+    <div class="split">
       <div data-reveal="left">
         <h2 class="h2">We live here too.</h2>
         <p class="lede" style="margin-top:1.25rem">Dr. Chang and his family live in San Carlos, a few minutes from the office on El Camino Real. You will find the practice at community events around the Peninsula for the same reason: this is the neighborhood, not a catchment area.</p>
@@ -307,14 +325,13 @@
 
 <!-- ==================== AUTHORITY STRIP ==================== -->
 <!-- BUILD NOTE: typographic wordmarks stand in for official logo files.
-     Request the real ABO / AAO / Invisalign / UCSF assets before launch and swap them in.
+     Request the real ABO / Invisalign / UCSF assets before launch and swap them in.
      Do not redraw or recolour a trademark. -->
 <section class="section band authority" style="padding-block:3rem" aria-label="Certifications and affiliations">
   <div class="wrap">
     <p class="authority-label">Certifications &amp; affiliations</p>
     <div class="authority-row">
       <span class="mark"><span class="m1">ABO</span><span class="m2">American Board of Orthodontics</span></span>
-      <span class="mark"><span class="m1">AAO</span><span class="m2">American Association of Orthodontists</span></span>
       <span class="mark"><span class="m1">Invisalign</span><span class="m2">Platinum Plus Provider</span></span>
       <span class="mark"><span class="m1">UCSF</span><span class="m2">School of Dentistry Faculty</span></span>
     </div>
@@ -332,7 +349,7 @@
   <div class="wrap">
     <p class="eyebrow">Reviews</p>
     <h2 class="h2" style="margin-top:1.25rem;max-width:20ch">What San Carlos families say.</h2>
-    <p class="rating-line" style="margin-top:1.25rem"><span class="stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span> 100 five-star reviews on Google</p>
+    <p class="rating-line" style="margin-top:1.25rem">100 five-star reviews on Google</p>
 
     <div class="review-grid">
       <div class="review-pending">
@@ -424,7 +441,7 @@
 
     <div class="loc-split" style="margin-top:3rem">
       <div class="loc-card">
-        <img class="loc-logo" src="assets/chang-logo.svg" alt="Chang Orthodontics" width="150" height="60">
+        <img class="loc-logo" src="assets/chang-logo.svg" alt="" width="150" height="60">
 
         <div class="loc-row">
           <p class="loc-key">Address</p>
@@ -464,7 +481,7 @@
   <div class="wrap" style="padding-block:4rem 2.5rem">
     <div class="foot-grid">
       <div>
-        <img class="foot-logo" src="assets/chang-logo.svg" alt="Chang Orthodontics" width="150" height="60">
+        <img class="foot-logo" src="assets/chang-logo.svg" alt="" width="150" height="60">
         <p class="foot-blurb">Chang Orthodontics is the San Carlos practice of Dr. Michael Chang, a board-certified orthodontist treating children, teens, and adults across the Peninsula.</p>
       </div>
 
@@ -545,6 +562,9 @@
 <!-- No aggregateRating and no Review objects: marking up third-party reviews on your
      own site is self-serving under Google's policy. areaServed and geo are omitted
      deliberately, per the brief: the client has not confirmed either. -->
+<!-- BUILD NOTE: the "image" property was removed. It pointed at the logo SVG, and Google's
+     structured data does not accept SVG. Restore "image" once the 1200x630 OG asset exists,
+     pointing it at that raster file. -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -554,7 +574,6 @@
   "url": "https://changortho.com/",
   "telephone": "+1-650-598-0888",
   "medicalSpecialty": "Orthodontic",
-  "image": "https://changortho.com/assets/chang-logo.svg",
   "address": {
     "@type": "PostalAddress",
     "streetAddress": "10 El Camino Real, Ste. 201",
