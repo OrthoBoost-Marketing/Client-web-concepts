@@ -61,8 +61,8 @@ p{ text-wrap:pretty; }
    invisibly, which is how a page ships with a body-sized h2 nobody catches. These
    defaults give any bare heading the documented scale. Every class and component
    rule below still wins on specificity, so the homepage is unaffected:
-   .clay-title (0,1,0) beats h1, .h2 beats h2, .cta-band h2 and .svc-card h3
-   (0,1,1) beat their bare elements. */
+   .clay-title (0,1,0) beats h1, .h2 beats h2, and .cta-band h2 (0,1,1) beats
+   its bare element. */
 h1{ font-family:var(--display); font-weight:400; font-size:clamp(34px,4.6vw,60px);
   line-height:.98; letter-spacing:-.03em; color:var(--c-ink); }
 h2{ font-size:clamp(28px,5vw,46px); line-height:1.04; letter-spacing:-.025em;
@@ -102,7 +102,7 @@ a:focus-visible,button:focus-visible,summary:focus-visible,input:focus-visible{
 .btn-outline:hover{ background:var(--navy); color:#fff; border-color:var(--navy); }
 
 /* contextual text link (zigzag rows, section footers) */
-.tlink{ display:inline-flex; align-items:center; gap:.4rem; font-weight:700; font-size:14px;
+.tlink{ display:inline-flex; align-items:center; min-height:24px; gap:.4rem; font-weight:700; font-size:14px;
   color:var(--navy); border-bottom:1px solid rgba(0,93,170,.35); padding-bottom:2px;
   transition:border-color .25s, color .25s; }
 .tlink:hover{ color:var(--navy-deep); border-color:var(--navy-deep); }
@@ -278,25 +278,6 @@ body{ padding-bottom:0; }
 .rule-navy{ height:2px; width:100%; background:var(--navy); }
 
 /* ==========================================================================
-   TRUST BAR: typography only, no icons
-   ========================================================================== */
-.trust{ background:var(--navy-deep); color:#fff; }
-.trust-grid{ display:grid; grid-template-columns:repeat(2,1fr); }
-@media (min-width:900px){ .trust-grid{ grid-template-columns:repeat(4,1fr); } }
-.trust-cell{ padding:2rem 1.5rem; border-right:1px solid rgba(255,255,255,.14);
-  border-bottom:1px solid rgba(255,255,255,.14); }
-.trust-cell:nth-child(2n){ border-right:0; }
-@media (min-width:900px){
-  .trust-cell{ border-bottom:0; }
-  .trust-cell:nth-child(2n){ border-right:1px solid rgba(255,255,255,.14); }
-  .trust-cell:last-child{ border-right:0; }
-}
-.trust-value{ font-family:var(--display); font-weight:400; font-size:clamp(26px,3vw,38px);
-  line-height:1; letter-spacing:-.02em; color:#fff; }
-.trust-label{ margin-top:.6rem; font-size:11px; font-weight:700; text-transform:uppercase;
-  letter-spacing:.14em; color:rgba(255,255,255,.72); line-height:1.5; }
-
-/* ==========================================================================
    SPLIT SECTIONS (meet the doctor, zigzag rows)
    ========================================================================== */
 .split{ display:grid; grid-template-columns:1fr; gap:2rem; align-items:center; }
@@ -322,20 +303,6 @@ body{ padding-bottom:0; }
 .cta-band .btn{ margin-top:2.25rem; }
 
 /* ==========================================================================
-   AUTHORITY STRIP: typographic wordmarks (placeholder for official files)
-   ========================================================================== */
-.authority{ background:var(--clay-soft); border-block:1px solid var(--c-line-2); }
-.authority-label{ text-align:center; font-size:10px; font-weight:700; text-transform:uppercase;
-  letter-spacing:.18em; color:var(--c-mute); }
-.authority-row{ margin-top:1.75rem; display:flex; flex-wrap:wrap; justify-content:center;
-  align-items:center; gap:1rem 2.5rem; }
-.authority-row .mark{ text-align:center; color:rgba(27,28,28,.7); }
-.authority-row .mark .m1{ display:block; font-family:var(--display); font-weight:400; font-size:17px;
-  letter-spacing:-.01em; line-height:1.1; }
-.authority-row .mark .m2{ display:block; margin-top:.3rem; font-size:9.5px; font-weight:700;
-  text-transform:uppercase; letter-spacing:.14em; color:var(--c-mute); }
-
-/* ==========================================================================
    REVIEWS: static grid only. Placeholder while quotes are outstanding.
    ========================================================================== */
 .rating-line{ font-size:13px; font-weight:700; text-transform:uppercase; letter-spacing:.12em; color:var(--c-ink-2); }
@@ -347,27 +314,6 @@ body{ padding-bottom:0; }
 .review-pending .rp-title{ font-size:13px; font-weight:800; text-transform:uppercase;
   letter-spacing:.14em; color:var(--navy); }
 .review-pending .rp-body{ margin:.9rem auto 0; max-width:56ch; font-size:15px; line-height:1.6; color:var(--c-ink-2); }
-
-/* ==========================================================================
-   SERVICES GRID: schematic cards (no stock or AI imagery available)
-   ========================================================================== */
-.svc-grid{ display:grid; grid-template-columns:1fr; gap:1.25rem; }
-@media (min-width:640px){ .svc-grid{ grid-template-columns:repeat(2,1fr); } }
-@media (min-width:1024px){ .svc-grid{ grid-template-columns:repeat(3,1fr); } }
-.svc-card{ position:relative; display:flex; flex-direction:column; background:#fff;
-  border:1px solid var(--c-line-2); border-radius:22px; padding:2rem; overflow:hidden;
-  transition:border-color .35s ease, box-shadow .4s ease;
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.9), 0 12px 34px rgba(0,93,170,.07); }
-.svc-card:hover{ border-color:var(--navy); box-shadow:inset 0 1px 0 rgba(255,255,255,.9), 0 18px 48px rgba(0,93,170,.12); }
-.svc-card .svc-figure{ height:120px; margin-bottom:1.5rem; display:grid; place-items:center;
-  border-radius:14px; background:var(--clay-soft); }
-.svc-card .svc-figure svg{ width:100%; height:100%; max-width:210px; }
-.svc-card h3{ font-size:22px; font-weight:800; letter-spacing:-.02em; line-height:1.2; color:var(--c-ink); }
-.svc-card h3 a::after{ content:""; position:absolute; inset:0; } /* whole card clickable */
-.svc-card h3 a:hover{ color:var(--navy); }
-.svc-card p{ margin-top:.75rem; font-size:15px; line-height:1.6; color:var(--c-ink-2); }
-.svc-card .svc-more{ margin-top:1.25rem; font-size:12px; font-weight:800; text-transform:uppercase;
-  letter-spacing:.1em; color:var(--navy); }
 
 /* ==========================================================================
    LOCATION CARD + MAP
@@ -397,7 +343,10 @@ body{ padding-bottom:0; }
 .foot-blurb{ margin-top:1.1rem; font-size:14.5px; line-height:1.65; color:var(--c-ink-2); max-width:34ch; }
 .foot-h{ font-size:10px; font-weight:800; text-transform:uppercase; letter-spacing:.16em; color:var(--c-mute); }
 .foot-list{ margin-top:1rem; display:grid; gap:.6rem; }
-.foot-list a{ font-size:14.5px; color:var(--c-ink-2); transition:color .2s; }
+/* Footer nav lists are lists, not prose, so the WCAG 2.5.8 inline-link exception
+   does not cover them. 14.5px text alone gave an 18px target. */
+.foot-list a{ display:flex; align-items:center; min-height:24px;
+  font-size:14.5px; color:var(--c-ink-2); transition:color .2s; }
 .foot-list a:hover{ color:var(--navy); }
 .foot-nap{ margin-top:1rem; font-size:14.5px; line-height:1.7; color:var(--c-ink-2); font-style:normal; }
 .foot-nap a{ color:var(--navy); font-weight:700; }
@@ -425,5 +374,142 @@ html.js [data-reveal].in{ opacity:1; transform:none; }
 @media (prefers-reduced-motion:reduce){
   html{ scroll-behavior:auto; }
   html.js [data-reveal],[data-reveal]{ transition:none; opacity:1 !important; transform:none !important; }
-  .btn,.pill-nav,#mobile-menu,#mobile-bar,.svc-card,.nav-menu{ transition:none; }
+  .btn,.pill-nav,#mobile-menu,#mobile-bar,.nav-menu,.lane-list a,.rec-rail a{ transition:none; }
+}
+
+/* ==========================================================================
+   RETIRED WITH THE RECORD REBUILD (2026-08-10)
+   The trust band, the typographic authority strip and the six-up service grid
+   were removed, not just unused. They are the three shapes every build off this
+   kit shares, and leaving their CSS here is an invitation to rebuild them on
+   page 12. Their replacements are .rec-dl, .cv and .lane. See DESIGN.md.
+   ========================================================================== */
+
+/* ==========================================================================
+   THE RECORD
+   Concept A's structural language, and the thing that separates this site from
+   every other build off the same kit. The rule is simple: no cards, no radius,
+   no shadows in these sections. Structure comes from numbers and hairlines.
+   Photography keeps the hard offset shadow, used sparingly, as the one soft
+   moment in an otherwise ruled page.
+   ========================================================================== */
+
+/* ---- fixed index rail: the record's table of contents ----
+   Desktop only, and only where there is genuinely room beside the 1320px
+   container. Below that the section numbers carry the same job inline. */
+.rec-rail{ display:none; }
+@media (min-width:1400px){
+  .rec-rail{ display:block; position:fixed; left:1.5rem; top:50%; transform:translateY(-50%);
+    z-index:40; width:64px; }
+  .rec-rail ol{ display:grid; gap:.6rem; }
+  /* min-height, not padding: 11px text alone gave a 14px target, under the 24px
+     WCAG 2.5.8 floor. The rail is small on purpose but it is still navigation. */
+  .rec-rail a{ display:flex; align-items:center; gap:.5rem; min-height:28px;
+    font-size:11px; font-weight:800;
+    letter-spacing:.1em; color:var(--c-mute); font-variant-numeric:tabular-nums;
+    transition:color var(--dur-fast) var(--ease-out); }
+  .rec-rail a::after{ content:""; height:1px; width:14px; background:currentColor; opacity:.5;
+    transition:width var(--dur-base) var(--ease-out), opacity var(--dur-base) var(--ease-out); }
+  .rec-rail a:hover{ color:var(--navy); }
+  .rec-rail a[aria-current="true"]{ color:var(--navy); }
+  .rec-rail a[aria-current="true"]::after{ width:34px; opacity:1; }
+}
+
+/* ---- section header: number, rule, title ---- */
+.rec-head{ display:grid; grid-template-columns:auto 1fr; gap:.9rem 1.25rem; align-items:baseline; }
+.rec-num{ font-family:var(--display); font-weight:400; font-size:13px; letter-spacing:.06em;
+  color:var(--navy); font-variant-numeric:tabular-nums; }
+.rec-head .rec-title{ grid-column:2; }
+.rec-head .rec-kicker{ grid-column:2; font-size:11px; font-weight:800; text-transform:uppercase;
+  letter-spacing:.18em; color:var(--c-mute); }
+.rec-hr{ grid-column:1/-1; height:1px; background:var(--c-line-2); margin:.35rem 0 1.5rem; }
+
+/* ---- full-bleed hairline between record sections ---- */
+.rec-divider{ height:1px; background:var(--c-line-2); }
+
+/* ---- data list: replaces the four-cell trust band ----
+   Figures sit on a ruled grid and read as a record, not as scorecard tiles. */
+.rec-dl{ display:grid; grid-template-columns:1fr; border-top:1px solid var(--c-line-2); }
+@media (min-width:640px){ .rec-dl{ grid-template-columns:repeat(2,1fr); } }
+@media (min-width:1024px){ .rec-dl{ grid-template-columns:repeat(4,1fr); } }
+.rec-dl > div{ border-bottom:1px solid var(--c-line-2); padding:1.5rem 0 1.4rem; }
+@media (min-width:640px){
+  .rec-dl > div{ padding-inline:1.5rem; border-right:1px solid var(--c-line-2); }
+  .rec-dl > div:first-child{ padding-left:0; }
+  .rec-dl > div:nth-child(2n){ border-right:0; }
+}
+@media (min-width:1024px){
+  .rec-dl > div{ border-right:1px solid var(--c-line-2); }
+  .rec-dl > div:nth-child(2n){ border-right:1px solid var(--c-line-2); }
+  .rec-dl > div:last-child{ border-right:0; padding-right:0; }
+}
+.rec-dt{ font-size:11px; font-weight:800; text-transform:uppercase; letter-spacing:.16em;
+  color:var(--c-mute); }
+.rec-dd{ margin-top:.7rem; font-family:var(--display); font-weight:400; font-size:clamp(24px,2.4vw,30px);
+  line-height:1.05; letter-spacing:-.02em; color:var(--c-ink); font-variant-numeric:tabular-nums; }
+.rec-dd-note{ margin-top:.5rem; font-size:13px; line-height:1.5; color:var(--c-ink-2); }
+
+/* ---- dated credential list: replaces the wordmark strip ----
+   A trademark we do not have a file for should not be faked as a wordmark. A
+   dated line is both honest and more specific. */
+.cv{ border-top:1px solid var(--c-line-2); }
+.cv li{ display:grid; grid-template-columns:1fr; gap:.3rem;
+  padding:1.25rem 0; border-bottom:1px solid var(--c-line-2); }
+@media (min-width:768px){
+  .cv li{ grid-template-columns:104px 1fr auto; gap:2rem; align-items:baseline; }
+}
+.cv-year{ font-size:12px; font-weight:800; letter-spacing:.12em; color:var(--navy);
+  font-variant-numeric:tabular-nums; }
+.cv-what{ font-size:16px; line-height:1.5; color:var(--c-ink); font-weight:700; }
+.cv-body{ font-size:14px; line-height:1.6; color:var(--c-ink-2); margin-top:.3rem; }
+@media (min-width:768px){ .cv-issuer{ text-align:right; } }
+.cv-issuer{ font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:.1em;
+  color:var(--c-mute); }
+
+/* ---- numbered record entry: replaces the zigzag ----
+   The zigzag alternated a photo left and right three times, which is the single
+   most recognisable shape in the kit. This is a ruled entry instead: index
+   number, statement, supporting text. One photo for the set, not three. */
+.rec-entry{ display:grid; grid-template-columns:1fr; gap:.75rem 2rem;
+  padding:2.25rem 0; border-bottom:1px solid var(--c-line-2); }
+@media (min-width:900px){
+  .rec-entry{ grid-template-columns:64px minmax(0,26ch) minmax(0,1fr); gap:2.5rem; align-items:start; }
+}
+.rec-entry:first-of-type{ border-top:1px solid var(--c-line-2); }
+.rec-entry .idx{ font-family:var(--display); font-weight:400; font-size:15px; color:var(--navy);
+  font-variant-numeric:tabular-nums; padding-top:.35rem; }
+.rec-entry h3{ font-size:clamp(22px,2.2vw,28px); line-height:1.15; letter-spacing:-.02em;
+  font-weight:800; color:var(--c-ink); }
+.rec-entry .body{ font-size:15.5px; line-height:1.65; color:var(--c-ink-2); }
+.rec-entry .body .tlink{ margin-top:1rem; }
+
+/* ---- age lanes: replaces the six-up service grid ----
+   Age is the real axis of this practice: mostly children, treating every age.
+   Treatments live inside the lane they belong to rather than in a flat grid. */
+.lanes{ display:grid; grid-template-columns:1fr; gap:0; border-top:1px solid var(--c-line-2); }
+@media (min-width:900px){ .lanes{ grid-template-columns:repeat(3,1fr); gap:0; } }
+.lane{ padding:2rem 0; border-bottom:1px solid var(--c-line-2); }
+@media (min-width:900px){
+  .lane{ padding:2.25rem 2rem; border-bottom:0; border-right:1px solid var(--c-line-2); }
+  .lane:first-child{ padding-left:0; }
+  .lane:last-child{ border-right:0; padding-right:0; }
+}
+.lane-age{ font-size:11px; font-weight:800; text-transform:uppercase; letter-spacing:.18em;
+  color:var(--navy); font-variant-numeric:tabular-nums; }
+.lane h3{ margin-top:.75rem; font-size:clamp(24px,2.3vw,30px); line-height:1.1;
+  letter-spacing:-.025em; font-weight:800; color:var(--c-ink); }
+.lane-photo{ margin:1.25rem 0 0; }
+.lane-photo img{ width:100%; height:190px; object-fit:cover; border:1px solid var(--c-line-2); }
+.lane-body{ margin-top:1.1rem; font-size:15px; line-height:1.65; color:var(--c-ink-2); }
+.lane-list{ margin-top:1.25rem; border-top:1px solid var(--c-line-2); }
+.lane-list li{ border-bottom:1px solid var(--c-line-2); }
+.lane-list a{ display:flex; align-items:center; justify-content:space-between; gap:1rem;
+  min-height:48px; padding:.5rem 0; font-size:15px; font-weight:700; color:var(--c-ink);
+  transition:color var(--dur-fast) var(--ease-out); }
+.lane-list a:hover{ color:var(--navy); }
+.lane-list a::after{ content:"\2192"; color:var(--navy); font-size:14px; }
+
+/* ---- reduced motion: the rail tick must not animate ---- */
+@media (prefers-reduced-motion:reduce){
+  .rec-rail a,.rec-rail a::after,.lane-list a{ transition:none; }
 }

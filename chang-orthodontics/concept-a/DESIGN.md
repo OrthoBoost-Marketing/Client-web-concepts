@@ -23,7 +23,7 @@ Contrast, measured rather than estimated: navy on white 6.67:1, `--c-ink` on whi
 
 ## Type
 
-- **Display** (`--display`): Archivo Black, always weight 400, tracking `-.03em`. Reserved for five things and nothing else: the H1, the CTA-band headline, the trust-bar figures, the authority-strip wordmarks, and the outlined hero background text. It is a moment, not a heading face. Never use it for an H2 or H3 in body content.
+- **Display** (`--display`): Archivo Black, always weight 400, tracking `-.03em`. Two jobs and no others: **the page's one big statement** (the H1, the CTA-band headline, the outlined hero background text) and **numerals** (the record figures, the section numbers, the entry indices). It is a moment and a counting device, never a heading face. Never set an H2 or H3 in body content in it. The specimen enforces this: it scans `site.css` and flags any selector using `--display` that is not on the list.
 - **Headline**: Hanken Grotesk 800. All H2 and H3.
 - **Body**: Hanken Grotesk 400, 16px/24px, `--c-ink-2`.
 - **Label**: Hanken Grotesk 700, 10 to 12px, uppercase, tracking `.1em` to `.18em`. Eyebrows, buttons, nav, stat labels.
@@ -32,7 +32,7 @@ Scale: H1 `clamp(34px,4.6vw,60px)` · H2 `clamp(28px,5vw,46px)` · H3 `clamp(26p
 
 **Headings are styled by default, not by opt-in.** `h1` to `h4` carry the scale above with no class needed. The classes still exist and still win: `.clay-title` for the hero H1, `.h2`, `.h3`. Use the class when you want the style without the level, never to make a heading look like a different level.
 
-One documented exception: `.svc-card h3` is 22px, deliberately below the H3 scale, because a service card title sitting at 34px would outweigh the section H2 above it. That is the only place a heading departs from the scale. If you need another, it goes in this document first.
+Two documented exceptions, both deliberately below the H3 scale so a sub-heading never outweighs the section H2 above it: `.lane h3` at `clamp(24px,2.3vw,30px)` and `.rec-entry h3` at `clamp(22px,2.2vw,28px)`. Those are the only places a heading departs from the scale. If you need another, it goes in this document first, and the specimen's probe list gets updated with it.
 
 ## Layout
 
@@ -83,14 +83,34 @@ Premium, plain, unhurried. Marlowe register: state the fact, stop. The client is
 - Never advertise in Spanish. Never mention Medicaid. Never reference a down payment.
 - Say "free consultation", never "free exam" or an invented offer name.
 
+## Page architecture: the Record
+
+This is what separates the site from every other build off the same kit, and it matters more than the palette does. Two sites can use different colors, different faces and different corner radii and still read as siblings if they are the same page underneath. This one is not.
+
+**The rule: no cards, no radius, no shadows in content sections.** Structure comes from numbers and hairlines. The only soft moment on the page is photography, which keeps the hard offset shadow, used once or twice, never on every row.
+
+Sections are a numbered record, `01` to `06`, and each carries its number in a `.rec-head`. Above 1400px a fixed `.rec-rail` on the left repeats the index and marks the section being read, via `IntersectionObserver`. Below that the inline numbers do the same job and the rail is `display:none`, so it never competes with the container.
+
+Three kit components were retired outright. Do not reintroduce them:
+
+| Retired | Replaced by | Why |
+|---|---|---|
+| Four-cell trust band | `.rec-dl`, a ruled data list | The tiles read as a scorecard. The same four figures on a ruled grid read as a record. |
+| Three-row photo zigzag | `.rec-entry`, numbered ruled entries | Photo left, photo right, photo left is the single most recognisable shape in the kit, and it is on every site built from it. One photo now serves the whole set. |
+| Six-up service grid | `.lane`, three age lanes | A flat grid makes every treatment weigh the same. Age is the real axis of this practice: mostly children, treating every age. Treatments live inside the lane they belong to. |
+
+The typographic authority strip is also gone. It faked wordmarks for trademarks we have no files for. Credentials are now a dated `.cv` list, which is both honest and more specific, and it does not redraw anyone's logo.
+
 ## Component rules carried from the kit
 
 - Every booking CTA routes to `appointment.html`. Only the contact page gets a message box; no form on the homepage.
 - One H1 per page. H2 per section.
-- Trust-bar numbers must match the meet-the-doctor section and the footer verbatim.
-- No carousels, no auto-rotating anything, no icon grids above stats.
-- Real photography everywhere except the services grid.
+- Figures in the record block must match the doctor section and the footer verbatim.
+- No carousels, no auto-rotating anything, no icon grids above the record block.
+- Real photography everywhere. The schematic treatment diagrams were retired with the service grid.
 - NAP is identical in header, footer, locations card, and JSON-LD, character for character.
+- The nav never hides on scroll. It carries the Book CTA, and hiding it takes the primary conversion path off screen for most of the page.
+- Grid tracks that hold text use `minmax(0,1fr)`. Lists that are navigation, not prose, clear a 24px tap target.
 
 ## Assets
 
