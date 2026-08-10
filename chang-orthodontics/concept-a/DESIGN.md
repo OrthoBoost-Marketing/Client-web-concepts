@@ -1,8 +1,8 @@
 # DESIGN.md: Chang Orthodontics
 
-The shared design contract for `site/`. Every page copies the header, footer, mobile drawer, sticky bottom bar, and container rules from `index.html` verbatim. Change them here first, then propagate.
+The shared design contract for `concept-a/`. Every page copies the header, footer, mobile drawer, sticky bottom bar, and container rules from `index.html` verbatim. Change them here first, then propagate.
 
-Brief: `../CLIENT-BRIEF.md` · Visual shell: `../concept-1/` · Structure and voice: kit avatar **Marlowe**.
+Brief: `../CLIENT-BRIEF.md` · Visual shell: this folder, extracted from the original concept-1 "clinical instrument" pitch · Structure and voice: kit avatar **Marlowe**.
 
 ## Palette
 
@@ -34,7 +34,7 @@ Scale: H1 `clamp(36px,4.6vw,62px)` · H2 `clamp(28px,5vw,46px)` · H3 26 to 38px
 - Container `max-width: 1320px`, padding `1.25rem` mobile / `4rem` at `md`. **Content is contained; bands are full-bleed.** Verify at 2560px.
 - Section rhythm: `7rem` top and bottom (`py-section-padding`), `4rem` on mobile.
 - Radius: pills `999px` for buttons and nav, `22px` cards, `14px` photos.
-- Photos carry a `1px` hairline border and a hard offset shadow (`5px 6px 0 #1b1c1c`) in the hero, softer elsewhere. This is concept-1's signature; keep it.
+- Photos carry a `1px` hairline border and a hard offset shadow (`5px 6px 0 #1b1c1c`) in the hero, softer elsewhere. This is the signature of the original Concept A shell; keep it.
 
 ## Voice
 
