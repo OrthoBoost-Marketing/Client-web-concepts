@@ -26,7 +26,18 @@ Contrast, measured rather than estimated: navy on white 6.67:1, `--c-ink` on whi
 - **Display** (`--display`): Archivo Black, always weight 400, tracking `-.03em`. Reserved for five things and nothing else: the H1, the CTA-band headline, the trust-bar figures, the authority-strip wordmarks, and the outlined hero background text. It is a moment, not a heading face. Never use it for an H2 or H3 in body content.
 - **Headline**: Hanken Grotesk 800. All H2 and H3.
 - **Body**: Hanken Grotesk 400, 16px/24px, `--c-ink-2`.
-- **Label**: Hanken Grotesk 700, 10 to 12px, uppercase, tracking `.1em` to `.18em`. Eyebrows, buttons, nav, stat labels.
+- **Label**: Hanken Grotesk, uppercase. Buttons, nav and stat labels stay at 10 to 12px with tracking up to `.18em`. **Eyebrows and the authority label are 12px, weight 800, tracking `.1em`, set in `--c-ink`, never in the accent colour.**
+
+### The eyebrow
+
+`.eyebrow` is a label followed by a hairline that runs to the right, capped at `320px`. The rule trails, it does not lead.
+
+This is deliberate and it is the one thing not to undo. The previous version put an 18px tick *in front* of 11px uppercase accent-coloured text, which is the most generic section label on the web, and it was worst on the one-word labels where the tick sat next to nothing. Two rules follow from that:
+
+- **The rule trails and is capped.** Uncapped it stretched past 1100px next to a 59px word in the full-width sections and stopped reading as a label at all, it read as a section divider. 320px holds the same proportion in a 560px column and in the full 1320px container.
+- **The label is ink, not accent.** An accent-coloured eyebrow is the other half of the same tell.
+
+The authority label is the same family at the same size, centred, with no rule: flanking rules on a centred label are their own cliche.
 
 Scale: H1 `clamp(34px,4.6vw,60px)` · H2 `clamp(28px,5vw,46px)` · H3 `clamp(26px,2.6vw,34px)` · H4 20px · body 16px · label 10 to 12px.
 

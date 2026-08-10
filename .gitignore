@@ -2,4 +2,4 @@
 # relative path and stay in sync with the real system, but never published:
 # GitHub Pages serves this repo from the root of main, so anything committed
 # here is publicly reachable by URL even when it is noindex and unlinked.
-chang-orthodontics/concept-a/specimen.html
+chang-orthodontics/concept-a/specimen*.html
