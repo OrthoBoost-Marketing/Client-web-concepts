@@ -163,3 +163,11 @@ Total: 27 pages.
 - ASSUMED: tagline taken from the live doctor page pending the client's own preference.
 - ASSUMED: doctor bio runs the full ~400–700 word treatment. The live page plus the client record give a genuine story (UCSF 7-year program, teaching since 2018, airway research, scholarships, San Carlos resident, 49ers/Giants, Candlestick seats). A 60-word "away from the office" section still needs the client's own words.
 - NOTE: the Notion Web DB row still lists "SVG logo · final list of services · client persona" as pending. All three are in fact resolved — logo is in Drive and staged locally, services are enumerated on the client record, persona is Premium Family Ortho. Worth clearing that row.
+
+## Resolutions log (concepts B and C)
+- 2026-08-10: services count: 6, unchanged; B and C inherit the six-item grid from the Services section verbatim (braces and Invisalign remain the money pages).
+- 2026-08-10: patient-photo consent: the 11 approved originals staged in `concept-a/assets/` (Drive source: Approved Web Assets - Chang Orthodontics) are the approved set; B and C use the same pool, no new imagery, stock/AI only in the services grid per the Photography constraints.
+- 2026-08-10: office hours: confirmed in the brief, Mon to Fri 9:00am to 5:00pm, phones covered through lunch, no lunch closure printed.
+- 2026-08-10: assets: copied per concept from concept-a/assets, same 11 originals + webp derivatives; no cross-concept `../concept-a/` references, each concept folder is self-contained on Pages. (Note: the Assets table above still says `concept-1/assets/`; the on-disk location is `concept-a/assets/`.)
+- 2026-08-10: concept directions named: concept-b = `dr-c-yang`, concept-c = `dr-b-nye`, per the persona slots recorded under Avatar & voice.
+- 2026-08-10: reviews: placeholder rule carries to B and C; no quotes, no rating schema (no aggregateRating, no Review), no star glyphs; verbatim GBP quotes remain the build's hard blocker.
