@@ -792,6 +792,9 @@
     gsap.to(heading.querySelectorAll("span span"), {
       y: "0%", duration: 1.05, ease: "power4.out", stagger: 0.035,
       scrollTrigger: { trigger: heading, start: "top 86%", once: true },
+      // Claim the heading the moment it starts, so the safety net below never fires a
+      // second, competing tween at the same words.
+      onStart() { heading.dataset.maskDone = "1"; },
       onComplete() { gsap.set(heading.querySelectorAll("span span"), { clearProps: "willChange" }); }
     });
   });
@@ -812,29 +815,47 @@
       });
     });
 
-    // ScrollTrigger caches start positions at build time. The hero image is sized in svh
-    // and the service-card images are lazy, so layout moved under it and triggers fired at
-    // the wrong scroll offsets — or never. Recalculate once everything has actually landed.
-    const refresh = () => ScrollTrigger.refresh();
+    // ScrollTrigger caches start positions at build time. The hero is sized in svh and 14 of
+    // the 18 images are lazy, so layout keeps shifting underneath the triggers and they do
+    // need recalculating — but coalesced. This used to call ScrollTrigger.refresh() once per
+    // image, and because the lazy ones load *while you are scrolling*, a full recalc of all
+    // 35 triggers kept landing mid-gesture. That was the stutter.
+    let refreshTimer = 0;
+    const refresh = () => {
+      clearTimeout(refreshTimer);
+      refreshTimer = setTimeout(() => ScrollTrigger.refresh(), 180);
+    };
+    // A resize on mobile is almost always just the URL bar collapsing. Recalculating there
+    // fights the svh hero and jerks the scroll position.
+    ScrollTrigger.config({ ignoreMobileResize: true });
     window.addEventListener("load", refresh);
     if (document.fonts && document.fonts.ready) document.fonts.ready.then(refresh);
     document.querySelectorAll("img").forEach((img) => {
       if (!img.complete) img.addEventListener("load", refresh, { once: true });
     });
 
-    // Fail-open, now covering the masked headings too. Previously a heading whose trigger
-    // never fired stayed translated 110% off its own baseline — permanently blank text.
+    // Fail-open, but only for what should already be on screen.
+    //
+    // The old version rescued every [data-reveal] on the page at 2.2s. Measured on the live
+    // build: 25 of the 27 below-fold elements were forced to opacity 1 before the visitor
+    // had scrolled a single pixel. So the reveals effectively did not exist past the first
+    // screen, and because a few triggers still fired in the gap, some things animated and
+    // most did not — which is exactly what "buggy when scrolling" looked like.
+    //
+    // Anything still below the fold keeps its trigger and animates when it is reached.
     setTimeout(() => {
+      const fold = window.innerHeight;
       document.querySelectorAll("[data-reveal]").forEach((el) => {
+        if (el.getBoundingClientRect().top > fold) return;
         if (getComputedStyle(el).opacity === "0") gsap.set(el, { opacity: 1, y: 0 });
       });
       document.querySelectorAll("[data-mask-reveal]").forEach((heading) => {
         heading.style.visibility = "visible";
-        if (heading.getBoundingClientRect().top < window.innerHeight) {
-          gsap.to(heading.querySelectorAll("span span"), { y: "0%", duration: 0.4, stagger: 0.02 });
-        }
+        if (heading.dataset.maskDone) return;
+        if (heading.getBoundingClientRect().top > fold) return;
+        heading.dataset.maskDone = "1";
+        gsap.to(heading.querySelectorAll("span span"), { y: "0%", duration: 0.4, stagger: 0.02 });
       });
-      ScrollTrigger.refresh();
     }, 2200);
   }
 
