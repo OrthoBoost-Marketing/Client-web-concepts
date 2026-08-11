@@ -21,15 +21,18 @@
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="preload" as="image" href="assets/web/chang-community-01-1200.webp" imagesrcset="assets/web/chang-community-01-768.webp 768w, assets/web/chang-community-01-1200.webp 1200w" imagesizes="(min-width:1024px) 46vw, 92vw" fetchpriority="high">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="assets/web/chang-community-01-1200.webp" imagesrcset="assets/web/chang-community-01-480.webp 480w, assets/web/chang-community-01-768.webp 768w, assets/web/chang-community-01-1200.webp 1200w" imagesizes="(min-width:1024px) 46vw, 92vw" fetchpriority="high">
 <style>
+
   :root {
     --brand:#005DAA; --brand-ink:#003B6E; --brand-tint:#EEF6F8; --accent:#3E90CE;
     --ink:#1b1c1c; --ink-muted:#434653;
     --surface:#F9FAFA; --surface-alt:#EEF6F8; --surface-step:#DCEAF2; --surface-dark:#003B6E;
     --font-display:'Instrument Serif', Georgia, serif;
-    --font-body:'Inter', ui-sans-serif, system-ui, sans-serif;
+    /* Figtree, not Inter: Inter is in use on the kit's example sites and is barred
+       from client builds. Figtree keeps the same neutral humanist metrics. */
+    --font-body:'Figtree', ui-sans-serif, system-ui, sans-serif;
     --tap:44px;
     --shadow-card:0px 0px 0px 1px rgba(0,0,0,0.06),0px 1px 1px -0.5px rgba(0,0,0,0.06),0px 3px 3px -1.5px rgba(0,0,0,0.06),0px 6px 6px -3px rgba(0,0,0,0.06),0px 12px 12px -6px rgba(0,0,0,0.06),0px 24px 24px -12px rgba(0,0,0,0.06);
     --shadow-chip:0px 2px 3px -1px rgba(0,0,0,0.1),0px 1px 0px 0px rgba(25,28,33,0.02),0px 0px 0px 1px rgba(25,28,33,0.08);
@@ -47,7 +50,8 @@
   /* Accent system: names, places and value words take the brand blue. Never a whole sentence. */
   .hl{color:var(--brand)}
   /* Footer links follow the kit: ~14px, 4px vertical padding, not a 44px block. */
-  .fcol a{display:block;font-size:15px;padding:5px 0;line-height:1.45}
+  /* 11px block padding, not 5px: 15px x 1.45 + 22px clears the 44px tap minimum. */
+  .fcol a{display:block;font-size:15px;padding:11px 0;line-height:1.45}
   /* Nav dropdowns */
   .navgrp>.dd{visibility:hidden;opacity:0;transform:translateY(6px);transition:opacity .22s,transform .22s,visibility .22s}
   .navgrp:hover>.dd,.navgrp:focus-within>.dd{visibility:visible;opacity:1;transform:translateY(0)}
@@ -62,15 +66,15 @@
 </style>
 </head>
 
-<body class="bg-[#F9FAFA] text-[#1b1c1c] antialiased selection:bg-[#005DAA] selection:text-white pb-[76px] lg:pb-0" style="font-family:'Inter', ui-sans-serif, system-ui, sans-serif;">
+<body class="bg-[#F9FAFA] text-[#1b1c1c] antialiased selection:bg-[#005DAA] selection:text-white pb-[76px] lg:pb-0" style="font-family:'Figtree', ui-sans-serif, system-ui, sans-serif;">
 <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[100] focus:rounded-xl focus:bg-white focus:px-5 focus:py-3 focus:text-sm focus:font-semibold focus:shadow-card">Skip to content</a>
 
 <main id="main" class="min-h-screen w-full bg-[#F9FAFA]">
 
   <!-- ============ 1 · HEADER — logo · nav · phone (big) · one CTA ============ -->
   <header class="sticky top-0 z-50 border-b border-black/5 bg-[#F9FAFA]/88 backdrop-blur-xl">
-    <nav class="mx-auto flex max-w-[1200px] items-center justify-between gap-4 px-5 py-3 sm:px-8 lg:px-10" aria-label="Main">
-      <a href="#top" aria-label="Chang Orthodontics home" data-magnetic class="group flex min-h-[44px] items-center rounded-full outline-none transition duration-300 hover:scale-[1.02] focus-visible:ring-2 focus-visible:ring-[#005DAA]/40">
+    <nav class="mx-auto flex max-w-[1200px] items-center justify-between gap-4 px-5 py-1.5 sm:px-8 sm:py-3 lg:px-10" aria-label="Main">
+      <a href="index.html" aria-label="Chang Orthodontics home" data-magnetic class="group flex min-h-[44px] items-center rounded-full outline-none transition duration-300 hover:scale-[1.02] focus-visible:ring-2 focus-visible:ring-[#005DAA]/40">
         <img src="assets/chang-logo.svg" alt="Chang Orthodontics" width="150" height="36" class="h-8 w-auto sm:h-9">
       </a>
 
@@ -113,78 +117,116 @@
           </div>
         </div>
 
-        <a href="contact.html" class="inline-flex min-h-[44px] items-center rounded-full px-3 py-2 text-sm font-medium text-black/70 transition hover:bg-white hover:text-[#1b1c1c] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#005DAA]/35">Contact &amp; Directions</a>
+        <a href="#location" class="inline-flex min-h-[44px] items-center rounded-full px-3 py-2 text-sm font-medium text-black/70 transition hover:bg-white hover:text-[#1b1c1c] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#005DAA]/35">Our Address</a>
       </div>
 
       <div class="flex items-center gap-3">
-        <a href="tel:+16505980888" class="hidden min-h-[44px] items-center gap-2 text-lg font-bold tracking-tight text-[#003B6E] transition hover:text-[#005DAA] sm:inline-flex">
-          <iconify-icon icon="solar:phone-bold" class="text-xl text-[#005DAA]" aria-hidden="true"></iconify-icon>
-          (650) 598-0888
+        <!-- Kit rule 5: tel: link on every device. Below sm the number drops but the
+             icon stays, so the collapsed bar is logo + phone icon + hamburger. -->
+        <a href="tel:+16505980888" aria-label="Call (650) 598-0888" class="inline-flex min-h-[44px] min-w-[44px] items-center justify-center gap-2 text-lg font-bold tracking-tight text-[#003B6E] transition hover:text-[#005DAA]">
+          <svg viewBox="0 0 24 24" fill="currentColor" class="h-5 w-5 shrink-0 text-[#005DAA]" aria-hidden="true"><path d="M7.4 3H4.6C3.7 3 3 3.7 3 4.6 3 13.1 10.9 21 19.4 21c.9 0 1.6-.7 1.6-1.6v-2.8c0-.7-.5-1.3-1.2-1.5l-3.1-.8c-.6-.2-1.3.1-1.6.6l-1 1.7c-2.4-1.2-4.4-3.2-5.6-5.6l1.7-1c.5-.3.8-1 .6-1.6l-.8-3.1C8.7 3.5 8.1 3 7.4 3z"/><path opacity=".5" d="M14.6 3.2a.9.9 0 0 0-.2 1.8 5 5 0 0 1 4.1 4.1.9.9 0 0 0 1.8-.2 6.8 6.8 0 0 0-5.7-5.7z"/></svg>
+          <span class="hidden sm:inline">(650) 598-0888</span>
         </a>
-        <a href="appointment.html" data-magnetic class="group inline-flex min-h-[44px] items-center gap-2 rounded-full bg-[#003B6E] px-5 py-2.5 text-sm font-semibold text-white shadow-chip transition duration-300 hover:-translate-y-0.5 hover:bg-[#005DAA] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#005DAA]/35">
+        <!-- Hidden below sm: kit section 01 collapses the mobile top bar to logo + phone +
+             hamburger, and the sticky bottom bar already carries this action. Two primary
+             CTAs on one mobile screen is a banned pattern. -->
+        <a href="appointment.html" data-magnetic class="group hidden min-h-[44px] items-center gap-2 rounded-full bg-[#003B6E] px-5 py-2.5 text-sm font-semibold text-white shadow-chip transition duration-300 hover:-translate-y-0.5 hover:bg-[#005DAA] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#005DAA]/35 sm:inline-flex">
           Free consultation
           <iconify-icon icon="solar:arrow-right-linear" class="text-lg transition duration-300 group-hover:translate-x-1" aria-hidden="true"></iconify-icon>
         </a>
+
+        <!-- Hamburger. The desktop nav is xl:flex, so this must persist all the way to
+             xl — previously there was none at all and 1024-1279px had no navigation. -->
+        <button id="navToggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu"
+                class="inline-flex min-h-[44px] min-w-[44px] items-center justify-center rounded-full border border-black/10 bg-white text-[#1b1c1c] transition hover:bg-[#EEF6F8] xl:hidden">
+          <iconify-icon icon="solar:hamburger-menu-linear" class="text-2xl" aria-hidden="true"></iconify-icon>
+        </button>
       </div>
     </nav>
+
+    <!-- Drawer mirrors the desktop nav exactly: same four groups, accordion dropdowns,
+         CTA pinned at the bottom. -->
+    <div id="mobileMenu" class="hidden border-t border-black/5 bg-[#F9FAFA] xl:hidden">
+      <div class="mx-auto max-w-[1200px] px-5 py-4 sm:px-8">
+        <details class="group border-b border-black/5">
+          <summary class="flex min-h-[52px] cursor-pointer list-none items-center justify-between py-2 text-base font-semibold text-[#1b1c1c]">
+            Treatments <iconify-icon icon="solar:alt-arrow-down-linear" class="text-lg transition group-open:rotate-180" aria-hidden="true"></iconify-icon>
+          </summary>
+          <div class="grid gap-1 pb-3">
+            <a href="braces.html" class="flex min-h-[44px] items-center rounded-xl px-3 text-base text-black/70 hover:bg-white">Braces</a>
+            <a href="invisalign.html" class="flex min-h-[44px] items-center rounded-xl px-3 text-base text-black/70 hover:bg-white">Invisalign</a>
+            <a href="early-orthodontics.html" class="flex min-h-[44px] items-center rounded-xl px-3 text-base text-black/70 hover:bg-white">Early orthodontics</a>
+            <a href="kids-teens.html" class="flex min-h-[44px] items-center rounded-xl px-3 text-base text-black/70 hover:bg-white">Kids and teens</a>
+            <a href="adults.html" class="flex min-h-[44px] items-center rounded-xl px-3 text-base text-black/70 hover:bg-white">Adult orthodontics</a>
+            <a href="airway.html" class="flex min-h-[44px] items-center rounded-xl px-3 text-base text-black/70 hover:bg-white">Airway and expansion</a>
+          </div>
+        </details>
+
+        <details class="group border-b border-black/5">
+          <summary class="flex min-h-[52px] cursor-pointer list-none items-center justify-between py-2 text-base font-semibold text-[#1b1c1c]">
+            Why Chang <iconify-icon icon="solar:alt-arrow-down-linear" class="text-lg transition group-open:rotate-180" aria-hidden="true"></iconify-icon>
+          </summary>
+          <div class="grid gap-1 pb-3">
+            <a href="about.html" class="flex min-h-[44px] items-center rounded-xl px-3 text-base text-black/70 hover:bg-white">Why choose Chang</a>
+            <a href="dr-michael-chang.html" class="flex min-h-[44px] items-center rounded-xl px-3 text-base text-black/70 hover:bg-white">Meet Dr. Chang</a>
+            <a href="team.html" class="flex min-h-[44px] items-center rounded-xl px-3 text-base text-black/70 hover:bg-white">Meet the team</a>
+            <a href="reviews.html" class="flex min-h-[44px] items-center rounded-xl px-3 text-base text-black/70 hover:bg-white">Reviews</a>
+          </div>
+        </details>
+
+        <details class="group border-b border-black/5">
+          <summary class="flex min-h-[52px] cursor-pointer list-none items-center justify-between py-2 text-base font-semibold text-[#1b1c1c]">
+            Resources <iconify-icon icon="solar:alt-arrow-down-linear" class="text-lg transition group-open:rotate-180" aria-hidden="true"></iconify-icon>
+          </summary>
+          <div class="grid gap-1 pb-3">
+            <a href="new-patients.html" class="flex min-h-[44px] items-center rounded-xl px-3 text-base text-black/70 hover:bg-white">New patients</a>
+            <a href="financing.html" class="flex min-h-[44px] items-center rounded-xl px-3 text-base text-black/70 hover:bg-white">Financing</a>
+            <a href="faq.html" class="flex min-h-[44px] items-center rounded-xl px-3 text-base text-black/70 hover:bg-white">FAQ</a>
+            <a href="emergencies.html" class="flex min-h-[44px] items-center rounded-xl px-3 text-base text-black/70 hover:bg-white">Emergencies</a>
+          </div>
+        </details>
+
+        <a href="#location" class="flex min-h-[52px] items-center border-b border-black/5 text-base font-semibold text-[#1b1c1c]">Our Address</a>
+
+        <a href="appointment.html" class="mt-4 flex min-h-[52px] items-center justify-center gap-2 rounded-full bg-[#003B6E] px-5 text-base font-semibold text-white transition hover:bg-[#005DAA]">
+          Free consultation
+          <iconify-icon icon="solar:arrow-right-linear" class="text-lg" aria-hidden="true"></iconify-icon>
+        </a>
+      </div>
+    </div>
   </header>
 
+  <!-- ============ 2 + 2A · FIRST VIEWPORT ============
+       Hero and proof band are locked together to exactly one viewport (minus the 69px sticky
+       header), so the band always lands on the fold and Meet-the-Doctor always starts below it,
+       on any screen height. Do NOT give either child a fixed pixel height — the hero image is
+       what flexes (see its clamp), which is what keeps the 80px gaps constant instead of
+       opening up dead space on a tall monitor. -->
+  <div class="flex flex-col min-h-[calc(100svh-69px)]">
+
   <!-- ============ 2 · HERO — authority image · headline · subhead · one CTA (2nd = phone) ============ -->
-  <section id="top" class="relative px-5 pt-14 pb-16 sm:px-8 sm:pt-16 lg:px-10 lg:pb-20">
+  <section id="top" class="relative flex flex-1 flex-col justify-center px-5 pt-5 pb-20 sm:px-8 sm:pt-6 lg:px-10 lg:pb-28">
     <div aria-hidden="true" class="pointer-events-none absolute inset-0">
       <div class="absolute inset-x-0 top-8 mx-auto h-72 max-w-5xl opacity-25" style="background-image:radial-gradient(circle, rgba(11,28,60,0.13) 1px, transparent 1px);background-size:2rem 2rem;"></div>
     </div>
 
-    <div class="relative mx-auto grid max-w-[1200px] items-center gap-12 lg:grid-cols-[0.95fr_1.05fr]">
+    <div class="relative mx-auto grid max-w-[1200px] items-center gap-7 sm:gap-12 lg:grid-cols-[0.95fr_1.05fr]">
       <div class="text-center lg:text-left">
         <h1 class="max-w-4xl text-5xl font-light leading-none tracking-tight text-[#1b1c1c] sm:text-6xl lg:text-7xl font-display">Braces and Invisalign in <span class="hl">San&nbsp;Carlos</span><span class="mt-3 block text-[0.64em] leading-[1.08]">planned by a <span class="hl">UCSF clinical professor</span></span></h1>
 
-        <p data-reveal class="lede-hero mx-auto mt-6 max-w-2xl text-[#434653] lg:mx-0">
+        <p data-reveal class="lede-hero mx-auto mt-4 max-w-2xl text-[#434653] sm:mt-6 lg:mx-0">
           <span class="font-semibold text-[#1b1c1c]">Dr. Michael Chang</span> has treated <span class="hl font-semibold">10,000 patients</span> over 15 years. He is board certified, teaches orthodontics at UCSF, and publishes research on how treatment changes the airway.
         </p>
 
-        <div data-reveal class="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row lg:justify-start">
+        <div data-reveal class="mt-6 flex flex-col items-center justify-center gap-3 sm:mt-8 sm:flex-row lg:justify-start">
           <a href="appointment.html" data-magnetic class="group inline-flex w-full items-center justify-center gap-2 rounded-xl bg-[#003B6E] px-7 py-4 text-base font-semibold text-white shadow-card transition duration-300 hover:-translate-y-1 hover:bg-[#005DAA] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#005DAA]/40 sm:w-auto">
             Request your free consultation
             <iconify-icon icon="solar:alt-arrow-right-linear" class="text-lg transition duration-300 group-hover:translate-x-1" aria-hidden="true"></iconify-icon>
           </a>
-          <a href="tel:+16505980888" data-magnetic class="inline-flex w-full items-center justify-center gap-2 rounded-xl border border-black/20 bg-white px-7 py-4 text-base font-semibold text-[#1b1c1c] shadow-chip transition duration-300 hover:-translate-y-1 hover:bg-[#EAF2F8] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#005DAA]/35 sm:w-auto">
-            <iconify-icon icon="solar:phone-linear" class="text-lg" aria-hidden="true"></iconify-icon>
+          <a href="tel:+16505980888" data-magnetic class="inline-flex w-full items-center justify-center gap-2 rounded-xl border border-black/15 bg-transparent px-7 py-4 text-base font-medium text-[#434653] transition duration-300 hover:-translate-y-1 hover:border-black/30 hover:text-[#1b1c1c] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#005DAA]/35 sm:w-auto">
+            <svg viewBox="0 0 24 24" fill="currentColor" class="h-[1.15rem] w-[1.15rem] shrink-0" aria-hidden="true"><path d="M7.4 3H4.6C3.7 3 3 3.7 3 4.6 3 13.1 10.9 21 19.4 21c.9 0 1.6-.7 1.6-1.6v-2.8c0-.7-.5-1.3-1.2-1.5l-3.1-.8c-.6-.2-1.3.1-1.6.6l-1 1.7c-2.4-1.2-4.4-3.2-5.6-5.6l1.7-1c.5-.3.8-1 .6-1.6l-.8-3.1C8.7 3.5 8.1 3 7.4 3z"/><path opacity=".5" d="M14.6 3.2a.9.9 0 0 0-.2 1.8 5 5 0 0 1 4.1 4.1.9.9 0 0 0 1.8-.2 6.8 6.8 0 0 0-5.7-5.7z"/></svg>
             (650) 598-0888
           </a>
-        </div>
-
-        <!-- PROOF BAND (spec 2A) lives here in the hero: 4 verified points, icon + bold line + sub-line.
-             Same four USPs as concept-a and concept-c: credentials first, volume alongside. -->
-        <div data-reveal class="mt-10 grid grid-cols-1 divide-y divide-black/10 overflow-hidden rounded-2xl border border-black/5 bg-white/70 text-left shadow-chip backdrop-blur sm:grid-cols-2 sm:divide-x sm:divide-y-0 lg:grid-cols-4">
-          <div class="flex items-center gap-3 px-5 py-4">
-            <iconify-icon icon="solar:medal-ribbon-star-linear" class="shrink-0 text-2xl text-[#005DAA]" aria-hidden="true"></iconify-icon>
-            <div class="leading-none">
-              <p class="whitespace-nowrap text-xl font-bold tracking-tight text-[#1b1c1c]">Board certified</p>
-              <p class="mt-1.5 whitespace-nowrap text-sm text-black/55">American Board of Orthodontics</p>
-            </div>
-          </div>
-          <div class="flex items-center gap-3 px-5 py-4 sm:border-t-0">
-            <iconify-icon icon="solar:square-academic-cap-linear" class="shrink-0 text-2xl text-[#005DAA]" aria-hidden="true"></iconify-icon>
-            <div class="leading-none">
-              <p class="whitespace-nowrap text-xl font-bold tracking-tight text-[#1b1c1c]">UCSF faculty</p>
-              <p class="mt-1.5 whitespace-nowrap text-sm text-black/55">clinical professor since 2018</p>
-            </div>
-          </div>
-          <div class="flex items-center gap-3 px-5 py-4">
-            <iconify-icon icon="solar:users-group-rounded-linear" class="shrink-0 text-2xl text-[#005DAA]" aria-hidden="true"></iconify-icon>
-            <div class="leading-none">
-              <p class="whitespace-nowrap text-xl font-bold tracking-tight text-[#1b1c1c]">10,000</p>
-              <p class="mt-1.5 whitespace-nowrap text-sm text-black/55">patients treated</p>
-            </div>
-          </div>
-          <div class="flex items-center gap-3 px-5 py-4">
-            <iconify-icon icon="solar:star-linear" class="shrink-0 text-2xl text-[#005DAA]" aria-hidden="true"></iconify-icon>
-            <div class="leading-none">
-              <p class="whitespace-nowrap text-xl font-bold tracking-tight text-[#1b1c1c]">100</p>
-              <p class="mt-1.5 whitespace-nowrap text-sm text-black/55">five-star reviews</p>
-            </div>
-          </div>
         </div>
       </div>
 
@@ -195,14 +237,43 @@
                sizes="(min-width:1024px) 46vw, 92vw"
                width="1200" height="1600" fetchpriority="high" decoding="async"
                alt="Dr. Michael Chang with a patient at Chang Orthodontics in San Carlos"
-               class="h-[32rem] w-full rounded-[1.5rem] object-cover transition duration-700 hover:scale-[1.035]">
+               class="block h-[clamp(20rem,calc(100svh-337px),48rem)] w-full rounded-[1.5rem] object-cover transition duration-700 hover:scale-[1.035]">
         </div>
       </div>
     </div>
   </section>
 
+  <!-- ============ 2A · PROOF BAND ============
+       Sits directly below the hero, not inside it (spec 2A). Deliberately NOT full bleed:
+       the card stays inside the same max-w-[1200px] measure as every other section.
+       No icons — the value line carries it, set in brand navy. -->
+  <section aria-label="Credentials and practice figures" class="px-5 sm:px-8 lg:px-10">
+    <!-- grid-cols-2 at the base, not grid-cols-1: kit section 03 rule 6 wants four cells as
+         a 2x2 on mobile and the band under ~40% of the viewport. Stacked it hit 49%. -->
+    <div data-reveal class="mx-auto grid max-w-[1200px] grid-cols-2 divide-x divide-y-0 divide-black/10 overflow-hidden rounded-2xl border border-black/5 bg-white/70 text-left shadow-chip backdrop-blur lg:grid-cols-4">
+      <div class="px-6 py-5 leading-none">
+        <p class="whitespace-nowrap text-xl font-bold tracking-tight text-[#005DAA]">Board certified</p>
+        <p class="mt-1.5 whitespace-nowrap text-sm text-black/55">American Board of Orthodontics</p>
+      </div>
+      <div class="px-6 py-5 leading-none">
+        <p class="whitespace-nowrap text-xl font-bold tracking-tight text-[#005DAA]">UCSF faculty</p>
+        <p class="mt-1.5 whitespace-nowrap text-sm text-black/55">clinical professor since 2018</p>
+      </div>
+      <div class="px-6 py-5 leading-none">
+        <p class="whitespace-nowrap text-xl font-bold tracking-tight text-[#005DAA]">10,000</p>
+        <p class="mt-1.5 whitespace-nowrap text-sm text-black/55">patients treated</p>
+      </div>
+      <div class="px-6 py-5 leading-none">
+        <p class="whitespace-nowrap text-xl font-bold tracking-tight text-[#005DAA]">100</p>
+        <p class="mt-1.5 whitespace-nowrap text-sm text-black/55">five-star reviews</p>
+      </div>
+    </div>
+  </section>
+
+  </div><!-- /first viewport -->
+
   <!-- ============ 3 · MEET THE DOCTOR ============ -->
-  <section id="doctor" class="px-5 pb-20 pt-8 sm:px-8 lg:px-10">
+  <section id="doctor" class="px-5 pb-20 pt-16 sm:px-8 lg:px-10 lg:pt-20">
     <div class="mx-auto grid max-w-[1200px] items-center gap-10 lg:grid-cols-[1.05fr_0.95fr]">
       <div data-reveal class="overflow-hidden rounded-[2rem] bg-[#DCEAF2] p-3 shadow-card">
         <img src="assets/web/chang-doctor-portrait-01-1200.webp"
@@ -213,29 +284,32 @@
       </div>
 
       <div>
-        <h2 class="text-4xl font-light leading-none tracking-tight sm:text-5xl font-display">Dr. <span class="hl">Michael Chang</span>, DDS</h2>
+        <p class="text-xs font-semibold uppercase tracking-[0.18em] text-black/45">Meet your orthodontist</p>
+        <h2 class="mt-4 text-4xl font-light leading-none tracking-tight sm:text-5xl font-display">Dr. <span class="hl">Michael Chang</span>, DDS</h2>
         <p data-reveal class="lede mt-6 text-[#434653]">
-          Fifteen years in practice, and still teaching the next class. Dr. Chang completed the seven-year combined dental and orthodontic specialty program at <span class="hl font-semibold">UCSF</span> and has taught there since 2018. He publishes peer-reviewed research on airway change, and he lives in <span class="hl font-semibold">San Carlos</span> with his family. He plans every case himself, and he is the one you see at each visit.
+          More than fifteen years in practice, and still teaching the next class. Dr. Chang trained at <span class="hl font-semibold">UCSF</span> and has taught there as a clinical professor since 2018. He publishes peer-reviewed research on how treatment changes the airway.
         </p>
         <dl data-reveal class="mt-8 border-t border-black/10">
           <div class="flex items-baseline justify-between gap-6 border-b border-black/10 py-3.5">
             <dt class="text-base text-[#434653]">Certification</dt>
-            <dd class="text-right text-base font-semibold text-[#1b1c1c]">Board-certified specialist</dd>
+            <dd class="text-right text-base font-semibold text-[#1b1c1c]">Board certified by the American Board of Orthodontics</dd>
           </div>
           <div class="flex items-baseline justify-between gap-6 border-b border-black/10 py-3.5">
             <dt class="text-base text-[#434653]">Training</dt>
-            <dd class="text-right text-base font-semibold text-[#1b1c1c]">UCSF, seven-year combined program</dd>
+            <dd class="text-right text-base font-semibold text-[#1b1c1c]">UCSF, and clinical professor there since 2018</dd>
           </div>
           <div class="flex items-baseline justify-between gap-6 border-b border-black/10 py-3.5">
             <dt class="text-base text-[#434653]">Research</dt>
-            <dd class="text-right text-base font-semibold text-[#1b1c1c]">Peer-reviewed, 3-D airway change</dd>
+            <dd class="text-right text-base font-semibold text-[#1b1c1c]">Peer-reviewed, on airway change during treatment</dd>
           </div>
           <div class="flex items-baseline justify-between gap-6 border-b border-black/10 py-3.5">
             <dt class="text-base text-[#434653]">Invisalign</dt>
             <dd class="text-right text-base font-semibold text-[#1b1c1c]">Platinum Plus Provider</dd>
           </div>
         </dl>
-        <a href="dr-michael-chang.html" data-magnetic data-reveal class="mt-8 inline-flex min-h-[44px] items-center gap-2 rounded-xl border border-black/20 bg-white px-6 py-3.5 text-base font-semibold text-[#1b1c1c] shadow-chip transition duration-300 hover:-translate-y-1 hover:bg-[#EAF2F8] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#005DAA]/35">
+        <!-- Ghost, not filled: the kit forbids a bio-page link styled like the booking
+             button. bg-white + shadow-chip is this page's booking-CTA recipe. -->
+        <a href="dr-michael-chang.html" data-magnetic data-reveal class="mt-8 inline-flex min-h-[44px] items-center gap-2 rounded-xl border border-black/20 bg-transparent px-6 py-3.5 text-base font-medium text-[#434653] transition duration-300 hover:border-black/35 hover:text-[#1b1c1c] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#005DAA]/35">
           Meet Dr. Chang
           <iconify-icon icon="solar:alt-arrow-right-linear" class="text-lg" aria-hidden="true"></iconify-icon>
         </a>
@@ -246,7 +320,7 @@
   <!-- ============ 4 · USP ZIGZAG — 3 blocks, real office image + one USP + its own CTA ============ -->
   <section id="why" class="bg-[#EEF6F8] px-5 py-20 sm:px-8 lg:px-10">
     <div class="mx-auto max-w-[1200px]">
-      <h2 data-mask-reveal class="max-w-3xl text-4xl font-light leading-none tracking-tight sm:text-5xl lg:text-6xl font-display">What we do differently at Chang Orthodontics</h2>
+      <h2 data-mask-reveal class="max-w-3xl text-4xl font-light leading-none tracking-tight sm:text-5xl lg:text-6xl font-display">Airway-focused orthodontics in San Carlos</h2>
 
       <div class="mt-12 space-y-6">
         <article data-reveal data-card class="grid gap-6 rounded-[2rem] bg-white p-5 shadow-card lg:grid-cols-2 lg:items-center lg:p-6">
@@ -258,8 +332,8 @@
                  class="h-80 w-full object-cover transition duration-700 hover:scale-105 lg:h-[26rem]">
           </div>
           <div class="lg:px-6">
-            <h3 class="text-3xl font-light leading-none tracking-tight sm:text-4xl font-display">The plan is measured, not estimated</h3>
-            <p class="copy mt-5 text-[#434653]">A digital scan replaces the impression tray. That scan drives the treatment plan, the appliance, and the timeline, so what you are shown at the consultation is what the case is built on.</p>
+            <h3 class="text-3xl font-medium leading-none tracking-tight sm:text-4xl font-display">Planned by a board-certified specialist</h3>
+            <p class="copy mt-5 text-[#434653]">Dr. Chang is board certified by the American Board of Orthodontics and has taught the specialty at UCSF as a clinical professor since 2018. Ten thousand patients have been treated here.</p>
             <a href="technology.html" class="mt-6 inline-flex min-h-[44px] items-center gap-2 text-base font-semibold text-[#005DAA] underline-offset-4 transition hover:underline">
               See the technology we use
               <iconify-icon icon="solar:alt-arrow-right-linear" class="text-base" aria-hidden="true"></iconify-icon>
@@ -276,8 +350,11 @@
                  class="h-80 w-full object-cover transition duration-700 hover:scale-105 lg:h-[26rem]">
           </div>
           <div class="lg:order-1 lg:px-6">
-            <h3 class="text-3xl font-light leading-none tracking-tight sm:text-4xl font-display">Airway is assessed, not assumed</h3>
-            <p class="copy mt-5 text-[#434653]">Dr. Chang holds a master's-level education in airway orthodontics and has published peer-reviewed research measuring 3-D airway change before and after treatment. Growing patients are evaluated for it as a matter of course.</p>
+            <h3 class="text-3xl font-medium leading-none tracking-tight sm:text-4xl font-display">Airway is assessed, not assumed</h3>
+            <!-- "master's-level education in airway orthodontics" removed: not in the
+                 client record, and a credential claim is the wrong place to guess. The
+                 published peer-reviewed research is verified and carries the point. -->
+            <p class="copy mt-5 text-[#434653]">Dr. Chang has published peer-reviewed research measuring how the airway changes before and after treatment. Growing patients are evaluated for it as a matter of course.</p>
             <a href="airway.html" class="mt-6 inline-flex min-h-[44px] items-center gap-2 text-base font-semibold text-[#005DAA] underline-offset-4 transition hover:underline">
               Read about airway and expansion
               <iconify-icon icon="solar:alt-arrow-right-linear" class="text-base" aria-hidden="true"></iconify-icon>
@@ -294,10 +371,10 @@
                  class="h-80 w-full object-cover transition duration-700 hover:scale-105 lg:h-[26rem]">
           </div>
           <div class="lg:px-6">
-            <h3 class="text-3xl font-light leading-none tracking-tight sm:text-4xl font-display">One practice, one orthodontist, every visit</h3>
-            <p class="copy mt-5 text-[#434653]">This is a single office with a single orthodontist. Dr. Chang plans your case and finishes it, and you are not passed between providers. After-school appointments are available, and someone answers the phone through lunch.</p>
-            <a href="new-patients.html" class="mt-6 inline-flex min-h-[44px] items-center gap-2 text-base font-semibold text-[#005DAA] underline-offset-4 transition hover:underline">
-              What to expect as a new patient
+            <h3 class="text-3xl font-medium leading-none tracking-tight sm:text-4xl font-display">A practice Peninsula families keep recommending</h3>
+            <p class="copy mt-5 text-[#434653]">One office on El Camino Real in San Carlos, and 100 five-star reviews from local families.</p>
+            <a href="reviews.html" class="mt-6 inline-flex min-h-[44px] items-center gap-2 text-base font-semibold text-[#005DAA] underline-offset-4 transition hover:underline">
+              Read all 100 reviews
               <iconify-icon icon="solar:alt-arrow-right-linear" class="text-base" aria-hidden="true"></iconify-icon>
             </a>
           </div>
@@ -323,8 +400,11 @@
     <div class="mx-auto max-w-[1200px]">
       <p data-reveal class="text-center text-xs font-semibold uppercase tracking-[0.18em] text-black/45">Credentials &amp; affiliations</p>
       <div data-reveal class="mt-8 flex flex-wrap items-center justify-center gap-x-14 gap-y-8">
-        <img src="assets/logos/invisalign-logo.svg" alt="Invisalign" width="150" height="38" loading="lazy" class="h-7 w-auto opacity-60 grayscale transition duration-300 hover:opacity-100 hover:grayscale-0">
-        <img src="assets/logos/ucsf-university-logo.svg" alt="University of California, San Francisco" width="365" height="178" loading="lazy" class="h-10 w-auto opacity-60 grayscale transition duration-300 hover:opacity-100 hover:grayscale-0">
+        <img src="assets/logos/invisalign-logo.svg" alt="Invisalign" width="150" height="38" loading="lazy" class="h-8 w-auto opacity-60 grayscale transition duration-300">
+<!-- UCSF mark swapped to typographic pending written university sign-off: the SVG is
+             public domain (copyright), but trademark use can read as institutional
+             endorsement of a private practice. Restore the logo only with sign-off. -->
+        <p class="text-lg font-light tracking-tight text-[#434653] font-display">UCSF Faculty, Orthodontics</p>
         <!-- ABO mark is not obtainable as an official file; stays typographic. See assets/logos/SOURCES.txt -->
         <p class="text-lg font-light tracking-tight text-[#434653] font-display">American Board of Orthodontics</p>
         <p class="text-lg font-light tracking-tight text-[#434653] font-display">Published airway research</p>
@@ -371,87 +451,69 @@
 
       <div class="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
         <a href="braces.html" data-card data-reveal class="group flex flex-col overflow-hidden rounded-3xl bg-white shadow-card transition duration-500 hover:-translate-y-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#005DAA]/40">
-          <img src="assets/web/chang-patient-01-768.webp" width="768" height="1024" loading="lazy" decoding="async" alt="A Chang Orthodontics patient in the treatment chair" class="h-52 w-full object-cover transition duration-700 group-hover:scale-105">
+          <img src="assets/web/chang-patient-01-768.webp" width="768" height="1024" loading="lazy" decoding="async" alt="A Chang Orthodontics patient at the practice in San Carlos" class="aspect-[4/3] w-full object-cover transition duration-700 group-hover:scale-105">
           <div class="flex flex-1 flex-col p-6">
-            <h3 class="text-3xl font-light leading-none tracking-tight font-display">Braces</h3>
-            <p class="copy mt-3 flex-1 text-[#434653]">Metal and ceramic brackets for children, teens, and adults.</p>
+            <h3 class="text-3xl font-normal leading-none tracking-tight font-display">Braces</h3>
+            <p class="copy mt-3 flex-1 text-[#434653]">Braces for children, teens, and adults. Predictable correction, even for complex bites.</p>
             <span class="mt-5 inline-flex items-center gap-2 text-base font-semibold text-[#005DAA]">Learn more <iconify-icon icon="solar:alt-arrow-right-linear" class="text-base transition group-hover:translate-x-1" aria-hidden="true"></iconify-icon></span>
           </div>
         </a>
 
         <a href="invisalign.html" data-card data-reveal class="group flex flex-col overflow-hidden rounded-3xl bg-white shadow-card transition duration-500 hover:-translate-y-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#005DAA]/40">
-          <img src="assets/web/chang-doctor-scanner-01-768.webp" width="768" height="1154" loading="lazy" decoding="async" alt="Digital scanning used to plan Invisalign treatment" class="h-52 w-full object-cover transition duration-700 group-hover:scale-105">
+          <img src="assets/web/chang-doctor-scanner-01-768.webp" width="768" height="1154" loading="lazy" decoding="async" alt="Digital scanning used to plan Invisalign treatment" class="aspect-[4/3] w-full object-cover transition duration-700 group-hover:scale-105">
           <div class="flex flex-1 flex-col p-6">
-            <h3 class="text-3xl font-light leading-none tracking-tight font-display">Invisalign</h3>
-            <p class="copy mt-3 flex-1 text-[#434653]">Invisalign, Teen, and First, from a Platinum Plus provider.</p>
+            <h3 class="text-3xl font-normal leading-none tracking-tight font-display">Invisalign®</h3>
+            <p class="copy mt-3 flex-1 text-[#434653]">Clear aligners for adults, teens, and kids, from a Platinum Plus provider. The tier is based on how many cases a doctor actually completes.</p>
             <span class="mt-5 inline-flex items-center gap-2 text-base font-semibold text-[#005DAA]">Learn more <iconify-icon icon="solar:alt-arrow-right-linear" class="text-base transition group-hover:translate-x-1" aria-hidden="true"></iconify-icon></span>
           </div>
         </a>
 
         <a href="early-orthodontics.html" data-card data-reveal class="group flex flex-col overflow-hidden rounded-3xl bg-white shadow-card transition duration-500 hover:-translate-y-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#005DAA]/40">
-          <img src="assets/web/chang-community-01-768.webp" width="768" height="1024" loading="lazy" decoding="async" alt="Dr. Chang with a young patient" class="h-52 w-full object-cover transition duration-700 group-hover:scale-105">
+          <img src="assets/web/chang-community-01-768.webp" width="768" height="1024" loading="lazy" decoding="async" alt="Dr. Chang with a young patient" class="aspect-[4/3] w-full object-cover transition duration-700 group-hover:scale-105">
           <div class="flex flex-1 flex-col p-6">
-            <h3 class="text-3xl font-light leading-none tracking-tight font-display">Early orthodontics</h3>
-            <p class="copy mt-3 flex-1 text-[#434653]">Phase 1 care from age seven: expanders, space maintainers, growth evaluation.</p>
+            <h3 class="text-3xl font-normal leading-none tracking-tight font-display">Early orthodontics</h3>
+            <p class="copy mt-3 flex-1 text-[#434653]">Growth evaluation and early treatment from around age seven. An early start can mean a shorter second phase.</p>
             <span class="mt-5 inline-flex items-center gap-2 text-base font-semibold text-[#005DAA]">Learn more <iconify-icon icon="solar:alt-arrow-right-linear" class="text-base transition group-hover:translate-x-1" aria-hidden="true"></iconify-icon></span>
           </div>
         </a>
 
         <a href="kids-teens.html" data-card data-reveal class="group flex flex-col overflow-hidden rounded-3xl bg-white shadow-card transition duration-500 hover:-translate-y-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#005DAA]/40">
-          <img src="assets/web/chang-community-booth-01-768.webp" width="768" height="576" loading="lazy" decoding="async" alt="Chang Orthodontics at a San Carlos community event" class="h-52 w-full object-cover transition duration-700 group-hover:scale-105">
+          <img src="assets/web/chang-community-booth-01-768.webp" width="768" height="576" loading="lazy" decoding="async" alt="Chang Orthodontics at a San Carlos community event" class="aspect-[4/3] w-full object-cover transition duration-700 group-hover:scale-105">
           <div class="flex flex-1 flex-col p-6">
-            <h3 class="text-3xl font-light leading-none tracking-tight font-display">Kids and teens</h3>
-            <p class="copy mt-3 flex-1 text-[#434653]">Treatment timed to growth, with after-school appointments.</p>
+            <h3 class="text-3xl font-normal leading-none tracking-tight font-display">Kids and teens</h3>
+            <p class="copy mt-3 flex-1 text-[#434653]">Treatment timed to growth and scheduled around the school day. Most of the patients here are still in school.</p>
             <span class="mt-5 inline-flex items-center gap-2 text-base font-semibold text-[#005DAA]">Learn more <iconify-icon icon="solar:alt-arrow-right-linear" class="text-base transition group-hover:translate-x-1" aria-hidden="true"></iconify-icon></span>
           </div>
         </a>
 
         <a href="adults.html" data-card data-reveal class="group flex flex-col overflow-hidden rounded-3xl bg-white shadow-card transition duration-500 hover:-translate-y-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#005DAA]/40">
-          <img src="assets/web/chang-office-consult-01-768.webp" width="768" height="576" loading="lazy" decoding="async" alt="Consultation room where adult treatment is planned" class="h-52 w-full object-cover transition duration-700 group-hover:scale-105">
+          <img src="assets/web/chang-office-consult-01-768.webp" width="768" height="576" loading="lazy" decoding="async" alt="Consultation room where adult treatment is planned" class="aspect-[4/3] w-full object-cover transition duration-700 group-hover:scale-105">
           <div class="flex flex-1 flex-col p-6">
-            <h3 class="text-3xl font-light leading-none tracking-tight font-display">Adult orthodontics</h3>
-            <p class="copy mt-3 flex-1 text-[#434653]">Aesthetic braces and aligners, complex bite correction, retreatment.</p>
+            <h3 class="text-3xl font-normal leading-none tracking-tight font-display">Adult orthodontics</h3>
+            <p class="copy mt-3 flex-1 text-[#434653]">Discreet options for adults, including complex bite correction. Retreatment for teeth that moved after earlier work.</p>
             <span class="mt-5 inline-flex items-center gap-2 text-base font-semibold text-[#005DAA]">Learn more <iconify-icon icon="solar:alt-arrow-right-linear" class="text-base transition group-hover:translate-x-1" aria-hidden="true"></iconify-icon></span>
           </div>
         </a>
 
         <a href="airway.html" data-card data-reveal class="group flex flex-col overflow-hidden rounded-3xl bg-white shadow-card transition duration-500 hover:-translate-y-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#005DAA]/40">
-          <img src="assets/web/chang-office-reception-02-768.webp" width="768" height="1024" loading="lazy" decoding="async" alt="Inside the Chang Orthodontics office" class="h-52 w-full object-cover transition duration-700 group-hover:scale-105">
+          <img src="assets/web/chang-office-reception-02-768.webp" width="768" height="1024" loading="lazy" decoding="async" alt="Inside the Chang Orthodontics office" class="aspect-[4/3] w-full object-cover transition duration-700 group-hover:scale-105">
           <div class="flex flex-1 flex-col p-6">
-            <h3 class="text-3xl font-light leading-none tracking-tight font-display">Airway and expansion</h3>
-            <p class="copy mt-3 flex-1 text-[#434653]">Airway assessment, MARPE and MSE expansion, planned by a published researcher.</p>
+            <h3 class="text-3xl font-normal leading-none tracking-tight font-display">Airway and expansion</h3>
+            <p class="copy mt-3 flex-1 text-[#434653]">Airway assessment and palatal expansion, planned by Dr. Chang. He publishes peer-reviewed research in this area.</p>
             <span class="mt-5 inline-flex items-center gap-2 text-base font-semibold text-[#005DAA]">Learn more <iconify-icon icon="solar:alt-arrow-right-linear" class="text-base transition group-hover:translate-x-1" aria-hidden="true"></iconify-icon></span>
           </div>
         </a>
       </div>
 
-      <!-- Money story: premium fork, no dollar figures. Parity item with concept A. -->
-      <div data-reveal class="mt-10 grid gap-5 rounded-[2rem] bg-[#DCEAF2] p-5 lg:grid-cols-[1fr_0.8fr] lg:p-8">
-        <div class="overflow-hidden rounded-3xl">
-          <img src="assets/web/chang-office-reception-01-1200.webp"
-               srcset="assets/web/chang-office-reception-01-768.webp 768w, assets/web/chang-office-reception-01-1200.webp 1200w"
-               sizes="(min-width:1024px) 55vw, 92vw" width="1200" height="900" loading="lazy" decoding="async"
-               alt="The front desk at Chang Orthodontics, where treatment plans are discussed"
-               class="h-80 w-full object-cover transition duration-700 hover:scale-105 lg:h-full">
-        </div>
-        <div class="flex flex-col justify-between rounded-3xl bg-white p-6 shadow-chip">
-          <div>
-            <p class="text-xs font-semibold uppercase tracking-[0.18em] text-[#005DAA]">Paying for treatment</p>
-            <h3 class="mt-4 text-4xl font-light leading-none tracking-tight font-display">One quoted fee, written down</h3>
-            <p class="copy mt-4 text-[#434653]">The consultation is <span class="hl font-semibold">free</span>. If you go ahead, the fee is quoted once and put in writing. In-house payment plans are available, and insurance is coordinated for you.</p>
-          </div>
-          <div class="mt-8 flex flex-wrap gap-2">
-            <span class="rounded-full bg-[#EAF2F8] px-4 py-2 text-base font-medium text-black/65">In-house payment plans</span>
-            <span class="rounded-full bg-[#EAF2F8] px-4 py-2 text-base font-medium text-black/65">Insurance coordinated</span>
-            <span class="rounded-full bg-[#EAF2F8] px-4 py-2 text-base font-medium text-black/65">Free consultation</span>
-          </div>
-        </div>
-      </div>
+      <!-- The money/financing block was removed from the homepage at the client's direction.
+           Cost lives on financing.html only; it is still linked from the nav and the footer.
+           Do not reinstate a money block here. -->
     </div>
   </section>
 
   <!-- ============ 9 · LOCATIONS — address, map, hours, phone ============ -->
-  <section id="location" class="bg-[#EEF6F8] px-5 py-20 sm:px-8 lg:px-10">
+  <!-- scroll-mt clears the 69px sticky header when "Our address" jumps here. -->
+  <section id="location" class="scroll-mt-[84px] bg-[#EEF6F8] px-5 py-20 sm:px-8 lg:px-10">
     <div class="mx-auto max-w-[1200px]">
       <h2 data-mask-reveal class="max-w-2xl text-4xl font-light leading-none tracking-tight sm:text-5xl font-display">Find us in <span class="hl">San Carlos</span></h2>
 
@@ -462,7 +524,7 @@
             10 El Camino Real, Ste. 201<br>
             San Carlos, CA 94070
           </address>
-          <p class="mt-3 text-base leading-6 text-black/55">The northernmost building in San Carlos, right on the Belmont border, on El Camino between the Holiday Inn Express and Hyatt Place.</p>
+          <p class="mt-3 text-base leading-6 text-black/55">On El Camino Real, right at the Belmont border.</p>
 
           <dl class="mt-6 space-y-3 border-t border-black/10 pt-6 text-base">
             <div class="flex items-start gap-3">
@@ -489,7 +551,7 @@
         <div class="grid gap-5">
           <div data-reveal class="overflow-hidden rounded-[2rem] bg-white p-3 shadow-card">
             <iframe title="Map showing Chang Orthodontics, 10 El Camino Real Suite 201, San Carlos, CA"
-                    src="https://www.google.com/maps?q=10+El+Camino+Real+Ste+201+San+Carlos+CA+94070&amp;output=embed"
+                    src="https://www.google.com/maps?q=Chang+Orthodontics,+10+El+Camino+Real+Ste+201+San+Carlos+CA+94070&amp;output=embed"
                     loading="lazy" referrerpolicy="no-referrer-when-downgrade"
                     class="h-72 w-full rounded-[1.5rem] border-0"></iframe>
           </div>
@@ -513,26 +575,32 @@
   <footer class="bg-[#003B6E] px-5 py-10 text-white sm:px-8 lg:px-10">
     <div class="mx-auto max-w-[1200px]">
       <div class="rounded-[2rem] bg-[#004B87] p-6 shadow-card lg:p-8">
+        <!-- BUILD NOTE: social links omitted. No maintained profile URLs supplied.
+             Add only profiles the practice actually keeps up. -->
+        <!-- Mobile stack order per the kit: brand -> next-step links -> services -> legal.
+             The order-* utilities reorder below lg only; desktop columns are unchanged. -->
         <div class="grid gap-10 lg:grid-cols-[1.4fr_0.8fr_0.8fr_1fr]">
-          <div>
+          <div class="order-1 lg:order-none">
             <img src="assets/chang-logo.svg" alt="Chang Orthodontics" width="150" height="36" class="h-9 w-auto brightness-0 invert">
             <p class="mt-6 max-w-sm text-base leading-6 text-white/60">
               Braces and Invisalign in San Carlos, California. Dr. Michael Chang, DDS, board-certified orthodontist and UCSF clinical professor.
             </p>
           </div>
 
-          <div>
-            <h2 class="text-base font-semibold">Treatments</h2>
+          <div class="order-3 lg:order-none">
+            <p class="text-base font-semibold">Treatments</p>
             <ul class="fcol mt-3 text-white/60">
               <li><a href="braces.html" class="transition hover:text-white">Braces</a></li>
               <li><a href="invisalign.html" class="transition hover:text-white">Invisalign</a></li>
               <li><a href="early-orthodontics.html" class="transition hover:text-white">Early orthodontics</a></li>
+              <li><a href="kids-teens.html" class="transition hover:text-white">Kids and teens</a></li>
+              <li><a href="adults.html" class="transition hover:text-white">Adult orthodontics</a></li>
               <li><a href="airway.html" class="transition hover:text-white">Airway and expansion</a></li>
             </ul>
           </div>
 
-          <div>
-            <h2 class="text-base font-semibold">Why Chang</h2>
+          <div class="order-4 lg:order-none">
+            <p class="text-base font-semibold">Why Chang</p>
             <ul class="fcol mt-3 text-white/60">
               <li><a href="about.html" class="transition hover:text-white">Why choose Chang</a></li>
               <li><a href="dr-michael-chang.html" class="transition hover:text-white">Meet Dr. Chang</a></li>
@@ -541,29 +609,31 @@
             </ul>
           </div>
 
-          <div>
-            <h2 class="text-base font-semibold">Resources &amp; contact</h2>
+          <div class="order-2 lg:order-none">
+            <p class="text-base font-semibold">Resources &amp; contact</p>
             <ul class="fcol mt-3 text-white/60">
               <li><a href="new-patients.html" class="transition hover:text-white">New patients</a></li>
               <li><a href="financing.html" class="transition hover:text-white">Financing</a></li>
-              <li><a href="contact.html" class="transition hover:text-white">Contact &amp; directions</a></li>
+              <li><a href="faq.html" class="transition hover:text-white">FAQ</a></li>
+              <li><a href="emergencies.html" class="transition hover:text-white">Emergencies</a></li>
+              <li><a href="#location" class="transition hover:text-white">Our address</a></li>
             </ul>
             <address class="mt-4 not-italic text-base leading-6 text-white/60">
               10 El Camino Real, Ste. 201<br>
               San Carlos, CA 94070<br>
-              <a href="tel:+16505980888" class="font-semibold text-white transition hover:text-[#8FC3E8]">(650) 598-0888</a><br>
+              <a href="tel:+16505980888" class="inline-flex min-h-[44px] items-center font-semibold text-white transition hover:text-[#8FC3E8]">(650) 598-0888</a><br>
               Monday to Friday, 9:00am to 5:00pm
             </address>
           </div>
         </div>
 
         <div class="mt-10 flex flex-col justify-between gap-4 border-t border-white/10 pt-6 text-base text-white/45 sm:flex-row">
-          <p>Copyright © 2026 Chang Orthodontics</p>
-          <div class="flex flex-wrap gap-5">
-            <a href="privacy.html" class="transition hover:text-white">Privacy policy</a>
-            <a href="hipaa.html" class="transition hover:text-white">HIPAA</a>
-            <a href="terms.html" class="transition hover:text-white">Terms</a>
-            <a href="accessibility.html" class="transition hover:text-white">Accessibility</a>
+          <p>© 2026 Chang Orthodontics. All rights reserved.</p>
+          <div class="flex flex-wrap gap-x-5">
+            <a href="privacy.html" class="inline-flex min-h-[44px] items-center transition hover:text-white">Privacy Policy</a>
+            <a href="hipaa.html" class="inline-flex min-h-[44px] items-center transition hover:text-white">HIPAA Notice</a>
+            <a href="terms.html" class="inline-flex min-h-[44px] items-center transition hover:text-white">Terms</a>
+            <a href="accessibility.html" class="inline-flex min-h-[44px] items-center transition hover:text-white">Web Accessibility Statement</a>
           </div>
         </div>
       </div>
@@ -572,13 +642,15 @@
 </main>
 
 <!-- ==================== MOBILE STICKY BAR ==================== -->
-<div class="mobile-bar fixed inset-x-0 bottom-0 z-50 grid grid-cols-[1fr_1.7fr_1fr] gap-px border-t border-black/10 bg-white/95 backdrop-blur lg:hidden">
+<!-- xl:hidden, not lg:hidden — the desktop nav does not appear until xl, so at lg the
+     bar was disappearing while nothing had replaced it. -->
+<div class="mobile-bar fixed inset-x-0 bottom-0 z-50 grid grid-cols-[1fr_1.7fr_1fr] gap-px border-t border-black/10 bg-white/95 backdrop-blur xl:hidden">
   <a href="tel:+16505980888" class="flex min-h-[44px] flex-col items-center justify-center gap-0.5 py-3 text-xs font-semibold text-[#1b1c1c]">
-    <iconify-icon icon="solar:phone-linear" class="text-lg" aria-hidden="true"></iconify-icon>
+    <svg viewBox="0 0 24 24" fill="currentColor" class="h-[1.15rem] w-[1.15rem] shrink-0" aria-hidden="true"><path d="M7.4 3H4.6C3.7 3 3 3.7 3 4.6 3 13.1 10.9 21 19.4 21c.9 0 1.6-.7 1.6-1.6v-2.8c0-.7-.5-1.3-1.2-1.5l-3.1-.8c-.6-.2-1.3.1-1.6.6l-1 1.7c-2.4-1.2-4.4-3.2-5.6-5.6l1.7-1c.5-.3.8-1 .6-1.6l-.8-3.1C8.7 3.5 8.1 3 7.4 3z"/><path opacity=".5" d="M14.6 3.2a.9.9 0 0 0-.2 1.8 5 5 0 0 1 4.1 4.1.9.9 0 0 0 1.8-.2 6.8 6.8 0 0 0-5.7-5.7z"/></svg>
     Call
   </a>
   <a href="appointment.html" class="flex min-h-[44px] items-center justify-center gap-2 bg-[#005DAA] py-3 text-sm font-semibold text-white">
-    Free consultation
+    Book
   </a>
   <a href="https://www.google.com/maps/dir/?api=1&amp;destination=10+El+Camino+Real+Ste+201+San+Carlos+CA+94070" target="_blank" rel="noopener" class="flex min-h-[44px] flex-col items-center justify-center gap-0.5 py-3 text-xs font-semibold text-[#1b1c1c]">
     <iconify-icon icon="solar:map-point-linear" class="text-lg" aria-hidden="true"></iconify-icon>
@@ -590,7 +662,9 @@
 {
   "@context": "https://schema.org",
   "@type": "Dentist",
+  "@id": "https://changortho.com/#practice",
   "name": "Chang Orthodontics",
+  "medicalSpecialty": "Orthodontic",
   "url": "https://changortho.com/",
   "telephone": "+1-650-598-0888",
   "address": {
@@ -611,6 +685,25 @@
 </script>
 
 <script>
+  /* ---- mobile drawer ---- */
+  (function () {
+    var toggle = document.getElementById('navToggle');
+    var menu = document.getElementById('mobileMenu');
+    if (!toggle || !menu) return;
+    var setOpen = function (open) {
+      menu.classList.toggle('hidden', !open);
+      toggle.setAttribute('aria-expanded', String(open));
+      toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+    };
+    toggle.addEventListener('click', function () { setOpen(menu.classList.contains('hidden')); });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && !menu.classList.contains('hidden')) { setOpen(false); toggle.focus(); }
+    });
+    menu.querySelectorAll('a').forEach(function (a) {
+      a.addEventListener('click', function () { setOpen(false); });
+    });
+  })();
+
   gsap.registerPlugin(ScrollTrigger);
   const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   if (!prefersReducedMotion) document.documentElement.classList.add("js-armed");

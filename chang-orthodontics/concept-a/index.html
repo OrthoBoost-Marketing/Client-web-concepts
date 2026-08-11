@@ -27,7 +27,7 @@
 <link rel="stylesheet" href="site.css">
 <link rel="preload" as="image" href="assets/web/chang-community-01-1200.webp"
       imagesrcset="assets/web/chang-community-01-480.webp 480w, assets/web/chang-community-01-768.webp 768w, assets/web/chang-community-01-1200.webp 1200w"
-      imagesizes="(max-width: 1023px) 100vw, 460px">
+      imagesizes="(max-width: 1023px) 100vw, 460px" fetchpriority="high">
 <script>document.documentElement.classList.add('js')</script>
 <noscript><style>[data-reveal]{opacity:1!important;transform:none!important}</style></noscript>
 </head>
@@ -86,14 +86,14 @@
         </div>
 
         <div class="nav-item">
-          <a class="nav-pill" href="contact.html">Contact &amp; Directions</a>
+          <a class="nav-pill" href="#location">Our Address</a>
         </div>
       </nav>
 
       <div class="nav-actions">
         <a class="nav-tel" href="tel:+16505980888">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.2.4 2.4.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1l-2.3 2.2z"/></svg>
-          (650) 598-0888
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7.4 3H4.6C3.7 3 3 3.7 3 4.6 3 13.1 10.9 21 19.4 21c.9 0 1.6-.7 1.6-1.6v-2.8c0-.7-.5-1.3-1.2-1.5l-3.1-.8c-.6-.2-1.3.1-1.6.6l-1 1.7c-2.4-1.2-4.4-3.2-5.6-5.6l1.7-1c.5-.3.8-1 .6-1.6l-.8-3.1C8.7 3.5 8.1 3 7.4 3z"/><path opacity=".5" d="M14.6 3.2a.9.9 0 0 0-.2 1.8 5 5 0 0 1 4.1 4.1.9.9 0 0 0 1.8-.2 6.8 6.8 0 0 0-5.7-5.7z"/></svg>
+          <span class="tel-num">(650) 598-0888</span>
         </a>
         <a href="appointment.html" class="pill-cta">
           <span class="cta-text">Free consultation</span>
@@ -140,7 +140,7 @@
             <a href="emergencies.html">Emergencies</a>
           </div>
         </details>
-        <a class="m-flat" href="contact.html">Contact &amp; Directions</a>
+        <a class="m-flat" href="#location">Our Address</a>
       </nav>
       <a href="appointment.html" class="pill-cta">
         <span class="cta-text">Free consultation</span>
@@ -158,16 +158,18 @@
   <div class="wrap">
     <div class="hero-split">
       <div>
-        <p class="eyebrow">Board certified &middot; San Carlos, CA</p>
-        <h1 class="clay-title" style="margin-top:1.25rem">
-          <span class="line">PRECISION</span>
-          <span class="line">ORTHODONTICS</span>
-          <span class="line accent">IN SAN CARLOS.</span>
+        <!-- Kit section 02 rule 3: H1 = Service + City + USP. The USP used to ride only in
+             the sub, which left the H1 as service+city with no differentiator. The practice's
+             own "Precision Clinical Orthodontics" positioning still leads the line. -->
+        <h1 class="clay-title">
+          <span class="line">Precision orthodontics</span>
+          <span class="line">in San Carlos, planned by a</span>
+          <span class="line accent">board-certified specialist.</span>
         </h1>
-        <p class="hero-sub">Dr. Michael Chang has practiced orthodontics for more than 15 years, teaches it at UCSF, and plans every case here himself. Braces and Invisalign for children, teens, and adults on the Peninsula.</p>
+        <p class="hero-sub">Dr. Michael Chang is board certified by the American Board of Orthodontics, has practiced for more than 15 years, and teaches orthodontics at UCSF. Braces and Invisalign for children, teens, and adults in San Carlos.</p>
         <div class="hero-cta-row">
           <a href="appointment.html" class="btn btn-primary">Book your free consultation</a>
-          <a href="dr-michael-chang.html" class="btn btn-outline">Meet Dr. Chang</a>
+          <a href="tel:+16505980888" class="btn btn-outline">(650) 598-0888</a>
         </div>
         <p class="hero-note">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm-1 14.5l-4-4 1.4-1.4 2.6 2.6 5.6-5.6L18 9.5l-7 7z"/></svg>
@@ -228,13 +230,17 @@
              alt="Portrait of Dr. Michael Chang, orthodontist at Chang Orthodontics in San Carlos">
       </div>
       <div data-reveal="right">
+        <!-- Kit section 04: kicker carries the full name + degree, so the H2 is free to
+             be human and the name still lands for SEO. -->
         <p class="eyebrow">Meet Dr. Michael Chang, DDS</p>
-        <h2 class="h2" style="margin-top:1.25rem">Fifteen years in practice, and still teaching the next class.</h2>
-        <p class="lede" style="margin-top:1.25rem">Dr. Chang completed the seven-year combined dental and orthodontic program at UCSF, and he has been back on its faculty as a clinical professor since 2018. His published research looks at how orthodontic treatment changes the airway, which is why the airway is part of the conversation here and not an afterthought.</p>
-        <p class="lede" style="margin-top:1rem">He lives in San Carlos with his family. If you catch him outside the office, he is usually in Giants or 49ers gear.</p>
+        <h2 class="h2" style="margin-top:1.25rem">More than fifteen years in practice, and still teaching the next class.</h2>
+        <p class="lede" style="margin-top:1.25rem">Dr. Chang trained at UCSF and has been back on its faculty as a clinical professor since 2018. His published research looks at how orthodontic treatment changes the airway, which is why the airway is part of the conversation here from the first visit.</p>
+        <!-- Every credential paired with a plain-language clause, per the kit's
+             "human words over CV-speak" rule. -->
         <ul class="cred-list">
-          <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z"/></svg> Seven-year combined dental and orthodontic program, UCSF</li>
-          <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z"/></svg> Platinum Plus Invisalign Provider</li>
+          <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z"/></svg> Board certified by the American Board of Orthodontics, the specialty's own standard</li>
+          <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z"/></svg> DDS, and a UCSF clinical professor since 2018, so the teaching keeps the clinical work current</li>
+          <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z"/></svg> Platinum Plus Invisalign Provider, a tier set by how many cases a doctor actually finishes</li>
           <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z"/></svg> Published, peer-reviewed research on airway change during treatment</li>
         </ul>
         <p style="margin-top:2rem"><a href="dr-michael-chang.html" class="btn btn-outline">More about Dr. Chang</a></p>
@@ -252,9 +258,9 @@
 
     <div class="split">
       <div data-reveal="left">
-        <h2 class="h2">One orthodontist, every appointment.</h2>
-        <p class="lede" style="margin-top:1.25rem">There are no rotating associates here. Dr. Chang plans your treatment, makes the adjustments, and is the person you speak to when something needs changing. That continuity is the whole reason this practice stayed small.</p>
-        <p style="margin-top:1.5rem"><a href="about.html" class="tlink">Why families choose Chang Orthodontics
+        <h2 class="h2">Treatment planned by a board-certified specialist.</h2>
+        <p class="lede" style="margin-top:1.25rem">Dr. Chang is board certified by the American Board of Orthodontics and has taught the specialty at UCSF as a clinical professor since 2018. Ten thousand patients have been treated at this practice.</p>
+        <p style="margin-top:1.5rem"><a href="treatments.html" class="tlink">See how treatment is planned here
           <svg viewBox="0 0 24 24" width="15" height="15" aria-hidden="true"><path fill="currentColor" d="M5 12h12l-4.6-4.6L13.8 6l7 7-7 7-1.4-1.4L17 14H5z"/></svg></a></p>
       </div>
       <div class="media" data-reveal="right">
@@ -275,7 +281,7 @@
     <div class="split flip">
       <div data-reveal="right">
         <h2 class="h2">Appointments that fit around a school day.</h2>
-        <p class="lede" style="margin-top:1.25rem">Most of our patients are still in school, so after-school appointments are part of how the schedule is built rather than a favor you have to ask for. Wait times are kept short on purpose, because a checked-in patient sitting in a waiting room is a scheduling failure.</p>
+        <p class="lede" style="margin-top:1.25rem">Most of our patients are still in school, so the schedule is built around the school day. Appointments are spaced so the waiting room stays quiet.</p>
         <p style="margin-top:1.5rem"><a href="new-patients.html" class="tlink">See what your first visit looks like
           <svg viewBox="0 0 24 24" width="15" height="15" aria-hidden="true"><path fill="currentColor" d="M5 12h12l-4.6-4.6L13.8 6l7 7-7 7-1.4-1.4L17 14H5z"/></svg></a></p>
       </div>
@@ -296,17 +302,17 @@
 
     <div class="split">
       <div data-reveal="left">
-        <h2 class="h2">We live here too.</h2>
-        <p class="lede" style="margin-top:1.25rem">Dr. Chang and his family live in San Carlos, a few minutes from the office on El Camino Real. You will find the practice at community events around the Peninsula for the same reason: this is the neighborhood, not a catchment area.</p>
-        <p style="margin-top:1.5rem"><a href="san-carlos.html" class="tlink">Find us on El Camino Real
+        <h2 class="h2">A practice Peninsula families keep recommending.</h2>
+        <p class="lede" style="margin-top:1.25rem">One office on El Camino Real in San Carlos, and 100 five-star reviews from local families. This is the neighborhood, not a catchment area.</p>
+        <p style="margin-top:1.5rem"><a href="reviews.html" class="tlink">Read all 100 reviews
           <svg viewBox="0 0 24 24" width="15" height="15" aria-hidden="true"><path fill="currentColor" d="M5 12h12l-4.6-4.6L13.8 6l7 7-7 7-1.4-1.4L17 14H5z"/></svg></a></p>
       </div>
       <div class="media" data-reveal="right">
-        <img src="assets/web/chang-community-booth-01-1200.webp"
-             srcset="assets/web/chang-community-booth-01-480.webp 480w, assets/web/chang-community-booth-01-768.webp 768w, assets/web/chang-community-booth-01-1200.webp 1200w, assets/web/chang-community-booth-01-1800.webp 1800w"
+        <img src="assets/web/chang-office-reception-01-1200.webp"
+             srcset="assets/web/chang-office-reception-01-480.webp 480w, assets/web/chang-office-reception-01-768.webp 768w, assets/web/chang-office-reception-01-1200.webp 1200w, assets/web/chang-office-reception-01-1800.webp 1800w"
              sizes="(max-width: 899px) 100vw, 46vw"
              width="1200" height="900" loading="lazy" decoding="async"
-             alt="The Chang Orthodontics booth at a community event near San Carlos">
+             alt="The reception area at Chang Orthodontics in San Carlos">
       </div>
     </div>
 
@@ -323,23 +329,8 @@
   </div>
 </section>
 
-<!-- ==================== AUTHORITY STRIP ==================== -->
-<!-- BUILD NOTE: typographic wordmarks stand in for official logo files.
-     Request the real ABO / Invisalign / UCSF assets before launch and swap them in.
-     Do not redraw or recolour a trademark. -->
-<section class="section band authority" style="padding-block:3rem" aria-label="Certifications and affiliations">
-  <div class="wrap">
-    <p class="authority-label">Certifications &amp; affiliations</p>
-    <div class="authority-row">
-      <span class="mark"><span class="m1">ABO</span><span class="m2">American Board of Orthodontics</span></span>
-      <span class="mark"><span class="m1">Invisalign</span><span class="m2">Platinum Plus Provider</span></span>
-      <span class="mark"><span class="m1">UCSF</span><span class="m2">School of Dentistry Faculty</span></span>
-      <span class="mark"><span class="m1">Published</span><span class="m2">Peer-reviewed airway research</span></span>
-    </div>
-  </div>
-</section>
-
 <!-- ==================== REVIEWS ==================== -->
+<!-- Kit order: reviews run before the services grid, as on all five kit samples. -->
 <!-- BLOCKER: no verbatim review quotes have been supplied. The practice has 100
      five-star Google reviews but not one is transcribed anywhere in Notion or Drive.
      Builders are forbidden from writing a quote, so this ships as a visible placeholder.
@@ -348,8 +339,7 @@
      "Read more reviews" link. Do NOT add aggregateRating or Review schema. -->
 <section class="section band" id="reviews">
   <div class="wrap">
-    <p class="eyebrow">Reviews</p>
-    <h2 class="h2" style="margin-top:1.25rem;max-width:20ch">What San Carlos families say.</h2>
+    <h2 class="h2" style="max-width:20ch">What San Carlos families say.</h2>
     <p class="rating-line" style="margin-top:1.25rem">100 five-star reviews on Google</p>
 
     <div class="review-grid">
@@ -380,32 +370,31 @@
      when the practice shoots them. -->
 <section class="section band" style="background:var(--clay-soft)" id="treatments">
   <div class="wrap">
-    <p class="eyebrow">Treatments</p>
-    <h2 class="h2" style="margin-top:1.25rem;max-width:22ch">Orthodontics for children, teens, and adults.</h2>
+    <h2 class="h2" style="max-width:22ch">Orthodontics for children, teens, and adults.</h2>
 
     <div class="svc-grid" style="margin-top:3rem">
 
       <article class="svc-card" data-reveal="up">
-        <div class="svc-figure" aria-hidden="true">
-          <svg viewBox="0 0 210 120"><g fill="none" stroke="#005DAA" stroke-width="1.5"><path d="M20 60h170" stroke-opacity=".3"/><g fill="#005DAA" fill-opacity=".85" stroke="none"><rect x="34" y="50" width="16" height="20" rx="3"/><rect x="62" y="46" width="16" height="24" rx="3"/><rect x="90" y="44" width="16" height="26" rx="3"/><rect x="118" y="46" width="16" height="24" rx="3"/><rect x="146" y="50" width="16" height="20" rx="3"/></g><path d="M28 60h154" stroke-opacity=".9"/></g></svg>
+        <div class="svc-figure">
+          <img src="assets/web/chang-patient-01-768.webp" srcset="assets/web/chang-patient-01-480.webp 480w, assets/web/chang-patient-01-768.webp 768w" sizes="(min-width:900px) 30vw, 90vw" width="768" height="576" loading="lazy" decoding="async" alt="A patient at Chang Orthodontics in San Carlos">
         </div>
         <h3><a href="braces.html">Braces</a></h3>
-        <p>Metal and ceramic braces for every age, planned from a 3D scan rather than a putty impression. Still the most predictable way to correct a complex bite.</p>
+        <p>Braces for children, teens, and adults, planned from a digital scan. Still the most predictable way to correct a complex bite.</p>
         <p class="svc-more">Learn more</p>
       </article>
 
       <article class="svc-card" data-reveal="up" style="--d:.06s">
-        <div class="svc-figure" aria-hidden="true">
-          <svg viewBox="0 0 210 120"><g fill="none" stroke="#005DAA" stroke-width="1.5"><path d="M60 34c0-8 12-14 45-14s45 6 45 14v52c0 8-12 14-45 14s-45-6-45-14z" stroke-opacity=".35"/><path d="M72 42c0-6 9-10 33-10s33 4 33 10v40c0 6-9 10-33 10s-33-4-33-10z" stroke-opacity=".7"/><path d="M105 32v60" stroke-opacity=".25" stroke-dasharray="3 5"/></g></svg>
+        <div class="svc-figure">
+          <img src="assets/web/chang-doctor-scanner-01-768.webp" srcset="assets/web/chang-doctor-scanner-01-480.webp 480w, assets/web/chang-doctor-scanner-01-768.webp 768w" sizes="(min-width:900px) 30vw, 90vw" width="768" height="576" loading="lazy" decoding="async" alt="Dr. Chang using a digital intraoral scanner to plan treatment">
         </div>
-        <h3><a href="invisalign.html">Invisalign</a></h3>
+        <h3><a href="invisalign.html">Invisalign&reg;</a></h3>
         <p>Dr. Chang is a Platinum Plus Invisalign Provider, a tier based on how many cases a doctor actually completes. Aligners for adults, teens, and children.</p>
         <p class="svc-more">Learn more</p>
       </article>
 
       <article class="svc-card" data-reveal="up" style="--d:.12s">
-        <div class="svc-figure" aria-hidden="true">
-          <svg viewBox="0 0 210 120"><g fill="none" stroke="#005DAA" stroke-width="1.5"><circle cx="105" cy="60" r="34" stroke-opacity=".3"/><circle cx="105" cy="60" r="20" stroke-opacity=".55"/><circle cx="105" cy="60" r="7" fill="#005DAA" fill-opacity=".85" stroke="none"/><path d="M105 12v14M105 94v14M47 60h14M149 60h14" stroke-opacity=".5"/></g></svg>
+        <div class="svc-figure">
+          <img src="assets/web/chang-community-01-768.webp" srcset="assets/web/chang-community-01-480.webp 480w, assets/web/chang-community-01-768.webp 768w" sizes="(min-width:900px) 30vw, 90vw" width="768" height="576" loading="lazy" decoding="async" alt="Dr. Chang with a young patient at Chang Orthodontics">
         </div>
         <h3><a href="early-orthodontics.html">Early Orthodontics</a></h3>
         <p>Phase 1 treatment, expanders, and space maintainers for children whose jaws are still growing. Catching a problem early often means a shorter second phase.</p>
@@ -413,8 +402,8 @@
       </article>
 
       <article class="svc-card" data-reveal="up" style="--d:.18s">
-        <div class="svc-figure" aria-hidden="true">
-          <svg viewBox="0 0 210 120"><g fill="none" stroke="#005DAA" stroke-width="1.5"><path d="M40 88c0-16 11-26 25-26s25 10 25 26" stroke-opacity=".55"/><circle cx="65" cy="44" r="14" stroke-opacity=".7"/><path d="M112 88c0-20 13-32 30-32s30 12 30 32" stroke-opacity=".35"/><circle cx="142" cy="34" r="17" stroke-opacity=".45"/></g></svg>
+        <div class="svc-figure">
+          <img src="assets/web/chang-community-booth-01-768.webp" srcset="assets/web/chang-community-booth-01-480.webp 480w, assets/web/chang-community-booth-01-768.webp 768w" sizes="(min-width:900px) 30vw, 90vw" width="768" height="576" loading="lazy" decoding="async" alt="Chang Orthodontics at a San Carlos community event">
         </div>
         <h3><a href="kids-teens.html">Kids &amp; Teens</a></h3>
         <p>Most of our patients are school age. Appointments are scheduled around the school day, and parents get a straight answer about timing before anything starts.</p>
@@ -422,20 +411,20 @@
       </article>
 
       <article class="svc-card" data-reveal="up" style="--d:.24s">
-        <div class="svc-figure" aria-hidden="true">
-          <svg viewBox="0 0 210 120"><g fill="none" stroke="#005DAA" stroke-width="1.5"><path d="M36 74h138" stroke-opacity=".3"/><path d="M36 74c14-30 42-44 69-44s55 14 69 44" stroke-opacity=".7"/><g stroke="none" fill="#005DAA" fill-opacity=".8"><circle cx="70" cy="52" r="4"/><circle cx="105" cy="44" r="4"/><circle cx="140" cy="52" r="4"/></g></g></svg>
+        <div class="svc-figure">
+          <img src="assets/web/chang-office-consult-01-768.webp" srcset="assets/web/chang-office-consult-01-480.webp 480w, assets/web/chang-office-consult-01-768.webp 768w" sizes="(min-width:900px) 30vw, 90vw" width="768" height="576" loading="lazy" decoding="async" alt="A consultation room at Chang Orthodontics">
         </div>
         <h3><a href="adults.html">Adult Orthodontics</a></h3>
-        <p>Discreet aligners and ceramic braces, complex bite correction, and retreatment for adults whose teeth shifted after earlier work. Nobody is too old for this.</p>
+        <p>Discreet aligners, complex bite correction, and retreatment for adults whose teeth shifted after earlier work. Nobody is too old for this.</p>
         <p class="svc-more">Learn more</p>
       </article>
 
       <article class="svc-card" data-reveal="up" style="--d:.3s">
-        <div class="svc-figure" aria-hidden="true">
-          <svg viewBox="0 0 210 120"><g fill="none" stroke="#005DAA" stroke-width="1.5"><path d="M46 92c8-22 20-34 20-56" stroke-opacity=".5"/><path d="M164 92c-8-22-20-34-20-56" stroke-opacity=".5"/><path d="M66 36h78" stroke-opacity=".7"/><path d="M105 36v56" stroke-opacity=".3" stroke-dasharray="3 5"/><path d="M78 66h54" stroke-opacity=".55"/><g stroke="none" fill="#005DAA" fill-opacity=".85"><circle cx="78" cy="66" r="4"/><circle cx="132" cy="66" r="4"/></g></g></svg>
+        <div class="svc-figure">
+          <img src="assets/web/chang-office-reception-02-768.webp" srcset="assets/web/chang-office-reception-02-480.webp 480w, assets/web/chang-office-reception-02-768.webp 768w" sizes="(min-width:900px) 30vw, 90vw" width="768" height="576" loading="lazy" decoding="async" alt="Inside the Chang Orthodontics office in San Carlos">
         </div>
         <h3><a href="airway.html">Airway &amp; Expansion</a></h3>
-        <p>Palatal expansion, including MARPE and MSE, planned with the airway in view. This is the subject of Dr. Chang's published research, not a service bolted on.</p>
+        <p>Palatal expansion planned with the airway in view. Dr. Chang publishes peer-reviewed research in this area.</p>
         <p class="svc-more">Learn more</p>
       </article>
 
@@ -444,21 +433,25 @@
     <p style="margin-top:2.5rem"><a href="treatments.html" class="tlink">See every treatment we offer
       <svg viewBox="0 0 24 24" width="15" height="15" aria-hidden="true"><path fill="currentColor" d="M5 12h12l-4.6-4.6L13.8 6l7 7-7 7-1.4-1.4L17 14H5z"/></svg></a></p>
 
-    <!-- BUILD NOTE: money story, premium fork. No dollar figures: the practice has never run an
-         offer and the monthly figures on the client record are not cleared for publication. Parity
-         item with concept B, rendered here as a spec ledger rather than a card. Never reference a
-         down payment and never claim 0% interest. -->
-    <div class="money-spec" data-reveal="up">
-      <p class="eyebrow">Paying for treatment</p>
-      <h3 class="money-title">One quoted fee, written down.</h3>
-      <dl class="money-list">
-        <div><dt>The consultation</dt><dd>Free, with Dr. Chang</dd></div>
-        <div><dt>The fee</dt><dd>Quoted once, in writing, before anything starts</dd></div>
-        <div><dt>Payment</dt><dd>In-house payment plans available</dd></div>
-        <div><dt>Insurance</dt><dd>Coordinated and billed for you</dd></div>
-      </dl>
-      <p style="margin-top:1.75rem"><a href="financing.html" class="tlink">Insurance &amp; financing in detail
-        <svg viewBox="0 0 24 24" width="15" height="15" aria-hidden="true"><path fill="currentColor" d="M5 12h12l-4.6-4.6L13.8 6l7 7-7 7-1.4-1.4L17 14H5z"/></svg></a></p>
+    <!-- BUILD NOTE: the money/financing spec ledger was removed from the homepage at the
+         client's direction. Cost lives on financing.html only; it is still linked from the
+         nav and the footer. Do not reinstate a money block here. -->
+  </div>
+</section>
+
+<!-- ==================== AUTHORITY STRIP ==================== -->
+<!-- BUILD NOTE: typographic wordmarks stand in for official logo files.
+     Request the real ABO / Invisalign / UCSF assets before launch and swap them in.
+     Do not redraw or recolour a trademark.
+     BLUEPRINT: the trust bar sits BELOW the services grid, not above it. -->
+<section class="section band authority" style="padding-block:3rem" aria-label="Certifications and affiliations">
+  <div class="wrap">
+    <p class="authority-label">Credentials and affiliations</p>
+    <div class="authority-row">
+      <span class="mark"><span class="m1">ABO</span><span class="m2">American Board of Orthodontics</span></span>
+      <span class="mark"><span class="m1">Invisalign</span><span class="m2">Platinum Plus Provider</span></span>
+      <span class="mark"><span class="m1">UCSF</span><span class="m2">School of Dentistry Faculty</span></span>
+      <span class="mark"><span class="m1">Published</span><span class="m2">Peer-reviewed airway research</span></span>
     </div>
   </div>
 </section>
@@ -466,8 +459,7 @@
 <!-- ==================== LOCATION ==================== -->
 <section class="section band" id="location">
   <div class="wrap">
-    <p class="eyebrow">Our office</p>
-    <h2 class="h2" style="margin-top:1.25rem;max-width:20ch">Find us in San Carlos.</h2>
+    <h2 class="h2" style="max-width:20ch">Find us in San Carlos.</h2>
 
     <div class="loc-split" style="margin-top:3rem">
       <div class="loc-card">
@@ -475,8 +467,10 @@
 
         <div class="loc-row">
           <p class="loc-key">Address</p>
+          <!-- Name as text, not only as a logo image: this block is the page's NAP anchor. -->
+          <p class="loc-val" style="font-weight:700">Chang Orthodontics</p>
           <address class="loc-val">10 El Camino Real, Ste. 201<br>San Carlos, CA 94070</address>
-          <p class="loc-note">The northernmost building in San Carlos, right on the Belmont border, on El Camino Real between the Holiday Inn Express and the Hyatt Place.</p>
+          <p class="loc-note">On El Camino Real, right at the Belmont border.</p>
         </div>
 
         <div class="loc-row">
@@ -487,17 +481,20 @@
         <div class="loc-row">
           <p class="loc-key">Hours</p>
           <p class="loc-val">Monday to Friday, 9:00am to 5:00pm</p>
-          <p class="loc-note">Someone is always at the phone over lunch.</p>
+          <p class="loc-note">Someone answers the phone through lunch.</p>
         </div>
 
-        <p style="margin-top:2rem">
-          <a class="btn btn-primary" href="https://www.google.com/maps/dir/?api=1&amp;destination=10+El+Camino+Real+Ste+201+San+Carlos+CA+94070" target="_blank" rel="noopener">Get Directions</a>
+        <!-- Directions stays primary; booking rides along as the ghost (kit: optional
+             booking CTA in the location card). -->
+        <p style="margin-top:2rem;display:flex;gap:.75rem;flex-wrap:wrap">
+          <a class="btn btn-primary" href="https://www.google.com/maps/dir/?api=1&amp;destination=10+El+Camino+Real+Ste+201+San+Carlos+CA+94070" target="_blank" rel="noopener">Get directions</a>
+          <a class="btn btn-outline" href="appointment.html">Free consultation</a>
         </p>
       </div>
 
       <div class="map-frame">
         <iframe title="Map showing Chang Orthodontics at 10 El Camino Real, Ste. 201, San Carlos, CA 94070"
-                src="https://www.google.com/maps?q=10+El+Camino+Real+Ste+201,+San+Carlos,+CA+94070&amp;output=embed"
+        src="https://www.google.com/maps?q=Chang+Orthodontics,+10+El+Camino+Real+Ste+201,+San+Carlos,+CA+94070&amp;output=embed"
                 loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
       </div>
     </div>
@@ -511,8 +508,8 @@
   <div class="wrap" style="padding-block:4rem 2.5rem">
     <div class="foot-grid">
       <div>
-        <img class="foot-logo" src="assets/chang-logo.svg" alt="" width="150" height="60">
-        <p class="foot-blurb">Chang Orthodontics is the San Carlos practice of Dr. Michael Chang, a board-certified orthodontist treating children, teens, and adults across the Peninsula.</p>
+        <img class="foot-logo" src="assets/chang-logo.svg" alt="Chang Orthodontics" width="150" height="60">
+        <p class="foot-blurb">Braces and Invisalign in San Carlos, California, from Dr. Michael Chang, a board-certified orthodontist treating children, teens, and adults.</p>
       </div>
 
       <div>
@@ -528,18 +525,28 @@
         </ul>
       </div>
 
+      <!-- The footer mirrors the header group-for-group: Treatments / The Practice /
+           Resources / Contact. Resources used to be folded into Practice, which broke
+           the mirror. -->
       <div>
-        <p class="foot-h">Practice</p>
+        <p class="foot-h">The Practice</p>
         <ul class="foot-list">
           <li><a href="about.html">Why Chang Orthodontics</a></li>
           <li><a href="dr-michael-chang.html">Dr. Michael Chang</a></li>
           <li><a href="team.html">Our Team</a></li>
           <li><a href="technology.html">Technology</a></li>
           <li><a href="reviews.html">Reviews</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <p class="foot-h">Resources</p>
+        <ul class="foot-list">
           <li><a href="new-patients.html">New Patients</a></li>
           <li><a href="financing.html">Insurance &amp; Financing</a></li>
           <li><a href="faq.html">FAQ</a></li>
           <li><a href="emergencies.html">Emergencies</a></li>
+          <li><a href="#location">Our Address</a></li>
         </ul>
       </div>
 
@@ -575,7 +582,7 @@
 <!-- ==================== MOBILE STICKY BAR ==================== -->
 <nav id="mobile-bar" aria-label="Quick actions">
   <a href="tel:+16505980888">
-    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.2.4 2.4.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1l-2.3 2.2z"/></svg>
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7.4 3H4.6C3.7 3 3 3.7 3 4.6 3 13.1 10.9 21 19.4 21c.9 0 1.6-.7 1.6-1.6v-2.8c0-.7-.5-1.3-1.2-1.5l-3.1-.8c-.6-.2-1.3.1-1.6.6l-1 1.7c-2.4-1.2-4.4-3.2-5.6-5.6l1.7-1c.5-.3.8-1 .6-1.6l-.8-3.1C8.7 3.5 8.1 3 7.4 3z"/><path opacity=".5" d="M14.6 3.2a.9.9 0 0 0-.2 1.8 5 5 0 0 1 4.1 4.1.9.9 0 0 0 1.8-.2 6.8 6.8 0 0 0-5.7-5.7z"/></svg>
     Call
   </a>
   <a class="bar-book" href="appointment.html">

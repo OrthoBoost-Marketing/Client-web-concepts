@@ -29,8 +29,9 @@
   .intro h1 em { font-style:normal; color:var(--blue); }
   .intro p { color:var(--ink-soft); line-height:1.55; margin-top:8px; font-size:clamp(.86rem, 1.7vh, .96rem); max-width:76ch; }
 
-  .concepts { display:grid; grid-template-columns:repeat(2, minmax(0, 1fr)); gap:clamp(12px, 1.6vw, 18px); align-items:stretch; }
-  @media (max-width: 860px) { .concepts { grid-template-columns:1fr; max-width:520px; margin:0 auto; } }
+  .concepts { display:grid; grid-template-columns:repeat(3, minmax(0, 1fr)); gap:clamp(12px, 1.6vw, 18px); align-items:stretch; }
+  @media (max-width: 980px) { .concepts { grid-template-columns:repeat(2, minmax(0, 1fr)); } }
+  @media (max-width: 700px) { .concepts { grid-template-columns:1fr; max-width:520px; margin:0 auto; } }
   .concept {
     background:var(--card); border:1px solid var(--line); border-radius:14px;
     padding:clamp(16px, 2.4vh, 22px) clamp(16px, 1.6vw, 22px);
@@ -78,7 +79,7 @@
 
   <div class="intro">
     <h1>Directions for the new <em>Chang Orthodontics</em> website</h1>
-    <p>Two directions for the same practice. The brand holds across both: the same navy, the same logo, the same verified facts. What changes is the composition, the typography and the register. Each is the homepage only, and the rest of the site follows the direction you pick. Patient review quotes are still marked placeholders, and the real Google reviews drop in before launch.</p>
+    <p>Three directions for the same practice. The brand holds across all of them: the same navy, the same logo, the same verified facts. What changes is the composition, the typography and the register. Each is the homepage only, and the rest of the site follows the direction you pick. Patient review quotes are still marked placeholders, and the real Google reviews drop in before launch.</p>
   </div>
 
   <div class="concepts">
@@ -96,11 +97,22 @@
     <div class="concept">
       <div class="concept-head">
         <h2>Concept B<span class="sub">editorial serif</span></h2>
-        <span class="tag">Newest</span>
       </div>
       <p>Warmer and more editorial: a large Instrument Serif headline, soft rounded cards, generous photography and gentle scroll motion. Credentials carry the page, and the navy is used as an accent on names, places and numbers rather than as a field.</p>
       <div class="concept-foot">
         <a class="open" href="concept-b/">Open Concept B &rarr;</a>
+        <span class="meta">Homepage only</span>
+      </div>
+    </div>
+
+    <div class="concept">
+      <div class="concept-head">
+        <h2>Concept C<span class="sub">bold &amp; friendly</span></h2>
+        <span class="tag">Newest</span>
+      </div>
+      <p>The most confident of the three: a heavy sans headline, big navy shapes offset behind the photography, numbered reasons to choose the practice, and full-bleed treatment cards. Built to read well on a phone and to give the ads a strong page to land on.</p>
+      <div class="concept-foot">
+        <a class="open" href="concept-c/">Open Concept C &rarr;</a>
         <span class="meta">Homepage only</span>
       </div>
     </div>

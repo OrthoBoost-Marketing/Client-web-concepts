@@ -1,0 +1,29 @@
+Credential logo sources — Chang Orthodontics authority strip
+=============================================================
+Pulled 2026-08-11. Dr. Ty's rule: official logo files only, untouched, no redrawing
+and no recolouring beyond a uniform grayscale mute.
+
+invisalign-logo.svg
+  Source : Wikimedia Commons, File:Invisalign Logo.svg
+  License: Public domain
+  Claim  : Chang Orthodontics is a genuine Invisalign Platinum Plus Provider (CLIENT-BRIEF).
+  Status : OK to use. Provider-tier wording must match reality exactly.
+
+ucsf-university-logo.svg
+  Source : Wikimedia Commons, File:University of California, San Francisco logo.svg
+  License: Public domain
+  REJECTED: the "UCSF Medical Center" wordmark. It is a different legal entity from the
+           university, and Dr. Chang's appointment is a university faculty position, so that
+           mark would have misstated the credential.
+  Claim  : Dr. Michael Chang has been a Clinical Professor at UCSF since 2018 (CLIENT-BRIEF).
+  Status : ** NEEDS SIGN-OFF BEFORE LAUNCH. ** The file is public domain, but universities
+           generally restrict third-party use of their marks, and a logo can read as
+           institutional endorsement of the practice rather than a faculty appointment.
+           Dr. Ty or the client should confirm, or the strip falls back to the words
+           "UCSF Faculty, Orthodontics".
+
+MISSING — must come from the client or the issuing organisation
+  American Board of Orthodontics (board certification)
+    Not on Wikimedia Commons; no public-domain or CC file located.
+    Get the official mark from abortho.org or from the practice's own files.
+    Until then this slot stays typographic. Do not redraw or approximate it.

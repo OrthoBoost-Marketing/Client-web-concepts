@@ -1,0 +1,855 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>Chang Orthodontics | Orthodontist in San Carlos, CA</title>
+<meta name="description" content="Chang Orthodontics in San Carlos, CA. Dr. Michael Chang, DDS — board certified, UCSF Clinical Professor, Platinum Plus Invisalign Provider. Braces, Invisalign and early orthodontics for kids, teens and adults. Free consultation.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<!-- Hero image is the LCP element: preloaded, never lazy-loaded. -->
+<link rel="preload" as="image" href="assets/web/chang-community-01-1200.webp"
+      imagesrcset="assets/web/chang-community-01-480.webp 480w, assets/web/chang-community-01-768.webp 768w, assets/web/chang-community-01-1200.webp 1200w"
+      imagesizes="(min-width: 1024px) 32rem, 90vw" fetchpriority="high">
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        fontFamily: { sans: ['Manrope', 'system-ui', 'sans-serif'] },
+        colors: {
+          navy:  { DEFAULT: '#005DAA', deep: '#003B6E', bright: '#3E90CE', tint: '#EEF6F8' },
+          ink:   { DEFAULT: '#1b1c1c', soft: '#434653', mute: '#74747c' },
+        },
+      },
+    },
+  }
+</script>
+<script src="https://unpkg.com/lucide@latest"></script>
+<style>
+  /* scroll-padding clears the 73px fixed nav on every in-page anchor jump. */
+  html { scroll-behavior: smooth; scroll-padding-top: 88px; }
+  body { font-family: 'Manrope', system-ui, sans-serif; }
+
+
+  /* dropdown hover */
+  .nav-item:hover .nav-dropdown { opacity: 1; visibility: visible; transform: translateY(0); }
+  .nav-dropdown { opacity: 0; visibility: hidden; transform: translateY(4px); transition: all .2s ease-out; }
+
+  /* brand-blue emphasis on names, places and value words — never a whole sentence */
+  .hl { color: #005DAA; }
+
+  /* Structural rules behind the hero. VERTICAL ONLY — a typographic column measure, not
+     graph paper. Wide 12.5rem interval so it reads as architecture rather than texture.
+     Flat 1px hairlines; the only gradients are the masks that fade the rules out at the
+     fold and at both side edges, which the no-gradient rule exempts. */
+  .grid-field {
+    position: absolute;
+    inset: 0 0 auto 0;
+    /* Height is keyed to the viewport, not the section, so the falloff always lands
+       near the fold no matter how tall the hero gets on a given screen. */
+    height: min(100%, 86vh);
+    pointer-events: none;
+    background-image: linear-gradient(to right, rgba(0, 93, 170, .10) 1px, transparent 1px);
+    background-size: 12.5rem 100%;
+    background-position: center top;
+    -webkit-mask-image:
+      linear-gradient(to bottom, #000 0%, #000 46%, rgba(0,0,0,.35) 78%, transparent 100%),
+      linear-gradient(to right, transparent 0%, #000 16%, #000 84%, transparent 100%);
+    -webkit-mask-composite: source-in;
+            mask-image:
+      linear-gradient(to bottom, #000 0%, #000 46%, rgba(0,0,0,.35) 78%, transparent 100%),
+      linear-gradient(to right, transparent 0%, #000 16%, #000 84%, transparent 100%);
+            mask-composite: intersect;
+  }
+
+  /* reveals fail open: visible by default, animated only when JS marks the page */
+  .js [data-reveal] { opacity: 0; transform: translateY(18px); transition: opacity .7s cubic-bezier(.22,.61,.36,1), transform .7s cubic-bezier(.22,.61,.36,1); }
+  .js [data-reveal].is-in { opacity: 1; transform: none; }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .js [data-reveal] { opacity: 1 !important; transform: none !important; transition: none; }
+  }
+
+  /* keep the mobile action bar clear of page content */
+  @media (max-width: 767px) { body { padding-bottom: 76px; } }
+</style>
+</head>
+<body class="bg-white text-ink antialiased selection:bg-navy-tint selection:text-navy-deep">
+
+<a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[60] focus:rounded-full focus:bg-navy focus:px-5 focus:py-3 focus:text-base focus:font-semibold focus:text-white">Skip to content</a>
+
+<!-- ─────────────────────────────  NAV  ───────────────────────────── -->
+<nav class="fixed top-0 z-50 w-full border-b border-slate-100 bg-white/85 backdrop-blur-md">
+  <div class="mx-auto flex max-w-7xl items-center justify-between gap-6 px-6 py-4">
+    <a href="/" class="flex min-h-[44px] items-center" aria-label="Chang Orthodontics home">
+      <img src="assets/chang-logo.svg" alt="Chang Orthodontics" class="h-10 w-auto object-contain">
+    </a>
+
+    <div class="hidden items-center gap-8 lg:flex">
+      <div class="nav-item relative">
+        <a href="treatments.html" class="flex items-center gap-1 text-lg font-medium text-ink-soft transition-colors hover:text-navy">
+          Treatments <i data-lucide="chevron-down" class="h-4 w-4"></i>
+        </a>
+        <div class="nav-dropdown absolute left-0 top-full w-64 pt-4">
+          <div class="rounded-2xl border border-slate-100 bg-white p-3 shadow-xl shadow-slate-900/5">
+            <a href="braces.html" class="block rounded-xl px-4 py-2.5 text-base font-medium text-ink-soft hover:bg-navy-tint hover:text-navy">Braces</a>
+            <a href="invisalign.html" class="block rounded-xl px-4 py-2.5 text-base font-medium text-ink-soft hover:bg-navy-tint hover:text-navy">Invisalign</a>
+            <a href="early-orthodontics.html" class="block rounded-xl px-4 py-2.5 text-base font-medium text-ink-soft hover:bg-navy-tint hover:text-navy">Early Orthodontics</a>
+            <a href="kids-teens.html" class="block rounded-xl px-4 py-2.5 text-base font-medium text-ink-soft hover:bg-navy-tint hover:text-navy">Kids &amp; Teens</a>
+            <a href="adults.html" class="block rounded-xl px-4 py-2.5 text-base font-medium text-ink-soft hover:bg-navy-tint hover:text-navy">Adult Orthodontics</a>
+            <a href="airway.html" class="block rounded-xl px-4 py-2.5 text-base font-medium text-ink-soft hover:bg-navy-tint hover:text-navy">Airway &amp; Expansion</a>
+            <a href="retainers.html" class="block rounded-xl px-4 py-2.5 text-base font-medium text-ink-soft hover:bg-navy-tint hover:text-navy">Retainers</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="nav-item relative">
+        <a href="about.html" class="flex items-center gap-1 text-lg font-medium text-ink-soft transition-colors hover:text-navy">
+          The Practice <i data-lucide="chevron-down" class="h-4 w-4"></i>
+        </a>
+        <div class="nav-dropdown absolute left-0 top-full w-64 pt-4">
+          <div class="rounded-2xl border border-slate-100 bg-white p-3 shadow-xl shadow-slate-900/5">
+            <a href="about.html" class="block rounded-xl px-4 py-2.5 text-base font-medium text-ink-soft hover:bg-navy-tint hover:text-navy">Why Chang</a>
+            <a href="dr-michael-chang.html" class="block rounded-xl px-4 py-2.5 text-base font-medium text-ink-soft hover:bg-navy-tint hover:text-navy">Dr. Michael Chang</a>
+            <a href="team.html" class="block rounded-xl px-4 py-2.5 text-base font-medium text-ink-soft hover:bg-navy-tint hover:text-navy">Our Team</a>
+            <a href="technology.html" class="block rounded-xl px-4 py-2.5 text-base font-medium text-ink-soft hover:bg-navy-tint hover:text-navy">Technology</a>
+            <a href="reviews.html" class="block rounded-xl px-4 py-2.5 text-base font-medium text-ink-soft hover:bg-navy-tint hover:text-navy">Reviews</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="nav-item relative">
+        <a href="new-patients.html" class="flex items-center gap-1 text-lg font-medium text-ink-soft transition-colors hover:text-navy">
+          Resources <i data-lucide="chevron-down" class="h-4 w-4"></i>
+        </a>
+        <div class="nav-dropdown absolute left-0 top-full w-64 pt-4">
+          <div class="rounded-2xl border border-slate-100 bg-white p-3 shadow-xl shadow-slate-900/5">
+            <a href="new-patients.html" class="block rounded-xl px-4 py-2.5 text-base font-medium text-ink-soft hover:bg-navy-tint hover:text-navy">New Patients</a>
+            <a href="financing.html" class="block rounded-xl px-4 py-2.5 text-base font-medium text-ink-soft hover:bg-navy-tint hover:text-navy">Financing</a>
+            <a href="faq.html" class="block rounded-xl px-4 py-2.5 text-base font-medium text-ink-soft hover:bg-navy-tint hover:text-navy">FAQ</a>
+            <a href="emergencies.html" class="block rounded-xl px-4 py-2.5 text-base font-medium text-ink-soft hover:bg-navy-tint hover:text-navy">Emergencies</a>
+          </div>
+        </div>
+      </div>
+
+      <a href="#contact" class="text-lg font-medium text-ink-soft transition-colors hover:text-navy">Our Address</a>
+    </div>
+
+    <div class="flex items-center gap-3">
+      <!-- Kit rule 5: a clickable phone must live in the header on every device. There
+           was none here at all — the number was only reachable from the mobile bar. -->
+      <a href="tel:+16505980888" aria-label="Call (650) 598-0888"
+         class="inline-flex min-h-[44px] min-w-[44px] items-center justify-center gap-2 rounded-full px-2 text-lg font-bold text-navy-deep transition-colors hover:text-navy lg:px-3">
+        <svg viewBox="0 0 24 24" fill="currentColor" class="h-5 w-5 shrink-0" aria-hidden="true"><path d="M7.4 3H4.6C3.7 3 3 3.7 3 4.6 3 13.1 10.9 21 19.4 21c.9 0 1.6-.7 1.6-1.6v-2.8c0-.7-.5-1.3-1.2-1.5l-3.1-.8c-.6-.2-1.3.1-1.6.6l-1 1.7c-2.4-1.2-4.4-3.2-5.6-5.6l1.7-1c.5-.3.8-1 .6-1.6l-.8-3.1C8.7 3.5 8.1 3 7.4 3z"/><path opacity=".5" d="M14.6 3.2a.9.9 0 0 0-.2 1.8 5 5 0 0 1 4.1 4.1.9.9 0 0 0 1.8-.2 6.8 6.8 0 0 0-5.7-5.7z"/></svg>
+        <span class="hidden sm:inline">(650) 598-0888</span>
+      </a>
+
+      <a href="appointment.html" class="hidden items-center justify-center rounded-full bg-navy px-6 py-3 text-base font-semibold text-white shadow-sm transition-all hover:bg-navy-deep hover:shadow-md focus:outline-none focus:ring-2 focus:ring-navy focus:ring-offset-2 lg:inline-flex">
+        Free consultation
+      </a>
+
+      <button id="menuBtn" class="inline-flex min-h-[44px] min-w-[44px] items-center justify-center text-ink-soft lg:hidden" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
+        <i data-lucide="menu" class="h-7 w-7"></i>
+      </button>
+    </div>
+  </div>
+
+  <!-- mobile menu -->
+  <!-- Drawer mirrors the desktop nav exactly: the same four groups as accordions, with
+       the CTA pinned at the bottom. It used to be a flat list of 9 links that dropped
+       Why Chang, Our Team, Technology, Reviews, Financing, FAQ and Emergencies. -->
+  <div id="mobileMenu" class="hidden border-t border-slate-100 bg-white lg:hidden">
+    <div class="mx-auto max-w-7xl px-6 py-5">
+      <details class="group border-b border-slate-100">
+        <summary class="flex min-h-[52px] cursor-pointer list-none items-center justify-between text-lg font-semibold text-ink">
+          Treatments <i data-lucide="chevron-down" class="h-5 w-5 transition group-open:rotate-180"></i>
+        </summary>
+        <div class="grid gap-1 pb-3">
+          <a href="braces.html" class="flex min-h-[44px] items-center rounded-xl px-3 text-base font-medium text-ink-soft hover:bg-navy-tint">Braces</a>
+          <a href="invisalign.html" class="flex min-h-[44px] items-center rounded-xl px-3 text-base font-medium text-ink-soft hover:bg-navy-tint">Invisalign</a>
+          <a href="early-orthodontics.html" class="flex min-h-[44px] items-center rounded-xl px-3 text-base font-medium text-ink-soft hover:bg-navy-tint">Early Orthodontics</a>
+          <a href="kids-teens.html" class="flex min-h-[44px] items-center rounded-xl px-3 text-base font-medium text-ink-soft hover:bg-navy-tint">Kids &amp; Teens</a>
+          <a href="adults.html" class="flex min-h-[44px] items-center rounded-xl px-3 text-base font-medium text-ink-soft hover:bg-navy-tint">Adult Orthodontics</a>
+          <a href="airway.html" class="flex min-h-[44px] items-center rounded-xl px-3 text-base font-medium text-ink-soft hover:bg-navy-tint">Airway &amp; Expansion</a>
+          <a href="retainers.html" class="flex min-h-[44px] items-center rounded-xl px-3 text-base font-medium text-ink-soft hover:bg-navy-tint">Retainers</a>
+        </div>
+      </details>
+
+      <details class="group border-b border-slate-100">
+        <summary class="flex min-h-[52px] cursor-pointer list-none items-center justify-between text-lg font-semibold text-ink">
+          The Practice <i data-lucide="chevron-down" class="h-5 w-5 transition group-open:rotate-180"></i>
+        </summary>
+        <div class="grid gap-1 pb-3">
+          <a href="about.html" class="flex min-h-[44px] items-center rounded-xl px-3 text-base font-medium text-ink-soft hover:bg-navy-tint">Why Chang</a>
+          <a href="dr-michael-chang.html" class="flex min-h-[44px] items-center rounded-xl px-3 text-base font-medium text-ink-soft hover:bg-navy-tint">Dr. Michael Chang</a>
+          <a href="team.html" class="flex min-h-[44px] items-center rounded-xl px-3 text-base font-medium text-ink-soft hover:bg-navy-tint">Our Team</a>
+          <a href="technology.html" class="flex min-h-[44px] items-center rounded-xl px-3 text-base font-medium text-ink-soft hover:bg-navy-tint">Technology</a>
+          <a href="reviews.html" class="flex min-h-[44px] items-center rounded-xl px-3 text-base font-medium text-ink-soft hover:bg-navy-tint">Reviews</a>
+        </div>
+      </details>
+
+      <details class="group border-b border-slate-100">
+        <summary class="flex min-h-[52px] cursor-pointer list-none items-center justify-between text-lg font-semibold text-ink">
+          Resources <i data-lucide="chevron-down" class="h-5 w-5 transition group-open:rotate-180"></i>
+        </summary>
+        <div class="grid gap-1 pb-3">
+          <a href="new-patients.html" class="flex min-h-[44px] items-center rounded-xl px-3 text-base font-medium text-ink-soft hover:bg-navy-tint">New Patients</a>
+          <a href="financing.html" class="flex min-h-[44px] items-center rounded-xl px-3 text-base font-medium text-ink-soft hover:bg-navy-tint">Financing</a>
+          <a href="faq.html" class="flex min-h-[44px] items-center rounded-xl px-3 text-base font-medium text-ink-soft hover:bg-navy-tint">FAQ</a>
+          <a href="emergencies.html" class="flex min-h-[44px] items-center rounded-xl px-3 text-base font-medium text-ink-soft hover:bg-navy-tint">Emergencies</a>
+        </div>
+      </details>
+
+      <a href="#contact" class="flex min-h-[52px] items-center border-b border-slate-100 text-lg font-semibold text-ink">Our Address</a>
+
+      <a href="appointment.html" class="mt-4 flex min-h-[52px] items-center justify-center rounded-full bg-navy px-6 text-base font-semibold text-white transition-all hover:bg-navy-deep">
+        Free consultation
+      </a>
+    </div>
+  </div>
+</nav>
+
+<main id="main">
+
+<!-- ─────────────────────────────  HERO + PROOF BAND  ───────────────────────────── -->
+<section class="relative pt-24 pb-16 md:pt-44 md:pb-24">
+  <div class="grid-field" aria-hidden="true"></div>
+
+  <div class="relative z-10 mx-auto max-w-7xl px-6">
+    <div class="grid items-center gap-8 sm:gap-14 lg:grid-cols-2 lg:gap-12">
+
+      <div class="max-w-2xl" data-reveal>
+        <h1 class="mb-4 text-5xl font-extrabold leading-[1.05] tracking-tight text-ink md:mb-6 md:text-6xl lg:text-7xl">
+          Precision orthodontics in <span class="hl">San Carlos</span><span class="mt-4 block text-[0.46em] font-bold leading-[1.15] tracking-normal text-ink-soft">from a Platinum Plus Invisalign provider</span>
+        </h1>
+        <p class="mb-6 text-xl leading-relaxed text-ink-soft md:mb-8 md:text-2xl">
+          Dr. Michael Chang has treated 10,000 patients over 15 years, and he publishes peer-reviewed research on how treatment affects the airway. Braces, Invisalign and early treatment for kids, teens and adults.
+        </p>
+        <div class="flex flex-col gap-4 sm:flex-row">
+          <a href="appointment.html" class="inline-flex items-center justify-center rounded-full bg-navy px-8 py-4 text-lg font-semibold text-white shadow-sm transition-all hover:bg-navy-deep hover:shadow-lg">
+            Book your free consultation
+          </a>
+          <a href="tel:+16505980888" class="inline-flex items-center justify-center rounded-full border border-slate-300 bg-transparent px-8 py-4 text-lg font-medium text-ink-soft transition-all hover:border-navy hover:text-navy">
+            <svg viewBox="0 0 24 24" fill="currentColor" class="mr-2 h-5 w-5 shrink-0" aria-hidden="true"><path d="M7.4 3H4.6C3.7 3 3 3.7 3 4.6 3 13.1 10.9 21 19.4 21c.9 0 1.6-.7 1.6-1.6v-2.8c0-.7-.5-1.3-1.2-1.5l-3.1-.8c-.6-.2-1.3.1-1.6.6l-1 1.7c-2.4-1.2-4.4-3.2-5.6-5.6l1.7-1c.5-.3.8-1 .6-1.6l-.8-3.1C8.7 3.5 8.1 3 7.4 3z"/><path opacity=".5" d="M14.6 3.2a.9.9 0 0 0-.2 1.8 5 5 0 0 1 4.1 4.1.9.9 0 0 0 1.8-.2 6.8 6.8 0 0 0-5.7-5.7z"/></svg>
+            (650) 598-0888
+          </a>
+        </div>
+      </div>
+
+      <div class="relative mx-auto w-full max-w-lg lg:ml-auto lg:mr-0" data-reveal>
+        <div class="absolute -left-10 -top-10 -z-10 hidden h-48 w-48 rounded-tl-[100px] bg-navy md:block"></div>
+        <div class="relative overflow-hidden rounded-[2rem] shadow-2xl shadow-slate-900/20">
+          <!-- Doctor WITH a patient — the only shot in the approved set that shows both. -->
+          <img
+            src="assets/web/chang-community-01-1200.webp"
+            srcset="assets/web/chang-community-01-480.webp 480w, assets/web/chang-community-01-768.webp 768w, assets/web/chang-community-01-1200.webp 1200w"
+            sizes="(min-width: 1024px) 32rem, 90vw"
+            alt="Dr. Michael Chang with a young patient at Chang Orthodontics in San Carlos"
+            width="1200" height="1600" loading="eager" fetchpriority="high" decoding="async"
+            class="aspect-[4/5] w-full object-cover object-top">
+        </div>
+        <div class="absolute -bottom-8 -right-8 -z-10 hidden h-32 w-32 rounded-br-[60px] bg-navy-deep md:block"></div>
+      </div>
+    </div>
+
+    <!-- Trust bar, inside the hero. Four USPs, credentials first — the same four as concept-a
+         and concept-b so the three directions make identical claims. -->
+    <div class="mt-16 rounded-[2rem] border border-slate-100 bg-navy-tint px-4 py-8 md:mt-20 md:px-8" data-reveal>
+      <div class="grid grid-cols-2 gap-y-8 divide-navy/15 text-center md:grid-cols-4 md:gap-y-0 md:divide-x">
+        <div class="px-2">
+          <div class="whitespace-nowrap text-xl font-extrabold tracking-tight text-navy-deep md:text-3xl">Board certified</div>
+          <div class="mt-1.5 text-sm font-medium text-ink-soft md:text-base">American Board of Orthodontics</div>
+        </div>
+        <div class="px-2">
+          <div class="whitespace-nowrap text-xl font-extrabold tracking-tight text-navy-deep md:text-3xl">UCSF faculty</div>
+          <div class="mt-1.5 text-sm font-medium text-ink-soft md:text-base">Clinical professor since 2018</div>
+        </div>
+        <div class="px-2">
+          <div class="whitespace-nowrap text-xl font-extrabold tracking-tight text-navy-deep md:text-3xl">10,000</div>
+          <div class="mt-1.5 text-sm font-medium text-ink-soft md:text-base">Patients treated</div>
+        </div>
+        <div class="px-2">
+          <div class="whitespace-nowrap text-xl font-extrabold tracking-tight text-navy-deep md:text-3xl">100</div>
+          <div class="mt-1.5 text-sm font-medium text-ink-soft md:text-base">Five-star Google reviews</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─────────────────────────────  MEET THE DOCTOR  ───────────────────────────── -->
+<section id="doctor" class="py-20 md:py-28">
+  <div class="mx-auto max-w-7xl px-6">
+    <div class="grid items-center gap-14 lg:grid-cols-12 lg:gap-16">
+
+      <div class="relative order-2 lg:order-1 lg:col-span-5" data-reveal>
+        <div class="absolute -left-8 top-10 -z-10 hidden h-[80%] w-2/3 rounded-l-[3rem] bg-navy-tint md:block"></div>
+        <img
+          src="assets/web/chang-doctor-portrait-01-1200.webp"
+          srcset="assets/web/chang-doctor-portrait-01-480.webp 480w, assets/web/chang-doctor-portrait-01-768.webp 768w, assets/web/chang-doctor-portrait-01-1200.webp 1200w"
+          sizes="(min-width: 1024px) 30rem, 90vw"
+          alt="Dr. Michael Chang, DDS, orthodontist and owner of Chang Orthodontics"
+          width="1200" height="1500" loading="lazy" decoding="async"
+          class="aspect-[4/5] w-full rounded-[2rem] object-cover shadow-xl shadow-slate-900/10">
+      </div>
+
+      <div class="order-1 lg:order-2 lg:col-span-7" data-reveal>
+        <h2 class="mb-6 text-4xl font-extrabold leading-tight tracking-tight text-ink md:text-5xl">
+          Meet <span class="hl">Dr. Michael Chang</span>
+        </h2>
+        <p class="mb-5 text-lg leading-relaxed text-ink-soft md:text-xl">
+          Dr. Chang trained at <span class="hl">UCSF</span> and has been treating patients for more than fifteen years. He is board certified by the American Board of Orthodontics, and since 2018 he has taught the next generation of orthodontists as a Clinical Professor at UCSF.
+        </p>
+        <p class="mb-8 text-lg leading-relaxed text-ink-soft md:text-xl">
+          His published, peer-reviewed research looks at how the airway changes before and after orthodontic treatment, which is why an airway assessment is part of how he plans a case here.
+        </p>
+
+        <ul class="mb-9 grid gap-4 sm:grid-cols-2">
+          <li class="flex items-start gap-3">
+            <i data-lucide="check" class="mt-1 h-5 w-5 shrink-0 text-navy"></i>
+            <span class="text-lg text-ink-soft">Board certified by the American Board of Orthodontics</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <i data-lucide="check" class="mt-1 h-5 w-5 shrink-0 text-navy"></i>
+            <span class="text-lg text-ink-soft">UCSF Clinical Professor since 2018</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <i data-lucide="check" class="mt-1 h-5 w-5 shrink-0 text-navy"></i>
+            <span class="text-lg text-ink-soft">Published, peer-reviewed airway research</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <i data-lucide="check" class="mt-1 h-5 w-5 shrink-0 text-navy"></i>
+            <span class="text-lg text-ink-soft">Platinum Plus Invisalign Provider</span>
+          </li>
+        </ul>
+
+        <a href="dr-michael-chang.html" class="inline-flex items-center gap-2 text-lg font-semibold text-navy hover:text-navy-deep">
+          Read Dr. Chang's full story
+          <i data-lucide="arrow-right" class="h-5 w-5"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─────────────────────────────  USP ZIGZAG  ───────────────────────────── -->
+<section id="why" class="bg-navy-tint py-20 md:py-28">
+  <div class="mx-auto max-w-7xl px-6">
+    <h2 class="mb-16 max-w-3xl text-4xl font-extrabold leading-tight tracking-tight text-ink md:text-5xl" data-reveal>
+      Why families choose <span class="hl">Chang Orthodontics</span> in San Carlos.
+    </h2>
+
+    <div class="flex flex-col gap-16 md:gap-24">
+
+      <!-- 01 -->
+      <div class="grid items-center gap-10 lg:grid-cols-2 lg:gap-16" data-reveal>
+        <div class="relative">
+          <img
+            src="assets/web/chang-doctor-scanner-01-1200.webp"
+            srcset="assets/web/chang-doctor-scanner-01-480.webp 480w, assets/web/chang-doctor-scanner-01-768.webp 768w, assets/web/chang-doctor-scanner-01-1200.webp 1200w"
+            sizes="(min-width: 1024px) 34rem, 90vw"
+            alt="Dr. Chang using an intraoral digital scanner"
+            width="1200" height="900" loading="lazy" decoding="async"
+            class="aspect-[4/3] w-full rounded-[2rem] object-cover shadow-lg shadow-slate-900/10">
+        </div>
+        <div>
+          <div class="mb-3 text-xl font-semibold text-navy/40">01</div>
+          <h3 class="mb-4 text-3xl font-bold tracking-tight text-ink md:text-4xl">Treatment planned by a board-certified specialist</h3>
+          <p class="text-lg leading-relaxed text-ink-soft md:text-xl">
+            Dr. Chang is board certified by the American Board of Orthodontics and has taught the specialty at UCSF since 2018. Your plan is built from a digital scan, so what you see on screen is what we treat to.
+          </p>
+          <a href="technology.html" class="mt-6 inline-flex min-h-[44px] items-center gap-2 text-lg font-semibold text-navy transition-colors hover:text-navy-deep">
+            See the technology we use <i data-lucide="arrow-right" class="h-5 w-5"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- 02 -->
+      <div class="grid items-center gap-10 lg:grid-cols-2 lg:gap-16" data-reveal>
+        <div class="relative lg:order-2">
+          <img
+            src="assets/web/chang-office-reception-01-1200.webp"
+            srcset="assets/web/chang-office-reception-01-480.webp 480w, assets/web/chang-office-reception-01-768.webp 768w, assets/web/chang-office-reception-01-1200.webp 1200w, assets/web/chang-office-reception-01-1800.webp 1800w"
+            sizes="(min-width: 1024px) 34rem, 90vw"
+            alt="The reception area at Chang Orthodontics in San Carlos"
+            width="1200" height="900" loading="lazy" decoding="async"
+            class="aspect-[4/3] w-full rounded-[2rem] object-cover shadow-lg shadow-slate-900/10">
+        </div>
+        <div class="lg:order-1">
+          <div class="mb-3 text-xl font-semibold text-navy/40">02</div>
+          <h3 class="mb-4 text-3xl font-bold tracking-tight text-ink md:text-4xl">Appointments built around the school day</h3>
+          <p class="text-lg leading-relaxed text-ink-soft md:text-xl">
+            Most of our patients are in school, so the schedule is built around the school day and the waiting room is kept quiet on purpose.
+          </p>
+          <a href="new-patients.html" class="mt-6 inline-flex min-h-[44px] items-center gap-2 text-lg font-semibold text-navy transition-colors hover:text-navy-deep">
+            What to expect at your first visit <i data-lucide="arrow-right" class="h-5 w-5"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- 03 -->
+      <div class="grid items-center gap-10 lg:grid-cols-2 lg:gap-16" data-reveal>
+        <div class="relative">
+          <img
+            src="assets/web/chang-patient-01-1200.webp"
+            srcset="assets/web/chang-patient-01-480.webp 480w, assets/web/chang-patient-01-768.webp 768w, assets/web/chang-patient-01-1200.webp 1200w, assets/web/chang-patient-01-1800.webp 1800w"
+            sizes="(min-width: 1024px) 34rem, 90vw"
+            alt="A Chang Orthodontics patient at the practice in San Carlos"
+            width="1200" height="1600" loading="lazy" decoding="async"
+            class="aspect-[4/3] w-full rounded-[2rem] object-cover shadow-lg shadow-slate-900/10">
+        </div>
+        <div>
+          <div class="mb-3 text-xl font-semibold text-navy/40">03</div>
+          <h3 class="mb-4 text-3xl font-bold tracking-tight text-ink md:text-4xl">A Peninsula practice families keep recommending</h3>
+          <p class="text-lg leading-relaxed text-ink-soft md:text-xl">
+            One office on El Camino Real, a team that knows your family by name, and 100 five-star reviews from local families.
+          </p>
+          <a href="reviews.html" class="mt-6 inline-flex min-h-[44px] items-center gap-2 text-lg font-semibold text-navy transition-colors hover:text-navy-deep">
+            Read all 100 reviews <i data-lucide="arrow-right" class="h-5 w-5"></i>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ─────────────────────────────  MID-PAGE CTA  ───────────────────────────── -->
+<section class="py-20 md:py-24">
+  <div class="mx-auto max-w-7xl px-6">
+    <div class="rounded-[2.5rem] bg-navy px-8 py-14 md:px-16 md:py-20" data-reveal>
+      <div class="grid items-center gap-10 lg:grid-cols-12">
+        <div class="lg:col-span-8">
+          <h2 class="mb-4 text-4xl font-extrabold leading-tight tracking-tight text-white md:text-5xl">
+            Start with a free consultation.
+          </h2>
+          <p class="max-w-2xl text-lg leading-relaxed text-white/85 md:text-xl">
+            You will meet Dr. Chang, get a digital scan, and leave with a clear answer about whether treatment makes sense — for your child, your teen, or yourself. No cost, and no obligation to start.
+          </p>
+        </div>
+        <!-- Kit section 06: ONE button. Two buttons is the section's explicit ban — the
+             phone secondary sits out here because the sticky mobile bar already carries it. -->
+        <div class="flex flex-col gap-4 sm:flex-row lg:col-span-4 lg:flex-col lg:items-stretch">
+          <a href="appointment.html" class="inline-flex items-center justify-center rounded-full bg-white px-8 py-4 text-lg font-semibold text-navy-deep transition-all hover:bg-navy-tint">
+            Request a consultation
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─────────────────────────────  AUTHORITY STRIP  ───────────────────────────── -->
+<section class="border-y border-slate-100 py-14" aria-label="Credentials and affiliations">
+  <div class="mx-auto max-w-7xl px-6">
+    <!-- Kit section 07 rule 2: a small quiet label above the row. Matches the wording used
+         in concepts A and B so the three directions stay consistent. -->
+    <p class="mb-10 text-center text-xs font-semibold uppercase tracking-[0.18em] text-ink-mute" data-reveal>Credentials &amp; affiliations</p>
+    <div class="grid grid-cols-2 items-center gap-10 md:grid-cols-4" data-reveal>
+
+      <div class="flex flex-col items-center gap-3 text-center">
+        <img src="assets/logos/invisalign-logo.svg" alt="Invisalign" class="h-8 w-auto object-contain opacity-70 grayscale">
+        <div class="text-xs font-medium text-ink-soft/70 md:text-sm">Platinum Plus Provider</div>
+      </div>
+
+      <div class="flex flex-col items-center gap-3 text-center">
+<!-- UCSF mark swapped to typographic pending written university sign-off; a logo can
+             read as institutional endorsement. Restore only with sign-off. -->
+        <div class="text-lg font-bold uppercase tracking-[.14em] text-ink-soft/70">UCSF</div>
+        <div class="text-xs font-medium text-ink-soft/70 md:text-sm">Faculty, Orthodontics</div>
+      </div>
+
+      <!-- ABO reinstated in place of the "15+ Years" tenure stat: this strip carries
+           third-party credentials, not self-reported figures. The ABO mark is not
+           publicly obtainable, so it stays typographic — never redraw a trademark. -->
+      <div class="flex flex-col items-center gap-3 text-center">
+        <div class="text-lg font-bold uppercase tracking-[.14em] text-ink-soft/70">ABO</div>
+        <div class="text-xs font-medium text-ink-soft/70 md:text-sm">American Board of Orthodontics</div>
+      </div>
+
+      <!-- "3-D Airway" dropped: the verified claim is published peer-reviewed airway
+           research; nothing in the record verifies a 3-D modality. -->
+      <div class="flex flex-col items-center gap-3 text-center">
+        <div class="text-lg font-bold uppercase tracking-[.14em] text-ink-soft/70">Published</div>
+        <div class="text-xs font-medium text-ink-soft/70 md:text-sm">Peer-reviewed airway research</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ─────────────────────────────  REVIEWS  ───────────────────────────── -->
+<section id="reviews" class="bg-navy-tint py-20 md:py-28">
+  <div class="mx-auto max-w-7xl px-6">
+    <div class="mx-auto mb-14 max-w-2xl text-center" data-reveal>
+      <h2 class="text-4xl font-extrabold leading-tight tracking-tight text-ink md:text-5xl">
+        <span class="hl">100 five-star reviews</span> from Peninsula families
+      </h2>
+      <p class="mt-4 text-lg text-ink-soft md:text-xl">Published exactly as patients wrote them on Google.</p>
+    </div>
+
+    <div class="grid gap-6 md:grid-cols-3" data-reveal>
+
+      <!-- PLACEHOLDER — do not write a quote. Real verbatim Google reviews drop in before launch. -->
+      <div class="relative rounded-[2rem] border-2 border-dashed border-navy/30 bg-white/60 p-8">
+        <div class="mb-6 flex gap-1 text-navy">
+          <i data-lucide="star" class="h-5 w-5 fill-current"></i><i data-lucide="star" class="h-5 w-5 fill-current"></i><i data-lucide="star" class="h-5 w-5 fill-current"></i><i data-lucide="star" class="h-5 w-5 fill-current"></i><i data-lucide="star" class="h-5 w-5 fill-current"></i>
+        </div>
+        <p class="mb-8 text-lg font-semibold leading-relaxed text-navy-deep">Review quote pending</p>
+        <p class="text-base leading-relaxed text-ink-mute">Verbatim Google review, pulled from the practice profile before launch. Nothing here is written by us.</p>
+      </div>
+
+      <div class="relative rounded-[2rem] border-2 border-dashed border-navy/30 bg-white/60 p-8">
+        <div class="mb-6 flex gap-1 text-navy">
+          <i data-lucide="star" class="h-5 w-5 fill-current"></i><i data-lucide="star" class="h-5 w-5 fill-current"></i><i data-lucide="star" class="h-5 w-5 fill-current"></i><i data-lucide="star" class="h-5 w-5 fill-current"></i><i data-lucide="star" class="h-5 w-5 fill-current"></i>
+        </div>
+        <p class="mb-8 text-lg font-semibold leading-relaxed text-navy-deep">Review quote pending</p>
+        <p class="text-base leading-relaxed text-ink-mute">Verbatim Google review, pulled from the practice profile before launch. Nothing here is written by us.</p>
+      </div>
+
+      <div class="relative rounded-[2rem] border-2 border-dashed border-navy/30 bg-white/60 p-8">
+        <div class="mb-6 flex gap-1 text-navy">
+          <i data-lucide="star" class="h-5 w-5 fill-current"></i><i data-lucide="star" class="h-5 w-5 fill-current"></i><i data-lucide="star" class="h-5 w-5 fill-current"></i><i data-lucide="star" class="h-5 w-5 fill-current"></i><i data-lucide="star" class="h-5 w-5 fill-current"></i>
+        </div>
+        <p class="mb-8 text-lg font-semibold leading-relaxed text-navy-deep">Review quote pending</p>
+        <p class="text-base leading-relaxed text-ink-mute">Verbatim Google review, pulled from the practice profile before launch. Nothing here is written by us.</p>
+      </div>
+
+    </div>
+
+    <!-- Kit section 08 rule 5: the door at the bottom. -->
+    <div class="mt-14 text-center" data-reveal>
+      <a href="reviews.html" class="inline-flex min-h-[44px] items-center justify-center gap-2 rounded-full border border-navy/25 px-8 py-4 text-lg font-semibold text-navy transition-all hover:border-navy hover:bg-white">
+        Read more reviews
+        <span aria-hidden="true">&rarr;</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ─────────────────────────────  SERVICES  ───────────────────────────── -->
+<section id="treatments" class="py-20 md:py-28">
+  <div class="mx-auto max-w-7xl px-6">
+    <div class="mx-auto mb-14 max-w-3xl text-center" data-reveal>
+      <h2 class="text-4xl font-extrabold leading-tight tracking-tight text-ink md:text-5xl">
+        Orthodontics for <span class="hl">every age</span> in your house
+      </h2>
+      <p class="mt-4 text-lg text-ink-soft md:text-xl">First checkups at seven, braces in middle school, aligners for the grown-ups. One practice for all of it.</p>
+    </div>
+
+    <!-- Corner accents continue here, set behind the outer four cards of the grid. -->
+    <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3" data-reveal>
+
+      <div class="relative">
+      <div class="absolute -left-5 -top-5 -z-10 hidden h-32 w-32 rounded-tl-[72px] bg-navy md:block"></div>
+      <a href="braces.html" class="group relative block aspect-[4/3] overflow-hidden rounded-[2rem]">
+        <img src="assets/web/chang-patient-01-1200.webp" srcset="assets/web/chang-patient-01-480.webp 480w, assets/web/chang-patient-01-768.webp 768w, assets/web/chang-patient-01-1200.webp 1200w" sizes="(min-width:1024px) 24rem, 90vw" alt="A Chang Orthodontics patient at the practice in San Carlos" loading="lazy" decoding="async" class="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105">
+        <div class="absolute inset-0 bg-gradient-to-t from-navy-deep/95 via-navy-deep/45 to-transparent"></div>
+        <div class="absolute bottom-0 left-0 w-full p-8">
+          <h3 class="mb-2 text-2xl font-bold tracking-tight text-white">Braces</h3>
+          <p class="text-lg leading-relaxed text-white/90">For kids, teens, and adults. Still the most predictable way to correct a complex bite.</p>
+          <span class="mt-4 inline-flex items-center gap-2 text-base font-semibold text-white">Learn more <i data-lucide="arrow-right" class="h-4 w-4"></i></span>
+        </div>
+      </a>
+      </div>
+
+      <div class="relative">
+      <a href="invisalign.html" class="group relative block aspect-[4/3] overflow-hidden rounded-[2rem]">
+        <img src="assets/web/chang-doctor-scanner-01-1200.webp" srcset="assets/web/chang-doctor-scanner-01-480.webp 480w, assets/web/chang-doctor-scanner-01-768.webp 768w, assets/web/chang-doctor-scanner-01-1200.webp 1200w" sizes="(min-width:1024px) 24rem, 90vw" alt="Invisalign at Chang Orthodontics" loading="lazy" decoding="async" class="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105">
+        <div class="absolute inset-0 bg-gradient-to-t from-navy-deep/95 via-navy-deep/45 to-transparent"></div>
+        <div class="absolute bottom-0 left-0 w-full p-8">
+          <h3 class="mb-2 text-2xl font-bold tracking-tight text-white">Invisalign®</h3>
+          <p class="text-lg leading-relaxed text-white/90">Clear aligners from a Platinum Plus Invisalign provider. The tier is earned on completed cases, not sign-ups.</p>
+          <span class="mt-4 inline-flex items-center gap-2 text-base font-semibold text-white">Learn more <i data-lucide="arrow-right" class="h-4 w-4"></i></span>
+        </div>
+      </a>
+      </div>
+
+      <div class="relative">
+      <div class="absolute -right-5 -top-5 -z-10 hidden h-32 w-32 rounded-tr-[72px] bg-navy-bright lg:block"></div>
+      <a href="early-orthodontics.html" class="group relative block aspect-[4/3] overflow-hidden rounded-[2rem]">
+        <img src="assets/web/chang-office-consult-01-1200.webp" srcset="assets/web/chang-office-consult-01-480.webp 480w, assets/web/chang-office-consult-01-768.webp 768w, assets/web/chang-office-consult-01-1200.webp 1200w" sizes="(min-width:1024px) 24rem, 90vw" alt="A consultation room at Chang Orthodontics" loading="lazy" decoding="async" class="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105">
+        <div class="absolute inset-0 bg-gradient-to-t from-navy-deep/95 via-navy-deep/45 to-transparent"></div>
+        <div class="absolute bottom-0 left-0 w-full p-8">
+          <h3 class="mb-2 text-2xl font-bold tracking-tight text-white">Early Orthodontics</h3>
+          <p class="text-lg leading-relaxed text-white/90">Growth checks and early treatment, starting around age seven. Catching a problem early can shorten the second phase.</p>
+          <span class="mt-4 inline-flex items-center gap-2 text-base font-semibold text-white">Learn more <i data-lucide="arrow-right" class="h-4 w-4"></i></span>
+        </div>
+      </a>
+      </div>
+
+      <div class="relative">
+      <div class="absolute -bottom-5 -left-5 -z-10 hidden h-32 w-32 rounded-bl-[72px] bg-navy-deep lg:block"></div>
+      <a href="kids-teens.html" class="group relative block aspect-[4/3] overflow-hidden rounded-[2rem]">
+        <img src="assets/web/chang-team-full-01-1200.webp" srcset="assets/web/chang-team-full-01-480.webp 480w, assets/web/chang-team-full-01-768.webp 768w, assets/web/chang-team-full-01-1200.webp 1200w" sizes="(min-width:1024px) 24rem, 90vw" alt="The Chang Orthodontics team, who treat kids and teens" loading="lazy" decoding="async" class="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105">
+        <div class="absolute inset-0 bg-gradient-to-t from-navy-deep/95 via-navy-deep/45 to-transparent"></div>
+        <div class="absolute bottom-0 left-0 w-full p-8">
+          <h3 class="mb-2 text-2xl font-bold tracking-tight text-white">Kids &amp; Teens</h3>
+          <p class="text-lg leading-relaxed text-white/90">The bulk of what we do, scheduled around school and sports. Treatment is timed to each child's growth.</p>
+          <span class="mt-4 inline-flex items-center gap-2 text-base font-semibold text-white">Learn more <i data-lucide="arrow-right" class="h-4 w-4"></i></span>
+        </div>
+      </a>
+      </div>
+
+      <div class="relative">
+      <a href="adults.html" class="group relative block aspect-[4/3] overflow-hidden rounded-[2rem]">
+        <img src="assets/web/chang-office-reception-02-1200.webp" srcset="assets/web/chang-office-reception-02-480.webp 480w, assets/web/chang-office-reception-02-768.webp 768w, assets/web/chang-office-reception-02-1200.webp 1200w" sizes="(min-width:1024px) 24rem, 90vw" alt="The reception area at Chang Orthodontics" loading="lazy" decoding="async" class="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105">
+        <div class="absolute inset-0 bg-gradient-to-t from-navy-deep/95 via-navy-deep/45 to-transparent"></div>
+        <div class="absolute bottom-0 left-0 w-full p-8">
+          <h3 class="mb-2 text-2xl font-bold tracking-tight text-white">Adult Orthodontics</h3>
+          <p class="text-lg leading-relaxed text-white/90">Discreet aligners and complex bite correction for adults. Retreatment for teeth that shifted after earlier work.</p>
+          <span class="mt-4 inline-flex items-center gap-2 text-base font-semibold text-white">Learn more <i data-lucide="arrow-right" class="h-4 w-4"></i></span>
+        </div>
+      </a>
+      </div>
+
+      <div class="relative">
+      <div class="absolute -bottom-5 -right-5 -z-10 hidden h-32 w-32 rounded-br-[72px] bg-navy md:block"></div>
+      <a href="airway.html" class="group relative block aspect-[4/3] overflow-hidden rounded-[2rem]">
+        <img src="assets/web/chang-team-01-1200.webp" srcset="assets/web/chang-team-01-480.webp 480w, assets/web/chang-team-01-768.webp 768w, assets/web/chang-team-01-1200.webp 1200w" sizes="(min-width:1024px) 24rem, 90vw" alt="The Chang Orthodontics clinical team" loading="lazy" decoding="async" class="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105">
+        <div class="absolute inset-0 bg-gradient-to-t from-navy-deep/95 via-navy-deep/45 to-transparent"></div>
+        <div class="absolute bottom-0 left-0 w-full p-8">
+          <h3 class="mb-2 text-2xl font-bold tracking-tight text-white">Airway &amp; Expansion</h3>
+          <p class="text-lg leading-relaxed text-white/90">Airway assessment and palatal expansion. Dr. Chang publishes peer-reviewed research in this area.</p>
+          <span class="mt-4 inline-flex items-center gap-2 text-base font-semibold text-white">Learn more <i data-lucide="arrow-right" class="h-4 w-4"></i></span>
+        </div>
+      </a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ─────────────────────────────  LOCATION  ───────────────────────────── -->
+<section id="contact" class="relative overflow-hidden bg-navy-deep py-20 md:py-28">
+  <!-- Two flat corner shapes, the same family as the accents behind the photos above. -->
+  <div class="pointer-events-none absolute -right-16 -top-16 h-64 w-64 rounded-tr-[128px] bg-navy/45 md:h-80 md:w-80 md:rounded-tr-[160px]" aria-hidden="true"></div>
+  <div class="pointer-events-none absolute -bottom-20 -left-16 h-56 w-56 rounded-bl-[112px] bg-navy/35 md:h-72 md:w-72 md:rounded-bl-[144px]" aria-hidden="true"></div>
+
+  <div class="relative z-10 mx-auto max-w-7xl px-6">
+    <div class="grid items-center gap-14 lg:grid-cols-2 lg:gap-20">
+
+      <div data-reveal>
+        <h2 class="mb-5 text-4xl font-extrabold leading-tight tracking-tight text-white md:text-5xl">
+          Find us in <span class="text-navy-bright">San Carlos</span>
+        </h2>
+        <p class="mb-12 text-lg leading-relaxed text-white/80 md:text-xl">
+          On El Camino Real, right at the Belmont border.
+        </p>
+
+        <div class="space-y-8">
+          <div class="flex items-center gap-5">
+            <div class="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl border border-white/10 bg-white/10 text-navy-bright">
+              <svg viewBox="0 0 24 24" fill="currentColor" class="h-6 w-6 shrink-0" aria-hidden="true"><path d="M7.4 3H4.6C3.7 3 3 3.7 3 4.6 3 13.1 10.9 21 19.4 21c.9 0 1.6-.7 1.6-1.6v-2.8c0-.7-.5-1.3-1.2-1.5l-3.1-.8c-.6-.2-1.3.1-1.6.6l-1 1.7c-2.4-1.2-4.4-3.2-5.6-5.6l1.7-1c.5-.3.8-1 .6-1.6l-.8-3.1C8.7 3.5 8.1 3 7.4 3z"/><path opacity=".5" d="M14.6 3.2a.9.9 0 0 0-.2 1.8 5 5 0 0 1 4.1 4.1.9.9 0 0 0 1.8-.2 6.8 6.8 0 0 0-5.7-5.7z"/></svg>
+            </div>
+            <div>
+              <p class="text-sm font-medium uppercase tracking-wider text-white/50">Call us</p>
+              <a href="tel:+16505980888" class="text-xl font-bold text-white transition-colors hover:text-navy-bright">(650) 598-0888</a>
+            </div>
+          </div>
+
+          <div class="flex items-center gap-5">
+            <div class="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl border border-white/10 bg-white/10 text-navy-bright">
+              <i data-lucide="map-pin" class="h-6 w-6"></i>
+            </div>
+            <div>
+              <p class="text-sm font-medium uppercase tracking-wider text-white/50">Address</p>
+              <p class="text-xl font-bold text-white">10 El Camino Real, Ste. 201<br>San Carlos, CA 94070</p>
+            </div>
+          </div>
+
+          <div class="flex items-center gap-5">
+            <div class="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl border border-white/10 bg-white/10 text-navy-bright">
+              <i data-lucide="clock" class="h-6 w-6"></i>
+            </div>
+            <div>
+              <p class="text-sm font-medium uppercase tracking-wider text-white/50">Hours</p>
+              <p class="text-xl font-bold text-white">Monday to Friday, 9:00am to 5:00pm</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-12 flex flex-col gap-4 sm:flex-row">
+          <!-- Directions is the primary action in a locations section, so it takes the
+               solid treatment and comes first; booking drops to the ghost. -->
+          <a href="https://www.google.com/maps/dir/?api=1&amp;destination=10+El+Camino+Real+Ste+201+San+Carlos+CA+94070" target="_blank" rel="noopener" class="inline-flex items-center justify-center rounded-full bg-white px-8 py-4 text-lg font-semibold text-navy-deep transition-all hover:bg-navy-tint">Get directions</a>
+          <a href="appointment.html" class="inline-flex items-center justify-center rounded-full border-2 border-white/40 px-8 py-4 text-lg font-semibold text-white transition-all hover:border-white hover:bg-white/10">Free consultation</a>
+        </div>
+      </div>
+
+      <div class="relative" data-reveal>
+        <div class="absolute -right-6 -top-6 hidden h-32 w-32 rounded-tr-[72px] bg-navy-bright md:block" aria-hidden="true"></div>
+        <div class="absolute -bottom-6 -left-6 hidden h-32 w-32 rounded-bl-[72px] bg-navy md:block" aria-hidden="true"></div>
+        <div class="relative overflow-hidden rounded-[2.5rem] bg-white p-3 shadow-2xl">
+        <iframe
+          title="Map to Chang Orthodontics, 10 El Camino Real Ste. 201, San Carlos, CA 94070"
+          src="https://www.google.com/maps?q=Chang%20Orthodontics,%2010%20El%20Camino%20Real%20Ste%20201%20San%20Carlos%20CA%2094070&z=15&output=embed"
+          class="h-[420px] w-full rounded-[2rem] border-0 lg:h-[540px]"
+          loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ─────────────────────────────  FOOTER  ───────────────────────────── -->
+<footer class="bg-navy pt-20 pb-10">
+  <div class="mx-auto max-w-7xl px-6">
+    <!-- BUILD NOTE: social links omitted. No maintained profile URLs supplied.
+         Add only profiles the practice actually keeps up. -->
+    <!-- Mobile stack order per the kit: brand -> next-step links -> services -> legal.
+         order-* applies below md only; larger layouts are unchanged. -->
+    <div class="mb-16 grid grid-cols-1 gap-12 md:grid-cols-2 lg:grid-cols-4 lg:gap-8">
+
+      <div class="order-1 md:order-none">
+        <img src="assets/chang-logo.svg" alt="Chang Orthodontics" class="mb-6 h-10 w-auto object-contain brightness-0 invert">
+        <p class="mb-6 text-base leading-relaxed text-white/75">
+          Braces and Invisalign in San Carlos, California, from Dr. Michael Chang, DDS, a board-certified orthodontist and UCSF clinical professor.
+        </p>
+        <!-- NAP: address and hours were missing from this footer entirely. Strings match
+             the #contact section and the JSON-LD character for character. -->
+        <a href="tel:+16505980888" class="inline-flex min-h-[44px] items-center text-lg font-bold text-white hover:text-navy-tint">(650) 598-0888</a>
+        <address class="mt-3 not-italic text-base leading-relaxed text-white/75">
+          10 El Camino Real, Ste. 201<br>
+          San Carlos, CA 94070
+        </address>
+        <p class="mt-3 text-base leading-relaxed text-white/75">Monday to Friday, 9:00am to 5:00pm</p>
+      </div>
+
+      <div class="order-3 md:order-none">
+        <h3 class="mb-6 text-lg font-bold text-white">Treatments</h3>
+        <ul class="space-y-3 text-base text-white/75">
+          <li><a href="braces.html" class="transition-colors hover:text-white">Braces</a></li>
+          <li><a href="invisalign.html" class="transition-colors hover:text-white">Invisalign</a></li>
+          <li><a href="early-orthodontics.html" class="transition-colors hover:text-white">Early Orthodontics</a></li>
+          <li><a href="kids-teens.html" class="transition-colors hover:text-white">Kids &amp; Teens</a></li>
+          <li><a href="adults.html" class="transition-colors hover:text-white">Adult Orthodontics</a></li>
+          <li><a href="airway.html" class="transition-colors hover:text-white">Airway &amp; Expansion</a></li>
+          <li><a href="retainers.html" class="transition-colors hover:text-white">Retainers</a></li>
+        </ul>
+      </div>
+
+      <div class="order-4 md:order-none">
+        <h3 class="mb-6 text-lg font-bold text-white">The Practice</h3>
+        <ul class="space-y-3 text-base text-white/75">
+          <li><a href="about.html" class="transition-colors hover:text-white">Why Chang</a></li>
+          <li><a href="dr-michael-chang.html" class="transition-colors hover:text-white">Dr. Michael Chang</a></li>
+          <li><a href="team.html" class="transition-colors hover:text-white">Our Team</a></li>
+          <li><a href="technology.html" class="transition-colors hover:text-white">Technology</a></li>
+          <li><a href="reviews.html" class="transition-colors hover:text-white">Reviews</a></li>
+        </ul>
+      </div>
+
+      <div class="order-2 md:order-none">
+        <h3 class="mb-6 text-lg font-bold text-white">Resources</h3>
+        <ul class="space-y-3 text-base text-white/75">
+          <li><a href="new-patients.html" class="transition-colors hover:text-white">New Patients</a></li>
+          <li><a href="financing.html" class="transition-colors hover:text-white">Financing</a></li>
+          <li><a href="faq.html" class="transition-colors hover:text-white">FAQ</a></li>
+          <li><a href="emergencies.html" class="transition-colors hover:text-white">Emergencies</a></li>
+          <li><a href="#contact" class="transition-colors hover:text-white">Our Address</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="flex flex-col items-center justify-between gap-4 border-t border-white/20 pt-8 md:flex-row">
+      <p class="text-sm text-white/70">© 2026 Chang Orthodontics. All rights reserved.</p>
+      <div class="flex flex-wrap gap-x-6 text-sm text-white/70">
+        <a href="privacy.html" class="inline-flex min-h-[44px] items-center hover:text-white">Privacy Policy</a>
+        <a href="terms.html" class="inline-flex min-h-[44px] items-center hover:text-white">Terms</a>
+        <a href="accessibility.html" class="inline-flex min-h-[44px] items-center hover:text-white">Web Accessibility Statement</a>
+        <a href="hipaa.html" class="inline-flex min-h-[44px] items-center hover:text-white">HIPAA Notice</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ─────────────────────────────  MOBILE ACTION BAR  ───────────────────────────── -->
+<!-- Book is the widest, centre segment (kit mobile spec); grid-cols-3 gave it an equal
+     third. lg:hidden, not md:hidden — the desktop nav does not appear until lg. -->
+<div class="fixed bottom-0 left-0 z-50 grid w-full grid-cols-[1fr_1.5fr_1fr] border-t border-white/15 bg-navy-deep lg:hidden">
+  <a href="tel:+16505980888" class="flex flex-col items-center gap-1 py-3 text-white">
+    <svg viewBox="0 0 24 24" fill="currentColor" class="h-5 w-5 shrink-0" aria-hidden="true"><path d="M7.4 3H4.6C3.7 3 3 3.7 3 4.6 3 13.1 10.9 21 19.4 21c.9 0 1.6-.7 1.6-1.6v-2.8c0-.7-.5-1.3-1.2-1.5l-3.1-.8c-.6-.2-1.3.1-1.6.6l-1 1.7c-2.4-1.2-4.4-3.2-5.6-5.6l1.7-1c.5-.3.8-1 .6-1.6l-.8-3.1C8.7 3.5 8.1 3 7.4 3z"/><path opacity=".5" d="M14.6 3.2a.9.9 0 0 0-.2 1.8 5 5 0 0 1 4.1 4.1.9.9 0 0 0 1.8-.2 6.8 6.8 0 0 0-5.7-5.7z"/></svg><span class="text-xs font-semibold">Call</span>
+  </a>
+  <a href="appointment.html" class="flex flex-col items-center gap-1 border-x border-white/15 py-3 text-white">
+    <i data-lucide="calendar-check" class="h-5 w-5"></i><span class="text-xs font-semibold">Book</span>
+  </a>
+  <a href="https://www.google.com/maps/dir/?api=1&destination=10+El+Camino+Real+Ste+201+San+Carlos+CA+94070" target="_blank" rel="noopener" class="flex flex-col items-center gap-1 py-3 text-white">
+    <i data-lucide="navigation" class="h-5 w-5"></i><span class="text-xs font-semibold">Directions</span>
+  </a>
+</div>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Dentist",
+  "name": "Chang Orthodontics",
+  "url": "https://changortho.com/",
+  "telephone": "+1-650-598-0888",
+  "medicalSpecialty": "Orthodontic",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "10 El Camino Real, Ste. 201",
+    "addressLocality": "San Carlos",
+    "addressRegion": "CA",
+    "postalCode": "94070",
+    "addressCountry": "US"
+  },
+  "openingHoursSpecification": [{
+    "@type": "OpeningHoursSpecification",
+    "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
+    "opens": "09:00",
+    "closes": "17:00"
+  }],
+  "employee": {
+    "@type": "Person",
+    "name": "Dr. Michael Chang, DDS",
+    "jobTitle": "Orthodontist"
+  }
+}
+</script>
+
+<script>
+  lucide.createIcons();
+
+  // mobile menu
+  (function () {
+    var btn = document.getElementById('menuBtn');
+    var menu = document.getElementById('mobileMenu');
+    if (!btn || !menu) return;
+    btn.addEventListener('click', function () {
+      var open = menu.classList.toggle('hidden') === false;
+      btn.setAttribute('aria-expanded', String(open));
+    });
+  })();
+
+  // scroll reveals — fail open if IntersectionObserver is missing
+  (function () {
+    if (!('IntersectionObserver' in window)) return;
+    document.documentElement.classList.add('js');
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) { e.target.classList.add('is-in'); io.unobserve(e.target); }
+      });
+    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.06 });
+    document.querySelectorAll('[data-reveal]').forEach(function (el) { io.observe(el); });
+    // anything already on screen at load shows immediately
+    setTimeout(function () {
+      document.querySelectorAll('[data-reveal]').forEach(function (el) {
+        if (el.getBoundingClientRect().top < window.innerHeight) el.classList.add('is-in');
+      });
+    }, 60);
+  })();
+</script>
+
+</body>
+</html>
