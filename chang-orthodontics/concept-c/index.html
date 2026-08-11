@@ -61,8 +61,13 @@
        near the fold no matter how tall the hero gets on a given screen. */
     height: min(100%, 86vh);
     pointer-events: none;
-    background-image: linear-gradient(to right, rgba(0, 93, 170, .10) 1px, transparent 1px);
-    background-size: 12.5rem 100%;
+    background-image:
+      linear-gradient(to right, rgba(0, 93, 170, .10) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(0, 93, 170, .07) 1px, transparent 1px);
+    /* Wide 12.5rem columns with the horizontals at half that, so it reads as a drawn
+       measure rather than uniform graph paper. Horizontals are lighter than the
+       verticals on purpose — the columns still lead. */
+    background-size: 12.5rem 6.25rem;
     background-position: center top;
     -webkit-mask-image:
       linear-gradient(to bottom, #000 0%, #000 46%, rgba(0,0,0,.35) 78%, transparent 100%),
@@ -558,10 +563,10 @@
       <div class="absolute -left-5 -top-5 -z-10 hidden h-32 w-32 rounded-tl-[72px] bg-navy md:block"></div>
       <a href="braces.html" class="group relative block aspect-[4/3] overflow-hidden rounded-[2rem]">
         <img src="assets/web/chang-patient-01-1200.webp" width="1200" height="1600" srcset="assets/web/chang-patient-01-480.webp 480w, assets/web/chang-patient-01-768.webp 768w, assets/web/chang-patient-01-1200.webp 1200w" sizes="(min-width:1024px) 24rem, 90vw" alt="A Chang Orthodontics patient at the practice in San Carlos" loading="lazy" decoding="async" class="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105">
-        <div class="absolute inset-0 bg-gradient-to-t from-navy-deep/95 via-navy-deep/45 to-transparent"></div>
+        <div class="absolute inset-0 bg-gradient-to-t from-navy-deep via-navy-deep/80 to-navy-deep/10"></div>
         <div class="absolute bottom-0 left-0 w-full p-8">
           <h3 class="mb-2 text-2xl font-bold tracking-tight text-white">Braces</h3>
-          <p class="text-lg leading-relaxed text-white/90">For kids, teens, and adults. Still the most predictable way to correct a complex bite.</p>
+          <p class="text-lg leading-relaxed text-white">For kids, teens, and adults. Still the most predictable way to correct a complex bite.</p>
           <span class="mt-4 inline-flex items-center gap-2 text-base font-semibold text-white">Learn more <i data-lucide="arrow-right" class="h-4 w-4"></i></span>
         </div>
       </a>
@@ -570,10 +575,10 @@
       <div class="relative">
       <a href="invisalign.html" class="group relative block aspect-[4/3] overflow-hidden rounded-[2rem]">
         <img src="assets/web/chang-doctor-scanner-01-1200.webp" width="1200" height="1804" srcset="assets/web/chang-doctor-scanner-01-480.webp 480w, assets/web/chang-doctor-scanner-01-768.webp 768w, assets/web/chang-doctor-scanner-01-1200.webp 1200w" sizes="(min-width:1024px) 24rem, 90vw" alt="Invisalign at Chang Orthodontics" loading="lazy" decoding="async" class="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105">
-        <div class="absolute inset-0 bg-gradient-to-t from-navy-deep/95 via-navy-deep/45 to-transparent"></div>
+        <div class="absolute inset-0 bg-gradient-to-t from-navy-deep via-navy-deep/80 to-navy-deep/10"></div>
         <div class="absolute bottom-0 left-0 w-full p-8">
           <h3 class="mb-2 text-2xl font-bold tracking-tight text-white">Invisalign®</h3>
-          <p class="text-lg leading-relaxed text-white/90">Clear aligners from a Platinum Plus Invisalign provider. The tier is earned on completed cases, not sign-ups.</p>
+          <p class="text-lg leading-relaxed text-white">Clear aligners from a Platinum Plus Invisalign provider. The tier is earned on completed cases, not sign-ups.</p>
           <span class="mt-4 inline-flex items-center gap-2 text-base font-semibold text-white">Learn more <i data-lucide="arrow-right" class="h-4 w-4"></i></span>
         </div>
       </a>
@@ -583,10 +588,10 @@
       <div class="absolute -right-5 -top-5 -z-10 hidden h-32 w-32 rounded-tr-[72px] bg-navy-bright lg:block"></div>
       <a href="early-orthodontics.html" class="group relative block aspect-[4/3] overflow-hidden rounded-[2rem]">
         <img src="assets/web/chang-office-consult-01-1200.webp" width="1200" height="900" srcset="assets/web/chang-office-consult-01-480.webp 480w, assets/web/chang-office-consult-01-768.webp 768w, assets/web/chang-office-consult-01-1200.webp 1200w" sizes="(min-width:1024px) 24rem, 90vw" alt="A consultation room at Chang Orthodontics" loading="lazy" decoding="async" class="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105">
-        <div class="absolute inset-0 bg-gradient-to-t from-navy-deep/95 via-navy-deep/45 to-transparent"></div>
+        <div class="absolute inset-0 bg-gradient-to-t from-navy-deep via-navy-deep/80 to-navy-deep/10"></div>
         <div class="absolute bottom-0 left-0 w-full p-8">
           <h3 class="mb-2 text-2xl font-bold tracking-tight text-white">Early Orthodontics</h3>
-          <p class="text-lg leading-relaxed text-white/90">Growth checks and early treatment, starting around age seven. Catching a problem early can shorten the second phase.</p>
+          <p class="text-lg leading-relaxed text-white">Growth checks and early treatment, starting around age seven. Catching a problem early can shorten the second phase.</p>
           <span class="mt-4 inline-flex items-center gap-2 text-base font-semibold text-white">Learn more <i data-lucide="arrow-right" class="h-4 w-4"></i></span>
         </div>
       </a>
@@ -596,10 +601,10 @@
       <div class="absolute -bottom-5 -left-5 -z-10 hidden h-32 w-32 rounded-bl-[72px] bg-navy-deep lg:block"></div>
       <a href="kids-teens.html" class="group relative block aspect-[4/3] overflow-hidden rounded-[2rem]">
         <img src="assets/web/chang-team-full-01-1200.webp" width="1200" height="1600" srcset="assets/web/chang-team-full-01-480.webp 480w, assets/web/chang-team-full-01-768.webp 768w, assets/web/chang-team-full-01-1200.webp 1200w" sizes="(min-width:1024px) 24rem, 90vw" alt="The Chang Orthodontics team, who treat kids and teens" loading="lazy" decoding="async" class="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105">
-        <div class="absolute inset-0 bg-gradient-to-t from-navy-deep/95 via-navy-deep/45 to-transparent"></div>
+        <div class="absolute inset-0 bg-gradient-to-t from-navy-deep via-navy-deep/80 to-navy-deep/10"></div>
         <div class="absolute bottom-0 left-0 w-full p-8">
           <h3 class="mb-2 text-2xl font-bold tracking-tight text-white">Kids &amp; Teens</h3>
-          <p class="text-lg leading-relaxed text-white/90">The bulk of what we do, scheduled around school and sports. Treatment is timed to each child's growth.</p>
+          <p class="text-lg leading-relaxed text-white">The bulk of what we do, scheduled around school and sports. Treatment is timed to each child's growth.</p>
           <span class="mt-4 inline-flex items-center gap-2 text-base font-semibold text-white">Learn more <i data-lucide="arrow-right" class="h-4 w-4"></i></span>
         </div>
       </a>
@@ -608,10 +613,10 @@
       <div class="relative">
       <a href="adults.html" class="group relative block aspect-[4/3] overflow-hidden rounded-[2rem]">
         <img src="assets/web/chang-office-reception-02-1200.webp" width="1200" height="1600" srcset="assets/web/chang-office-reception-02-480.webp 480w, assets/web/chang-office-reception-02-768.webp 768w, assets/web/chang-office-reception-02-1200.webp 1200w" sizes="(min-width:1024px) 24rem, 90vw" alt="The reception area at Chang Orthodontics" loading="lazy" decoding="async" class="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105">
-        <div class="absolute inset-0 bg-gradient-to-t from-navy-deep/95 via-navy-deep/45 to-transparent"></div>
+        <div class="absolute inset-0 bg-gradient-to-t from-navy-deep via-navy-deep/80 to-navy-deep/10"></div>
         <div class="absolute bottom-0 left-0 w-full p-8">
           <h3 class="mb-2 text-2xl font-bold tracking-tight text-white">Adult Orthodontics</h3>
-          <p class="text-lg leading-relaxed text-white/90">Discreet aligners and complex bite correction for adults. Retreatment for teeth that shifted after earlier work.</p>
+          <p class="text-lg leading-relaxed text-white">Discreet aligners and complex bite correction for adults. Retreatment for teeth that shifted after earlier work.</p>
           <span class="mt-4 inline-flex items-center gap-2 text-base font-semibold text-white">Learn more <i data-lucide="arrow-right" class="h-4 w-4"></i></span>
         </div>
       </a>
@@ -621,10 +626,10 @@
       <div class="absolute -bottom-5 -right-5 -z-10 hidden h-32 w-32 rounded-br-[72px] bg-navy md:block"></div>
       <a href="airway.html" class="group relative block aspect-[4/3] overflow-hidden rounded-[2rem]">
         <img src="assets/web/chang-team-01-1200.webp" width="1200" height="1600" srcset="assets/web/chang-team-01-480.webp 480w, assets/web/chang-team-01-768.webp 768w, assets/web/chang-team-01-1200.webp 1200w" sizes="(min-width:1024px) 24rem, 90vw" alt="The Chang Orthodontics clinical team" loading="lazy" decoding="async" class="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105">
-        <div class="absolute inset-0 bg-gradient-to-t from-navy-deep/95 via-navy-deep/45 to-transparent"></div>
+        <div class="absolute inset-0 bg-gradient-to-t from-navy-deep via-navy-deep/80 to-navy-deep/10"></div>
         <div class="absolute bottom-0 left-0 w-full p-8">
           <h3 class="mb-2 text-2xl font-bold tracking-tight text-white">Airway &amp; Expansion</h3>
-          <p class="text-lg leading-relaxed text-white/90">Airway assessment and palatal expansion. Dr. Chang publishes peer-reviewed research in this area.</p>
+          <p class="text-lg leading-relaxed text-white">Airway assessment and palatal expansion. Dr. Chang publishes peer-reviewed research in this area.</p>
           <span class="mt-4 inline-flex items-center gap-2 text-base font-semibold text-white">Learn more <i data-lucide="arrow-right" class="h-4 w-4"></i></span>
         </div>
       </a>
