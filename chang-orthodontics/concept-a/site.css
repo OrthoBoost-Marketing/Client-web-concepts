@@ -22,7 +22,7 @@ address{ font-style:normal; }
   --c-line-2:rgba(11,28,60,.14);
   --c-mute:#74747c; --c-ink:#1b1c1c; --c-ink-2:#434653;
   --display:'Archivo Black','Hanken Grotesk',sans-serif;
-  --container:1320px;
+  --container:1200px;
   --bar-h:64px; /* mobile sticky bottom bar */
 
   /* semantic colors: needed by the forms on appointment.html and contact.html */
@@ -91,7 +91,7 @@ a:focus-visible,button:focus-visible,summary:focus-visible,input:focus-visible{
 /* ---- buttons ---- */
 .btn{ position:relative; display:inline-flex; align-items:center; justify-content:center; gap:.55rem;
   border-radius:999px; font-family:'Hanken Grotesk'; font-size:12px; font-weight:800;
-  text-transform:uppercase; letter-spacing:.1em; padding:1rem 1.75rem; min-height:44px;
+  letter-spacing:.01em; padding:1rem 1.75rem; min-height:44px;
   transition:background-color .2s, color .2s, border-color .2s, transform .2s; }
 .btn-primary{ background:var(--navy); color:#fff; }
 .btn-primary:hover{ background:var(--navy-bright); }
@@ -119,8 +119,19 @@ a:focus-visible,button:focus-visible,summary:focus-visible,input:focus-visible{
 /* Capped, not just flex:1. Unbounded, the rule ran 1100px next to a 59px word in
    the full-width sections and stopped reading as a label device at all: it read
    as a section divider. 320px keeps the same proportion whether the eyebrow sits
-   in a 560px column or the full 1320px container. */
+   in a 560px column or the full 1200px container. */
 .eyebrow::after{ content:""; flex:1; max-width:320px; height:1px; background:var(--c-line-2); }
+
+/* Reviews: a 3-up grid of marked placeholders. Cardinality is 3, 6 or 9 even while blocked. */
+.review-grid{ display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:1.25rem; margin-top:3rem; }
+@media (max-width:900px){ .review-grid{ grid-template-columns:1fr; } }
+.rp-attr{ margin-top:1.25rem; padding-top:1rem; border-top:1px solid var(--c-line-2);
+  font-size:13px; color:var(--c-mute); }
+
+/* Tier 4: every text link and card link clears 44px. The section links measured 21px and the
+   service-card links 29px, both well under the floor. */
+.tlink,.svc-more{ display:inline-flex; align-items:center; min-height:44px; }
+.legal a,.f-legal a,.footer-legal a{ display:inline-flex; align-items:center; min-height:44px; }
 
 .h2{ font-size:clamp(28px,5vw,46px); line-height:1.04; letter-spacing:-.025em; font-weight:800; color:var(--c-ink); }
 .lede{ font-size:16px; line-height:1.65; color:var(--c-ink-2); }
@@ -197,7 +208,7 @@ a:focus-visible,button:focus-visible,summary:focus-visible,input:focus-visible{
   transition:transform .25s, box-shadow .3s; white-space:nowrap; }
 @media (min-width:640px){ .pill-cta{ display:inline-flex; } }
 .pill-cta:hover{ transform:translateY(-1px); box-shadow:0 1px 0 rgba(255,255,255,.9) inset, 0 8px 20px rgba(0,93,170,.22); }
-.pill-cta .cta-text{ font-size:11px; font-weight:800; text-transform:uppercase; letter-spacing:.1em; color:var(--c-ink); }
+.pill-cta .cta-text{ font-size:12px; font-weight:800; letter-spacing:.01em; color:var(--c-ink); }
 .pill-cta .cta-dot{ width:36px; height:36px; border-radius:50%; background:var(--navy); color:#fff;
   display:grid; place-items:center; flex:0 0 auto;
   box-shadow:inset 0 1px 0 rgba(255,255,255,.22), inset 0 -3px 5px rgba(0,0,0,.32); }
@@ -225,7 +236,7 @@ a:focus-visible,button:focus-visible,summary:focus-visible,input:focus-visible{
 @media (min-width:1100px){ #mobile-menu{ display:none; } }
 .m-group{ border-bottom:1px solid var(--c-line-2); }
 .m-group > summary{ display:flex; align-items:center; justify-content:space-between; min-height:46px;
-  padding:.75rem; font-size:13px; font-weight:700; text-transform:uppercase; letter-spacing:.08em;
+  padding:.75rem; font-size:13px; font-weight:700; letter-spacing:.01em;
   color:var(--c-ink); cursor:pointer; list-style:none; }
 .m-group > summary::-webkit-details-marker{ display:none; }
 .m-group > summary .caret{ font-size:18px; color:var(--navy); transition:transform .25s; }
@@ -436,8 +447,55 @@ html.js [data-reveal]{ opacity:0; transition:opacity .7s cubic-bezier(.16,1,.3,1
 [data-reveal="scale"]{ transform:scale(.95); }
 html.js [data-reveal].in{ opacity:1; transform:none; }
 
+/* Horizontal reveals overflow a phone. translateX(40px) on an un-revealed element pushed
+   documentElement.scrollWidth to 410 at a 390 viewport, and it only settled back to 390 once
+   the observer fired, which is why it was previously recorded as clean. Below the tablet
+   breakpoint the X-axis reveals become the Y-axis one, so nothing ever sits outside the page. */
+@media (max-width:820px){
+  [data-reveal="left"],[data-reveal="right"]{ transform:translateY(30px); }
+}
+
 @media (prefers-reduced-motion:reduce){
   html{ scroll-behavior:auto; }
   html.js [data-reveal],[data-reveal]{ transition:none; opacity:1 !important; transform:none !important; }
   .btn,.pill-nav,#mobile-menu,#mobile-bar,.svc-card,.nav-menu{ transition:none; }
 }
+
+
+/* ==========================================================================
+   TIER 4 · tap targets
+   Every link a thumb can reach clears 44px. Bare anchors inside headings, list
+   items, the footer NAP and the location values were rendering at 19 to 29px.
+   Scoped to <=1099px so desktop typography is untouched.
+   ========================================================================== */
+@media (max-width:1099px){
+  .svc-card h3 a,
+  .loc-val a,
+  .footer a,
+  footer a,
+  .foot-nap a,
+  li > a{
+    display:inline-flex; align-items:center; min-height:44px;
+  }
+  nav a{ display:inline-flex; align-items:center; min-height:44px; }
+  /* .foot-legal a sets min-height:24px earlier in this file; same specificity, so this
+     later rule wins. Desktop keeps the tighter 24px legal bar. */
+  .foot-legal a{ min-height:44px; }
+  /* The pill logo is a 32px-tall link; the mark stays its size, the hit area grows. */
+  .pill-logo{ min-height:44px; align-items:center; }
+}
+
+
+/* ==========================================================================
+   MONEY STORY  (parity with concept B, in this concept's ledger idiom)
+   ========================================================================== */
+.money-spec{ margin-top:4rem; padding-top:2.5rem; border-top:1px solid var(--c-line-2); }
+.money-title{ font-family:var(--display); font-weight:400; font-size:clamp(26px,2.6vw,34px);
+  line-height:1.1; letter-spacing:-.02em; color:var(--c-ink); margin:1.25rem 0 0; }
+.money-list{ margin-top:2rem; display:grid; grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:0 3rem; }
+@media (max-width:820px){ .money-list{ grid-template-columns:1fr; } }
+.money-list > div{ display:flex; align-items:baseline; justify-content:space-between; gap:1.5rem;
+  padding:.9rem 0; border-bottom:1px solid var(--c-line-2); }
+.money-list dt{ font-size:16px; color:var(--c-ink-2); }
+.money-list dd{ margin:0; font-size:16px; font-weight:700; color:var(--c-ink); text-align:right; }

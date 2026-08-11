@@ -5,8 +5,17 @@ Standard: the Gate 4 tier table in `practice-site-primitives/WORKFLOW.md`
 Mechanical half: `scripts/audit-site.mjs --dir concept-a --brief ../CLIENT-BRIEF.md`
 Browser half: Playwright/Chromium at 1440x1000 and 390x844
 
-> Concept A is the 2026-08-10 "clinical instrument" build. It was not authored in this session and
-> has not been modified by this audit. Findings are recorded as found.
+> Concept A is the 2026-08-10 "clinical instrument" build. This record captures the audit **as
+> first run**, then the fixes applied on 2026-08-11 at Jules's instruction. The re-run result is at
+> the top; the original findings are kept below so the reasoning survives.
+
+## Re-run result, 2026-08-11 after fixes
+
+**Tiers 1 to 4 clear. Gate 4 passes.** The only remaining finding is the deliberate preview
+`noindex`, which Phase 3 names as correct rather than a defect. `scrollWidth` is 390 both before and
+after scrolling. Zero tap targets under 44px. Authority strip at 4 items, reviews a 3-card grid,
+container 1200px, hero is the doctor with a patient, CTAs sentence case, and content parity with
+concept B verified by script: **no mismatched facts**. Fix detail is in `DESIGN.md`.
 
 ---
 

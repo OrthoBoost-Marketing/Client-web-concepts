@@ -154,8 +154,23 @@
           </a>
         </div>
 
-        <!-- PROOF BAND (spec 2A) lives here in the hero: 3 verified points, icon + bold line + sub-line. -->
-        <div data-reveal class="mt-10 grid grid-cols-1 divide-y divide-black/10 overflow-hidden rounded-2xl border border-black/5 bg-white/70 text-left shadow-chip backdrop-blur sm:grid-cols-3 sm:divide-x sm:divide-y-0">
+        <!-- PROOF BAND (spec 2A) lives here in the hero: 4 verified points, icon + bold line + sub-line.
+             Same four USPs as concept-a and concept-c: credentials first, volume alongside. -->
+        <div data-reveal class="mt-10 grid grid-cols-1 divide-y divide-black/10 overflow-hidden rounded-2xl border border-black/5 bg-white/70 text-left shadow-chip backdrop-blur sm:grid-cols-2 sm:divide-x sm:divide-y-0 lg:grid-cols-4">
+          <div class="flex items-center gap-3 px-5 py-4">
+            <iconify-icon icon="solar:medal-ribbon-star-linear" class="shrink-0 text-2xl text-[#005DAA]" aria-hidden="true"></iconify-icon>
+            <div class="leading-none">
+              <p class="whitespace-nowrap text-xl font-bold tracking-tight text-[#1b1c1c]">Board certified</p>
+              <p class="mt-1.5 whitespace-nowrap text-sm text-black/55">American Board of Orthodontics</p>
+            </div>
+          </div>
+          <div class="flex items-center gap-3 px-5 py-4 sm:border-t-0">
+            <iconify-icon icon="solar:square-academic-cap-linear" class="shrink-0 text-2xl text-[#005DAA]" aria-hidden="true"></iconify-icon>
+            <div class="leading-none">
+              <p class="whitespace-nowrap text-xl font-bold tracking-tight text-[#1b1c1c]">UCSF faculty</p>
+              <p class="mt-1.5 whitespace-nowrap text-sm text-black/55">clinical professor since 2018</p>
+            </div>
+          </div>
           <div class="flex items-center gap-3 px-5 py-4">
             <iconify-icon icon="solar:users-group-rounded-linear" class="shrink-0 text-2xl text-[#005DAA]" aria-hidden="true"></iconify-icon>
             <div class="leading-none">
@@ -164,17 +179,10 @@
             </div>
           </div>
           <div class="flex items-center gap-3 px-5 py-4">
-            <iconify-icon icon="solar:calendar-mark-linear" class="shrink-0 text-2xl text-[#005DAA]" aria-hidden="true"></iconify-icon>
+            <iconify-icon icon="solar:star-linear" class="shrink-0 text-2xl text-[#005DAA]" aria-hidden="true"></iconify-icon>
             <div class="leading-none">
-              <p class="whitespace-nowrap text-xl font-bold tracking-tight text-[#1b1c1c]">15+ years</p>
-              <p class="mt-1.5 whitespace-nowrap text-sm text-black/55">in practice</p>
-            </div>
-          </div>
-          <div class="flex items-center gap-3 px-5 py-4">
-            <iconify-icon icon="solar:square-academic-cap-linear" class="shrink-0 text-2xl text-[#005DAA]" aria-hidden="true"></iconify-icon>
-            <div class="leading-none">
-              <p class="whitespace-nowrap text-xl font-bold tracking-tight text-[#1b1c1c]">UCSF</p>
-              <p class="mt-1.5 whitespace-nowrap text-sm text-black/55">clinical professor</p>
+              <p class="whitespace-nowrap text-xl font-bold tracking-tight text-[#1b1c1c]">100</p>
+              <p class="mt-1.5 whitespace-nowrap text-sm text-black/55">five-star reviews</p>
             </div>
           </div>
         </div>
@@ -415,6 +423,29 @@
             <span class="mt-5 inline-flex items-center gap-2 text-base font-semibold text-[#005DAA]">Learn more <iconify-icon icon="solar:alt-arrow-right-linear" class="text-base transition group-hover:translate-x-1" aria-hidden="true"></iconify-icon></span>
           </div>
         </a>
+      </div>
+
+      <!-- Money story: premium fork, no dollar figures. Parity item with concept A. -->
+      <div data-reveal class="mt-10 grid gap-5 rounded-[2rem] bg-[#DCEAF2] p-5 lg:grid-cols-[1fr_0.8fr] lg:p-8">
+        <div class="overflow-hidden rounded-3xl">
+          <img src="assets/web/chang-office-reception-01-1200.webp"
+               srcset="assets/web/chang-office-reception-01-768.webp 768w, assets/web/chang-office-reception-01-1200.webp 1200w"
+               sizes="(min-width:1024px) 55vw, 92vw" width="1200" height="900" loading="lazy" decoding="async"
+               alt="The front desk at Chang Orthodontics, where treatment plans are discussed"
+               class="h-80 w-full object-cover transition duration-700 hover:scale-105 lg:h-full">
+        </div>
+        <div class="flex flex-col justify-between rounded-3xl bg-white p-6 shadow-chip">
+          <div>
+            <p class="text-xs font-semibold uppercase tracking-[0.18em] text-[#005DAA]">Paying for treatment</p>
+            <h3 class="mt-4 text-4xl font-light leading-none tracking-tight font-display">One quoted fee, written down</h3>
+            <p class="copy mt-4 text-[#434653]">The consultation is <span class="hl font-semibold">free</span>. If you go ahead, the fee is quoted once and put in writing. In-house payment plans are available, and insurance is coordinated for you.</p>
+          </div>
+          <div class="mt-8 flex flex-wrap gap-2">
+            <span class="rounded-full bg-[#EAF2F8] px-4 py-2 text-base font-medium text-black/65">In-house payment plans</span>
+            <span class="rounded-full bg-[#EAF2F8] px-4 py-2 text-base font-medium text-black/65">Insurance coordinated</span>
+            <span class="rounded-full bg-[#EAF2F8] px-4 py-2 text-base font-medium text-black/65">Free consultation</span>
+          </div>
+        </div>
       </div>
     </div>
   </section>

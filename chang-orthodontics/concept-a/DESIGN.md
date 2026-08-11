@@ -34,7 +34,7 @@ Contrast, measured rather than estimated: navy on white 6.67:1, `--c-ink` on whi
 
 This is deliberate and it is the one thing not to undo. The previous version put an 18px tick *in front* of 11px uppercase accent-coloured text, which is the most generic section label on the web, and it was worst on the one-word labels where the tick sat next to nothing. Two rules follow from that:
 
-- **The rule trails and is capped.** Uncapped it stretched past 1100px next to a 59px word in the full-width sections and stopped reading as a label at all, it read as a section divider. 320px holds the same proportion in a 560px column and in the full 1320px container.
+- **The rule trails and is capped.** Uncapped it stretched past 1100px next to a 59px word in the full-width sections and stopped reading as a label at all, it read as a section divider. 320px holds the same proportion in a 560px column and in the full 1200px container.
 - **The label is ink, not accent.** An accent-coloured eyebrow is the other half of the same tell.
 
 The authority label is the same family at the same size, centred, with no rule: flanking rules on a centred label are their own cliche.
@@ -47,7 +47,7 @@ One documented exception: `.svc-card h3` is 22px, deliberately below the H3 scal
 
 ## Layout
 
-- Container `max-width: 1320px`, padding `1.25rem` mobile / `4rem` at `md`. **Content is contained; bands are full-bleed.** Verify at 2560px.
+- Container `max-width: 1200px` (was 1320px; Tier 5 names 1200 explicitly), padding `1.25rem` mobile / `4rem` at `md`. **Content is contained; bands are full-bleed.** Verify at 2560px.
 - Section rhythm: `7rem` top and bottom (`py-section-padding`), `4rem` on mobile.
 - Radius: pills `999px` for buttons and nav, `22px` cards, `14px` photos.
 - Photos carry a `1px` hairline border and a hard offset shadow (`5px 6px 0 #1b1c1c`) in the hero, softer elsewhere. This is the signature of the original Concept A shell; keep it.
@@ -129,7 +129,7 @@ Ratios: `0.75` → 1200×1600 · `1.3333` → 1200×900 · `0.6654` → 1200×18
 - **Fonts load from the Google Fonts CDN and are render-blocking.** `display=swap` and `preconnect` are set, so there is no invisible-text flash, but there is a swap reflow. Self-host both families before launch, see the static-site-deploy skill.
 - **No OG image.** Needs a 1200x630 asset.
 - **No favicon set.** Currently reusing the logo SVG; needs a 32px ICO and a 180px apple-touch-icon.
-- **Below 360px the page still overflows by about 18px.** At 320px the pill nav, the trust cells, and the sticky bar each exceed the viewport. 390px is the gate this design is measured against and it is clean there, verified. If a 320px floor is ever required, the fix is in the trust-cell padding and the nav pill padding, not in another `minmax` patch.
+- **390px is clean, and it is now actually verified.** It was not before: this file previously claimed 390 was "clean there, verified" while `documentElement.scrollWidth` measured **410** on load. The cause was `[data-reveal="left"/"right"]`, which applies `translateX(+/-40px)` to elements awaiting reveal, so a cold visitor got a horizontally scrollable page until the observer fired and it settled to 390. Whoever verified it had already scrolled. Fixed 2026-08-11 by collapsing the X-axis reveals to the Y-axis one below 820px, and re-measured at 390 both before and after scrolling. At 320px the pill nav, trust cells and sticky bar still exceed the viewport. If a 320px floor is ever required, the fix is in the trust-cell padding and the nav pill padding, not in another `minmax` patch.
 
 ## Layout traps already paid for
 
@@ -141,3 +141,27 @@ Do not undo these, and repeat them on every new page:
 - **Hiding is `visibility: hidden`, not `opacity: 0`.** A drawer at `opacity: 0` still holds 22 links and summaries in the tab order. Step visibility at the end of the fade, the way `.nav-menu` already does, so the animation survives.
 
 Both were live defects on this homepage, found by the Gate 4 audit and fixed on 2026-08-10. Verify them on any page that touches the header: closed drawer, wrapper height should be 64px, and `document.elementFromPoint()` at a hero CTA should return the anchor.
+
+
+## Corrections applied 2026-08-11
+
+Audited against the Gate 4 tier table in `practice-site-primitives/WORKFLOW.md`. What changed:
+
+- **Tier 4 · the 390px overflow is fixed.** See the note above; the X-axis reveals were the cause.
+- **Tier 4 · tap targets.** Section links were 21px, service-card title links 29px, footer legal
+  links 24px and the pill logo 32px. All now clear 44px, scoped to `<=1099px` so desktop typography
+  is untouched. Note `.foot-legal a` sets `min-height:24px` earlier in `site.css`, so the override
+  has to come later in the file to win.
+- **Tier 2 · authority strip** went from 3 items to **4** (the rule is 4 to 7). The fourth is the
+  published peer-reviewed airway research, which was already verified and simply unused.
+- **Tier 2 · reviews** went from one pending panel to a **3-card** grid of marked placeholders, plus
+  a "read more reviews" link. Cardinality is 3, 6 or 9 even while the quotes are blocked.
+- **Tier 5 · container** 1320px to **1200px**.
+- **Tier 3 · NAP** the map iframe title said "Suite 201" where everything else says "Ste. 201".
+- **Standing rule · hero** swapped from `chang-doctor-scanner-01` (doctor alone) to
+  `chang-community-01` (doctor with a patient).
+- **Standing rule · CTA case** dropped `text-transform:uppercase` from the button and pill styles.
+  ALL CAPS belongs to Dr. Joe's persona only.
+- **Content parity** a money-story ledger was added (free consultation, one quoted fee in writing,
+  in-house payment plans, insurance coordinated) so A carries the same 21 information items as B.
+  See `../CONTENT-SPEC.md`.
