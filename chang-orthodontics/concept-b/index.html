@@ -8,6 +8,7 @@
 <!-- BUILD NOTE: noindex is for the public GitHub Pages preview only, so it cannot compete
      with the client's live site at the canonical URL below. Remove at launch on the real domain. -->
 <meta name="robots" content="noindex">
+<link rel="icon" href="assets/chang-logo.svg" type="image/svg+xml">
 <link rel="canonical" href="https://changortho.com/">
 
 <meta property="og:type" content="website">
@@ -24,6 +25,11 @@
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="preload" as="image" href="assets/web/chang-community-01-1200.webp" imagesrcset="assets/web/chang-community-01-480.webp 480w, assets/web/chang-community-01-768.webp 768w, assets/web/chang-community-01-1200.webp 1200w" imagesizes="(min-width:1024px) 46vw, 92vw" fetchpriority="high">
 <style>
+  /* Touch targets. WCAG 2.5.8 (AA) floor is 24x24; the kit asks 44px for nav links.
+     Applied to nav and footer links only, so body prose is untouched. */
+  nav a, nav button, footer a { min-height: 24px; }
+  .nav-dropdown a, #mobileMenu a, #mobile-menu a, .mobile-bar a { min-height: 44px; display: flex; align-items: center; }
+  @media (max-width: 1023px) { nav a, nav button, footer a { min-height: 44px; } }
 
   :root {
     --brand:#005DAA; --brand-ink:#003B6E; --brand-tint:#EEF6F8; --accent:#3E90CE;
@@ -74,7 +80,7 @@
   <!-- ============ 1 · HEADER — logo · nav · phone (big) · one CTA ============ -->
   <header class="sticky top-0 z-50 border-b border-black/5 bg-[#F9FAFA]/88 backdrop-blur-xl">
     <nav class="mx-auto flex max-w-[1200px] items-center justify-between gap-4 px-5 py-1.5 sm:px-8 sm:py-3 lg:px-10" aria-label="Main">
-      <a href="index.html" aria-label="Chang Orthodontics home" data-magnetic class="group flex min-h-[44px] items-center rounded-full outline-none transition duration-300 hover:scale-[1.02] focus-visible:ring-2 focus-visible:ring-[#005DAA]/40">
+      <a href="index.html" aria-label="Chang Orthodontics home" class="group flex min-h-[44px] items-center rounded-full outline-none transition duration-300 focus-visible:ring-2 focus-visible:ring-[#005DAA]/40">
         <img src="assets/chang-logo.svg" alt="Chang Orthodontics" width="150" height="36" class="h-8 w-auto sm:h-9">
       </a>
 
@@ -130,7 +136,7 @@
         <!-- Hidden below sm: kit section 01 collapses the mobile top bar to logo + phone +
              hamburger, and the sticky bottom bar already carries this action. Two primary
              CTAs on one mobile screen is a banned pattern. -->
-        <a href="appointment.html" data-magnetic class="group hidden min-h-[44px] items-center gap-2 rounded-full bg-[#003B6E] px-5 py-2.5 text-sm font-semibold text-white shadow-chip transition duration-300 hover:-translate-y-0.5 hover:bg-[#005DAA] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#005DAA]/35 sm:inline-flex">
+        <a href="appointment.html" class="group hidden min-h-[44px] items-center gap-2 rounded-full bg-[#003B6E] px-5 py-2.5 text-sm font-semibold text-white shadow-chip transition duration-300 hover:bg-[#005DAA] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#005DAA]/35 sm:inline-flex">
           Free consultation
           <iconify-icon icon="solar:arrow-right-linear" class="text-lg transition duration-300 group-hover:translate-x-1" aria-hidden="true"></iconify-icon>
         </a>
@@ -219,11 +225,11 @@
         </p>
 
         <div data-reveal class="mt-6 flex flex-col items-center justify-center gap-3 sm:mt-8 sm:flex-row lg:justify-start">
-          <a href="appointment.html" data-magnetic class="group inline-flex w-full items-center justify-center gap-2 rounded-xl bg-[#003B6E] px-7 py-4 text-base font-semibold text-white shadow-card transition duration-300 hover:-translate-y-1 hover:bg-[#005DAA] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#005DAA]/40 sm:w-auto">
+          <a href="appointment.html" class="group inline-flex w-full items-center justify-center gap-2 rounded-xl bg-[#003B6E] px-7 py-4 text-base font-semibold text-white shadow-card transition duration-300 hover:bg-[#005DAA] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#005DAA]/40 sm:w-auto">
             Request your free consultation
             <iconify-icon icon="solar:alt-arrow-right-linear" class="text-lg transition duration-300 group-hover:translate-x-1" aria-hidden="true"></iconify-icon>
           </a>
-          <a href="tel:+16505980888" data-magnetic class="inline-flex w-full items-center justify-center gap-2 rounded-xl border border-black/15 bg-transparent px-7 py-4 text-base font-medium text-[#434653] transition duration-300 hover:-translate-y-1 hover:border-black/30 hover:text-[#1b1c1c] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#005DAA]/35 sm:w-auto">
+          <a href="tel:+16505980888" class="inline-flex w-full items-center justify-center gap-2 rounded-xl border border-black/15 bg-transparent px-7 py-4 text-base font-medium text-[#434653] transition duration-300 hover:border-black/30 hover:text-[#1b1c1c] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#005DAA]/35 sm:w-auto">
             <svg viewBox="0 0 24 24" fill="currentColor" class="h-[1.15rem] w-[1.15rem] shrink-0" aria-hidden="true"><path d="M7.4 3H4.6C3.7 3 3 3.7 3 4.6 3 13.1 10.9 21 19.4 21c.9 0 1.6-.7 1.6-1.6v-2.8c0-.7-.5-1.3-1.2-1.5l-3.1-.8c-.6-.2-1.3.1-1.6.6l-1 1.7c-2.4-1.2-4.4-3.2-5.6-5.6l1.7-1c.5-.3.8-1 .6-1.6l-.8-3.1C8.7 3.5 8.1 3 7.4 3z"/><path opacity=".5" d="M14.6 3.2a.9.9 0 0 0-.2 1.8 5 5 0 0 1 4.1 4.1.9.9 0 0 0 1.8-.2 6.8 6.8 0 0 0-5.7-5.7z"/></svg>
             (650) 598-0888
           </a>
@@ -253,19 +259,19 @@
     <div data-reveal class="mx-auto grid max-w-[1200px] grid-cols-2 divide-x divide-y-0 divide-black/10 overflow-hidden rounded-2xl border border-black/5 bg-white/70 text-left shadow-chip backdrop-blur lg:grid-cols-4">
       <div class="px-6 py-5 leading-none">
         <p class="whitespace-nowrap text-xl font-bold tracking-tight text-[#005DAA]">Board certified</p>
-        <p class="mt-1.5 whitespace-nowrap text-sm text-black/55">American Board of Orthodontics</p>
+        <p class="mt-1.5 whitespace-nowrap text-sm text-black/65">American Board of Orthodontics</p>
       </div>
       <div class="px-6 py-5 leading-none">
         <p class="whitespace-nowrap text-xl font-bold tracking-tight text-[#005DAA]">UCSF faculty</p>
-        <p class="mt-1.5 whitespace-nowrap text-sm text-black/55">clinical professor since 2018</p>
+        <p class="mt-1.5 whitespace-nowrap text-sm text-black/65">clinical professor since 2018</p>
       </div>
       <div class="px-6 py-5 leading-none">
         <p class="whitespace-nowrap text-xl font-bold tracking-tight text-[#005DAA]">10,000</p>
-        <p class="mt-1.5 whitespace-nowrap text-sm text-black/55">patients treated</p>
+        <p class="mt-1.5 whitespace-nowrap text-sm text-black/65">patients treated</p>
       </div>
       <div class="px-6 py-5 leading-none">
         <p class="whitespace-nowrap text-xl font-bold tracking-tight text-[#005DAA]">100</p>
-        <p class="mt-1.5 whitespace-nowrap text-sm text-black/55">five-star reviews</p>
+        <p class="mt-1.5 whitespace-nowrap text-sm text-black/65">five-star reviews</p>
       </div>
     </div>
   </section>
@@ -284,7 +290,7 @@
       </div>
 
       <div>
-        <p class="text-xs font-semibold uppercase tracking-[0.18em] text-black/45">Meet your orthodontist</p>
+        <p class="text-xs font-semibold uppercase tracking-[0.18em] text-black/60">Meet your orthodontist</p>
         <h2 class="mt-4 text-4xl font-light leading-none tracking-tight sm:text-5xl font-display">Dr. <span class="hl">Michael Chang</span>, DDS</h2>
         <p data-reveal class="lede mt-6 text-[#434653]">
           More than fifteen years in practice, and still teaching the next class. Dr. Chang trained at <span class="hl font-semibold">UCSF</span> and has taught there as a clinical professor since 2018. He publishes peer-reviewed research on how treatment changes the airway.
@@ -309,7 +315,7 @@
         </dl>
         <!-- Ghost, not filled: the kit forbids a bio-page link styled like the booking
              button. bg-white + shadow-chip is this page's booking-CTA recipe. -->
-        <a href="dr-michael-chang.html" data-magnetic data-reveal class="mt-8 inline-flex min-h-[44px] items-center gap-2 rounded-xl border border-black/20 bg-transparent px-6 py-3.5 text-base font-medium text-[#434653] transition duration-300 hover:border-black/35 hover:text-[#1b1c1c] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#005DAA]/35">
+        <a href="dr-michael-chang.html" data-reveal class="mt-8 inline-flex min-h-[44px] items-center gap-2 rounded-xl border border-black/20 bg-transparent px-6 py-3.5 text-base font-medium text-[#434653] transition duration-300 hover:border-black/35 hover:text-[#1b1c1c] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#005DAA]/35">
           Meet Dr. Chang
           <iconify-icon icon="solar:alt-arrow-right-linear" class="text-lg" aria-hidden="true"></iconify-icon>
         </a>
@@ -323,7 +329,7 @@
       <h2 data-mask-reveal class="max-w-3xl text-4xl font-light leading-none tracking-tight sm:text-5xl lg:text-6xl font-display">Airway-focused orthodontics in San Carlos</h2>
 
       <div class="mt-12 space-y-6">
-        <article data-reveal data-card class="grid gap-6 rounded-[2rem] bg-white p-5 shadow-card lg:grid-cols-2 lg:items-center lg:p-6">
+        <article data-reveal class="grid gap-6 rounded-[2rem] bg-white p-5 shadow-card lg:grid-cols-2 lg:items-center lg:p-6">
           <div class="overflow-hidden rounded-3xl">
             <img src="assets/web/chang-doctor-scanner-01-1200.webp"
                  srcset="assets/web/chang-doctor-scanner-01-480.webp 480w, assets/web/chang-doctor-scanner-01-768.webp 768w, assets/web/chang-doctor-scanner-01-1200.webp 1200w"
@@ -341,7 +347,7 @@
           </div>
         </article>
 
-        <article data-reveal data-card class="grid gap-6 rounded-[2rem] bg-white p-5 shadow-card lg:grid-cols-2 lg:items-center lg:p-6">
+        <article data-reveal class="grid gap-6 rounded-[2rem] bg-white p-5 shadow-card lg:grid-cols-2 lg:items-center lg:p-6">
           <div class="overflow-hidden rounded-3xl lg:order-2">
             <img src="assets/web/chang-office-consult-01-1200.webp"
                  srcset="assets/web/chang-office-consult-01-480.webp 480w, assets/web/chang-office-consult-01-768.webp 768w, assets/web/chang-office-consult-01-1200.webp 1200w, assets/web/chang-office-consult-01-1800.webp 1800w"
@@ -362,7 +368,7 @@
           </div>
         </article>
 
-        <article data-reveal data-card class="grid gap-6 rounded-[2rem] bg-white p-5 shadow-card lg:grid-cols-2 lg:items-center lg:p-6">
+        <article data-reveal class="grid gap-6 rounded-[2rem] bg-white p-5 shadow-card lg:grid-cols-2 lg:items-center lg:p-6">
           <div class="overflow-hidden rounded-3xl">
             <img src="assets/web/chang-team-01-1200.webp"
                  srcset="assets/web/chang-team-01-480.webp 480w, assets/web/chang-team-01-768.webp 768w, assets/web/chang-team-01-1200.webp 1200w"
@@ -388,7 +394,7 @@
     <div data-reveal class="mx-auto max-w-[1200px] rounded-[2rem] bg-[#003B6E] p-8 text-center text-white shadow-deep sm:p-12">
       <img src="assets/chang-logo.svg" alt="" width="150" height="36" class="mx-auto h-8 w-auto brightness-0 invert" aria-hidden="true">
       <h2 data-mask-reveal class="mx-auto mt-6 max-w-3xl text-4xl font-light leading-none tracking-tight sm:text-5xl font-display">Come in curious. Leave with a plan.</h2>
-      <a href="appointment.html" data-magnetic class="mt-8 inline-flex min-h-[44px] items-center justify-center gap-2 rounded-xl bg-white px-8 py-4 text-base font-semibold text-[#003B6E] shadow-card transition duration-300 hover:-translate-y-1 hover:bg-[#DCEAF2] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/40">
+      <a href="appointment.html" class="mt-8 inline-flex min-h-[44px] items-center justify-center gap-2 rounded-xl bg-white px-8 py-4 text-base font-semibold text-[#003B6E] shadow-card transition duration-300 hover:bg-[#DCEAF2] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/40">
         Request your free consultation
         <iconify-icon icon="solar:alt-arrow-right-linear" class="text-lg" aria-hidden="true"></iconify-icon>
       </a>
@@ -398,7 +404,7 @@
   <!-- ============ 6 · AUTHORITY STRIP — typographic, as every kit sample does it ============ -->
   <section aria-label="Recognitions" class="border-y border-black/5 bg-[#F9FAFA] px-5 py-12 sm:px-8 lg:px-10">
     <div class="mx-auto max-w-[1200px]">
-      <p data-reveal class="text-center text-xs font-semibold uppercase tracking-[0.18em] text-black/45">Credentials &amp; affiliations</p>
+      <p data-reveal class="text-center text-xs font-semibold uppercase tracking-[0.18em] text-black/60">Credentials &amp; affiliations</p>
       <div data-reveal class="mt-8 flex flex-wrap items-center justify-center gap-x-14 gap-y-8">
         <img src="assets/logos/invisalign-logo.svg" alt="Invisalign" width="150" height="38" loading="lazy" class="h-8 w-auto opacity-60 grayscale transition duration-300">
 <!-- UCSF mark swapped to typographic pending written university sign-off: the SVG is
@@ -419,20 +425,20 @@
       <p data-reveal class="lede mt-5 max-w-2xl text-[#434653]"><span class="hl font-semibold">100 five-star reviews</span> sit on the practice&#x27;s Google profile. Reviews are published exactly as written.</p>
 
       <div class="mt-12 grid gap-5 lg:grid-cols-3">
-        <article data-card data-reveal class="rounded-3xl border border-dashed border-black/20 bg-white p-6 shadow-chip">
+        <article data-reveal class="rounded-3xl border border-dashed border-black/20 bg-white p-6 shadow-chip">
           <p class="text-xs font-semibold uppercase tracking-[0.18em] text-[#005DAA]">Placeholder</p>
           <p class="mt-6 text-lg leading-7 text-black/60">[REVIEW QUOTE NEEDED · a verbatim review from the practice's Google profile, published exactly as written]</p>
-          <p class="mt-6 border-t border-black/10 pt-5 text-sm text-black/45">First name and last initial, as displayed on Google</p>
+          <p class="mt-6 border-t border-black/10 pt-5 text-sm text-black/60">First name and last initial, as displayed on Google</p>
         </article>
-        <article data-card data-reveal class="rounded-3xl border border-dashed border-black/20 bg-[#E7EFF5] p-6 shadow-chip">
+        <article data-reveal class="rounded-3xl border border-dashed border-black/20 bg-[#E7EFF5] p-6 shadow-chip">
           <p class="text-xs font-semibold uppercase tracking-[0.18em] text-[#005DAA]">Placeholder</p>
           <p class="mt-6 text-lg leading-7 text-black/60">[REVIEW QUOTE NEEDED · a verbatim review from the practice's Google profile, published exactly as written]</p>
-          <p class="mt-6 border-t border-black/10 pt-5 text-sm text-black/45">First name and last initial, as displayed on Google</p>
+          <p class="mt-6 border-t border-black/10 pt-5 text-sm text-black/60">First name and last initial, as displayed on Google</p>
         </article>
-        <article data-card data-reveal class="rounded-3xl border border-dashed border-black/20 bg-white p-6 shadow-chip">
+        <article data-reveal class="rounded-3xl border border-dashed border-black/20 bg-white p-6 shadow-chip">
           <p class="text-xs font-semibold uppercase tracking-[0.18em] text-[#005DAA]">Placeholder</p>
           <p class="mt-6 text-lg leading-7 text-black/60">[REVIEW QUOTE NEEDED · a verbatim review from the practice's Google profile, published exactly as written]</p>
-          <p class="mt-6 border-t border-black/10 pt-5 text-sm text-black/45">First name and last initial, as displayed on Google</p>
+          <p class="mt-6 border-t border-black/10 pt-5 text-sm text-black/60">First name and last initial, as displayed on Google</p>
         </article>
       </div>
 
@@ -450,7 +456,7 @@
       <p data-reveal class="lede mt-5 max-w-2xl text-[#434653]">Six treatment areas, one orthodontist. Appointments are scheduled around school and work.</p>
 
       <div class="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-        <a href="braces.html" data-card data-reveal class="group flex flex-col overflow-hidden rounded-3xl bg-white shadow-card transition duration-500 hover:-translate-y-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#005DAA]/40">
+        <a href="braces.html" data-reveal class="group flex flex-col transition-[translate,box-shadow] duration-300 hover:[translate:0_-6px] overflow-hidden rounded-3xl bg-white shadow-card transition duration-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#005DAA]/40">
           <img src="assets/web/chang-patient-01-768.webp" width="768" height="1024" loading="lazy" decoding="async" alt="A Chang Orthodontics patient at the practice in San Carlos" class="aspect-[4/3] w-full object-cover transition duration-700 group-hover:scale-105">
           <div class="flex flex-1 flex-col p-6">
             <h3 class="text-3xl font-normal leading-none tracking-tight font-display">Braces</h3>
@@ -459,7 +465,7 @@
           </div>
         </a>
 
-        <a href="invisalign.html" data-card data-reveal class="group flex flex-col overflow-hidden rounded-3xl bg-white shadow-card transition duration-500 hover:-translate-y-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#005DAA]/40">
+        <a href="invisalign.html" data-reveal class="group flex flex-col transition-[translate,box-shadow] duration-300 hover:[translate:0_-6px] overflow-hidden rounded-3xl bg-white shadow-card transition duration-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#005DAA]/40">
           <img src="assets/web/chang-doctor-scanner-01-768.webp" width="768" height="1154" loading="lazy" decoding="async" alt="Digital scanning used to plan Invisalign treatment" class="aspect-[4/3] w-full object-cover transition duration-700 group-hover:scale-105">
           <div class="flex flex-1 flex-col p-6">
             <h3 class="text-3xl font-normal leading-none tracking-tight font-display">Invisalign®</h3>
@@ -468,7 +474,7 @@
           </div>
         </a>
 
-        <a href="early-orthodontics.html" data-card data-reveal class="group flex flex-col overflow-hidden rounded-3xl bg-white shadow-card transition duration-500 hover:-translate-y-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#005DAA]/40">
+        <a href="early-orthodontics.html" data-reveal class="group flex flex-col transition-[translate,box-shadow] duration-300 hover:[translate:0_-6px] overflow-hidden rounded-3xl bg-white shadow-card transition duration-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#005DAA]/40">
           <img src="assets/web/chang-community-01-768.webp" width="768" height="1024" loading="lazy" decoding="async" alt="Dr. Chang with a young patient" class="aspect-[4/3] w-full object-cover transition duration-700 group-hover:scale-105">
           <div class="flex flex-1 flex-col p-6">
             <h3 class="text-3xl font-normal leading-none tracking-tight font-display">Early orthodontics</h3>
@@ -477,7 +483,7 @@
           </div>
         </a>
 
-        <a href="kids-teens.html" data-card data-reveal class="group flex flex-col overflow-hidden rounded-3xl bg-white shadow-card transition duration-500 hover:-translate-y-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#005DAA]/40">
+        <a href="kids-teens.html" data-reveal class="group flex flex-col transition-[translate,box-shadow] duration-300 hover:[translate:0_-6px] overflow-hidden rounded-3xl bg-white shadow-card transition duration-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#005DAA]/40">
           <img src="assets/web/chang-community-booth-01-768.webp" width="768" height="576" loading="lazy" decoding="async" alt="Chang Orthodontics at a San Carlos community event" class="aspect-[4/3] w-full object-cover transition duration-700 group-hover:scale-105">
           <div class="flex flex-1 flex-col p-6">
             <h3 class="text-3xl font-normal leading-none tracking-tight font-display">Kids and teens</h3>
@@ -486,7 +492,7 @@
           </div>
         </a>
 
-        <a href="adults.html" data-card data-reveal class="group flex flex-col overflow-hidden rounded-3xl bg-white shadow-card transition duration-500 hover:-translate-y-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#005DAA]/40">
+        <a href="adults.html" data-reveal class="group flex flex-col transition-[translate,box-shadow] duration-300 hover:[translate:0_-6px] overflow-hidden rounded-3xl bg-white shadow-card transition duration-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#005DAA]/40">
           <img src="assets/web/chang-office-consult-01-768.webp" width="768" height="576" loading="lazy" decoding="async" alt="Consultation room where adult treatment is planned" class="aspect-[4/3] w-full object-cover transition duration-700 group-hover:scale-105">
           <div class="flex flex-1 flex-col p-6">
             <h3 class="text-3xl font-normal leading-none tracking-tight font-display">Adult orthodontics</h3>
@@ -495,7 +501,7 @@
           </div>
         </a>
 
-        <a href="airway.html" data-card data-reveal class="group flex flex-col overflow-hidden rounded-3xl bg-white shadow-card transition duration-500 hover:-translate-y-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#005DAA]/40">
+        <a href="airway.html" data-reveal class="group flex flex-col transition-[translate,box-shadow] duration-300 hover:[translate:0_-6px] overflow-hidden rounded-3xl bg-white shadow-card transition duration-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#005DAA]/40">
           <img src="assets/web/chang-office-reception-02-768.webp" width="768" height="1024" loading="lazy" decoding="async" alt="Inside the Chang Orthodontics office" class="aspect-[4/3] w-full object-cover transition duration-700 group-hover:scale-105">
           <div class="flex flex-1 flex-col p-6">
             <h3 class="text-3xl font-normal leading-none tracking-tight font-display">Airway and expansion</h3>
@@ -524,7 +530,7 @@
             10 El Camino Real, Ste. 201<br>
             San Carlos, CA 94070
           </address>
-          <p class="mt-3 text-base leading-6 text-black/55">On El Camino Real, right at the Belmont border.</p>
+          <p class="mt-3 text-base leading-6 text-black/65">On El Camino Real, right at the Belmont border.</p>
 
           <dl class="mt-6 space-y-3 border-t border-black/10 pt-6 text-base">
             <div class="flex items-start gap-3">
@@ -533,16 +539,16 @@
             </div>
             <div class="flex items-start gap-3">
               <dt class="w-20 shrink-0 font-semibold">Hours</dt>
-              <dd class="text-[#434653]">Monday to Friday, 9:00am to 5:00pm<br><span class="text-black/50">Someone answers the phone through lunch.</span></dd>
+              <dd class="text-[#434653]">Monday to Friday, 9:00am to 5:00pm<br><span class="text-black/60">Someone answers the phone through lunch.</span></dd>
             </div>
           </dl>
 
           <div class="mt-8 flex flex-col gap-3 sm:flex-row">
-            <a href="https://www.google.com/maps/dir/?api=1&amp;destination=10+El+Camino+Real+Ste+201+San+Carlos+CA+94070" target="_blank" rel="noopener" data-magnetic class="inline-flex min-h-[44px] items-center justify-center gap-2 rounded-xl bg-[#003B6E] px-6 py-3.5 text-base font-semibold text-white shadow-card transition duration-300 hover:-translate-y-1 hover:bg-[#005DAA]">
+            <a href="https://www.google.com/maps/dir/?api=1&amp;destination=10+El+Camino+Real+Ste+201+San+Carlos+CA+94070" target="_blank" rel="noopener" class="inline-flex min-h-[44px] items-center justify-center gap-2 rounded-xl bg-[#003B6E] px-6 py-3.5 text-base font-semibold text-white shadow-card transition duration-300 hover:bg-[#005DAA]">
               Get directions
               <iconify-icon icon="solar:map-point-linear" class="text-lg" aria-hidden="true"></iconify-icon>
             </a>
-            <a href="appointment.html" data-magnetic class="inline-flex min-h-[44px] items-center justify-center gap-2 rounded-xl border border-black/20 bg-white px-6 py-3.5 text-base font-semibold text-[#1b1c1c] shadow-chip transition duration-300 hover:-translate-y-1 hover:bg-[#EAF2F8]">
+            <a href="appointment.html" class="inline-flex min-h-[44px] items-center justify-center gap-2 rounded-xl border border-black/20 bg-white px-6 py-3.5 text-base font-semibold text-[#1b1c1c] shadow-chip transition duration-300 hover:bg-[#EAF2F8]">
               Request a free consultation
             </a>
           </div>
@@ -556,13 +562,13 @@
                     class="h-72 w-full rounded-[1.5rem] border-0"></iframe>
           </div>
           <div class="grid grid-cols-3 gap-4">
-            <figure data-card data-reveal class="group overflow-hidden rounded-3xl bg-white p-2 shadow-chip">
+            <figure data-reveal class="group overflow-hidden rounded-3xl bg-white p-2 shadow-chip">
               <img src="assets/web/chang-team-full-01-768.webp" width="768" height="1024" loading="lazy" decoding="async" alt="The Chang Orthodontics team" class="h-40 w-full rounded-[1.25rem] object-cover transition duration-700 group-hover:scale-105">
             </figure>
-            <figure data-card data-reveal class="group overflow-hidden rounded-3xl bg-white p-2 shadow-chip">
+            <figure data-reveal class="group overflow-hidden rounded-3xl bg-white p-2 shadow-chip">
               <img src="assets/web/chang-office-reception-01-768.webp" width="768" height="576" loading="lazy" decoding="async" alt="Reception desk at Chang Orthodontics" class="h-40 w-full rounded-[1.25rem] object-cover transition duration-700 group-hover:scale-105">
             </figure>
-            <figure data-card data-reveal class="group overflow-hidden rounded-3xl bg-white p-2 shadow-chip">
+            <figure data-reveal class="group overflow-hidden rounded-3xl bg-white p-2 shadow-chip">
               <img src="assets/web/chang-office-reception-02-768.webp" width="768" height="1024" loading="lazy" decoding="async" alt="Waiting area at Chang Orthodontics" class="h-40 w-full rounded-[1.25rem] object-cover transition duration-700 group-hover:scale-105">
             </figure>
           </div>
@@ -582,14 +588,14 @@
         <div class="grid gap-10 lg:grid-cols-[1.4fr_0.8fr_0.8fr_1fr]">
           <div class="order-1 lg:order-none">
             <img src="assets/chang-logo.svg" alt="Chang Orthodontics" width="150" height="36" class="h-9 w-auto brightness-0 invert">
-            <p class="mt-6 max-w-sm text-base leading-6 text-white/60">
+            <p class="mt-6 max-w-sm text-base leading-6 text-white/75">
               Braces and Invisalign in San Carlos, California. Dr. Michael Chang, DDS, board-certified orthodontist and UCSF clinical professor.
             </p>
           </div>
 
           <div class="order-3 lg:order-none">
             <p class="text-base font-semibold">Treatments</p>
-            <ul class="fcol mt-3 text-white/60">
+            <ul class="fcol mt-3 text-white/75">
               <li><a href="braces.html" class="transition hover:text-white">Braces</a></li>
               <li><a href="invisalign.html" class="transition hover:text-white">Invisalign</a></li>
               <li><a href="early-orthodontics.html" class="transition hover:text-white">Early orthodontics</a></li>
@@ -601,7 +607,7 @@
 
           <div class="order-4 lg:order-none">
             <p class="text-base font-semibold">Why Chang</p>
-            <ul class="fcol mt-3 text-white/60">
+            <ul class="fcol mt-3 text-white/75">
               <li><a href="about.html" class="transition hover:text-white">Why choose Chang</a></li>
               <li><a href="dr-michael-chang.html" class="transition hover:text-white">Meet Dr. Chang</a></li>
               <li><a href="team.html" class="transition hover:text-white">Meet the team</a></li>
@@ -611,14 +617,14 @@
 
           <div class="order-2 lg:order-none">
             <p class="text-base font-semibold">Resources &amp; contact</p>
-            <ul class="fcol mt-3 text-white/60">
+            <ul class="fcol mt-3 text-white/75">
               <li><a href="new-patients.html" class="transition hover:text-white">New patients</a></li>
               <li><a href="financing.html" class="transition hover:text-white">Financing</a></li>
               <li><a href="faq.html" class="transition hover:text-white">FAQ</a></li>
               <li><a href="emergencies.html" class="transition hover:text-white">Emergencies</a></li>
               <li><a href="#location" class="transition hover:text-white">Our address</a></li>
             </ul>
-            <address class="mt-4 not-italic text-base leading-6 text-white/60">
+            <address class="mt-4 not-italic text-base leading-6 text-white/75">
               10 El Camino Real, Ste. 201<br>
               San Carlos, CA 94070<br>
               <a href="tel:+16505980888" class="inline-flex min-h-[44px] items-center font-semibold text-white transition hover:text-[#8FC3E8]">(650) 598-0888</a><br>
@@ -627,7 +633,7 @@
           </div>
         </div>
 
-        <div class="mt-10 flex flex-col justify-between gap-4 border-t border-white/10 pt-6 text-base text-white/45 sm:flex-row">
+        <div class="mt-10 flex flex-col justify-between gap-4 border-t border-white/10 pt-6 text-base text-white/75 sm:flex-row">
           <p>© 2026 Chang Orthodontics. All rights reserved.</p>
           <div class="flex flex-wrap gap-x-5">
             <a href="privacy.html" class="inline-flex min-h-[44px] items-center transition hover:text-white">Privacy Policy</a>
@@ -709,7 +715,9 @@
   if (!prefersReducedMotion) document.documentElement.classList.add("js-armed");
 
   if (!prefersReducedMotion && window.Lenis) {
-    const lenis = new Lenis({ duration: 1.15, easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), smoothWheel: true, wheelMultiplier: 0.9, touchMultiplier: 1.2 });
+    // duration 1.15 + wheelMultiplier 0.9 read as laggy — the page kept gliding after the
+    // wheel stopped. Shorter and 1:1 with the wheel tracks the input instead of floating.
+    const lenis = new Lenis({ duration: 0.85, easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), smoothWheel: true, wheelMultiplier: 1, touchMultiplier: 1.2 });
     lenis.on("scroll", ScrollTrigger.update);
     gsap.ticker.add((time) => lenis.raf(time * 1000));
     gsap.ticker.lagSmoothing(0);
@@ -746,48 +754,44 @@
   });
 
   if (!prefersReducedMotion) {
+    // No animated blur. filter:blur() repaints the whole layer every frame, and with 35
+    // reveal targets that was the main source of scroll stutter. Opacity + a short lift
+    // are compositor-only.
     gsap.utils.toArray("[data-reveal]").forEach((item, index) => {
-      gsap.fromTo(item, { opacity: 0, y: 28, filter: "blur(12px)" }, {
-        opacity: 1, y: 0, filter: "blur(0px)", duration: 0.9, ease: "power3.out",
-        delay: Math.min((index % 6) * 0.045, 0.25),
-        scrollTrigger: { trigger: item, start: "top 88%", once: true }
+      gsap.fromTo(item, { opacity: 0, y: 18 }, {
+        opacity: 1, y: 0, duration: 0.55, ease: "power2.out",
+        delay: Math.min((index % 6) * 0.03, 0.15),
+        scrollTrigger: { trigger: item, start: "top 92%", once: true },
+        // Clear the inline transform when the reveal lands. GSAP otherwise leaves
+        // translate(0px,0px) sitting on the element, and an inline transform beats any
+        // CSS hover:-translate — which is why the card and button lifts never fired.
+        onComplete() { gsap.set(item, { clearProps: "transform,willChange" }); }
       });
     });
 
-    // Fail-open: anything still hidden after 2s is forced visible.
+    // ScrollTrigger caches start positions at build time. The hero image is sized in svh
+    // and the service-card images are lazy, so layout moved under it and triggers fired at
+    // the wrong scroll offsets — or never. Recalculate once everything has actually landed.
+    const refresh = () => ScrollTrigger.refresh();
+    window.addEventListener("load", refresh);
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(refresh);
+    document.querySelectorAll("img").forEach((img) => {
+      if (!img.complete) img.addEventListener("load", refresh, { once: true });
+    });
+
+    // Fail-open, now covering the masked headings too. Previously a heading whose trigger
+    // never fired stayed translated 110% off its own baseline — permanently blank text.
     setTimeout(() => {
       document.querySelectorAll("[data-reveal]").forEach((el) => {
-        if (getComputedStyle(el).opacity === "0") gsap.set(el, { opacity: 1, y: 0, filter: "none" });
+        if (getComputedStyle(el).opacity === "0") gsap.set(el, { opacity: 1, y: 0 });
       });
-    }, 2000);
-
-    gsap.utils.toArray("[data-card]").forEach((card) => {
-      card.addEventListener("mousemove", (event) => {
-        const rect = card.getBoundingClientRect();
-        gsap.to(card, {
-          rotateY: (((event.clientX - rect.left) / rect.width) - 0.5) * 5,
-          rotateX: (((event.clientY - rect.top) / rect.height) - 0.5) * -5,
-          transformPerspective: 900, transformOrigin: "center", duration: 0.35, ease: "power2.out"
-        });
+      document.querySelectorAll("[data-mask-reveal]").forEach((heading) => {
+        if (heading.getBoundingClientRect().top < window.innerHeight) {
+          gsap.to(heading.querySelectorAll("span span"), { y: "0%", duration: 0.4, stagger: 0.02 });
+        }
       });
-      card.addEventListener("mouseleave", () => {
-        gsap.to(card, { rotateX: 0, rotateY: 0, duration: 0.55, ease: "elastic.out(1, 0.45)" });
-      });
-    });
-
-    gsap.utils.toArray("[data-magnetic]").forEach((element) => {
-      element.addEventListener("mousemove", (event) => {
-        const rect = element.getBoundingClientRect();
-        gsap.to(element, {
-          x: (event.clientX - rect.left - rect.width / 2) * 0.18,
-          y: (event.clientY - rect.top - rect.height / 2) * 0.18,
-          duration: 0.35, ease: "power3.out"
-        });
-      });
-      element.addEventListener("mouseleave", () => {
-        gsap.to(element, { x: 0, y: 0, duration: 0.55, ease: "elastic.out(1, 0.45)" });
-      });
-    });
+      ScrollTrigger.refresh();
+    }, 2200);
   }
 
   if (window.visualViewport) {

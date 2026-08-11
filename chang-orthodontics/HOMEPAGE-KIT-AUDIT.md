@@ -8,6 +8,35 @@ service-page sections and are excluded.
 
 ---
 
+## STATUS: all 11 fixes applied 2026-08-11
+
+Everything in the ranked fix list below has been executed and verified. The five "decisions
+for Jules" at the end are untouched — those are not builder calls.
+
+Lighthouse 12.8.2, desktop preset, after the fixes:
+
+| | Performance | Accessibility | Best practices | SEO |
+|---|---|---|---|---|
+| A | 100 | 100 | 100 | 66 |
+| B | 98 | 100 | 100 | 66 |
+| C | 98 | 100 | 100 | 63 |
+
+The single SEO failure on all three is **"Page is blocked from indexing"** — the deliberate
+`noindex` on the public preview. Nothing else in the SEO category fails.
+
+Two problems Lighthouse caught that hand-checking had missed:
+- **Real contrast failures** in B and C, all in low-alpha text utilities (`text-black/45`,
+  `text-white/60`, `text-white/75` on navy) measuring 3.06–4.48 against a 4.5 requirement.
+  Raised across the board; contrast now passes on all three.
+- **A 404 on every page load** in B and C — no favicon was declared, so the browser requested
+  `/favicon.ico` and logged an error. A had one, which is why A alone showed no console error.
+  Icon links added.
+
+Also corrected during the pass: an earlier contrast sweep of my own reported 12 failures in C's
+service cards. Those were false positives — white text over a photo carrying a
+`from-navy-deep/95` gradient scrim, which a naive background-colour walk reads as white-on-white.
+No change was made there, correctly.
+
 ## Verdict
 
 | | A | B | C |

@@ -334,8 +334,15 @@ body{ padding-bottom:0; }
    and the band read as ragged. min-height reserves two lines in every cell so all four
    labels sit on one baseline, and balance stops the breaks landing on a stray word. */
 .trust-value{ font-family:var(--display); font-weight:400; font-size:clamp(26px,2.5vw,34px);
-  line-height:1.06; letter-spacing:-.02em; color:#fff;
-  min-height:2.12em; text-wrap:balance; }
+  line-height:1.06; letter-spacing:-.02em; color:#fff; text-wrap:balance;
+  /* Every value reserves the same two-line block and centres inside it, so the labels
+     share one baseline whether the value wraps or not. Height is in rem, not em, so the
+     larger numeric size below doesn't inflate its own box. */
+  min-height:clamp(3.4rem,5.4vw,4.6rem); display:flex; align-items:center; }
+/* The two stat cells were single short lines floating in a two-line box next to
+   "Board Certified" and "UCSF Faculty". Scaled up to fill the same block — the kit's
+   section 03 is explicit that on a stat bar the numbers ARE the visual. */
+.trust-value--num{ font-size:clamp(40px,4.4vw,62px); line-height:1; }
 .trust-label{ margin-top:.55rem; font-size:12px; font-weight:700; text-transform:uppercase;
   letter-spacing:.1em; color:rgba(255,255,255,.72); line-height:1.45; text-wrap:balance; }
 

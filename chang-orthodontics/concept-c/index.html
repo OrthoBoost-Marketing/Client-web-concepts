@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="noindex">
+<link rel="icon" href="assets/chang-logo.svg" type="image/svg+xml">
 <title>Chang Orthodontics | Orthodontist in San Carlos, CA</title>
 <meta name="description" content="Chang Orthodontics in San Carlos, CA. Dr. Michael Chang, DDS — board certified, UCSF Clinical Professor, Platinum Plus Invisalign Provider. Braces, Invisalign and early orthodontics for kids, teens and adults. Free consultation.">
 
@@ -32,6 +33,11 @@
 </script>
 <script src="https://unpkg.com/lucide@latest"></script>
 <style>
+  /* Touch targets. WCAG 2.5.8 (AA) floor is 24x24; the kit asks 44px for nav links.
+     Applied to nav and footer links only, so body prose is untouched. */
+  nav a, nav button, footer a { min-height: 24px; }
+  .nav-dropdown a, #mobileMenu a, #mobile-menu a, .mobile-bar a { min-height: 44px; display: flex; align-items: center; }
+  @media (max-width: 1023px) { nav a, nav button, footer a { min-height: 44px; } }
   /* scroll-padding clears the 73px fixed nav on every in-page anchor jump. */
   html { scroll-behavior: smooth; scroll-padding-top: 88px; }
   body { font-family: 'Manrope', system-ui, sans-serif; }
@@ -85,10 +91,10 @@
 <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[60] focus:rounded-full focus:bg-navy focus:px-5 focus:py-3 focus:text-base focus:font-semibold focus:text-white">Skip to content</a>
 
 <!-- ─────────────────────────────  NAV  ───────────────────────────── -->
-<nav class="fixed top-0 z-50 w-full border-b border-slate-100 bg-white/85 backdrop-blur-md">
+<header><nav class="fixed top-0 z-50 w-full border-b border-slate-100 bg-white/85 backdrop-blur-md">
   <div class="mx-auto flex max-w-7xl items-center justify-between gap-6 px-6 py-4">
     <a href="/" class="flex min-h-[44px] items-center" aria-label="Chang Orthodontics home">
-      <img src="assets/chang-logo.svg" alt="Chang Orthodontics" class="h-10 w-auto object-contain">
+      <img src="assets/chang-logo.svg" width="300" height="120" alt="Chang Orthodontics" class="h-10 w-auto object-contain">
     </a>
 
     <div class="hidden items-center gap-8 lg:flex">
@@ -214,6 +220,8 @@
     </div>
   </div>
 </nav>
+
+</header>
 
 <main id="main">
 
@@ -454,7 +462,7 @@
     <div class="grid grid-cols-2 items-center gap-10 md:grid-cols-4" data-reveal>
 
       <div class="flex flex-col items-center gap-3 text-center">
-        <img src="assets/logos/invisalign-logo.svg" alt="Invisalign" class="h-8 w-auto object-contain opacity-70 grayscale">
+        <img src="assets/logos/invisalign-logo.svg" width="260" height="65" alt="Invisalign" class="h-8 w-auto object-contain opacity-70 grayscale">
         <div class="text-xs font-medium text-ink-soft/70 md:text-sm">Platinum Plus Provider</div>
       </div>
 
@@ -549,7 +557,7 @@
       <div class="relative">
       <div class="absolute -left-5 -top-5 -z-10 hidden h-32 w-32 rounded-tl-[72px] bg-navy md:block"></div>
       <a href="braces.html" class="group relative block aspect-[4/3] overflow-hidden rounded-[2rem]">
-        <img src="assets/web/chang-patient-01-1200.webp" srcset="assets/web/chang-patient-01-480.webp 480w, assets/web/chang-patient-01-768.webp 768w, assets/web/chang-patient-01-1200.webp 1200w" sizes="(min-width:1024px) 24rem, 90vw" alt="A Chang Orthodontics patient at the practice in San Carlos" loading="lazy" decoding="async" class="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105">
+        <img src="assets/web/chang-patient-01-1200.webp" width="1200" height="1600" srcset="assets/web/chang-patient-01-480.webp 480w, assets/web/chang-patient-01-768.webp 768w, assets/web/chang-patient-01-1200.webp 1200w" sizes="(min-width:1024px) 24rem, 90vw" alt="A Chang Orthodontics patient at the practice in San Carlos" loading="lazy" decoding="async" class="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105">
         <div class="absolute inset-0 bg-gradient-to-t from-navy-deep/95 via-navy-deep/45 to-transparent"></div>
         <div class="absolute bottom-0 left-0 w-full p-8">
           <h3 class="mb-2 text-2xl font-bold tracking-tight text-white">Braces</h3>
@@ -561,7 +569,7 @@
 
       <div class="relative">
       <a href="invisalign.html" class="group relative block aspect-[4/3] overflow-hidden rounded-[2rem]">
-        <img src="assets/web/chang-doctor-scanner-01-1200.webp" srcset="assets/web/chang-doctor-scanner-01-480.webp 480w, assets/web/chang-doctor-scanner-01-768.webp 768w, assets/web/chang-doctor-scanner-01-1200.webp 1200w" sizes="(min-width:1024px) 24rem, 90vw" alt="Invisalign at Chang Orthodontics" loading="lazy" decoding="async" class="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105">
+        <img src="assets/web/chang-doctor-scanner-01-1200.webp" width="1200" height="1804" srcset="assets/web/chang-doctor-scanner-01-480.webp 480w, assets/web/chang-doctor-scanner-01-768.webp 768w, assets/web/chang-doctor-scanner-01-1200.webp 1200w" sizes="(min-width:1024px) 24rem, 90vw" alt="Invisalign at Chang Orthodontics" loading="lazy" decoding="async" class="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105">
         <div class="absolute inset-0 bg-gradient-to-t from-navy-deep/95 via-navy-deep/45 to-transparent"></div>
         <div class="absolute bottom-0 left-0 w-full p-8">
           <h3 class="mb-2 text-2xl font-bold tracking-tight text-white">Invisalign®</h3>
@@ -574,7 +582,7 @@
       <div class="relative">
       <div class="absolute -right-5 -top-5 -z-10 hidden h-32 w-32 rounded-tr-[72px] bg-navy-bright lg:block"></div>
       <a href="early-orthodontics.html" class="group relative block aspect-[4/3] overflow-hidden rounded-[2rem]">
-        <img src="assets/web/chang-office-consult-01-1200.webp" srcset="assets/web/chang-office-consult-01-480.webp 480w, assets/web/chang-office-consult-01-768.webp 768w, assets/web/chang-office-consult-01-1200.webp 1200w" sizes="(min-width:1024px) 24rem, 90vw" alt="A consultation room at Chang Orthodontics" loading="lazy" decoding="async" class="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105">
+        <img src="assets/web/chang-office-consult-01-1200.webp" width="1200" height="900" srcset="assets/web/chang-office-consult-01-480.webp 480w, assets/web/chang-office-consult-01-768.webp 768w, assets/web/chang-office-consult-01-1200.webp 1200w" sizes="(min-width:1024px) 24rem, 90vw" alt="A consultation room at Chang Orthodontics" loading="lazy" decoding="async" class="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105">
         <div class="absolute inset-0 bg-gradient-to-t from-navy-deep/95 via-navy-deep/45 to-transparent"></div>
         <div class="absolute bottom-0 left-0 w-full p-8">
           <h3 class="mb-2 text-2xl font-bold tracking-tight text-white">Early Orthodontics</h3>
@@ -587,7 +595,7 @@
       <div class="relative">
       <div class="absolute -bottom-5 -left-5 -z-10 hidden h-32 w-32 rounded-bl-[72px] bg-navy-deep lg:block"></div>
       <a href="kids-teens.html" class="group relative block aspect-[4/3] overflow-hidden rounded-[2rem]">
-        <img src="assets/web/chang-team-full-01-1200.webp" srcset="assets/web/chang-team-full-01-480.webp 480w, assets/web/chang-team-full-01-768.webp 768w, assets/web/chang-team-full-01-1200.webp 1200w" sizes="(min-width:1024px) 24rem, 90vw" alt="The Chang Orthodontics team, who treat kids and teens" loading="lazy" decoding="async" class="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105">
+        <img src="assets/web/chang-team-full-01-1200.webp" width="1200" height="1600" srcset="assets/web/chang-team-full-01-480.webp 480w, assets/web/chang-team-full-01-768.webp 768w, assets/web/chang-team-full-01-1200.webp 1200w" sizes="(min-width:1024px) 24rem, 90vw" alt="The Chang Orthodontics team, who treat kids and teens" loading="lazy" decoding="async" class="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105">
         <div class="absolute inset-0 bg-gradient-to-t from-navy-deep/95 via-navy-deep/45 to-transparent"></div>
         <div class="absolute bottom-0 left-0 w-full p-8">
           <h3 class="mb-2 text-2xl font-bold tracking-tight text-white">Kids &amp; Teens</h3>
@@ -599,7 +607,7 @@
 
       <div class="relative">
       <a href="adults.html" class="group relative block aspect-[4/3] overflow-hidden rounded-[2rem]">
-        <img src="assets/web/chang-office-reception-02-1200.webp" srcset="assets/web/chang-office-reception-02-480.webp 480w, assets/web/chang-office-reception-02-768.webp 768w, assets/web/chang-office-reception-02-1200.webp 1200w" sizes="(min-width:1024px) 24rem, 90vw" alt="The reception area at Chang Orthodontics" loading="lazy" decoding="async" class="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105">
+        <img src="assets/web/chang-office-reception-02-1200.webp" width="1200" height="1600" srcset="assets/web/chang-office-reception-02-480.webp 480w, assets/web/chang-office-reception-02-768.webp 768w, assets/web/chang-office-reception-02-1200.webp 1200w" sizes="(min-width:1024px) 24rem, 90vw" alt="The reception area at Chang Orthodontics" loading="lazy" decoding="async" class="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105">
         <div class="absolute inset-0 bg-gradient-to-t from-navy-deep/95 via-navy-deep/45 to-transparent"></div>
         <div class="absolute bottom-0 left-0 w-full p-8">
           <h3 class="mb-2 text-2xl font-bold tracking-tight text-white">Adult Orthodontics</h3>
@@ -612,7 +620,7 @@
       <div class="relative">
       <div class="absolute -bottom-5 -right-5 -z-10 hidden h-32 w-32 rounded-br-[72px] bg-navy md:block"></div>
       <a href="airway.html" class="group relative block aspect-[4/3] overflow-hidden rounded-[2rem]">
-        <img src="assets/web/chang-team-01-1200.webp" srcset="assets/web/chang-team-01-480.webp 480w, assets/web/chang-team-01-768.webp 768w, assets/web/chang-team-01-1200.webp 1200w" sizes="(min-width:1024px) 24rem, 90vw" alt="The Chang Orthodontics clinical team" loading="lazy" decoding="async" class="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105">
+        <img src="assets/web/chang-team-01-1200.webp" width="1200" height="1600" srcset="assets/web/chang-team-01-480.webp 480w, assets/web/chang-team-01-768.webp 768w, assets/web/chang-team-01-1200.webp 1200w" sizes="(min-width:1024px) 24rem, 90vw" alt="The Chang Orthodontics clinical team" loading="lazy" decoding="async" class="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105">
         <div class="absolute inset-0 bg-gradient-to-t from-navy-deep/95 via-navy-deep/45 to-transparent"></div>
         <div class="absolute bottom-0 left-0 w-full p-8">
           <h3 class="mb-2 text-2xl font-bold tracking-tight text-white">Airway &amp; Expansion</h3>
@@ -711,23 +719,23 @@
     <div class="mb-16 grid grid-cols-1 gap-12 md:grid-cols-2 lg:grid-cols-4 lg:gap-8">
 
       <div class="order-1 md:order-none">
-        <img src="assets/chang-logo.svg" alt="Chang Orthodontics" class="mb-6 h-10 w-auto object-contain brightness-0 invert">
-        <p class="mb-6 text-base leading-relaxed text-white/75">
+        <img src="assets/chang-logo.svg" width="300" height="120" alt="Chang Orthodontics" class="mb-6 h-10 w-auto object-contain brightness-0 invert">
+        <p class="mb-6 text-base leading-relaxed text-white/85">
           Braces and Invisalign in San Carlos, California, from Dr. Michael Chang, DDS, a board-certified orthodontist and UCSF clinical professor.
         </p>
         <!-- NAP: address and hours were missing from this footer entirely. Strings match
              the #contact section and the JSON-LD character for character. -->
         <a href="tel:+16505980888" class="inline-flex min-h-[44px] items-center text-lg font-bold text-white hover:text-navy-tint">(650) 598-0888</a>
-        <address class="mt-3 not-italic text-base leading-relaxed text-white/75">
+        <address class="mt-3 not-italic text-base leading-relaxed text-white/85">
           10 El Camino Real, Ste. 201<br>
           San Carlos, CA 94070
         </address>
-        <p class="mt-3 text-base leading-relaxed text-white/75">Monday to Friday, 9:00am to 5:00pm</p>
+        <p class="mt-3 text-base leading-relaxed text-white/85">Monday to Friday, 9:00am to 5:00pm</p>
       </div>
 
       <div class="order-3 md:order-none">
         <h3 class="mb-6 text-lg font-bold text-white">Treatments</h3>
-        <ul class="space-y-3 text-base text-white/75">
+        <ul class="space-y-3 text-base text-white/85">
           <li><a href="braces.html" class="transition-colors hover:text-white">Braces</a></li>
           <li><a href="invisalign.html" class="transition-colors hover:text-white">Invisalign</a></li>
           <li><a href="early-orthodontics.html" class="transition-colors hover:text-white">Early Orthodontics</a></li>
@@ -740,7 +748,7 @@
 
       <div class="order-4 md:order-none">
         <h3 class="mb-6 text-lg font-bold text-white">The Practice</h3>
-        <ul class="space-y-3 text-base text-white/75">
+        <ul class="space-y-3 text-base text-white/85">
           <li><a href="about.html" class="transition-colors hover:text-white">Why Chang</a></li>
           <li><a href="dr-michael-chang.html" class="transition-colors hover:text-white">Dr. Michael Chang</a></li>
           <li><a href="team.html" class="transition-colors hover:text-white">Our Team</a></li>
@@ -751,7 +759,7 @@
 
       <div class="order-2 md:order-none">
         <h3 class="mb-6 text-lg font-bold text-white">Resources</h3>
-        <ul class="space-y-3 text-base text-white/75">
+        <ul class="space-y-3 text-base text-white/85">
           <li><a href="new-patients.html" class="transition-colors hover:text-white">New Patients</a></li>
           <li><a href="financing.html" class="transition-colors hover:text-white">Financing</a></li>
           <li><a href="faq.html" class="transition-colors hover:text-white">FAQ</a></li>
@@ -762,8 +770,8 @@
     </div>
 
     <div class="flex flex-col items-center justify-between gap-4 border-t border-white/20 pt-8 md:flex-row">
-      <p class="text-sm text-white/70">© 2026 Chang Orthodontics. All rights reserved.</p>
-      <div class="flex flex-wrap gap-x-6 text-sm text-white/70">
+      <p class="text-sm text-white/85">© 2026 Chang Orthodontics. All rights reserved.</p>
+      <div class="flex flex-wrap gap-x-6 text-sm text-white/85">
         <a href="privacy.html" class="inline-flex min-h-[44px] items-center hover:text-white">Privacy Policy</a>
         <a href="terms.html" class="inline-flex min-h-[44px] items-center hover:text-white">Terms</a>
         <a href="accessibility.html" class="inline-flex min-h-[44px] items-center hover:text-white">Web Accessibility Statement</a>
