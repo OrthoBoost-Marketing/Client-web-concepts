@@ -88,7 +88,10 @@ in his bio, "San Carlos" in the reviews and locations headings, "100 five-star r
 
 ## Geometry, elevation, motion
 
-- Container `max-w-7xl`, page shell capped at `112rem`. Bands are full-bleed, content is contained.
+- **Container is `max-w-[1200px]`.** Dr. Ty's Tier 5 names 1200px explicitly; Tailwind's `max-w-7xl`
+  is 1280px and reads as a pass until you check the number. Bands are full-bleed, content is
+  contained. The page itself has no outer cap and no sheet shadow: it runs edge to edge on
+  `--surface`, so there are no grey margins on wide screens.
 - Radius: `2rem` on panels and bands, `1.5rem` on framed photos, `1.5rem`/`rounded-3xl` on cards,
   `0.75rem` on buttons, `full` on pills and the header CTA.
 - Three shadows only: `--shadow-chip` (resting chips and small cards), `--shadow-card` (cards and
