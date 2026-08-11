@@ -63,8 +63,13 @@
   .navgrp:hover>.dd,.navgrp:focus-within>.dd{visibility:visible;opacity:1;transform:translateY(0)}
   /* Reveals fail open: the hidden state exists only once JS has armed it. */
   html.js-armed [data-reveal]{opacity:0}
+  /* Masked headings are hidden until the split script has run and re-shown it. Without this
+     the heading painted in its natural position, then every word jumped 110% down and
+     climbed back — a flash on four headings, including two section openers. */
+  html.js-armed [data-mask-reveal]{visibility:hidden}
   @media (prefers-reduced-motion: reduce){
     html.js-armed [data-reveal]{opacity:1!important;transform:none!important;filter:none!important}
+    html.js-armed [data-mask-reveal]{visibility:visible!important}
     *{animation-duration:.01ms!important;transition-duration:.01ms!important}
     .navgrp>.dd{transition:none}
   }
@@ -80,11 +85,19 @@
 <script>
   if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
     document.documentElement.classList.add("js-armed");
+    // Safety net, set here rather than at the end of the document so it survives a slow or
+    // failed CDN. The motion script marks the page as owned once GSAP is confirmed; if that
+    // has not happened within 2.5s, drop the hidden state and just show the content.
+    setTimeout(function () {
+      if (!document.documentElement.hasAttribute("data-motion-ready")) {
+        document.documentElement.classList.remove("js-armed");
+      }
+    }, 2500);
   }
 </script>
 <!-- If JS is off entirely the head script never runs, but belt-and-braces: nothing below
      may depend on JS to become visible. -->
-<noscript><style>html.js-armed [data-reveal]{opacity:1!important}</style></noscript>
+<noscript><style>html.js-armed [data-reveal]{opacity:1!important}html.js-armed [data-mask-reveal]{visibility:visible!important}</style></noscript>
 </head>
 
 <body class="bg-[#F9FAFA] text-[#1b1c1c] antialiased selection:bg-[#005DAA] selection:text-white pb-[76px] lg:pb-0" style="font-family:'Figtree', ui-sans-serif, system-ui, sans-serif;">
@@ -732,6 +745,9 @@
     throw new Error("Motion libraries unavailable — reveals disarmed, content shown.");
   }
 
+  // Claim ownership so the head's 2.5s safety net stands down.
+  document.documentElement.setAttribute("data-motion-ready", "");
+
   gsap.registerPlugin(ScrollTrigger);
   const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   // js-armed is set in the head, before first paint — see the note there. Do not move it back.
@@ -768,10 +784,15 @@
       outer.appendChild(inner); heading.appendChild(outer);
       heading.appendChild(document.createTextNode(" "));
     });
+    // Only now is the heading safe to show. CSS keeps it hidden until this point, because
+    // until the split runs the words are still in their natural position — revealing
+    // earlier meant the heading appeared, jumped 110% down, then climbed back.
+    heading.style.visibility = "visible";
     if (prefersReducedMotion) return;
     gsap.to(heading.querySelectorAll("span span"), {
       y: "0%", duration: 1.05, ease: "power4.out", stagger: 0.035,
-      scrollTrigger: { trigger: heading, start: "top 86%", once: true }
+      scrollTrigger: { trigger: heading, start: "top 86%", once: true },
+      onComplete() { gsap.set(heading.querySelectorAll("span span"), { clearProps: "willChange" }); }
     });
   });
 
@@ -808,6 +829,7 @@
         if (getComputedStyle(el).opacity === "0") gsap.set(el, { opacity: 1, y: 0 });
       });
       document.querySelectorAll("[data-mask-reveal]").forEach((heading) => {
+        heading.style.visibility = "visible";
         if (heading.getBoundingClientRect().top < window.innerHeight) {
           gsap.to(heading.querySelectorAll("span span"), { y: "0%", duration: 0.4, stagger: 0.02 });
         }
