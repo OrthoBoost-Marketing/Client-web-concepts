@@ -223,13 +223,24 @@ six quotes below are what currently ships. A further ~29 real reviews with
 attribution are now available from the GBP and are listed at the end of this
 section as an approved pool to draw from.
 
-**STILL MISSING, and it is the one that matters: the star rating and the total
-review count.** The supplied GBP export contains review *text* and reviewer
-*names*, but no per-review star ratings and no aggregate. So the five-star
-glyphs currently on `index.html` (30), `reviews.html` (25) and
-`braces-for-adults.html` (5) still assert a rating nobody has verified — the
-open Notion Tier 1 item. **Either supply the rating and count off the profile
-header, or the glyphs come off every page, homepage included.**
+**RATING CONFIRMED 2026-08-12 by Jules: 5.0 across 42 Google reviews.** This
+closes Notion's second Gate 4 Tier 1 item. The five-star glyphs on `index.html`,
+`reviews.html` and `braces-for-adults.html` are now backed by a real 5.0 average
+and may stay.
+
+**Both numbers are live figures and will drift.** Re-read them off the profile
+before launch and before any future print of them. Never round, and never let a
+page state a count that is older than the profile.
+
+**Still no `AggregateRating` or `Review` schema, deliberately.** Marking up your
+own third-party reviews is self-serving structured data and a manual-action
+risk. The numbers may appear in visible copy; they must not appear in JSON-LD.
+
+**Where the figures currently appear:** `reviews.html` only, in the intro band.
+Adding a rating badge anywhere else — the homepage trust bar in particular — is
+a **separate decision that must be asked, not assumed.** The kit's own rule is
+"ask before adding rating badges," written after a client stripped a
+"Rated 4.7" line off every page of a finished site.
 
 **UPDATED 2026-08-11 — the "zero reviews" state is over.** Real Google reviews
 came in and were built into all three concepts on 2026-08-06 (commit
