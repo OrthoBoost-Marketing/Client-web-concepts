@@ -3,18 +3,75 @@
   "cleanUrls": true,
   "trailingSlash": false,
   "redirects": [
-    { "source": "/about-us", "destination": "/dr-romans", "permanent": true },
-    { "source": "/treatments", "destination": "/", "permanent": true },
-    { "source": "/teen-treatment", "destination": "/braces-for-kids", "permanent": true },
-    { "source": "/adult-treatment", "destination": "/braces-for-adults", "permanent": true },
-    { "source": "/clear-aligners", "destination": "/invisalign", "permanent": true },
-    { "source": "/clear-braces", "destination": "/braces-for-adults", "permanent": true },
-    { "source": "/metal-braces", "destination": "/braces-for-kids", "permanent": true },
-    { "source": "/how-to-get-started", "destination": "/free-consult", "permanent": true },
-    { "source": "/contact-us", "destination": "/contact", "permanent": true },
-    { "source": "/faq", "destination": "/free-consult", "permanent": true },
-    { "source": "/terms-conditions", "destination": "/terms", "permanent": true },
-    { "source": "/privacy-policy", "destination": "/privacy", "permanent": true },
-    { "source": "/accessibility-statement", "destination": "/accessibility", "permanent": true }
+    {
+      "source": "/about-us",
+      "destination": "/dr-romans",
+      "permanent": true
+    },
+    {
+      "source": "/treatments",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/teen-treatment",
+      "destination": "/braces-for-kids",
+      "permanent": true
+    },
+    {
+      "source": "/adult-treatment",
+      "destination": "/braces-for-adults",
+      "permanent": true
+    },
+    {
+      "source": "/clear-aligners",
+      "destination": "/invisalign",
+      "permanent": true
+    },
+    {
+      "source": "/clear-braces",
+      "destination": "/braces-for-adults",
+      "permanent": true
+    },
+    {
+      "source": "/metal-braces",
+      "destination": "/braces-for-kids",
+      "permanent": true
+    },
+    {
+      "source": "/how-to-get-started",
+      "destination": "/free-consult",
+      "permanent": true
+    },
+    {
+      "source": "/contact-us",
+      "destination": "/contact",
+      "permanent": true
+    },
+    {
+      "source": "/faq",
+      "destination": "/free-consult",
+      "permanent": true
+    },
+    {
+      "source": "/terms-conditions",
+      "destination": "/terms",
+      "permanent": true
+    },
+    {
+      "source": "/privacy-policy",
+      "destination": "/privacy",
+      "permanent": true
+    },
+    {
+      "source": "/accessibility-statement",
+      "destination": "/accessibility",
+      "permanent": true
+    },
+    {
+      "source": "/thank-you",
+      "destination": "/appointment-request-confirmation",
+      "permanent": true
+    }
   ]
 }

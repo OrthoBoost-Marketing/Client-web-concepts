@@ -23,7 +23,7 @@
   var BACKUP = 'https://leads.startorthoboost.com';
   var SITE_ID = 'romans-orthodontics';
 
-  var CONFIRM = 'thank-you.html';
+  var CONFIRM = 'appointment-request-confirmation.html';
   var CALL_FALLBACK = 'or call us at (623) 320-1222';
   var STORE_KEY = 'roc_attr';
   var MIN_FILL_MS = 2500; /* faster than this = bot */
