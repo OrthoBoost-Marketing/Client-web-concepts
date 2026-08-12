@@ -1,0 +1,476 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Early Orthodontic Treatment for Kids in Anthem, AZ | Romans Orthodontics</title>
+<meta name="description" content="Early orthodontic treatment in Anthem, AZ. The AAO recommends a first check by age 7, and most children need monitoring rather than braces. Free consultation with Dr. Nicholas Romans, board-certified orthodontist.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600&family=Fraunces:ital,opsz,wght,SOFT@0,9..144,300..700,100;1,9..144,300..600,100&family=IBM+Plex+Mono:wght@400;500&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600&family=Fraunces:ital,opsz,wght,SOFT@0,9..144,300..700,100;1,9..144,300..600,100&family=IBM+Plex+Mono:wght@400;500&display=swap" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600&family=Fraunces:ital,opsz,wght,SOFT@0,9..144,300..700,100;1,9..144,300..600,100&family=IBM+Plex+Mono:wght@400;500&display=swap"></noscript>
+<meta name="robots" content="noindex">
+<link rel="canonical" href="https://romansorthodontics.com/early-treatment">
+<link rel="preload" as="image" href="../assets/web/svc-early-treatment.webp" fetchpriority="high">
+<link rel="stylesheet" href="design-system.css">
+<link rel="icon" href="../assets/romans-orthodontics-icon.svg" type="image/svg+xml">
+<link rel="icon" href="../assets/romans-orthodontics-favicon-48.png" sizes="48x48" type="image/png">
+<link rel="apple-touch-icon" href="../assets/romans-orthodontics-apple-touch-icon-180.png">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"When should my child first see an orthodontist?","acceptedAnswer":{"@type":"Answer","text":"Age 7. The American Association of Orthodontists recommends a first orthodontic check by then, because the first adult molars and front teeth are usually in and the bite can finally be read. Waiting until every baby tooth is gone is fine for most children, but it hides the few problems that are easier to fix early."}},{"@type":"Question","name":"Does an early visit mean my child gets braces at 7?","acceptedAnswer":{"@type":"Answer","text":"Usually not. Most children Dr. Romans sees at 7 need monitoring, so you leave with a date to come back rather than a treatment plan. Early treatment is for the smaller group with a crossbite, a jaw that shifts to close, severe crowding, or front teeth at real risk of injury."}},{"@type":"Question","name":"What does early treatment cost in Anthem?","acceptedAnswer":{"@type":"Answer","text":"It depends on whether your child needs treatment at all, and at this age most do not yet. The consultation is free, so you can get that answer without paying for it. If treatment is recommended, your insurance is checked while you sit there and the figure you leave with is exact."}},{"@type":"Question","name":"What problems does early treatment actually fix?","acceptedAnswer":{"@type":"Answer","text":"Crossbites, jaws that shift sideways to bring the teeth together, crowding severe enough to trap an adult tooth, and upper front teeth that sit far enough forward to be chipped in a fall. It can also guide a jaw while it is still growing, which is only possible before growth finishes."}},{"@type":"Question","name":"What happens if we just wait?","acceptedAnswer":{"@type":"Answer","text":"For most children, nothing at all, and waiting is what Dr. Romans recommends most often at this age. The reason to check at 7 is that a small number of bite problems get longer or harder to correct once growth is finished, and a parent cannot tell which group their child is in by looking."}},{"@type":"Question","name":"Will my child still need braces later?","acceptedAnswer":{"@type":"Answer","text":"Often yes. Early treatment usually corrects one specific problem and makes room, then a second phase of braces or aligners aligns everything once the adult teeth are all in. Dr. Romans says so at the first visit, so a second phase is planned from the start rather than added on later."}}]}
+</script>
+<style>
+/* Concept C2, Dr. Yang persona, Stillpoint layout and motion cues.
+   Same brand system as every Romans concept: design-system.css owns the
+   palette, Fraunces / Archivo / IBM Plex Mono, and --radius 0. This concept
+   varies composition only: type scale, space ramp, section rhythm, hero
+   pattern, motion. No :root block, no literal colour, font or length below:
+   every value reads a var(--*) or derives from one via color-mix.
+
+   Hard rectangular edges throughout. No gradients, no box-shadows, no
+   backdrop-filter. The hero scrim is a flat single-opacity ink wash. */
+
+/* the concept's own non-brand tokens, on the token wrapper so a media query
+   can still reach them (an inline style attribute could not) */
+.psp-root{
+--step-h1:clamp(34px,4vw,60px);--step-h2:clamp(26px,2.6vw,40px);--step-h3:clamp(18px,1.3vw,21px);
+--step-lede:clamp(18px,1.2vw,20px);--step-body:17px;--step-body-sm:15px;--step-small:12px;
+--leading-tight:1.12;--leading-body:1.6;--tracking-display:-0.01em;--tracking-label:0.08em;
+--space-1:8px;--space-2:12px;--space-3:20px;--space-4:32px;--space-5:56px;--space-6:84px;
+--section-y:100px;--container:1200px;--gutter:40px;--tap:46px;
+--dur:.24s;--ease:cubic-bezier(.4,0,.2,1);
+--roc-logo-h:38px;--roc-topbar:64px;--roc-menu-w:280px;
+/* Fixed so the sticky offset and the hero's fold height are both deterministic
+   instead of depending on how the utility text happens to lay out. 45px, not 44:
+   the strip carries a 1px bottom border, so 44 would leave a 43px content box
+   and the tel inside it one pixel under the tap-target floor. Do not shrink it. */
+--roc-utility-h:45px;--roc-sticky-h:calc(var(--tap) + 1px);
+--roc-hair:1px solid var(--line);--roc-hair-inv:1px solid var(--line-inverse);
+--roc-scrim:color-mix(in srgb,var(--surface-dark) 72%,transparent);
+--ink-inverse-soft:color-mix(in srgb,var(--ink-inverse) 88%,transparent);
+--ink-inverse-muted:color-mix(in srgb,var(--ink-inverse) 77%,transparent);
+--roc-in:.62s;--roc-stagger:90ms;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;background:var(--surface)}
+body{overflow-x:hidden;font-family:var(--font-body);color:var(--ink)}
+:focus-visible{outline:var(--focus-ring);outline-offset:var(--focus-offset)}
+a{color:var(--brand);text-decoration-thickness:1px;text-underline-offset:3px}
+a:hover{color:var(--brand-ink)}
+img,iframe{max-width:100%}
+.roc-icon{width:18px;height:18px;flex:0 0 auto}
+.roc-chev{width:13px;height:13px;flex:0 0 auto;transition:transform var(--dur) var(--ease)}
+
+/* scroll-in motion: opacity plus a short rise, and a hard-edged clip wipe on
+   media. Transform, opacity and clip-path only: no blur, shadow or gradient. */
+.roc-js .roc-anim{opacity:.01;transform:translateY(16px);transition:opacity var(--roc-in) var(--ease),transform var(--roc-in) var(--ease);transition-delay:calc(var(--i,0) * var(--roc-stagger))}
+.roc-js .roc-anim.is-in{opacity:1;transform:none}
+/* The clip goes on the CHILD, never on .roc-wipe itself. Chrome clips an
+   IntersectionObserver target's intersection rect by the target's own
+   clip-path, so a self-clipped element reports ratio 0 forever and never
+   reveals. The handoff shipped it that way and all five media blocks stayed
+   invisible. The fail-open timeout does not catch it either, because the
+   plain .roc-anim elements do fire and `fired` is never 0. */
+.roc-js .roc-wipe>*{clip-path:inset(0 0 100% 0);transition:clip-path .78s var(--ease);transition-delay:calc(var(--i,0) * var(--roc-stagger))}
+.roc-js .roc-wipe.is-in>*{clip-path:inset(0 0 0 0)}
+
+/* header: the whole header is the sticky element, offset upward by exactly the
+   utility strip's height so the strip scrolls away and the main bar lands at 0.
+   Sticking .roc-bar instead does NOT work: a sticky element cannot leave its
+   parent's box, so it unpinned the moment <header> scrolled out of view. */
+.roc-header{position:sticky;top:calc(var(--roc-utility-h) * -1);z-index:300;background:var(--surface-dark);color:var(--ink-inverse)}
+/* Vertical centring lives HERE, not on .roc-utility-inner. The inner sits inside
+   .psp-container, which is auto-height, so its height:100% resolved against auto
+   and centred nothing. Making the strip itself the flex context centres the
+   container within the fixed 44px instead. */
+.roc-utility{height:var(--roc-utility-h);display:flex;align-items:center;border-bottom:var(--roc-hair-inv)}
+/* The container and the inner both stretch to the strip's full content height so
+   the tel stays a full-height click target; each one then centres its own
+   children, which is what actually does the vertical centring. */
+.roc-utility>.psp-container{flex:1 1 auto;min-width:0;align-self:stretch;display:flex;align-items:center}
+.roc-utility-inner{display:flex;flex:1 1 auto;align-self:stretch;flex-wrap:nowrap;align-items:center;gap:var(--space-3);white-space:nowrap;font-family:var(--font-mono);font-size:var(--step-small);font-weight:500;letter-spacing:var(--tracking-label);text-transform:uppercase;color:var(--ink-inverse-muted)}
+.roc-utility-sep{width:1px;height:11px;background:var(--line-inverse);flex:0 0 auto}
+/* align-self:stretch, not min-height, because the strip's 1px bottom border makes its
+   content box 43px, so a 44px min-height overflowed by half a pixel each way. */
+.roc-utility-tel{margin-left:auto;display:flex;align-items:center;align-self:stretch;font-family:var(--font-mono);font-size:var(--step-small);font-weight:500;letter-spacing:var(--tracking-label);color:var(--ink-inverse);text-decoration:none}
+.roc-utility-tel:hover{color:var(--brand-tint)}
+.roc-bar{background:var(--surface-dark);border-bottom:var(--roc-hair-inv)}
+/* Now that the bar pins, an anchor jump would land the section's heading
+   underneath it. Only the main bar persists. The utility strip has scrolled
+   away by the time any in-page link is clicked. */
+main[id],section[id]{scroll-margin-top:calc(var(--roc-topbar) + var(--space-2))}
+.roc-bar-inner{display:grid;grid-template-columns:auto 1fr auto;align-items:center;column-gap:var(--space-5);min-height:var(--roc-topbar)}
+.roc-logo{display:flex;align-items:center;min-height:var(--tap);text-decoration:none;color:var(--ink-inverse)}
+.roc-logo img{height:var(--roc-logo-h);width:auto;display:block}
+.roc-nav-wrap{justify-self:end}
+.roc-nav{display:flex;align-items:center;gap:var(--space-3);list-style:none;margin:0;padding:0}
+.roc-nav-item{position:relative}
+.roc-nav-link{display:flex;align-items:center;gap:var(--space-1);min-height:var(--tap);border:0;background:none;cursor:pointer;font-family:var(--font-mono);font-size:var(--step-small);font-weight:500;letter-spacing:var(--tracking-label);text-transform:uppercase;color:var(--ink-inverse);text-decoration:none;border-bottom:1px solid transparent;transition:color var(--dur) var(--ease),border-color var(--dur) var(--ease)}
+.roc-nav-link:hover{color:var(--brand-tint);border-bottom-color:var(--brand-tint)}
+.roc-menu{position:absolute;top:100%;left:0;min-width:var(--roc-menu-w);padding:var(--space-2);background:var(--surface-dark);border:var(--roc-hair-inv);opacity:0;visibility:hidden;transition:opacity var(--dur) var(--ease),visibility var(--dur)}
+.roc-nav-item:hover .roc-menu,.roc-nav-item:focus-within .roc-menu{opacity:1;visibility:visible}
+.roc-nav-item:hover .roc-chev,.roc-nav-item:focus-within .roc-chev{transform:rotate(180deg)}
+.roc-menu-list{display:grid;list-style:none;margin:0;padding:0}
+.roc-menu-link{display:flex;align-items:center;min-height:var(--tap);padding-inline:var(--space-2);font-family:var(--font-body);font-size:var(--step-body-sm);color:var(--ink-inverse);text-decoration:none}
+.roc-menu-link:hover{color:var(--brand-tint)}
+.roc-bar-cta{justify-self:end}
+.roc-mobile-tel,.roc-drawer-trigger{display:none}
+/* Drawer and Disclosure inherit their text colour, so the dark header carries
+   them; their surfaces and hairlines are hardcoded to the light tokens and have
+   to be pointed at the inverse pair here. */
+.roc-header .psp-drawer__panel{background:var(--surface-dark);border-top:var(--roc-hair-inv)}
+.roc-header .psp-drawer__trigger{border-left:var(--roc-hair-inv)}
+.roc-header .psp-disclosure{border-bottom:var(--roc-hair-inv)}
+.roc-header .psp-disclosure__sign{color:var(--brand-tint)}
+.roc-drawer-body{padding-block:var(--space-4) var(--space-5)}
+.roc-drawer-sub{display:grid;list-style:none;margin:0;padding:0 0 var(--space-2)}
+.roc-drawer-link,.roc-drawer-top{display:flex;align-items:center;min-height:var(--tap);font-family:var(--font-body);color:var(--ink-inverse);text-decoration:none}
+.roc-drawer-link{font-size:var(--step-body-sm);padding-left:var(--space-3)}
+.roc-drawer-top{font-family:var(--font-mono);font-size:var(--step-small);font-weight:500;letter-spacing:var(--tracking-label);text-transform:uppercase}
+.roc-drawer-link:hover,.roc-drawer-top:hover{color:var(--brand-tint)}
+
+/* full-bleed photographic hero with centred overlaid type */
+/* The hero owns the fold: exactly the viewport less the header above it, so the
+   photograph and the H1 are what a visitor sees and nothing peeks up from below.
+   min-height, not height, so on a short phone the content wins and overflows
+   rather than being crushed. svh, so mobile browser chrome does not add a
+   phantom scroll; the vh line is the fallback for anything without svh. */
+.roc-hero{position:relative;display:grid;align-items:center;isolation:isolate;background:var(--surface-dark);min-height:calc(100vh - var(--roc-topbar) - var(--roc-utility-h));min-height:calc(100svh - var(--roc-topbar) - var(--roc-utility-h))}
+.roc-hero-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 30%;z-index:-2}
+.roc-hero-scrim{position:absolute;inset:0;background:var(--roc-scrim);z-index:-1}
+.roc-hero-inner{display:grid;justify-items:center;gap:var(--space-3);padding-block:var(--space-6) var(--space-5);text-align:center;margin-inline:auto;max-width:80ch}
+.roc-hero-inner .psp-heading{color:var(--ink-inverse);text-align:center}
+.roc-hero-label{margin:0;padding-bottom:var(--space-2);border-bottom:2px solid var(--brand);font-family:var(--font-mono);font-size:var(--step-small);font-weight:500;letter-spacing:var(--tracking-label);text-transform:uppercase;color:var(--ink-inverse)}
+.roc-hero-lede{margin:0;max-width:62ch;font-family:var(--font-body);font-size:var(--step-lede);line-height:var(--leading-body);color:var(--ink-inverse)}
+.roc-hero-actions{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:var(--space-2) var(--space-4)}
+.roc-hero-ghost{display:inline-flex;align-items:center;justify-content:center;white-space:nowrap;min-height:var(--tap);padding-inline:var(--space-3);border:1px solid var(--ink-inverse);font-family:var(--font-mono);font-size:var(--step-small);font-weight:500;letter-spacing:var(--tracking-label);text-transform:uppercase;color:var(--ink-inverse);text-decoration:none;transition:background var(--dur) var(--ease),color var(--dur) var(--ease)}
+.roc-hero-ghost:hover{background:var(--ink-inverse);color:var(--ink)}
+
+/* centred section intro, the recurring statement block */
+.roc-intro{display:grid;justify-items:center;gap:var(--space-3);text-align:center;margin-inline:auto;max-width:84ch;width:100%}
+.roc-intro .psp-heading{text-align:center}
+
+/* Copper accents are copper again. The AA shortfall that briefly pushed these to
+   --brand-ink was in the palette, not here: --brand was darkened to #A05C39 in
+   the design system (4.778:1 against paper, and paper is also --ink-inverse, so
+   the same ratio covers white-on-button). --brand-ink stays what it is for, the
+   gap flags and hover states. */
+.roc-intro-label{margin:0;font-family:var(--font-mono);font-size:var(--step-small);font-weight:500;letter-spacing:var(--tracking-label);text-transform:uppercase;color:var(--brand)}
+.psp-band--dark .roc-intro-label{color:var(--brand-tint)}
+.roc-intro-lede{margin:0;max-width:64ch;font-family:var(--font-body);font-size:var(--step-lede);line-height:var(--leading-body);color:var(--ink-muted)}
+.psp-band--dark .roc-intro-lede{color:var(--ink-inverse-soft)}
+.roc-intro-actions{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:var(--space-2) var(--space-4);padding-top:var(--space-2)}
+
+/* dark-band body copy */
+.roc-dark-body{margin:0;max-width:56ch;font-family:var(--font-body);font-size:var(--step-body);line-height:var(--leading-body);color:var(--ink-inverse-soft)}
+
+/* the doctor block's own credential list: hairline-separated rows in the mono
+   label voice, so it reads as a caption and not as a second trust bar */
+.roc-doc-creds{display:grid;list-style:none;margin:0;padding:0;width:100%;border-top:var(--roc-hair-inv)}
+.roc-doc-creds li{padding-block:var(--space-1);border-bottom:var(--roc-hair-inv);font-family:var(--font-mono);font-size:var(--step-small);font-weight:500;letter-spacing:var(--tracking-label);text-transform:uppercase;color:var(--ink-inverse-muted)}
+
+/* credential bar */
+.roc-credentials{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));list-style:none;margin:0;padding:0}
+.roc-credential{display:grid;gap:var(--space-1);align-content:start;padding:0 var(--space-4);border-left:var(--roc-hair)}
+.roc-credential:first-child{padding-left:0;border-left:0}
+.roc-credential-num{font-family:var(--font-mono);font-size:var(--step-small);font-weight:500;letter-spacing:var(--tracking-label);color:var(--ink-muted)}
+.roc-credential-title{font-family:var(--font-display);font-weight:600;font-size:var(--step-h3);line-height:var(--leading-tight);color:var(--ink)}
+.roc-credential-desc{font-family:var(--font-body);font-size:var(--step-body-sm);line-height:var(--leading-body);color:var(--ink-muted)}
+
+/* row labels */
+.roc-row-label{margin:0;font-family:var(--font-mono);font-size:var(--step-small);font-weight:500;letter-spacing:var(--tracking-label);text-transform:uppercase;color:var(--brand)}
+
+/* gap flags: the client-answer placeholders that ship visible on purpose */
+.roc-gap{display:grid;gap:var(--space-2);padding:var(--space-4);border:1px dashed var(--line);width:100%}
+.roc-gap-flag{margin:0;font-family:var(--font-mono);font-size:var(--step-small);font-weight:500;letter-spacing:var(--tracking-label);text-transform:uppercase;color:var(--brand-ink)}
+.roc-gap-note{margin:0;font-family:var(--font-body);font-size:var(--step-body-sm);line-height:var(--leading-body);color:var(--ink-muted);max-width:64ch}
+
+/* services: six cards in one seamless hairline grid, whole card clickable */
+.roc-services{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;list-style:none;margin:0;padding:0;width:100%;background:var(--line);border-block:var(--roc-hair)}
+.roc-services>li{background:var(--surface)}
+.roc-card{display:grid;gap:var(--space-2);align-content:start;height:100%;padding:var(--space-4);text-decoration:none;color:var(--ink);transition:background var(--dur) var(--ease)}
+.roc-card:hover{background:var(--brand-tint)}
+.roc-card-img{display:block;width:100%;height:auto;aspect-ratio:4 / 3;object-fit:cover}
+.roc-card-num{font-family:var(--font-mono);font-size:var(--step-small);font-weight:500;letter-spacing:var(--tracking-label);color:var(--ink-muted)}
+.roc-card-desc{font-family:var(--font-body);font-size:var(--step-body-sm);line-height:var(--leading-body);color:var(--ink-muted)}
+.roc-card-more{font-family:var(--font-mono);font-size:var(--step-small);font-weight:500;letter-spacing:var(--tracking-label);text-transform:uppercase;color:var(--brand)}
+.roc-card:hover .roc-card-more{color:var(--brand-ink);text-decoration:underline;text-underline-offset:3px}
+
+/* affiliations strip: AUTHORITY-LOGOS-SPEC, 4 to 7 marks in one muted tone on
+   the tinted band, small quiet label above. It runs five bands below the
+   Section 03 credential bar, which is what rule 4 asks for.
+   TYPE ONLY, and that is a compliance decision rather than a styling one. The
+   ABO Certification Marks Usage Guidelines (July 2025) forbid altering or hand
+   drawing the seal, require the artwork to come from the ABO Storefront, and
+   require the mark to name the certified individual rather than the practice.
+   The TSX comment above Affiliations() carries the full reasoning.
+   .roc-affil-mark is the drop-in slot for real files once the client pulls
+   them. */
+.roc-affil{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--space-4) var(--space-4);list-style:none;margin:0;padding:0;width:100%}
+.roc-affil>li{display:grid;grid-row:span 2;grid-template-rows:subgrid;gap:var(--space-1);align-content:start;padding-left:var(--space-4);border-left:var(--roc-hair);color:var(--ink-muted)}
+.roc-affil>li:nth-child(3n+1){padding-left:0;border-left:0}
+@supports not (grid-template-rows:subgrid){
+.roc-affil>li{grid-row:auto;grid-template-rows:auto auto}
+}
+/* The single muted tone is baked into each PNG: slate at the same .85 alpha
+   --ink-muted carries, times the mark's own alpha, so the knockouts stay real
+   holes rather than white shapes on the tinted band. Baked rather than done in
+   CSS because a grayscale filter maps each logo's ink to a DIFFERENT grey, and
+   mask-image plus currentColor, which would have been exact, is dead on arrival:
+   Chromium refuses to load a mask subresource from a file:// page, so the strip
+   would go blank for anyone opening these files locally. Measured, not assumed. */
+/* Bottom-aligned in the subgrid row, not top. The seal and the AAO lockup fill
+   the 72px row but the Invisalign wordmark is 26px, so top-aligning left it
+   floating with a gap above its descriptor while the other two sat tight. All
+   three now share one baseline just above the line they label. */
+.roc-affil-mark{display:block;align-self:end;width:auto;height:var(--roc-mark-h,72px);max-width:100%}
+/* one tone for the whole set per rule 3, and with no artwork the type is the
+   mark, so hierarchy inside a row comes from size and typeface alone */
+.roc-affil-name{margin:0;align-self:end;font-family:var(--font-body);font-size:var(--step-body);font-weight:600;line-height:var(--leading-tight);color:inherit}
+.roc-affil-role{margin:0;font-family:var(--font-mono);font-size:var(--step-small);font-weight:500;letter-spacing:var(--tracking-label);text-transform:uppercase;line-height:1.4;color:inherit}
+
+/* reviews: REVIEWS-SPEC card anatomy, stars then text then name, in a static
+   grid of 3, 6 or 9 and never a carousel. Built on the same seamless hairline
+   grid the services section uses, so six cells at three columns read as two
+   rows of one object. The middle template row takes the slack, which lands
+   every reviewer's name on one line across a row however long the quotes run. */
+.roc-proof{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;list-style:none;margin:0;padding:0;width:100%;background:var(--line);border-block:var(--roc-hair)}
+.roc-proof>li{display:grid;grid-template-rows:auto 1fr auto;gap:var(--space-2);padding:var(--space-4);background:var(--surface)}
+/* copper, at the size the mono labels run at everywhere else. Five spans rather
+   than one string, so the gap has something to act on. */
+.roc-stars{display:flex;gap:.18em;font-size:var(--step-body-sm);color:var(--brand)}
+/* a blockquote, because that is what it is. No quotation-mark ornament: the
+   stars already open the cell and this design decorates nothing. */
+.roc-quote{margin:0;font-family:var(--font-body);font-size:var(--step-body-sm);line-height:var(--leading-body);color:var(--ink)}
+.roc-quote-name{font-family:var(--font-mono);font-size:var(--step-small);font-weight:500;letter-spacing:var(--tracking-label);text-transform:uppercase;color:var(--ink-muted)}
+
+/* locations */
+.roc-nap{display:grid;font-style:normal;font-family:var(--font-body);font-size:var(--step-body);line-height:var(--leading-body);color:var(--ink)}
+/* the footer NAP and its flags sit on the dark band now */
+.psp-band--dark .roc-nap{color:var(--ink-inverse)}
+.psp-band--dark .roc-nap-tel{color:var(--brand-tint)}
+.psp-band--dark .roc-nap-tel:hover{color:var(--ink-inverse)}
+.psp-band--dark .roc-gap-flag{color:var(--brand-tint)}
+.roc-nap--sm{font-size:var(--step-body-sm)}
+.roc-nap-name{font-family:var(--font-display);font-weight:600;font-size:var(--step-h3);line-height:var(--leading-tight)}
+.roc-nap-tel{display:flex;align-items:center;min-height:var(--tap);font-family:var(--font-mono);font-weight:500;letter-spacing:var(--tracking-label);color:var(--brand);text-decoration:none}
+.roc-nap-tel:hover{color:var(--brand-ink)}
+.roc-meta{display:grid;gap:var(--space-2);margin:0;padding-top:var(--space-3);border-top:var(--roc-hair);width:100%}
+.roc-meta>div{display:grid;grid-template-columns:130px 1fr;gap:var(--space-3)}
+.roc-meta dt{font-family:var(--font-mono);font-size:var(--step-small);font-weight:500;letter-spacing:var(--tracking-label);text-transform:uppercase;color:var(--ink-muted)}
+.roc-meta dd{margin:0;font-family:var(--font-body);font-size:var(--step-body-sm);line-height:var(--leading-body);color:var(--ink)}
+.roc-map{width:100%;aspect-ratio:3 / 2;border:var(--roc-hair);background:var(--surface-alt);filter:saturate(.75);display:block}
+
+/* footer */
+.roc-footer-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1.1fr;gap:var(--space-5) var(--space-4)}
+.roc-footer-brand{display:grid;gap:var(--space-2);align-content:start}
+.roc-footer-logo{height:var(--roc-logo-h);width:auto;display:block}
+.roc-footer-blurb{margin:0;font-family:var(--font-body);font-size:var(--step-body-sm);line-height:var(--leading-body);color:var(--ink-inverse-soft);max-width:34ch}
+.roc-footer-col{display:grid;gap:var(--space-2);align-content:start}
+.roc-footer-h{margin:0;font-family:var(--font-mono);font-size:var(--step-small);font-weight:500;letter-spacing:var(--tracking-label);text-transform:uppercase;color:var(--ink-inverse)}
+.roc-footer-list{display:grid;list-style:none;margin:0;padding:0}
+.roc-footer-link{display:flex;align-items:center;min-height:var(--tap);font-family:var(--font-body);font-size:var(--step-body-sm);color:var(--ink-inverse-soft);text-decoration:none}
+.roc-footer-link:hover{color:var(--brand-tint)}
+.roc-legal{display:flex;flex-wrap:wrap;align-items:center;gap:var(--space-1) var(--space-4);font-family:var(--font-mono);font-size:var(--step-small);letter-spacing:var(--tracking-label);color:var(--ink-inverse-muted)}
+.roc-legal-link{display:flex;align-items:center;min-height:var(--tap);color:var(--ink-inverse-muted);text-decoration:none}
+.roc-legal-link:hover{color:var(--brand-tint)}
+
+/* sticky bar: Call · Book · Directions, Book the wide centre segment */
+/* !important is the only lever here: StickyBar writes
+   grid-template-columns:repeat(3, 1fr) as an inline style attribute, and the
+   spec wants Book as the wide centre segment. The real fix is a ratio prop on
+   the component upstream. Do not fork it to work around this. */
+.roc-sticky{grid-template-columns:1fr 1.7fr 1fr !important;gap:1px}
+body[data-kb="1"] .roc-sticky{display:none}
+
+@media (max-width:1000px){
+.roc-nav-wrap,.roc-bar-cta{display:none}
+.roc-mobile-tel{display:flex;align-items:center;justify-content:center;min-width:var(--tap);min-height:var(--tap);justify-self:end;color:var(--ink-inverse);text-decoration:none}
+.roc-mobile-tel:hover{color:var(--brand-tint)}
+.roc-mobile-tel .roc-icon{width:22px;height:22px}
+.roc-drawer-trigger{display:inline-flex}
+.roc-utility{display:none}
+/* strip is gone, so the sticky header sits flush and the hero reclaims its height */
+.psp-root{--roc-utility-h:0px}
+.roc-bar-inner{grid-template-columns:1fr auto auto;column-gap:var(--space-2)}
+/* The panel is pulled full-bleed out of the container, so it has to restore the
+   gutter itself or every drawer row sits flush against the screen edge. */
+.roc-bar-inner>.psp-drawer__panel{grid-column:1 / -1;margin-inline:calc(var(--gutter) * -1);padding-inline:var(--gutter)}
+.roc-footer-grid,.roc-services,.roc-credentials,.roc-proof{grid-template-columns:repeat(2,minmax(0,1fr))}
+.roc-credential:nth-child(2n+1){padding-left:0;border-left:0}
+/* AUTHORITY-LOGOS-SPEC rule 6: wrap rows, never a scroller, marks never under
+   28px. 3 up above, 2 up here, 1 up on a phone. */
+.roc-affil{grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--space-4) var(--space-3)}
+.roc-affil>li{padding-left:0;border-left:0}
+.roc-affil>li:nth-child(2n){padding-left:var(--space-3);border-left:var(--roc-hair)}
+.roc-credentials{gap:var(--space-4) 0}
+}
+@media (max-width:640px){
+.psp-root{--gutter:20px;--section-y:72px;--space-6:56px;--space-5:40px;--roc-utility-h:0px}
+/* also clear the sticky bottom bar, or the hero's CTA hides behind it */
+.roc-hero{min-height:calc(100vh - var(--roc-topbar) - var(--roc-sticky-h));min-height:calc(100svh - var(--roc-topbar) - var(--roc-sticky-h))}
+.roc-hero-inner{padding-block:var(--space-6) var(--space-5);text-align:left;justify-items:start}
+.roc-hero-inner .psp-heading,.roc-intro .psp-heading{text-align:left}
+.roc-intro{justify-items:start;text-align:left}
+.roc-hero-actions,.roc-intro-actions{width:100%;justify-content:flex-start}
+.roc-hero-actions>*,.roc-intro-actions>*{flex:1 1 100%;justify-content:center}
+.roc-footer-grid,.roc-services,.roc-proof{grid-template-columns:1fr}
+/* 1 up, so no vertical dividers at all, and the seal eases down for a phone
+   column while staying clear of rule 6's 28px floor. The reset has to match the
+   2n selector from the tier above, not just the bare li: same specificity wins
+   on order, lower loses, and cells 2/4/6 kept their divider and indent. */
+.roc-affil{grid-template-columns:1fr}
+.roc-affil>li,.roc-affil>li:nth-child(2n){padding-left:0;border-left:0}
+.roc-affil-mark{--roc-mark-h:64px}
+/* TRUST-BAR-SPEC rule 5: four cells go 2x2 on mobile, never a single stack. */
+.roc-credentials{grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--space-4) var(--space-3)}
+.roc-credential{padding-left:0;border-left:0}
+.roc-meta>div{grid-template-columns:1fr;gap:2px}
+main{padding-bottom:var(--space-6)}
+}
+@media (prefers-reduced-motion:reduce){
+.roc-js .roc-anim,.roc-js .roc-wipe,.roc-js .roc-wipe>*{opacity:1 !important;transform:none !important;clip-path:none !important;transition:none !important}
+*{animation-duration:.01ms !important;animation-iteration-count:1 !important}
+}
+
+/* =====================================================================
+   PAGE LAYER, early-treatment.html only. Appended after the shared
+   component layer, never edited into it. Same rules apply: no radius, no
+   shadow, no gradient, every value from a token.
+
+   The service hero deliberately does NOT reuse .roc-hero. The only real
+   photograph for this service is svc-early-treatment.webp at 720x540,
+   which would be upscaled roughly 3x as a full-bleed background and read
+   as soft at 1440 and above. Running it inside a half-width figure keeps
+   it at native size on a desktop column, so the hero stays a photograph
+   of the service without shipping a blurry LCP image. Same dark band,
+   same mono eyebrow, same Fraunces H1 as the homepage hero.
+   ===================================================================== */
+.roc-svchero{background:var(--surface-dark);color:var(--ink-inverse)}
+.roc-svchero .psp-heading{color:var(--ink-inverse)}
+.roc-svchero-lede{margin:0;max-width:54ch;font-family:var(--font-body);font-size:var(--step-lede);line-height:var(--leading-body);color:var(--ink-inverse-soft)}
+.roc-svchero-actions{display:flex;flex-wrap:wrap;align-items:center;gap:var(--space-2) var(--space-3)}
+.roc-svchero-fig{width:100%;aspect-ratio:4 / 3}
+
+/* row 2's differentiators, hairline rows with a hard copper square marker.
+   Not an icon set: the marker is a plain box so nothing decorative enters
+   a system that has no radius and no ornament. */
+.roc-bullets{display:grid;list-style:none;margin:0;padding:0;width:100%;border-top:var(--roc-hair)}
+.roc-bullets li{display:grid;grid-template-columns:auto 1fr;gap:var(--space-2);align-items:start;padding-block:var(--space-2);border-bottom:var(--roc-hair);font-family:var(--font-body);font-size:var(--step-body);line-height:var(--leading-body);color:var(--ink-muted)}
+.roc-bullets li:before{content:"";width:9px;height:9px;margin-top:.55em;background:var(--brand)}
+
+/* request form */
+.roc-form{display:grid;gap:var(--space-3);width:100%;padding:var(--space-4);border:var(--roc-hair);background:var(--surface)}
+.roc-field{display:grid;gap:var(--space-1)}
+.roc-label{font-family:var(--font-mono);font-size:var(--step-small);font-weight:500;letter-spacing:var(--tracking-label);text-transform:uppercase;color:var(--ink-muted)}
+.roc-input,.roc-select{width:100%;min-height:var(--tap);padding:var(--space-2);border:1px solid var(--ink);border-radius:0;background:var(--surface);font-family:var(--font-body);font-size:var(--step-body);line-height:1.3;color:var(--ink);appearance:none}
+.roc-select{background-image:none}
+.roc-input:focus-visible,.roc-select:focus-visible{outline:var(--focus-ring);outline-offset:var(--focus-offset)}
+button.psp-button{border:0;cursor:pointer;width:100%}
+.roc-form-note{margin:0;font-family:var(--font-body);font-size:var(--step-body-sm);line-height:var(--leading-body);color:var(--ink-muted)}
+.roc-form-tel{display:inline-flex;align-items:center;min-height:var(--tap);font-family:var(--font-mono);font-size:var(--step-body-sm);font-weight:500;letter-spacing:var(--tracking-label);color:var(--brand);text-decoration:none}
+.roc-form-tel:hover{color:var(--brand-ink)}
+/* the one service-matched quote beside the form, marked off by a copper
+   rule rather than a card, because cards would need a radius to look right
+   and there is no radius */
+.roc-pull{display:grid;gap:var(--space-2);padding-left:var(--space-3);border-left:3px solid var(--brand);max-width:52ch}
+.roc-pull blockquote{margin:0;font-family:var(--font-body);font-size:var(--step-body);line-height:var(--leading-body);color:var(--ink)}
+.roc-pull-name{font-family:var(--font-mono);font-size:var(--step-small);font-weight:500;letter-spacing:var(--tracking-label);text-transform:uppercase;color:var(--ink-muted)}
+
+/* FAQ: native details/summary from the design system, held to a readable
+   measure and given the copper summary rule the rest of the page uses */
+/* the AAO membership mark sits in the row that states the age-7
+   recommendation, and on a LIGHT band on purpose: the marks in
+   assets/affiliations are baked in slate ink at the muted alpha, so on the
+   dark band the lockup is ink on ink and disappears. */
+.roc-aao{display:grid;gap:var(--space-1);justify-items:start;padding-block:var(--space-2);color:var(--ink-muted)}
+.roc-faq{width:100%;max-width:76ch;border-top:var(--roc-hair)}
+.roc-faq .psp-disclosure__summary{font-size:var(--step-h3);font-weight:600}
+@media (max-width:900px){
+.roc-svchero-fig{aspect-ratio:3 / 2}
+}
+@media (max-width:640px){
+.roc-svchero-actions{width:100%}
+.roc-svchero-actions>.psp-button,.roc-svchero-actions>.roc-hero-ghost{flex:1 1 100%;justify-content:center}
+}
+</style>
+</head>
+<body>
+<link rel="preload" as="image" href="../assets/romans-orthodontics-lockup-horizontal-reversed-copper-mark.svg"/><div class="psp-root"><a href="#main" class="psp-skiplink">Skip to content</a><header class="roc-header"><div class="roc-utility"><div class="psp-container"><div class="roc-utility-inner"><span class="roc-utility-item">Anthem, Arizona</span><span class="roc-utility-sep" aria-hidden="true"></span><span class="roc-utility-item">3618 W. Anthem Way, Suite D120</span><a class="roc-utility-tel" href="tel:+16233201222">(623) 320-1222</a></div></div></div><div class="roc-bar"><div class="psp-container"><div class="roc-bar-inner"><a class="roc-logo" href="index.html"><img src="../assets/romans-orthodontics-lockup-horizontal-reversed-copper-mark.svg" alt="Romans Orthodontics" width="200" height="40"/></a><nav class="roc-nav-wrap" aria-label="Main"><ul class="roc-nav"><li class="roc-nav-item"><button type="button" class="roc-nav-link" aria-expanded="false">Services<svg class="roc-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square" aria-hidden="true"><path d="M6 10 12 16 18 10"></path></svg></button><div class="roc-menu"><ul class="roc-menu-list"><li><a class="roc-menu-link" href="braces-for-kids.html">Braces for Kids</a></li><li><a class="roc-menu-link" href="braces-for-adults.html">Braces for Adults</a></li><li><a class="roc-menu-link" href="invisalign.html">Invisalign &amp; Clear Aligners</a></li><li><a class="roc-menu-link" href="early-treatment.html" aria-current="page">Early Treatment</a></li><li><a class="roc-menu-link" href="retainers.html">Retainers</a></li></ul></div></li><li class="roc-nav-item"><button type="button" class="roc-nav-link" aria-expanded="false">Why Romans<svg class="roc-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square" aria-hidden="true"><path d="M6 10 12 16 18 10"></path></svg></button><div class="roc-menu"><ul class="roc-menu-list"><li><a class="roc-menu-link" href="why-romans.html">Why Romans</a></li><li><a class="roc-menu-link" href="dr-romans.html">Meet Dr. Romans</a></li><li><a class="roc-menu-link" href="team.html">Our Team</a></li></ul></div></li><li class="roc-nav-item"><a class="roc-nav-link" href="financial.html">Financial</a></li><li class="roc-nav-item"><a class="roc-nav-link" href="index.html#locations">Our Address</a></li></ul></nav><div class="roc-bar-cta"><a href="free-consult.html" class="psp-button">Book a consultation</a></div><a class="roc-mobile-tel" href="tel:+16233201222" aria-label="Call Romans Orthodontics at (623) 320-1222"><svg class="roc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square" aria-hidden="true"><path d="M15.5 21A12.5 12.5 0 0 1 3 8.5 2.5 2.5 0 0 1 5.5 6h1.8a1 1 0 0 1 1 .8l.7 3a1 1 0 0 1-.5 1.1l-1.3.7a9.4 9.4 0 0 0 4.2 4.2l.7-1.3a1 1 0 0 1 1.1-.5l3 .7a1 1 0 0 1 .8 1v1.8A2.5 2.5 0 0 1 15.5 21Z"></path></svg></a><button type="button" class="psp-drawer__trigger roc-drawer-trigger" aria-expanded="false" aria-controls="_R_5i_">Menu</button><div id="_R_5i_" class="psp-drawer__panel" data-open="false"><div class="roc-drawer-body"><div class="psp-stack psp-stack--3"><details class="psp-disclosure"><summary class="psp-disclosure__summary">Services<span class="psp-disclosure__sign" aria-hidden="true"></span></summary><div class="psp-disclosure__body"><ul class="roc-drawer-sub"><li><a class="roc-drawer-link" href="braces-for-kids.html">Braces for Kids</a></li><li><a class="roc-drawer-link" href="braces-for-adults.html">Braces for Adults</a></li><li><a class="roc-drawer-link" href="invisalign.html">Invisalign &amp; Clear Aligners</a></li><li><a class="roc-drawer-link" href="early-treatment.html" aria-current="page">Early Treatment</a></li><li><a class="roc-drawer-link" href="retainers.html">Retainers</a></li></ul></div></details><details class="psp-disclosure"><summary class="psp-disclosure__summary">Why Romans<span class="psp-disclosure__sign" aria-hidden="true"></span></summary><div class="psp-disclosure__body"><ul class="roc-drawer-sub"><li><a class="roc-drawer-link" href="why-romans.html">Why Romans</a></li><li><a class="roc-drawer-link" href="dr-romans.html">Meet Dr. Romans</a></li><li><a class="roc-drawer-link" href="team.html">Our Team</a></li></ul></div></details><a class="roc-drawer-top" href="financial.html">Financial</a><a class="roc-drawer-top" href="index.html#locations">Our Address</a><hr class="psp-rule psp-rule--inverse"/><a class="roc-drawer-tel roc-drawer-top" href="tel:+16233201222">(623) 320-1222</a><a href="free-consult.html" class="psp-button psp-button--full">Book a consultation</a></div></div></div></div></div></div></header><main id="main">
+
+<section class="roc-svchero psp-band" id="hero"><div class="psp-container"><div style="--psp-ratio:1.05fr 1fr" class="psp-split psp-split--5 psp-split--center psp-split--stack-md"><div class="psp-stack psp-stack--3 psp-stack--start"><p class="roc-hero-label roc-anim">Early treatment · Anthem, AZ</p><h1 style="max-width:20ch" class="psp-heading psp-heading--lg psp-heading--balance">Early orthodontic treatment for kids in Anthem</h1><p class="roc-svchero-lede roc-anim">The American Association of Orthodontists recommends a first orthodontic check by age 7. Most children seen that early leave with a date to come back rather than braces. Dr. Nicholas Romans, board-certified orthodontist, does the exam himself, and the first visit is free.</p><div class="roc-svchero-actions roc-anim"><a href="free-consult.html" class="psp-button">Book a consultation</a><a class="roc-hero-ghost" href="tel:+16233201222">(623) 320-1222</a></div><a class="psp-linkarrow psp-linkarrow--inverse" href="#request">Prefer us to call you? →</a></div><div class="roc-wipe roc-anim"><figure class="psp-figure"><img class="psp-figure__img roc-svchero-fig" src="../assets/web/svc-early-treatment.webp" alt="A young child sitting for a first orthodontic exam" width="720" height="540" fetchpriority="high" decoding="async"/></figure></div></div></div></section>
+
+<section class="psp-band" id="what-it-is"><div class="psp-container"><div style="--psp-ratio:1fr 1fr" class="psp-split psp-split--5 psp-split--center psp-split--stack-md"><div class="roc-wipe roc-anim"><figure class="psp-figure"><img class="psp-figure__img" src="../assets/web/office-reception.webp" alt="The waiting room and reception desk at Romans Orthodontics in Anthem, Arizona" width="1080" height="720" style="aspect-ratio:3 / 2" loading="lazy" decoding="async"/></figure></div><div class="psp-stack psp-stack--2 psp-stack--start"><div class="roc-anim" style="--i:1"><p class="roc-row-label">Why you are here</p></div><h2 style="max-width:24ch" class="psp-heading psp-heading--md">Most 7-year-olds do not need braces yet</h2><p style="max-width:56ch" class="psp-body psp-body--muted">Parents usually land here because a dentist mentioned crowding, or a friend's child got an expander, and now there is a worry that something is being missed. Here is the honest version. The AAO recommends a first orthodontic check by age 7, and most children seen at 7 need watching rather than treating.</p><p style="max-width:56ch" class="psp-body psp-body--muted">Watching is a real answer, not a brush-off. Dr. Romans looks at how the adult teeth are arriving and how the jaws are growing, then tells you which group your child is in. If it is the watching group, you leave with an interval to come back and nothing else, because starting treatment early on a child who does not need it only makes the whole thing longer.</p><div class="roc-aao roc-anim"><img class="roc-affil-mark" src="../assets/affiliations/aao-member.png" width="495" height="320" style="--roc-mark-h:52px" loading="lazy" decoding="async" alt="Member, American Association of Orthodontists"/><p class="roc-affil-role">Dr. Nicholas Romans, member, American Association of Orthodontists</p></div><a href="braces-for-kids.html" class="psp-linkarrow">See how braces for kids work →</a></div></div></div></section>
+
+<section class="psp-band psp-band--alt psp-band--edge-both" id="what-we-check"><div class="psp-container"><div style="--psp-ratio:1fr 1fr" class="psp-split psp-split--5 psp-split--center psp-split--reverse psp-split--stack-md"><div class="roc-wipe roc-anim"><figure class="psp-figure"><img class="psp-figure__img" src="../assets/web/office-treatment-bay.webp" alt="The open treatment bay at Romans Orthodontics, chairs along a window wall" width="1080" height="720" style="aspect-ratio:3 / 2" loading="lazy" decoding="async"/></figure></div><div class="psp-stack psp-stack--3 psp-stack--start"><div class="roc-anim" style="--i:1"><p class="roc-row-label">What the exam covers</p></div><h2 style="max-width:24ch" class="psp-heading psp-heading--md">What an early orthodontic exam looks at</h2><ul class="roc-bullets"><li>Crossbites, and whether the jaw shifts sideways to bring the teeth together.</li><li>Crowding, measured against the room the adult teeth still have to come into.</li><li>Upper front teeth sitting far enough forward to be chipped in a playground fall.</li><li>Breathing, airway and jaw comfort, assessed in the same appointment rather than a separate one.</li><li>Digital scans and imaging instead of impression material, so a 7-year-old is not holding a tray of putty.</li></ul><a href="financial.html" class="psp-linkarrow">Read how insurance and financing work →</a></div></div></div></section>
+
+<section class="psp-band" id="what-to-expect"><div class="psp-container"><div style="--psp-ratio:1fr 1fr" class="psp-split psp-split--5 psp-split--center psp-split--stack-md"><div class="roc-wipe roc-anim"><figure class="psp-figure"><img class="psp-figure__img" src="../assets/web/dr-romans-with-patient.webp" alt="Dr. Nicholas Romans standing with a young patient in a treatment room at the Anthem office" width="900" height="1125" style="aspect-ratio:4 / 5" loading="lazy" decoding="async"/></figure></div><div class="psp-stack psp-stack--2 psp-stack--start"><div class="roc-anim" style="--i:1"><p class="roc-row-label">What to expect</p></div><h2 style="max-width:22ch" class="psp-heading psp-heading--md">The same orthodontist at every visit</h2><p style="max-width:56ch" class="psp-body psp-body--muted">Dr. Romans owns this practice and treats every patient in it, so the person who decides your child does not need treatment yet is the same person who checks them a year later. Nobody hands the case to a rotating associate, and you never have to explain it twice.</p><p style="max-width:56ch" class="psp-body psp-body--muted">Suite D120 sits at street level on W. Anthem Way with reserved parking outside, which matters when a monitoring visit takes 20 minutes and you are fitting it around a school day. Insurance is checked while you sit there, so you are not waiting on an estimate in the mail.</p><a href="#request" class="psp-linkarrow">Request a call back →</a></div></div></div></section>
+
+<section class="psp-band psp-band--dark" id="doctor"><div class="psp-container"><div style="--psp-ratio:0.85fr 1fr" class="psp-split psp-split--5 psp-split--center psp-split--reverse psp-split--stack-md"><div class="roc-wipe roc-anim"><figure class="psp-figure"><img class="psp-figure__img" src="../assets/web/hero-dr-romans-reception.webp" alt="Dr. Nicholas Romans, board-certified orthodontist, at the reception desk of his Anthem office" width="1000" height="1250" style="aspect-ratio:4 / 5" loading="lazy" decoding="async"/></figure></div><div class="psp-stack psp-stack--3 psp-stack--start"><div class="roc-anim" style="--i:1"><p class="roc-intro-label">Meet Dr. Nicholas Romans, DMD, MSD</p></div><h2 style="max-width:24ch" class="psp-heading psp-heading--md">Growth and development is what he trained in</h2><p class="roc-dark-body">Dr. Romans spent a craniofacial cleft and palate fellowship at St. Louis Children's Hospital, a year given over to how children's faces and jaws grow. An early orthodontic exam asks a smaller version of that same question, which is why a 7-year-old check here is a growth assessment and not a sales appointment.</p><p class="roc-dark-body">He has more than 7 years dedicated to orthodontics, including advanced specialty training, and he sees every patient in the practice himself.</p><ul class="roc-doc-creds"><li>Board-certified orthodontist</li><li>DMD, A.T. Still University</li><li>MSD and orthodontic residency, Saint Louis University</li><li>Craniofacial cleft &amp; palate fellowship, St. Louis Children's Hospital</li></ul><a href="dr-romans.html" class="psp-linkarrow psp-linkarrow--inverse">Read Dr. Romans's background →</a></div></div></div></section>
+
+<section class="psp-band psp-band--alt psp-band--edge-both" id="request"><div class="psp-container"><div style="--psp-ratio:1fr 0.9fr" class="psp-split psp-split--5 psp-split--start psp-split--stack-md"><div class="psp-stack psp-stack--3 psp-stack--start"><div class="roc-anim" style="--i:1"><p class="roc-row-label">Prefer us to call you?</p></div><h2 style="max-width:22ch" class="psp-heading psp-heading--md">Ask about your child's teeth without booking anything</h2><p style="max-width:56ch" class="psp-body psp-body--muted">Leave four details and we will call you back at the number you give us. Keep it general here. Anything specific about your child's teeth is better covered on the call or at the consultation, which is free either way.</p><p class="roc-gap-flag">[CONFIRM: call-back response time]</p><p class="roc-form-note">Rather just call?</p><a class="roc-form-tel" href="tel:+16233201222">(623) 320-1222</a><div class="roc-pull roc-anim"><blockquote>We had a great consultation with Dr Romans. He was thorough and kind. My daughter felt really comfortable and we thought his treatment plan was solid and fairly priced.</blockquote><span class="roc-pull-name">Mariel Schmitt · Google review</span></div></div><div class="roc-anim"><form class="roc-form" method="post" action="TODO-GHL-WEBHOOK-URL"><div class="roc-field"><label class="roc-label" for="f-name">Parent's first name</label><input class="roc-input" id="f-name" name="first_name" type="text" autocomplete="given-name" required></div><div class="roc-field"><label class="roc-label" for="f-phone">Phone</label><input class="roc-input" id="f-phone" name="phone" type="tel" autocomplete="tel" required></div><div class="roc-field"><label class="roc-label" for="f-email">Email</label><input class="roc-input" id="f-email" name="email" type="email" autocomplete="email" required></div><div class="roc-field"><label class="roc-label" for="f-who">Who is this for</label><select class="roc-select" id="f-who" name="who_is_this_for"><option value="child-early-treatment" selected>My child, early treatment</option><option value="teen">My teenager</option><option value="myself">Myself</option><option value="someone-else">Someone else</option></select></div><input type="hidden" name="utm_source" value=""><input type="hidden" name="utm_medium" value=""><input type="hidden" name="utm_campaign" value=""><input type="hidden" name="gclid" value=""><input type="hidden" name="fbclid" value=""><input type="hidden" name="page" value="early-treatment"><input type="hidden" name="redirect_url" value="thank-you.html"><button type="submit" class="psp-button">Request a call back</button><p class="roc-form-note">Four details, nothing medical. Please do not send health information through this form; we will cover all of that on the call.</p></form></div></div></div></section>
+
+<section class="psp-band" id="faq"><div class="psp-container"><div class="psp-stack psp-stack--4"><div class="psp-stack psp-stack--2 psp-stack--start roc-anim"><p class="roc-row-label">Questions parents ask</p><h2 style="max-width:26ch" class="psp-heading psp-heading--md">Early treatment, answered plainly</h2></div><div class="roc-faq"><details class="psp-disclosure" open><summary class="psp-disclosure__summary">When should my child first see an orthodontist?<span class="psp-disclosure__sign" aria-hidden="true"></span></summary><div class="psp-disclosure__body">Age 7. The American Association of Orthodontists recommends a first orthodontic check by then, because the first adult molars and front teeth are usually in and the bite can finally be read. Waiting until every baby tooth is gone is fine for most children, but it hides the few problems that are easier to fix early.</div></details><details class="psp-disclosure"><summary class="psp-disclosure__summary">Does an early visit mean my child gets braces at 7?<span class="psp-disclosure__sign" aria-hidden="true"></span></summary><div class="psp-disclosure__body">Usually not. Most children Dr. Romans sees at 7 need monitoring, so you leave with a date to come back rather than a treatment plan. Early treatment is for the smaller group with a crossbite, a jaw that shifts to close, severe crowding, or front teeth at real risk of injury.</div></details><details class="psp-disclosure"><summary class="psp-disclosure__summary">What does early treatment cost in Anthem?<span class="psp-disclosure__sign" aria-hidden="true"></span></summary><div class="psp-disclosure__body">It depends on whether your child needs treatment at all, and at this age most do not yet. The consultation is free, so you can get that answer without paying for it. If treatment is recommended, your insurance is checked while you sit there and the figure you leave with is exact.</div></details><details class="psp-disclosure"><summary class="psp-disclosure__summary">What problems does early treatment actually fix?<span class="psp-disclosure__sign" aria-hidden="true"></span></summary><div class="psp-disclosure__body">Crossbites, jaws that shift sideways to bring the teeth together, crowding severe enough to trap an adult tooth, and upper front teeth that sit far enough forward to be chipped in a fall. It can also guide a jaw while it is still growing, which is only possible before growth finishes.</div></details><details class="psp-disclosure"><summary class="psp-disclosure__summary">What happens if we just wait?<span class="psp-disclosure__sign" aria-hidden="true"></span></summary><div class="psp-disclosure__body">For most children, nothing at all, and waiting is what Dr. Romans recommends most often at this age. The reason to check at 7 is that a small number of bite problems get longer or harder to correct once growth is finished, and a parent cannot tell which group their child is in by looking.</div></details><details class="psp-disclosure"><summary class="psp-disclosure__summary">Will my child still need braces later?<span class="psp-disclosure__sign" aria-hidden="true"></span></summary><div class="psp-disclosure__body">Often yes. Early treatment usually corrects one specific problem and makes room, then a second phase of braces or aligners aligns everything once the adult teeth are all in. Dr. Romans says so at the first visit, so a second phase is planned from the start rather than added on later.</div></details></div><a href="#request" class="psp-linkarrow">Still have a question? Ask for a call back →</a></div></div></section>
+
+<section class="psp-band psp-band--dark psp-band--pad-tight" id="cta"><div class="psp-container"><div class="roc-intro roc-anim"><h2 style="max-width:24ch" class="psp-heading psp-heading--md psp-heading--balance">Ready to come &amp; say hello?</h2><p class="roc-intro-lede">Free consultation with Dr. Romans in Anthem, Arizona, at any age.</p><div class="roc-intro-actions"><a href="free-consult.html" class="psp-button psp-button--invert">Book a consultation</a></div></div></div></section>
+
+</main><footer class="psp-band psp-band--dark psp-band--pad-tight psp-band--edge-top"><div class="psp-container"><div class="psp-stack psp-stack--5"><div class="roc-footer-grid"><div class="roc-footer-brand"><img class="roc-footer-logo" src="../assets/romans-orthodontics-lockup-horizontal-reversed-copper-mark.svg" alt="Romans Orthodontics" width="200" height="40"/><p class="roc-footer-blurb">Braces and Invisalign in Anthem, Arizona. One board-certified orthodontist, treating kids, teens, and adults.</p></div><nav class="roc-footer-col" aria-label="Treatments"><p class="roc-footer-h">Treatments</p><ul class="roc-footer-list"><li><a class="roc-footer-link" href="braces-for-kids.html">Braces for Kids</a></li><li><a class="roc-footer-link" href="braces-for-adults.html">Braces for Adults</a></li><li><a class="roc-footer-link" href="invisalign.html">Invisalign® &amp; Clear Aligners</a></li><li><a class="roc-footer-link" href="early-treatment.html" aria-current="page">Early Treatment</a></li><li><a class="roc-footer-link" href="retainers.html">Retainers &amp; Retention</a></li><li><a class="roc-footer-link" href="airway-tmj.html">Airway &amp; TMJ</a></li></ul></nav><nav class="roc-footer-col" aria-label="Practice"><p class="roc-footer-h">Practice</p><ul class="roc-footer-list"><li><a class="roc-footer-link" href="why-romans.html">Why Romans</a></li><li><a class="roc-footer-link" href="dr-romans.html">Meet Dr. Romans</a></li><li><a class="roc-footer-link" href="team.html">Our Team</a></li><li><a class="roc-footer-link" href="reviews.html">Reviews</a></li><li><a class="roc-footer-link" href="financial.html">Insurance &amp; financing</a></li><li><a class="roc-footer-link" href="free-consult.html">Book a consultation</a></li><li><a class="roc-footer-link" href="contact.html">Contact</a></li></ul></nav><div class="roc-footer-col"><p class="roc-footer-h">Visit</p><address class="roc-nap roc-nap--sm"><span>3618 W. Anthem Way, Suite D120</span><span>Anthem, AZ 85086</span><a class="roc-nap-tel" href="tel:+16233201222">(623) 320-1222</a></address><p class="roc-gap-flag">[CONFIRM: office hours]</p><p class="roc-gap-flag">[SOCIAL PROFILE LINKS NEEDED]</p></div></div><hr class="psp-rule psp-rule--inverse"/><div class="roc-legal"><span>© 2026 Romans Orthodontics</span><a class="roc-legal-link" href="privacy.html">Privacy Policy</a><a class="roc-legal-link" href="terms.html">Terms</a><a class="roc-legal-link" href="refund-policy.html">Refund Policy</a><a class="roc-legal-link" href="accessibility.html">Web Accessibility Statement</a></div></div></div></footer><nav aria-label="Quick actions" class="psp-stickybar roc-sticky" style="grid-template-columns:repeat(3, 1fr)"><a href="tel:+16233201222" class="psp-stickybar__item">Call</a><a href="free-consult.html" class="psp-stickybar__item psp-stickybar__item--emphasis">Book a consultation</a><a href="https://www.google.com/maps/dir/?api=1&amp;destination=3618+W.+Anthem+Way+Suite+D120+Anthem+AZ+85086" class="psp-stickybar__item">Directions</a></nav></div>
+<script>
+(function () {
+  document.querySelectorAll('.psp-drawer__trigger').forEach(function (btn) {
+    var panel = document.getElementById(btn.getAttribute('aria-controls'));
+    if (!panel) return;
+    var open = btn.textContent.trim(), shut = btn.getAttribute('data-close-label') || 'Close';
+    btn.addEventListener('click', function () {
+      var next = panel.getAttribute('data-open') !== 'true';
+      panel.setAttribute('data-open', String(next));
+      btn.setAttribute('aria-expanded', String(next));
+      btn.textContent = next ? shut : open;
+    });
+  });
+})();
+</script>
+<script>
+(function(){
+  var root = document.documentElement;
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
+  if (reduce.matches || !('IntersectionObserver' in window)) return;
+  root.classList.add('roc-js');
+  var fired = 0, io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if (e.isIntersecting) { fired++; e.target.classList.add('is-in'); io.unobserve(e.target); }
+    });
+  }, { rootMargin: '0px 0px -10% 0px', threshold: 0.08 });
+  function showAll(){
+    root.classList.remove('roc-js');
+    document.querySelectorAll('.roc-anim,.roc-wipe').forEach(function(el){ el.classList.add('is-in'); });
+  }
+  function scan(){ document.querySelectorAll('.roc-anim:not(.is-in),.roc-wipe:not(.is-in)').forEach(function(el){ io.observe(el); }); }
+  scan();
+  new MutationObserver(scan).observe(document.body, { childList: true, subtree: true });
+  setTimeout(function(){ if (fired === 0) showAll(); }, 1200);
+  reduce.addEventListener('change', function(e){ if (e.matches) showAll(); });
+})();
+(function(){
+  var vv = window.visualViewport; if(!vv) return;
+  var base = vv.height;
+  vv.addEventListener('resize', function(){
+    document.body.setAttribute('data-kb', vv.height < base * 0.78 ? '1' : '0');
+  });
+})();
+</script>
+<script>
+/* attribution capture for the request form: URL params only, no cookies set
+   here. The webhook that reads these is Phase 7 work. */
+(function(){
+  var params = new URLSearchParams(window.location.search);
+  ['utm_source','utm_medium','utm_campaign','gclid','fbclid'].forEach(function(key){
+    var field = document.querySelector('input[type="hidden"][name="' + key + '"]');
+    var val = params.get(key);
+    if (field && val) field.value = val;
+  });
+})();
+</script>
+</body>
+</html>

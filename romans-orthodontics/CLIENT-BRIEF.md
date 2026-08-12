@@ -75,6 +75,51 @@ River corridor.
   advanced specialty training" (approved quote, use verbatim)
 doctor hub page: no (solo doctor)
 
+**Training chain — ADDED 2026-08-11, verified against the live site
+(`romansorthodontics.com/about-us/`) the same day.** It was missing from this
+brief, and a page-builder correctly refused to print a credential the brief did
+not carry. Pages may now use it. Wording matters, so use these exact terms:
+
+- **Bachelor of Science in Biology**, University of Kansas
+- **Doctor of Dental Medicine** and **Certificate of Public Health**, A.T.
+  Still University *(note: "Certificate of **Public Health**", and it is a
+  certificate, not a degree or an MPH — do not upgrade it)*
+- **Master of Science in Dentistry** and orthodontic specialty training, Saint
+  Louis University, where **his research focused on Invisalign treatment
+  outcomes**
+- **Fellowship with Washington University's Craniofacial Cleft Lip and Palate
+  Team at St. Louis Children's Hospital**, completed during residency,
+  contributing to multidisciplinary care for children with complex craniofacial
+  conditions
+
+**Community service — ADDED 2026-08-11, provenance weaker than the training
+chain above, so read this before publishing it.** Four organizations have been
+carried in OrthoBoost's Romans notes and are already shipped on
+`concept-a/index.html` and `concept-c/why-romans.html`:
+
+- Give Kids A Smile
+- Missions of Mercy
+- Dentures for Veterans
+- Arizona Humane Society
+
+**Provenance:** taken from the practice's live `about-us` page on 2026-07-30.
+Re-checked 2026-08-11 — the page still carries a "Beyond the Office / Giving
+Back to the Community" section, but the site is Wix and renders that section's
+body client-side, so the four names **could not be re-confirmed from the raw
+HTML** this time. The section's existence is confirmed; the specific list is
+one-source and 12 days old.
+
+**Before launch:** confirm the four names with the practice, or view the
+rendered page in a browser. They are low-risk claims, but they are claims about
+what a real person volunteers for, and one stale entry is a correction the
+client will notice.
+
+The practice's own live-site framing of him, for voice reference: *"a
+board-certified orthodontist dedicated to creating healthy, confident smiles
+through precision, compassion, and evidence-based care."* Do not quote that
+verbatim on the new site — it is the old site's marketing copy, not a claim to
+re-publish. It is here to show register and to confirm the credentials.
+
 ## Locations
 primary phone (sitewide default): (623) 320-1222
 - Anthem, AZ: 3618 W. Anthem Way, Suite D120, Anthem, AZ 85086 · (623)

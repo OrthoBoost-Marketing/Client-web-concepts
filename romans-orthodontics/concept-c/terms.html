@@ -1,0 +1,403 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Terms of use | Romans Orthodontics</title>
+<meta name="description" content="Sample website terms of use for Romans Orthodontics, including the no medical advice clause. Template text pending review by the practice.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600&family=Fraunces:ital,opsz,wght,SOFT@0,9..144,300..700,100;1,9..144,300..600,100&family=IBM+Plex+Mono:wght@400;500&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600&family=Fraunces:ital,opsz,wght,SOFT@0,9..144,300..700,100;1,9..144,300..600,100&family=IBM+Plex+Mono:wght@400;500&display=swap" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600&family=Fraunces:ital,opsz,wght,SOFT@0,9..144,300..700,100;1,9..144,300..600,100&family=IBM+Plex+Mono:wght@400;500&display=swap"></noscript>
+<meta name="robots" content="noindex,nofollow">
+<link rel="stylesheet" href="design-system.css">
+<link rel="icon" href="../assets/romans-orthodontics-icon.svg" type="image/svg+xml">
+<link rel="icon" href="../assets/romans-orthodontics-favicon-48.png" sizes="48x48" type="image/png">
+<link rel="apple-touch-icon" href="../assets/romans-orthodontics-apple-touch-icon-180.png">
+<style>
+/* Concept C2, Dr. Yang persona, Stillpoint layout and motion cues.
+   Same brand system as every Romans concept: design-system.css owns the
+   palette, Fraunces / Archivo / IBM Plex Mono, and --radius 0. This concept
+   varies composition only: type scale, space ramp, section rhythm, hero
+   pattern, motion. No :root block, no literal colour, font or length below:
+   every value reads a var(--*) or derives from one via color-mix.
+
+   Hard rectangular edges throughout. No gradients, no box-shadows, no
+   backdrop-filter. The hero scrim is a flat single-opacity ink wash. */
+
+/* the concept's own non-brand tokens, on the token wrapper so a media query
+   can still reach them (an inline style attribute could not) */
+.psp-root{
+--step-h1:clamp(34px,4vw,60px);--step-h2:clamp(26px,2.6vw,40px);--step-h3:clamp(18px,1.3vw,21px);
+--step-lede:clamp(18px,1.2vw,20px);--step-body:17px;--step-body-sm:15px;--step-small:12px;
+--leading-tight:1.12;--leading-body:1.6;--tracking-display:-0.01em;--tracking-label:0.08em;
+--space-1:8px;--space-2:12px;--space-3:20px;--space-4:32px;--space-5:56px;--space-6:84px;
+--section-y:100px;--container:1200px;--gutter:40px;--tap:46px;
+--dur:.24s;--ease:cubic-bezier(.4,0,.2,1);
+--roc-logo-h:38px;--roc-topbar:64px;--roc-menu-w:280px;
+/* Fixed so the sticky offset and the hero's fold height are both deterministic
+   instead of depending on how the utility text happens to lay out. 45px, not 44:
+   the strip carries a 1px bottom border, so 44 would leave a 43px content box
+   and the tel inside it one pixel under the tap-target floor. Do not shrink it. */
+--roc-utility-h:45px;--roc-sticky-h:calc(var(--tap) + 1px);
+--roc-hair:1px solid var(--line);--roc-hair-inv:1px solid var(--line-inverse);
+--roc-scrim:color-mix(in srgb,var(--surface-dark) 72%,transparent);
+--ink-inverse-soft:color-mix(in srgb,var(--ink-inverse) 88%,transparent);
+--ink-inverse-muted:color-mix(in srgb,var(--ink-inverse) 77%,transparent);
+--roc-in:.62s;--roc-stagger:90ms;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;background:var(--surface)}
+body{overflow-x:hidden;font-family:var(--font-body);color:var(--ink)}
+:focus-visible{outline:var(--focus-ring);outline-offset:var(--focus-offset)}
+a{color:var(--brand);text-decoration-thickness:1px;text-underline-offset:3px}
+a:hover{color:var(--brand-ink)}
+img,iframe{max-width:100%}
+.roc-icon{width:18px;height:18px;flex:0 0 auto}
+.roc-chev{width:13px;height:13px;flex:0 0 auto;transition:transform var(--dur) var(--ease)}
+
+/* scroll-in motion: opacity plus a short rise, and a hard-edged clip wipe on
+   media. Transform, opacity and clip-path only: no blur, shadow or gradient. */
+.roc-js .roc-anim{opacity:.01;transform:translateY(16px);transition:opacity var(--roc-in) var(--ease),transform var(--roc-in) var(--ease);transition-delay:calc(var(--i,0) * var(--roc-stagger))}
+.roc-js .roc-anim.is-in{opacity:1;transform:none}
+/* The clip goes on the CHILD, never on .roc-wipe itself. Chrome clips an
+   IntersectionObserver target's intersection rect by the target's own
+   clip-path, so a self-clipped element reports ratio 0 forever and never
+   reveals. The handoff shipped it that way and all five media blocks stayed
+   invisible. The fail-open timeout does not catch it either, because the
+   plain .roc-anim elements do fire and `fired` is never 0. */
+.roc-js .roc-wipe>*{clip-path:inset(0 0 100% 0);transition:clip-path .78s var(--ease);transition-delay:calc(var(--i,0) * var(--roc-stagger))}
+.roc-js .roc-wipe.is-in>*{clip-path:inset(0 0 0 0)}
+
+/* header: the whole header is the sticky element, offset upward by exactly the
+   utility strip's height so the strip scrolls away and the main bar lands at 0.
+   Sticking .roc-bar instead does NOT work: a sticky element cannot leave its
+   parent's box, so it unpinned the moment <header> scrolled out of view. */
+.roc-header{position:sticky;top:calc(var(--roc-utility-h) * -1);z-index:300;background:var(--surface-dark);color:var(--ink-inverse)}
+/* Vertical centring lives HERE, not on .roc-utility-inner. The inner sits inside
+   .psp-container, which is auto-height, so its height:100% resolved against auto
+   and centred nothing. Making the strip itself the flex context centres the
+   container within the fixed 44px instead. */
+.roc-utility{height:var(--roc-utility-h);display:flex;align-items:center;border-bottom:var(--roc-hair-inv)}
+/* The container and the inner both stretch to the strip's full content height so
+   the tel stays a full-height click target; each one then centres its own
+   children, which is what actually does the vertical centring. */
+.roc-utility>.psp-container{flex:1 1 auto;min-width:0;align-self:stretch;display:flex;align-items:center}
+.roc-utility-inner{display:flex;flex:1 1 auto;align-self:stretch;flex-wrap:nowrap;align-items:center;gap:var(--space-3);white-space:nowrap;font-family:var(--font-mono);font-size:var(--step-small);font-weight:500;letter-spacing:var(--tracking-label);text-transform:uppercase;color:var(--ink-inverse-muted)}
+.roc-utility-sep{width:1px;height:11px;background:var(--line-inverse);flex:0 0 auto}
+/* align-self:stretch, not min-height, because the strip's 1px bottom border makes its
+   content box 43px, so a 44px min-height overflowed by half a pixel each way. */
+.roc-utility-tel{margin-left:auto;display:flex;align-items:center;align-self:stretch;font-family:var(--font-mono);font-size:var(--step-small);font-weight:500;letter-spacing:var(--tracking-label);color:var(--ink-inverse);text-decoration:none}
+.roc-utility-tel:hover{color:var(--brand-tint)}
+.roc-bar{background:var(--surface-dark);border-bottom:var(--roc-hair-inv)}
+/* Now that the bar pins, an anchor jump would land the section's heading
+   underneath it. Only the main bar persists. The utility strip has scrolled
+   away by the time any in-page link is clicked. */
+main[id],section[id]{scroll-margin-top:calc(var(--roc-topbar) + var(--space-2))}
+.roc-bar-inner{display:grid;grid-template-columns:auto 1fr auto;align-items:center;column-gap:var(--space-5);min-height:var(--roc-topbar)}
+.roc-logo{display:flex;align-items:center;min-height:var(--tap);text-decoration:none;color:var(--ink-inverse)}
+.roc-logo img{height:var(--roc-logo-h);width:auto;display:block}
+.roc-nav-wrap{justify-self:end}
+.roc-nav{display:flex;align-items:center;gap:var(--space-3);list-style:none;margin:0;padding:0}
+.roc-nav-item{position:relative}
+.roc-nav-link{display:flex;align-items:center;gap:var(--space-1);min-height:var(--tap);border:0;background:none;cursor:pointer;font-family:var(--font-mono);font-size:var(--step-small);font-weight:500;letter-spacing:var(--tracking-label);text-transform:uppercase;color:var(--ink-inverse);text-decoration:none;border-bottom:1px solid transparent;transition:color var(--dur) var(--ease),border-color var(--dur) var(--ease)}
+.roc-nav-link:hover{color:var(--brand-tint);border-bottom-color:var(--brand-tint)}
+.roc-menu{position:absolute;top:100%;left:0;min-width:var(--roc-menu-w);padding:var(--space-2);background:var(--surface-dark);border:var(--roc-hair-inv);opacity:0;visibility:hidden;transition:opacity var(--dur) var(--ease),visibility var(--dur)}
+.roc-nav-item:hover .roc-menu,.roc-nav-item:focus-within .roc-menu{opacity:1;visibility:visible}
+.roc-nav-item:hover .roc-chev,.roc-nav-item:focus-within .roc-chev{transform:rotate(180deg)}
+.roc-menu-list{display:grid;list-style:none;margin:0;padding:0}
+.roc-menu-link{display:flex;align-items:center;min-height:var(--tap);padding-inline:var(--space-2);font-family:var(--font-body);font-size:var(--step-body-sm);color:var(--ink-inverse);text-decoration:none}
+.roc-menu-link:hover{color:var(--brand-tint)}
+.roc-bar-cta{justify-self:end}
+.roc-mobile-tel,.roc-drawer-trigger{display:none}
+/* Drawer and Disclosure inherit their text colour, so the dark header carries
+   them; their surfaces and hairlines are hardcoded to the light tokens and have
+   to be pointed at the inverse pair here. */
+.roc-header .psp-drawer__panel{background:var(--surface-dark);border-top:var(--roc-hair-inv)}
+.roc-header .psp-drawer__trigger{border-left:var(--roc-hair-inv)}
+.roc-header .psp-disclosure{border-bottom:var(--roc-hair-inv)}
+.roc-header .psp-disclosure__sign{color:var(--brand-tint)}
+.roc-drawer-body{padding-block:var(--space-4) var(--space-5)}
+.roc-drawer-sub{display:grid;list-style:none;margin:0;padding:0 0 var(--space-2)}
+.roc-drawer-link,.roc-drawer-top{display:flex;align-items:center;min-height:var(--tap);font-family:var(--font-body);color:var(--ink-inverse);text-decoration:none}
+.roc-drawer-link{font-size:var(--step-body-sm);padding-left:var(--space-3)}
+.roc-drawer-top{font-family:var(--font-mono);font-size:var(--step-small);font-weight:500;letter-spacing:var(--tracking-label);text-transform:uppercase}
+.roc-drawer-link:hover,.roc-drawer-top:hover{color:var(--brand-tint)}
+
+/* full-bleed photographic hero with centred overlaid type */
+/* The hero owns the fold: exactly the viewport less the header above it, so the
+   photograph and the H1 are what a visitor sees and nothing peeks up from below.
+   min-height, not height, so on a short phone the content wins and overflows
+   rather than being crushed. svh, so mobile browser chrome does not add a
+   phantom scroll; the vh line is the fallback for anything without svh. */
+.roc-hero{position:relative;display:grid;align-items:center;isolation:isolate;background:var(--surface-dark);min-height:calc(100vh - var(--roc-topbar) - var(--roc-utility-h));min-height:calc(100svh - var(--roc-topbar) - var(--roc-utility-h))}
+.roc-hero-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 30%;z-index:-2}
+.roc-hero-scrim{position:absolute;inset:0;background:var(--roc-scrim);z-index:-1}
+.roc-hero-inner{display:grid;justify-items:center;gap:var(--space-3);padding-block:var(--space-6) var(--space-5);text-align:center;margin-inline:auto;max-width:80ch}
+.roc-hero-inner .psp-heading{color:var(--ink-inverse);text-align:center}
+.roc-hero-label{margin:0;padding-bottom:var(--space-2);border-bottom:2px solid var(--brand);font-family:var(--font-mono);font-size:var(--step-small);font-weight:500;letter-spacing:var(--tracking-label);text-transform:uppercase;color:var(--ink-inverse)}
+.roc-hero-lede{margin:0;max-width:62ch;font-family:var(--font-body);font-size:var(--step-lede);line-height:var(--leading-body);color:var(--ink-inverse)}
+.roc-hero-actions{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:var(--space-2) var(--space-4)}
+.roc-hero-ghost{display:inline-flex;align-items:center;justify-content:center;white-space:nowrap;min-height:var(--tap);padding-inline:var(--space-3);border:1px solid var(--ink-inverse);font-family:var(--font-mono);font-size:var(--step-small);font-weight:500;letter-spacing:var(--tracking-label);text-transform:uppercase;color:var(--ink-inverse);text-decoration:none;transition:background var(--dur) var(--ease),color var(--dur) var(--ease)}
+.roc-hero-ghost:hover{background:var(--ink-inverse);color:var(--ink)}
+
+/* centred section intro, the recurring statement block */
+.roc-intro{display:grid;justify-items:center;gap:var(--space-3);text-align:center;margin-inline:auto;max-width:84ch;width:100%}
+.roc-intro .psp-heading{text-align:center}
+
+/* Copper accents are copper again. The AA shortfall that briefly pushed these to
+   --brand-ink was in the palette, not here: --brand was darkened to #A05C39 in
+   the design system (4.778:1 against paper, and paper is also --ink-inverse, so
+   the same ratio covers white-on-button). --brand-ink stays what it is for, the
+   gap flags and hover states. */
+.roc-intro-label{margin:0;font-family:var(--font-mono);font-size:var(--step-small);font-weight:500;letter-spacing:var(--tracking-label);text-transform:uppercase;color:var(--brand)}
+.psp-band--dark .roc-intro-label{color:var(--brand-tint)}
+.roc-intro-lede{margin:0;max-width:64ch;font-family:var(--font-body);font-size:var(--step-lede);line-height:var(--leading-body);color:var(--ink-muted)}
+.psp-band--dark .roc-intro-lede{color:var(--ink-inverse-soft)}
+.roc-intro-actions{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:var(--space-2) var(--space-4);padding-top:var(--space-2)}
+
+/* dark-band body copy */
+.roc-dark-body{margin:0;max-width:56ch;font-family:var(--font-body);font-size:var(--step-body);line-height:var(--leading-body);color:var(--ink-inverse-soft)}
+
+/* the doctor block's own credential list: hairline-separated rows in the mono
+   label voice, so it reads as a caption and not as a second trust bar */
+.roc-doc-creds{display:grid;list-style:none;margin:0;padding:0;width:100%;border-top:var(--roc-hair-inv)}
+.roc-doc-creds li{padding-block:var(--space-1);border-bottom:var(--roc-hair-inv);font-family:var(--font-mono);font-size:var(--step-small);font-weight:500;letter-spacing:var(--tracking-label);text-transform:uppercase;color:var(--ink-inverse-muted)}
+
+/* credential bar */
+.roc-credentials{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));list-style:none;margin:0;padding:0}
+.roc-credential{display:grid;gap:var(--space-1);align-content:start;padding:0 var(--space-4);border-left:var(--roc-hair)}
+.roc-credential:first-child{padding-left:0;border-left:0}
+.roc-credential-num{font-family:var(--font-mono);font-size:var(--step-small);font-weight:500;letter-spacing:var(--tracking-label);color:var(--ink-muted)}
+.roc-credential-title{font-family:var(--font-display);font-weight:600;font-size:var(--step-h3);line-height:var(--leading-tight);color:var(--ink)}
+.roc-credential-desc{font-family:var(--font-body);font-size:var(--step-body-sm);line-height:var(--leading-body);color:var(--ink-muted)}
+
+/* row labels */
+.roc-row-label{margin:0;font-family:var(--font-mono);font-size:var(--step-small);font-weight:500;letter-spacing:var(--tracking-label);text-transform:uppercase;color:var(--brand)}
+
+/* gap flags: the client-answer placeholders that ship visible on purpose */
+.roc-gap{display:grid;gap:var(--space-2);padding:var(--space-4);border:1px dashed var(--line);width:100%}
+.roc-gap-flag{margin:0;font-family:var(--font-mono);font-size:var(--step-small);font-weight:500;letter-spacing:var(--tracking-label);text-transform:uppercase;color:var(--brand-ink)}
+.roc-gap-note{margin:0;font-family:var(--font-body);font-size:var(--step-body-sm);line-height:var(--leading-body);color:var(--ink-muted);max-width:64ch}
+
+/* services: six cards in one seamless hairline grid, whole card clickable */
+.roc-services{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;list-style:none;margin:0;padding:0;width:100%;background:var(--line);border-block:var(--roc-hair)}
+.roc-services>li{background:var(--surface)}
+.roc-card{display:grid;gap:var(--space-2);align-content:start;height:100%;padding:var(--space-4);text-decoration:none;color:var(--ink);transition:background var(--dur) var(--ease)}
+.roc-card:hover{background:var(--brand-tint)}
+.roc-card-img{display:block;width:100%;height:auto;aspect-ratio:4 / 3;object-fit:cover}
+.roc-card-num{font-family:var(--font-mono);font-size:var(--step-small);font-weight:500;letter-spacing:var(--tracking-label);color:var(--ink-muted)}
+.roc-card-desc{font-family:var(--font-body);font-size:var(--step-body-sm);line-height:var(--leading-body);color:var(--ink-muted)}
+.roc-card-more{font-family:var(--font-mono);font-size:var(--step-small);font-weight:500;letter-spacing:var(--tracking-label);text-transform:uppercase;color:var(--brand)}
+.roc-card:hover .roc-card-more{color:var(--brand-ink);text-decoration:underline;text-underline-offset:3px}
+
+/* affiliations strip: AUTHORITY-LOGOS-SPEC, 4 to 7 marks in one muted tone on
+   the tinted band, small quiet label above. It runs five bands below the
+   Section 03 credential bar, which is what rule 4 asks for.
+   TYPE ONLY, and that is a compliance decision rather than a styling one. The
+   ABO Certification Marks Usage Guidelines (July 2025) forbid altering or hand
+   drawing the seal, require the artwork to come from the ABO Storefront, and
+   require the mark to name the certified individual rather than the practice.
+   The TSX comment above Affiliations() carries the full reasoning.
+   .roc-affil-mark is the drop-in slot for real files once the client pulls
+   them. */
+.roc-affil{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--space-4) var(--space-4);list-style:none;margin:0;padding:0;width:100%}
+.roc-affil>li{display:grid;grid-row:span 2;grid-template-rows:subgrid;gap:var(--space-1);align-content:start;padding-left:var(--space-4);border-left:var(--roc-hair);color:var(--ink-muted)}
+.roc-affil>li:nth-child(3n+1){padding-left:0;border-left:0}
+@supports not (grid-template-rows:subgrid){
+.roc-affil>li{grid-row:auto;grid-template-rows:auto auto}
+}
+/* The single muted tone is baked into each PNG: slate at the same .85 alpha
+   --ink-muted carries, times the mark's own alpha, so the knockouts stay real
+   holes rather than white shapes on the tinted band. Baked rather than done in
+   CSS because a grayscale filter maps each logo's ink to a DIFFERENT grey, and
+   mask-image plus currentColor, which would have been exact, is dead on arrival:
+   Chromium refuses to load a mask subresource from a file:// page, so the strip
+   would go blank for anyone opening these files locally. Measured, not assumed. */
+/* Bottom-aligned in the subgrid row, not top. The seal and the AAO lockup fill
+   the 72px row but the Invisalign wordmark is 26px, so top-aligning left it
+   floating with a gap above its descriptor while the other two sat tight. All
+   three now share one baseline just above the line they label. */
+.roc-affil-mark{display:block;align-self:end;width:auto;height:var(--roc-mark-h,72px);max-width:100%}
+/* one tone for the whole set per rule 3, and with no artwork the type is the
+   mark, so hierarchy inside a row comes from size and typeface alone */
+.roc-affil-name{margin:0;align-self:end;font-family:var(--font-body);font-size:var(--step-body);font-weight:600;line-height:var(--leading-tight);color:inherit}
+.roc-affil-role{margin:0;font-family:var(--font-mono);font-size:var(--step-small);font-weight:500;letter-spacing:var(--tracking-label);text-transform:uppercase;line-height:1.4;color:inherit}
+
+/* reviews: REVIEWS-SPEC card anatomy, stars then text then name, in a static
+   grid of 3, 6 or 9 and never a carousel. Built on the same seamless hairline
+   grid the services section uses, so six cells at three columns read as two
+   rows of one object. The middle template row takes the slack, which lands
+   every reviewer's name on one line across a row however long the quotes run. */
+.roc-proof{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;list-style:none;margin:0;padding:0;width:100%;background:var(--line);border-block:var(--roc-hair)}
+.roc-proof>li{display:grid;grid-template-rows:auto 1fr auto;gap:var(--space-2);padding:var(--space-4);background:var(--surface)}
+/* copper, at the size the mono labels run at everywhere else. Five spans rather
+   than one string, so the gap has something to act on. */
+.roc-stars{display:flex;gap:.18em;font-size:var(--step-body-sm);color:var(--brand)}
+/* a blockquote, because that is what it is. No quotation-mark ornament: the
+   stars already open the cell and this design decorates nothing. */
+.roc-quote{margin:0;font-family:var(--font-body);font-size:var(--step-body-sm);line-height:var(--leading-body);color:var(--ink)}
+.roc-quote-name{font-family:var(--font-mono);font-size:var(--step-small);font-weight:500;letter-spacing:var(--tracking-label);text-transform:uppercase;color:var(--ink-muted)}
+
+/* locations */
+.roc-nap{display:grid;font-style:normal;font-family:var(--font-body);font-size:var(--step-body);line-height:var(--leading-body);color:var(--ink)}
+/* the footer NAP and its flags sit on the dark band now */
+.psp-band--dark .roc-nap{color:var(--ink-inverse)}
+.psp-band--dark .roc-nap-tel{color:var(--brand-tint)}
+.psp-band--dark .roc-nap-tel:hover{color:var(--ink-inverse)}
+.psp-band--dark .roc-gap-flag{color:var(--brand-tint)}
+.roc-nap--sm{font-size:var(--step-body-sm)}
+.roc-nap-name{font-family:var(--font-display);font-weight:600;font-size:var(--step-h3);line-height:var(--leading-tight)}
+.roc-nap-tel{display:flex;align-items:center;min-height:var(--tap);font-family:var(--font-mono);font-weight:500;letter-spacing:var(--tracking-label);color:var(--brand);text-decoration:none}
+.roc-nap-tel:hover{color:var(--brand-ink)}
+.roc-meta{display:grid;gap:var(--space-2);margin:0;padding-top:var(--space-3);border-top:var(--roc-hair);width:100%}
+.roc-meta>div{display:grid;grid-template-columns:130px 1fr;gap:var(--space-3)}
+.roc-meta dt{font-family:var(--font-mono);font-size:var(--step-small);font-weight:500;letter-spacing:var(--tracking-label);text-transform:uppercase;color:var(--ink-muted)}
+.roc-meta dd{margin:0;font-family:var(--font-body);font-size:var(--step-body-sm);line-height:var(--leading-body);color:var(--ink)}
+.roc-map{width:100%;aspect-ratio:3 / 2;border:var(--roc-hair);background:var(--surface-alt);filter:saturate(.75);display:block}
+
+/* footer */
+.roc-footer-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1.1fr;gap:var(--space-5) var(--space-4)}
+.roc-footer-brand{display:grid;gap:var(--space-2);align-content:start}
+.roc-footer-logo{height:var(--roc-logo-h);width:auto;display:block}
+.roc-footer-blurb{margin:0;font-family:var(--font-body);font-size:var(--step-body-sm);line-height:var(--leading-body);color:var(--ink-inverse-soft);max-width:34ch}
+.roc-footer-col{display:grid;gap:var(--space-2);align-content:start}
+.roc-footer-h{margin:0;font-family:var(--font-mono);font-size:var(--step-small);font-weight:500;letter-spacing:var(--tracking-label);text-transform:uppercase;color:var(--ink-inverse)}
+.roc-footer-list{display:grid;list-style:none;margin:0;padding:0}
+.roc-footer-link{display:flex;align-items:center;min-height:var(--tap);font-family:var(--font-body);font-size:var(--step-body-sm);color:var(--ink-inverse-soft);text-decoration:none}
+.roc-footer-link:hover{color:var(--brand-tint)}
+.roc-legal{display:flex;flex-wrap:wrap;align-items:center;gap:var(--space-1) var(--space-4);font-family:var(--font-mono);font-size:var(--step-small);letter-spacing:var(--tracking-label);color:var(--ink-inverse-muted)}
+.roc-legal-link{display:flex;align-items:center;min-height:var(--tap);color:var(--ink-inverse-muted);text-decoration:none}
+.roc-legal-link:hover{color:var(--brand-tint)}
+
+/* sticky bar: Call · Book · Directions, Book the wide centre segment */
+/* !important is the only lever here: StickyBar writes
+   grid-template-columns:repeat(3, 1fr) as an inline style attribute, and the
+   spec wants Book as the wide centre segment. The real fix is a ratio prop on
+   the component upstream. Do not fork it to work around this. */
+.roc-sticky{grid-template-columns:1fr 1.7fr 1fr !important;gap:1px}
+body[data-kb="1"] .roc-sticky{display:none}
+
+@media (max-width:1000px){
+.roc-nav-wrap,.roc-bar-cta{display:none}
+.roc-mobile-tel{display:flex;align-items:center;justify-content:center;min-width:var(--tap);min-height:var(--tap);justify-self:end;color:var(--ink-inverse);text-decoration:none}
+.roc-mobile-tel:hover{color:var(--brand-tint)}
+.roc-mobile-tel .roc-icon{width:22px;height:22px}
+.roc-drawer-trigger{display:inline-flex}
+.roc-utility{display:none}
+/* strip is gone, so the sticky header sits flush and the hero reclaims its height */
+.psp-root{--roc-utility-h:0px}
+.roc-bar-inner{grid-template-columns:1fr auto auto;column-gap:var(--space-2)}
+/* The panel is pulled full-bleed out of the container, so it has to restore the
+   gutter itself or every drawer row sits flush against the screen edge. */
+.roc-bar-inner>.psp-drawer__panel{grid-column:1 / -1;margin-inline:calc(var(--gutter) * -1);padding-inline:var(--gutter)}
+.roc-footer-grid,.roc-services,.roc-credentials,.roc-proof{grid-template-columns:repeat(2,minmax(0,1fr))}
+.roc-credential:nth-child(2n+1){padding-left:0;border-left:0}
+/* AUTHORITY-LOGOS-SPEC rule 6: wrap rows, never a scroller, marks never under
+   28px. 3 up above, 2 up here, 1 up on a phone. */
+.roc-affil{grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--space-4) var(--space-3)}
+.roc-affil>li{padding-left:0;border-left:0}
+.roc-affil>li:nth-child(2n){padding-left:var(--space-3);border-left:var(--roc-hair)}
+.roc-credentials{gap:var(--space-4) 0}
+}
+@media (max-width:640px){
+.psp-root{--gutter:20px;--section-y:72px;--space-6:56px;--space-5:40px;--roc-utility-h:0px}
+/* also clear the sticky bottom bar, or the hero's CTA hides behind it */
+.roc-hero{min-height:calc(100vh - var(--roc-topbar) - var(--roc-sticky-h));min-height:calc(100svh - var(--roc-topbar) - var(--roc-sticky-h))}
+.roc-hero-inner{padding-block:var(--space-6) var(--space-5);text-align:left;justify-items:start}
+.roc-hero-inner .psp-heading,.roc-intro .psp-heading{text-align:left}
+.roc-intro{justify-items:start;text-align:left}
+.roc-hero-actions,.roc-intro-actions{width:100%;justify-content:flex-start}
+.roc-hero-actions>*,.roc-intro-actions>*{flex:1 1 100%;justify-content:center}
+.roc-footer-grid,.roc-services,.roc-proof{grid-template-columns:1fr}
+/* 1 up, so no vertical dividers at all, and the seal eases down for a phone
+   column while staying clear of rule 6's 28px floor. The reset has to match the
+   2n selector from the tier above, not just the bare li: same specificity wins
+   on order, lower loses, and cells 2/4/6 kept their divider and indent. */
+.roc-affil{grid-template-columns:1fr}
+.roc-affil>li,.roc-affil>li:nth-child(2n){padding-left:0;border-left:0}
+.roc-affil-mark{--roc-mark-h:64px}
+/* TRUST-BAR-SPEC rule 5: four cells go 2x2 on mobile, never a single stack. */
+.roc-credentials{grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--space-4) var(--space-3)}
+.roc-credential{padding-left:0;border-left:0}
+.roc-meta>div{grid-template-columns:1fr;gap:2px}
+main{padding-bottom:var(--space-6)}
+}
+@media (prefers-reduced-motion:reduce){
+.roc-js .roc-anim,.roc-js .roc-wipe,.roc-js .roc-wipe>*{opacity:1 !important;transform:none !important;clip-path:none !important;transition:none !important}
+*{animation-duration:.01ms !important;animation-iteration-count:1 !important}
+}
+
+/* legal / utility page layer. Tokens only: no radius, no shadow, no gradient. */
+.roc-legalnotice{display:grid;gap:var(--space-2);padding:var(--space-4);border:2px solid var(--brand);background:var(--brand-tint)}
+.roc-legalnotice-h{margin:0;font-family:var(--font-mono);font-size:var(--step-small);font-weight:500;letter-spacing:var(--tracking-label);text-transform:uppercase;color:var(--brand-ink)}
+.roc-legalnotice p{margin:0;font-family:var(--font-body);font-size:var(--step-body-sm);line-height:var(--leading-body);color:var(--ink);max-width:64ch}
+.roc-prose{display:grid;gap:var(--space-5);width:100%}
+.roc-prose>section{display:grid;gap:var(--space-2)}
+.roc-prose p{margin:0;font-family:var(--font-body);font-size:var(--step-body);line-height:var(--leading-body);color:var(--ink-muted)}
+.roc-prose ul{margin:0;padding-left:var(--space-3);display:grid;gap:var(--space-1);font-family:var(--font-body);font-size:var(--step-body);line-height:var(--leading-body);color:var(--ink-muted)}
+.roc-prose a{color:var(--brand)}
+.roc-prose a:hover{color:var(--brand-ink)}
+.roc-flag{display:inline-block;font-family:var(--font-mono);font-size:var(--step-body-sm);font-weight:500;letter-spacing:var(--tracking-label);color:var(--brand-ink)}
+.roc-updated{margin:0;padding-top:var(--space-3);border-top:var(--roc-hair);font-family:var(--font-mono);font-size:var(--step-small);font-weight:500;letter-spacing:var(--tracking-label);text-transform:uppercase;color:var(--ink-muted)}
+.roc-help{display:grid;gap:var(--space-2);width:100%}
+.roc-help-list{display:grid;gap:var(--space-1);list-style:none;margin:0;padding:0}
+.roc-help-list a{display:flex;align-items:center;min-height:var(--tap);font-family:var(--font-mono);font-size:var(--step-body-sm);font-weight:500;letter-spacing:var(--tracking-label);color:var(--brand-tint);text-decoration:none}
+.roc-help-list a:hover{color:var(--ink-inverse)}
+</style>
+</head>
+<body>
+
+<link rel="preload" as="image" href="../assets/romans-orthodontics-lockup-horizontal-reversed-copper-mark.svg"/><div class="psp-root"><a href="#main" class="psp-skiplink">Skip to content</a><header class="roc-header"><div class="roc-utility"><div class="psp-container"><div class="roc-utility-inner"><span class="roc-utility-item">Anthem, Arizona</span><span class="roc-utility-sep" aria-hidden="true"></span><span class="roc-utility-item">3618 W. Anthem Way, Suite D120</span><a class="roc-utility-tel" href="tel:+16233201222">(623) 320-1222</a></div></div></div><div class="roc-bar"><div class="psp-container"><div class="roc-bar-inner"><a class="roc-logo" href="index.html"><img src="../assets/romans-orthodontics-lockup-horizontal-reversed-copper-mark.svg" alt="Romans Orthodontics" width="200" height="40"/></a><nav class="roc-nav-wrap" aria-label="Main"><ul class="roc-nav"><li class="roc-nav-item"><button type="button" class="roc-nav-link" aria-expanded="false">Services<svg class="roc-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square" aria-hidden="true"><path d="M6 10 12 16 18 10"></path></svg></button><div class="roc-menu"><ul class="roc-menu-list"><li><a class="roc-menu-link" href="braces-for-kids.html">Braces for Kids</a></li><li><a class="roc-menu-link" href="braces-for-adults.html">Braces for Adults</a></li><li><a class="roc-menu-link" href="invisalign.html">Invisalign &amp; Clear Aligners</a></li><li><a class="roc-menu-link" href="early-treatment.html">Early Treatment</a></li><li><a class="roc-menu-link" href="retainers.html">Retainers</a></li></ul></div></li><li class="roc-nav-item"><button type="button" class="roc-nav-link" aria-expanded="false">Why Romans<svg class="roc-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square" aria-hidden="true"><path d="M6 10 12 16 18 10"></path></svg></button><div class="roc-menu"><ul class="roc-menu-list"><li><a class="roc-menu-link" href="why-romans.html">Why Romans</a></li><li><a class="roc-menu-link" href="dr-romans.html">Meet Dr. Romans</a></li><li><a class="roc-menu-link" href="team.html">Our Team</a></li></ul></div></li><li class="roc-nav-item"><a class="roc-nav-link" href="financial.html">Financial</a></li><li class="roc-nav-item"><a class="roc-nav-link" href="index.html#locations">Our Address</a></li></ul></nav><div class="roc-bar-cta"><a href="free-consult.html" class="psp-button">Book a consultation</a></div><a class="roc-mobile-tel" href="tel:+16233201222" aria-label="Call Romans Orthodontics at (623) 320-1222"><svg class="roc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square" aria-hidden="true"><path d="M15.5 21A12.5 12.5 0 0 1 3 8.5 2.5 2.5 0 0 1 5.5 6h1.8a1 1 0 0 1 1 .8l.7 3a1 1 0 0 1-.5 1.1l-1.3.7a9.4 9.4 0 0 0 4.2 4.2l.7-1.3a1 1 0 0 1 1.1-.5l3 .7a1 1 0 0 1 .8 1v1.8A2.5 2.5 0 0 1 15.5 21Z"></path></svg></a><button type="button" class="psp-drawer__trigger roc-drawer-trigger" aria-expanded="false" aria-controls="_R_5i_">Menu</button><div id="_R_5i_" class="psp-drawer__panel" data-open="false"><div class="roc-drawer-body"><div class="psp-stack psp-stack--3"><details class="psp-disclosure"><summary class="psp-disclosure__summary">Services<span class="psp-disclosure__sign" aria-hidden="true"></span></summary><div class="psp-disclosure__body"><ul class="roc-drawer-sub"><li><a class="roc-drawer-link" href="braces-for-kids.html">Braces for Kids</a></li><li><a class="roc-drawer-link" href="braces-for-adults.html">Braces for Adults</a></li><li><a class="roc-drawer-link" href="invisalign.html">Invisalign &amp; Clear Aligners</a></li><li><a class="roc-drawer-link" href="early-treatment.html">Early Treatment</a></li><li><a class="roc-drawer-link" href="retainers.html">Retainers</a></li></ul></div></details><details class="psp-disclosure"><summary class="psp-disclosure__summary">Why Romans<span class="psp-disclosure__sign" aria-hidden="true"></span></summary><div class="psp-disclosure__body"><ul class="roc-drawer-sub"><li><a class="roc-drawer-link" href="why-romans.html">Why Romans</a></li><li><a class="roc-drawer-link" href="dr-romans.html">Meet Dr. Romans</a></li><li><a class="roc-drawer-link" href="team.html">Our Team</a></li></ul></div></details><a class="roc-drawer-top" href="financial.html">Financial</a><a class="roc-drawer-top" href="index.html#locations">Our Address</a><hr class="psp-rule psp-rule--inverse"/><a class="roc-drawer-tel roc-drawer-top" href="tel:+16233201222">(623) 320-1222</a><a href="free-consult.html" class="psp-button psp-button--full">Book a consultation</a></div></div></div></div></div></div></header><main id="main">
+<section class="psp-band psp-band--dark psp-band--pad-tight"><div class="psp-container psp-container--prose"><div class="psp-stack psp-stack--3"><h1 class="psp-heading psp-heading--lg psp-heading--balance">Terms of use</h1><p class="psp-body psp-body--lede">The terms that apply to using this website. They are not a treatment agreement.</p></div></div></section>
+<section class="psp-band"><div class="psp-container psp-container--prose"><div class="psp-stack psp-stack--5"><div class="roc-legalnotice" role="note"><p class="roc-legalnotice-h">Sample text. Not yet reviewed by an attorney.</p><p>This page is template language prepared by OrthoBoost as a starting point. It has not been reviewed by a lawyer, it is not legal advice, and Romans Orthodontics has not adopted it. The practice must have its own counsel review, correct and approve this text before the site goes live.</p><p>These are website terms only. Nothing here sets out treatment terms, fees, payment plans or cancellation terms. Those live in the agreement a patient signs with the practice.</p></div><div class="roc-prose"><section><h2 class="psp-heading psp-heading--sm">Using this site</h2><p>This website is published by Romans Orthodontics, an orthodontic practice in Anthem, Arizona. Using the site means using it as it is intended: reading the pages, calling the office, and sending a consultation request or a question. Please do not attempt to break, scrape, overload or gain unauthorized access to the site.</p></section><section><h2 class="psp-heading psp-heading--sm">This site is not medical advice</h2><p>Everything on this site is general information about orthodontic care. It is not a diagnosis, not a treatment recommendation, and not a substitute for being examined by an orthodontist or a dentist.</p><p>Reading this site, sending a form, or emailing or calling the office does not create a doctor and patient relationship. That relationship begins when the practice accepts a patient for care, in the office. If you have a dental or medical emergency, call your dentist, your doctor or 911 rather than using a form on this site.</p></section><section><h2 class="psp-heading psp-heading--sm">Requests are not confirmed appointments</h2><p>A consultation request submitted through this site is a request. It is not booked until someone from the practice confirms it with you.</p></section><section><h2 class="psp-heading psp-heading--sm">Fees and financial terms are not published here</h2><p>This site does not publish prices, monthly figures or financing terms. Any question about cost is answered in person, and the financial arrangement for treatment is whatever appears in the agreement signed with the practice. That signed agreement controls, not anything written on this website.</p><p><span class="roc-flag">[CONFIRM: whether the practice wants a pricing disclaimer here if figures are ever published on the site]</span></p></section><section><h2 class="psp-heading psp-heading--sm">Content and trademarks</h2><p>The text, photographs, logo and design of this site belong to Romans Orthodontics or to the people it licensed them from, and may not be copied or reused without permission. Product and brand names that appear on the site, including Invisalign, belong to their respective owners and are used here only to describe the treatment offered.</p></section><section><h2 class="psp-heading psp-heading--sm">Links to other sites</h2><p>Some pages link out to other organizations, including the practice’s online scheduling tool and its Google profile. Those sites are run by other people under their own terms and privacy practices, and the practice is not responsible for what they publish or how they operate.</p></section><section><h2 class="psp-heading psp-heading--sm">Availability and accuracy</h2><p>The practice works to keep this site accurate and available, but does not promise it will be error free, current at every moment, or reachable at all times. Pages can be changed or removed without notice.</p></section><section><h2 class="psp-heading psp-heading--sm">Limitation of liability</h2><p><span class="roc-flag">[CONFIRM: limitation of liability and disclaimer of warranties wording, to be supplied or approved by the practice’s counsel]</span></p></section><section><h2 class="psp-heading psp-heading--sm">Governing law</h2><p>The practice operates in Arizona. Which state’s law governs these terms, and where any dispute would be handled, is a decision for the practice and its counsel rather than an assumption to make here.</p><p><span class="roc-flag">[CONFIRM: governing law and the venue for disputes]</span></p></section><section><h2 class="psp-heading psp-heading--sm">Changes to these terms</h2><p>These terms can be updated. The date at the bottom is the date the practice adopted the current version.</p></section></div><p class="roc-updated">Last updated: [CONFIRM: adoption date]</p></div></div></section>
+</main>
+<section class="psp-band psp-band--dark psp-band--pad-tight psp-band--edge-top"><div class="psp-container psp-container--prose"><div class="psp-stack psp-stack--3"><h2 class="psp-heading psp-heading--sm">Questions about these terms</h2><p class="roc-dark-body">Call the office in Anthem or send an email and a person will get back to you.</p><ul class="roc-help-list"><li><a href="tel:+16233201222">(623) 320-1222</a></li><li><a href="mailto:hello@romansorthodontics.com">hello@romansorthodontics.com</a></li></ul></div></div></section><footer class="psp-band psp-band--dark psp-band--pad-tight psp-band--edge-top"><div class="psp-container"><div class="psp-stack psp-stack--5"><div class="roc-footer-grid"><div class="roc-footer-brand"><img class="roc-footer-logo" src="../assets/romans-orthodontics-lockup-horizontal-reversed-copper-mark.svg" alt="Romans Orthodontics" width="200" height="40"/><p class="roc-footer-blurb">Braces and Invisalign in Anthem, Arizona. One board-certified orthodontist, treating kids, teens, and adults.</p></div><nav class="roc-footer-col" aria-label="Treatments"><p class="roc-footer-h">Treatments</p><ul class="roc-footer-list"><li><a class="roc-footer-link" href="braces-for-kids.html">Braces for Kids</a></li><li><a class="roc-footer-link" href="braces-for-adults.html">Braces for Adults</a></li><li><a class="roc-footer-link" href="invisalign.html">Invisalign® &amp; Clear Aligners</a></li><li><a class="roc-footer-link" href="early-treatment.html">Early Treatment</a></li><li><a class="roc-footer-link" href="retainers.html">Retainers &amp; Retention</a></li><li><a class="roc-footer-link" href="airway-tmj.html">Airway &amp; TMJ</a></li></ul></nav><nav class="roc-footer-col" aria-label="Practice"><p class="roc-footer-h">Practice</p><ul class="roc-footer-list"><li><a class="roc-footer-link" href="why-romans.html">Why Romans</a></li><li><a class="roc-footer-link" href="dr-romans.html">Meet Dr. Romans</a></li><li><a class="roc-footer-link" href="team.html">Our Team</a></li><li><a class="roc-footer-link" href="reviews.html">Reviews</a></li><li><a class="roc-footer-link" href="financial.html">Insurance &amp; financing</a></li><li><a class="roc-footer-link" href="free-consult.html">Book a consultation</a></li><li><a class="roc-footer-link" href="contact.html">Contact</a></li></ul></nav><div class="roc-footer-col"><p class="roc-footer-h">Visit</p><address class="roc-nap roc-nap--sm"><span>3618 W. Anthem Way, Suite D120</span><span>Anthem, AZ 85086</span><a class="roc-nap-tel" href="tel:+16233201222">(623) 320-1222</a></address><p class="roc-gap-flag">[CONFIRM: office hours]</p><p class="roc-gap-flag">[SOCIAL PROFILE LINKS NEEDED]</p></div></div><hr class="psp-rule psp-rule--inverse"/><div class="roc-legal"><span>© 2026 Romans Orthodontics</span><a class="roc-legal-link" href="privacy.html">Privacy Policy</a><a class="roc-legal-link" href="terms.html">Terms</a><a class="roc-legal-link" href="refund-policy.html">Refund Policy</a><a class="roc-legal-link" href="accessibility.html">Web Accessibility Statement</a></div></div></div></footer><nav aria-label="Quick actions" class="psp-stickybar roc-sticky" style="grid-template-columns:repeat(3, 1fr)"><a href="tel:+16233201222" class="psp-stickybar__item">Call</a><a href="free-consult.html" class="psp-stickybar__item psp-stickybar__item--emphasis">Book a consultation</a><a href="https://www.google.com/maps/dir/?api=1&amp;destination=3618+W.+Anthem+Way+Suite+D120+Anthem+AZ+85086" class="psp-stickybar__item">Directions</a></nav></div>
+<script>
+(function () {
+  document.querySelectorAll('.psp-drawer__trigger').forEach(function (btn) {
+    var panel = document.getElementById(btn.getAttribute('aria-controls'));
+    if (!panel) return;
+    var open = btn.textContent.trim(), shut = btn.getAttribute('data-close-label') || 'Close';
+    btn.addEventListener('click', function () {
+      var next = panel.getAttribute('data-open') !== 'true';
+      panel.setAttribute('data-open', String(next));
+      btn.setAttribute('aria-expanded', String(next));
+      btn.textContent = next ? shut : open;
+    });
+  });
+})();
+</script>
+<script>
+(function(){
+  var root = document.documentElement;
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
+  if (reduce.matches || !('IntersectionObserver' in window)) return;
+  root.classList.add('roc-js');
+  var fired = 0, io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if (e.isIntersecting) { fired++; e.target.classList.add('is-in'); io.unobserve(e.target); }
+    });
+  }, { rootMargin: '0px 0px -10% 0px', threshold: 0.08 });
+  function showAll(){
+    root.classList.remove('roc-js');
+    document.querySelectorAll('.roc-anim,.roc-wipe').forEach(function(el){ el.classList.add('is-in'); });
+  }
+  function scan(){ document.querySelectorAll('.roc-anim:not(.is-in),.roc-wipe:not(.is-in)').forEach(function(el){ io.observe(el); }); }
+  scan();
+  new MutationObserver(scan).observe(document.body, { childList: true, subtree: true });
+  setTimeout(function(){ if (fired === 0) showAll(); }, 1200);
+  reduce.addEventListener('change', function(e){ if (e.matches) showAll(); });
+})();
+(function(){
+  var vv = window.visualViewport; if(!vv) return;
+  var base = vv.height;
+  vv.addEventListener('resize', function(){
+    document.body.setAttribute('data-kb', vv.height < base * 0.78 ? '1' : '0');
+  });
+})();
+</script>
+
+</body>
+</html>
