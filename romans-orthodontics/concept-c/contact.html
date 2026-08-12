@@ -250,6 +250,13 @@ main[id],section[id]{scroll-margin-top:calc(var(--roc-topbar) + var(--space-2))}
 .roc-nap{display:grid;font-style:normal;font-family:var(--font-body);font-size:var(--step-body);line-height:var(--leading-body);color:var(--ink)}
 /* the footer NAP and its flags sit on the dark band now */
 .psp-band--dark .roc-nap{color:var(--ink-inverse)}
+/* Phase 6 audit fix: hello@romansorthodontics.com is a 28-character token with
+   no break opportunity and renders ~324px, wider than a 320px viewport on its
+   own. It made .roc-nap unshrinkable inside its flex parent and overflowed the
+   page by 24px. break-word only breaks when it has to, so 375px and up are
+   unchanged. min-width:0 lets the flex item actually take the smaller size. */
+.roc-nap{min-width:0;grid-template-columns:minmax(0,1fr)}
+.roc-nap a[href^="mailto:"]{overflow-wrap:anywhere}
 .psp-band--dark .roc-nap-tel{color:var(--brand-tint)}
 .psp-band--dark .roc-nap-tel:hover{color:var(--ink-inverse)}
 .psp-band--dark .roc-gap-flag{color:var(--brand-tint)}

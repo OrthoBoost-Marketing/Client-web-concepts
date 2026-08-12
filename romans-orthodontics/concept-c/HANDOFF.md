@@ -141,12 +141,45 @@ Each was a spec-vs-client conflict resolved toward the client:
 | APPOINTMENT | `Dentist` schema | `WebPage` only | avoids duplicate business entities |
 | WHY / service | hero proof-count line | credential line | no verified counts |
 
-**Hero pattern is not uniform.** `retainers`, `early-treatment` and `why-romans`
-use a split hero instead of the homepage's full-bleed photographic one. All
-three builders chose this independently for the same reason: the `svc-*.webp`
-service images are **720×540** and upscale roughly 3.5× on a 2560px band. This
-is an asset problem showing up as a design inconsistency. Re-export the service
-images larger and it can be made uniform.
+### Service-page hero images — investigated 2026-08-11
+
+**Hero pattern is not uniform.** Full-bleed on `braces-for-kids`,
+`braces-for-adults`, `invisalign`, `airway-tmj`; split figure on `retainers`
+and `early-treatment`. (`why-romans` is also split, but it uses a real
+900×1125 photo and is not affected.)
+
+This is an **asset problem wearing a design problem's clothes.** All six
+`svc-*.webp` are **720×540 and 10–29KB**, and all six are preloaded as the
+page's LCP element with `fetchpriority="high"`. The four full-bleed pages
+stretch a 720px file across a 2560px band, roughly 3.5×. The two split pages
+are three builders independently declining to do that, and they were right.
+
+**There is no larger source.** Checked: `assets/services/*.jpg`, the apparent
+originals, are **800×600** — and `svc-senior-smile.jpg` is **652×450**,
+smaller than the webp. These are low-resolution stock comps. Upscaling adds
+pixels but no detail and blows the kit's 200KB hero budget, so it is not a fix.
+
+Only two real options: re-license these stock images at full resolution, or
+shoot real photography. Both are client asks.
+
+### Stock humans on service heroes — FLAGGED, decision made 2026-08-11
+
+The `svc-*` set are stock models. `svc-invisalign.webp` is a woman in scrubs
+in an operatory holding an aligner; `svc-braces-for-kids.webp` is a clinician
+in scrubs with a child patient in a treatment chair. As **page heroes** they
+read as Romans staff treating Romans patients.
+
+The kit's rule is *"Real photography everywhere except the services grid
+(stock/AI permitted there only). Never stock humans on a healthcare site."* As
+service-page heroes, these sit outside the one slot where stock is allowed.
+It matters more than usual here because `team.html` openly states the practice
+cannot show its team yet, while six service pages open with people who look
+like that team.
+
+**Jules's decision, 2026-08-11: keep the stock images and leave the homepage
+services grid untouched.** Recorded, not re-argued. Revisit if a photo shoot
+happens, since one shoot resolves this, the resolution problem, the team
+roster and the doctor-bio gaps together.
 
 ---
 
