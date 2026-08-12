@@ -17,6 +17,12 @@
   /* --- The ONE place the webhook lives. Phase 7 replaces this string. ----- */
   var WEBHOOK = 'https://services.leadconnectorhq.com/hooks/YWzz0CG4pZm6Q857GMG1/webhook-trigger/95Q2HVnDV7FNtHEq7X91';
 
+  /* Leads platform backup (shadow mode): every lead is stored here first, then
+     the site posts GHL itself and reports GHL's status back. Registration is a
+     separate step on the platform — see orthoboost-leads-connect. */
+  var BACKUP = 'https://leads.startorthoboost.com';
+  var SITE_ID = 'romans-orthodontics';
+
   var CONFIRM = 'thank-you.html';
   var CALL_FALLBACK = 'or call us at (623) 320-1222';
   var STORE_KEY = 'roc_attr';
@@ -223,13 +229,50 @@
       var label = btn ? btn.textContent : '';
       if (btn) { btn.disabled = true; btn.textContent = 'Sending...'; }
 
+      var data = buildPayload(form);
+
+      /* Shadow-mode backup. Fires BEFORE the GHL call so the lead is captured
+         even if GHL drops it. Every call is wrapped so it can never block,
+         delay or alter the GHL submit or the redirect. Until the site is
+         registered on the platform this returns unknown_site, which is
+         swallowed here by design. */
+      var saved = null;
+      try {
+        saved = fetch(BACKUP + '/api/lead', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(Object.assign({ site_id: SITE_ID }, data)),
+          keepalive: true
+        }).then(function (r) { return r.json(); }).catch(function () { return null; });
+      } catch (e) {}
+
+      /* Reports GHL's own status back, so the dashboard can flag drops. */
+      function report(ok, code) {
+        if (!saved) return;
+        try {
+          saved.then(function (j) {
+            if (!j || !j.id || !j.token) return;
+            fetch(BACKUP + '/api/lead-result', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ id: j.id, token: j.token, ok: ok, code: code }),
+              keepalive: true
+            }).catch(function () {});
+          }).catch(function () {});
+        } catch (e) {}
+      }
+
       /* GHL requires application/json; text/plain returns 200 and drops the body. */
       fetch(WEBHOOK, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(buildPayload(form)),
+        body: JSON.stringify(data),
         keepalive: true
-      }).then(done).catch(function () {
+      }).then(function (res) {
+        report(!!res.ok, res.status);
+        done();
+      }).catch(function () {
+        report(false, 0);
         if (btn) { btn.disabled = false; btn.textContent = label; }
         done();
       });
