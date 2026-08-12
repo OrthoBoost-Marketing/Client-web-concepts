@@ -211,7 +211,26 @@ lockups, reversed, one-color, color-palette.png) is the correct one to keep
 using — it was derived from these raw files by the asset-intake pipeline.
 Do not pull the logo from Drive directly; do not redesign the mark.
 
+## Credentials — AAO
+**CONFIRMED 2026-08-12 by Jules.** American Association of Orthodontists
+membership is confirmed, closing the Notion Gate 4 Tier 1 item. The
+`aao-member.png` mark may stay on `index.html`, `dr-romans.html` and
+`early-treatment.html`.
+
 ## Reviews
+**EXPANDED 2026-08-12 — the full Google Business Profile was supplied.** The
+six quotes below are what currently ships. A further ~29 real reviews with
+attribution are now available from the GBP and are listed at the end of this
+section as an approved pool to draw from.
+
+**STILL MISSING, and it is the one that matters: the star rating and the total
+review count.** The supplied GBP export contains review *text* and reviewer
+*names*, but no per-review star ratings and no aggregate. So the five-star
+glyphs currently on `index.html` (30), `reviews.html` (25) and
+`braces-for-adults.html` (5) still assert a rating nobody has verified — the
+open Notion Tier 1 item. **Either supply the rating and count off the profile
+header, or the glyphs come off every page, homepage included.**
+
 **UPDATED 2026-08-11 — the "zero reviews" state is over.** Real Google reviews
 came in and were built into all three concepts on 2026-08-06 (commit
 `613eadb`). The reviews page that this brief previously ruled out is now **in
@@ -249,6 +268,64 @@ additional ones:**
    beautiful smile AND a healthy bite that will last a lifetime…" *(**peer
    review, not a patient** — label it as such, never present it as patient
    testimony)*
+
+### Approved pool — further real GBP reviews, 2026-08-12
+
+Verbatim, with attribution. Use these to strengthen pages where the current six
+are a poor topical match. Several are truncated by Google with "… More"; only
+quote the portion actually supplied.
+
+- **LLCYOUNIQUE** — "Dr. Romans was incredibly knowledgeable and provided
+  excellent council on my needs for new retainers. The office has been renovated
+  thoughtfully and executed with precision." *(**retainers** — `retainers.html`
+  currently borrows an unrelated quote, so this is a direct upgrade. Note the
+  reviewer's own spelling, "council". Quote it verbatim or not at all.)*
+- **Luke Wallace** — "I have a difficult schedule between work and kids, but
+  this office extended hours to see me and make it work. Dr Romans is genuine
+  and made it easy." *(**scheduling flexibility.** Useful precisely because the
+  office hours are still unconfirmed — it is a patient's own account, not a
+  practice promise.)*
+- **Sam Hoy** — "I recently started treatment with Dr. Romans… he has been
+  incredibly professional, knowledgeable, and attentive." *(adult treatment)*
+- **Victor Vega** — "Very professional and kind. Genuinely gave us a great
+  explanation with our consultation. Excellent experience and will be back in
+  the future to proceed with our daughter's braces." *(**kids/parents** —
+  fits `braces-for-kids.html`)*
+- **Laurie Garcia** — "Dr Romans explained everything so both myself and my
+  child understood the process… He answered all our questions (my kid had a
+  few)." *(kids/parents)*
+- **Mildea Mangaccat** — "Dr. Romans and his team are absolutely amazing! The
+  office is modern, clean, and welcoming, and the customer service is
+  top-notch." *(**independent practice** — fits `why-romans.html`)*
+- **Grace Grace** — "I had an amazing experience at my consultation… The doctor
+  is very knowledgeable, comforting and supportive." *(first visit →
+  `free-consult.html`)*
+- **Andrew Petersen** — "Dr. Romans (and team) will make you feel welcome and
+  comfortable from the very first visit." *(first visit)*
+- **Real SKW1** — "Dr. Roman was very transparent and forthright in potential
+  treatment options." *(transparency)*
+- **Lauren Prepchuk** — "Kind, thorough, and open to ideas. Great visit!"
+- **Christian Grimes** — "Open and honest quick visit highly recommend."
+- **Dillon Packard** — "Clean office and polite staff. My kids are excited to
+  get started!"
+- **Nick Roehll** — "I've known Dr. Romans for years… He is thoughtful, honest,
+  and truly committed to doing things the right way." *(personal, not a patient
+  — label it as such, same rule as the Shelley peer review.)*
+
+Shorter ones also available: gabriella black · Latoya Alexander · Marshell
+Broome · Ashley Mangione · Janete Ayala · Ethan Alexander · Phyllis Philemon ·
+sergio rios · Taryn P · atlas keisha · Jessica Squires · azalea dookie ·
+Artemi Barbashevsky · Kreative _Grace · Erin Males (no text).
+
+**Do not use Johnsbarberworld's** — it says "Great Dentist", which is the wrong
+profession for an orthodontist and would read as sloppy on the practice's own site.
+
+**Two facts surfaced in the owner's replies, worth confirming before use:** a
+**complimentary whitening kit** is given at the consultation (mentioned in the
+reply to Grace Grace), and the practice describes its own process as "digital
+scanning to customized treatment planning". Neither is in this brief elsewhere.
+The whitening kit in particular is a real offer the site does not currently
+mention anywhere.
 
 **No aggregate rating and no star count anywhere, and no `AggregateRating` /
 `Review` schema.** The exact rating and total review count have not been read
