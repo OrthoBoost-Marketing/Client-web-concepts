@@ -40,6 +40,51 @@ correct there. All 18 siblings use `index.html#locations`.
 
 ## 2 · Launch blockers — client must answer
 
+> **DR. TY'S CALL, 2026-08-12: the site launches WITH the placeholders.** The
+> visible `[CONFIRM: …]` flags are no longer launch blockers. They are open
+> content items that can land after go-live. Notion is the source of truth for
+> anything it records.
+>
+> **One narrow thing to settle before go-live anyway:** `[CONFIRM: office hours]`
+> is internal notation. On a preview it reads as a flag; on a live site real
+> patients read it as broken. If the hours genuinely will not land in time,
+> swap that one string for patient-facing wording — "Call for current hours" —
+> which is equally honest and does not look unfinished. Every other placeholder
+> sits on a `noindex` legal page or in a spot patients will not parse as an
+> error, so they can ship as-is.
+
+### Tier 1 items open in Notion — these DO block launch
+
+From the project record, Gate 4. Tier 1 is truth and legal, and it blocks
+regardless of the placeholder decision above.
+
+- **The AAO "Member" mark asserts a membership nobody has confirmed in
+  writing.** Present on `index.html`, `dr-romans.html`, `early-treatment.html`.
+  One client reply closes it; until then it is an unverified credential on the
+  client-approved homepage.
+- **Review stars are asserted at 5.** 30 glyphs on `index.html`, 25 on
+  `reviews.html`, 5 on `braces-for-adults.html`. The source review list carried
+  no ratings. Either get the real ratings or the glyphs come off — and if they
+  come off, they come off the homepage too, not just the siblings.
+- **Three operational claims carrying concept C — raise, do not rewrite:** a
+  written treatment plan before anything starts, the patient reads it first,
+  and PPO plans checked during the visit.
+
+### Conflict to resolve: does a team page exist?
+
+Notion lists **"a team page (solo)"** under *deliberately absent, do not "fix."*
+`team.html` was built anyway, and the approved homepage links to it three times
+(nav, drawer, footer). Its builder independently judged that it barely earns its
+place. Either the page is removed and those three homepage links go with it, or
+Notion's line is stale. **Check with Dr. Ty before acting either way.**
+
+### Verified clean
+
+- The personal **(620)** number that Notion warns must never be published
+  appears nowhere on the site. The only "620" on any page is inside the Google
+  Maps CID.
+- Medicaid is mentioned nowhere.
+
 **2.1 · Office hours.** Unknown. Ships as a visible `[CONFIRM: office hours]`
 on every page via the footer, and again on `contact.html` and `free-consult.html`.
 `openingHours` is omitted from every JSON-LD rather than guessed. **This is now
