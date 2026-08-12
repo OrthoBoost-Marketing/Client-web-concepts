@@ -96,10 +96,12 @@ contact page. Escalate directly to the client.
 single find-and-replace. Needs the URL from the AM, then
 `orthoboost-ghl-forms` + `orthoboost-leads-connect` (every site gets both).
 
-**2.3 · `hello@romansorthodontics.com` is unverified.** It came from OrthoBoost
-notes, not from `CLIENT-BRIEF.md`, and is now published on `contact.html` three
-times (address block, `mailto:`, JSON-LD). **Confirm the mailbox exists and is
-monitored, or pull it.**
+**2.3 · ~~`hello@romansorthodontics.com` is unverified.~~ CONFIRMED by Jules
+2026-08-12 as the practice's real address.** It had come from OrthoBoost notes
+rather than `CLIENT-BRIEF.md`, which is why it was flagged. It now appears 23
+times across 6 pages, including as the contact route in the privacy policy and
+the accessibility page, so it is load-bearing rather than decorative. No action
+needed.
 
 **2.4 · Google rating and review count.** Never read off the live profile, so
 **no rating and no count appear anywhere on 19 pages** — verified by grep: zero
