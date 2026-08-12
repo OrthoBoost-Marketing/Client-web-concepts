@@ -13,11 +13,10 @@ now. Grouped by who can answer it, because that decides how fast it comes back.
 
 ## A · The office can answer these today
 
-**1. Office hours.** The single most-blocking item. Every page shows a visible
-`[CONFIRM: office hours]` placeholder, and we have deliberately left opening
-hours out of the site's structured data rather than guess them, which means
-Google cannot show them. This is the fourth build cycle carrying it.
-*Day and time the office opens and closes, per day, plus any lunch closure.*
+**1. Do you have Facebook or Instagram?** The footer of all 19 pages currently
+shows a visible `[SOCIAL PROFILE LINKS NEEDED]` flag. It is the most visible
+unfinished thing on the site and it is one answer: send the profile URLs and I
+add them, or tell me there are none and I remove the flag.
 
 **2. Which PPO plans do you take?** The financial page currently says "major PPO
 plans" and nothing more. Named carriers are one of the highest-value things a
@@ -103,26 +102,7 @@ cannot both stand. Removing it would also make the site meaningfully faster.
 
 ---
 
-## D · Photography — one shoot fixes the most
-
-This is the single highest-leverage thing on the list.
-
-**13. A photo session at the office.** It would resolve four separate problems
-at once:
-- **Six treatment pages currently use stock photography** of models who read as
-  though they work at your practice. Real photos would be a straight upgrade.
-- **The stock images are low resolution** and look soft on large screens. There
-  is no higher-resolution version available.
-- **Every real photo we have is an iPhone snapshot.** Usable, and colour
-  corrected, but not professional photography.
-- **A team page becomes possible.** There is deliberately none today, which is
-  the right call for a solo practice with no staff photos.
-
-**14. Consent to publish** for anyone who appears in those photos.
-
----
-
-## E · Internal, not the client
+## D · Internal, not the client
 
 - **Domain cutover.** The last technical step. Seven things only become correct
   once it happens, including stripping `noindex`, re-checking the tracking on
@@ -133,16 +113,36 @@ at once:
 - **Two GA4 properties** load on every page. If one is an agency roll-up rather
   than Romans' own, dropping it is the largest speed win available.
 
-**Already resolved, previously on this list:** the GoHighLevel webhook, the
-leads-platform registration, the URL scheme, the Google rating and review count
-(5.0 from 42), the AAO membership, and the practice email address.
+**Already resolved, previously on this list:** office hours, the GoHighLevel
+webhook, the leads-platform registration, the URL scheme, the Google rating and
+review count (5.0 from 42), the AAO membership, and the practice email address.
+
+**Photography is settled:** the current photos stay. No shoot is planned, so the
+stock service images and the existing iPhone photography are the final set.
+
+---
+
+## What is still visible on the site
+
+38 placeholder flags are showing to anyone reading the site right now. They
+collapse into a handful of answers:
+
+| Flag | Instances | Question |
+|---|---|---|
+| Social profile links | 19, every footer | Number 1 above |
+| Callback response time | 5 | Number 3 above |
+| Accessibility details | 5 | Section C |
+| Refund terms | 4 | Number 12 |
+| Dr. Romans bio | 3 | Number 8 |
+| PPO networks | 1 | Number 2 |
+| Email reply time | 1 | Office |
 
 ---
 
 ## The short version, if you only send one message today
 
-Office hours · which PPOs · how fast does the office call back · and can we get
-a photo session on the calendar.
+Do you have Facebook and Instagram · which PPOs · how fast does the office call
+back.
 
-Those four unblock more of the site than everything else combined, and three of
-them take the office about two minutes.
+Three questions, about two minutes, and they clear 25 of the 38 flags currently
+visible on the site.
