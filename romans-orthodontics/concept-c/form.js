@@ -15,7 +15,7 @@
   'use strict';
 
   /* --- The ONE place the webhook lives. Phase 7 replaces this string. ----- */
-  var WEBHOOK = 'TODO-GHL-WEBHOOK-URL';
+  var WEBHOOK = 'https://services.leadconnectorhq.com/hooks/YWzz0CG4pZm6Q857GMG1/webhook-trigger/95Q2HVnDV7FNtHEq7X91';
 
   var CONFIRM = 'thank-you.html';
   var CALL_FALLBACK = 'or call us at (623) 320-1222';
@@ -139,11 +139,17 @@
         return fail(emailEl, 'That email address looks incomplete. Please check it, ' + CALL_FALLBACK + '.');
       }
     }
+    /* A2P COMPLIANCE: phone must NOT be required on initial load. It becomes
+       required only after launch. Leaving it blank is allowed; a number that IS
+       supplied still has to be a real one. To re-require it at launch, restore:
+         if (!phone) return fail(phoneEl, 'Please add a phone number, ' + CALL_FALLBACK + '.');
+       and put the required attribute back on the input. */
     if (phoneEl) {
       var phone = val(phoneEl);
-      if (!phone) return fail(phoneEl, 'Please add a phone number, ' + CALL_FALLBACK + '.');
-      var problem = phoneProblem(phone);
-      if (problem) return fail(phoneEl, problem);
+      if (phone) {
+        var problem = phoneProblem(phone);
+        if (problem) return fail(phoneEl, problem);
+      }
     }
     if (msgEl && !val(msgEl)) {
       return fail(msgEl, 'Please add your question so we can answer it properly.');
