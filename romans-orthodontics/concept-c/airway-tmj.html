@@ -357,6 +357,9 @@ main{padding-bottom:var(--space-6)}
 .roc-form-cite{font-family:var(--font-mono);font-size:var(--step-small);letter-spacing:var(--tracking-label);text-transform:uppercase;color:var(--ink-muted)}
 .roc-faq{width:100%;max-width:none}
 @media (width<=1000px){.roc-formwrap{padding:var(--space-3)}}
+/* Same fix as free-consult: the form carried no rule, so submit sat flush
+   against the last field. */
+.roc-formgrid{display:grid;gap:var(--space-3)}
 </style>
 </head>
 <body>
@@ -376,7 +379,7 @@ main{padding-bottom:var(--space-6)}
 <section class="psp-band psp-band--dark"><div class="psp-container"><div style="--psp-ratio:0.85fr 1fr" class="psp-split psp-split--5 psp-split--center psp-split--stack-md"><div class="roc-wipe roc-anim"><figure class="psp-figure"><img class="psp-figure__img" src="../assets/web/dr-romans-with-patient.webp" alt="Dr. Nicholas Romans standing with a young patient in a treatment room at the Anthem office" style="aspect-ratio:4 / 5" width="1200" height="1500" loading="lazy" decoding="async"/></figure></div><div class="psp-stack psp-stack--3 psp-stack--start"><p class="roc-row-label">Meet Dr. Nicholas Romans, DMD, MSD</p><h2 style="max-width:24ch" class="psp-heading psp-heading--md">The orthodontist who evaluates you is the one who treats you</h2><ul class="roc-doc-creds"><li>Board-certified orthodontist</li><li>DMD, MSD</li><li>Craniofacial cleft &amp; palate fellowship, St. Louis Children&rsquo;s Hospital</li><li>More than 7 years dedicated to orthodontics, including advanced specialty training</li></ul><p class="roc-dark-body">Dr. Romans owns this practice and treats every patient in it himself. Bite, jaw and airway questions are the kind that get passed around between offices, so he would rather look at all of it in one appointment and tell you honestly which parts are his to handle.</p><a href="dr-romans.html" class="psp-linkarrow psp-linkarrow--inverse">More about Dr. Romans &rarr;</a></div></div></div></section>
 
 <section id="request" class="psp-band psp-band--alt psp-band--edge-both"><div class="psp-container"><div style="--psp-ratio:1fr 1fr" class="psp-split psp-split--5 psp-split--start psp-split--stack-md"><div class="psp-stack psp-stack--3 psp-stack--start"><p class="roc-row-label">No appointment made yet</p><h2 style="max-width:22ch" class="psp-heading psp-heading--md">Prefer us to call you?</h2><p style="max-width:52ch" class="psp-body psp-body--muted">Leave three details and someone from the Anthem office calls you back to arrange the free consultation. Anything about symptoms, history or insurance gets covered on the call, not in a form.</p><p class="psp-body psp-body--muted">Rather just call? <a class="psp-linkarrow" href="tel:+16233201222">(623) 320-1222</a></p><p class="roc-gap-flag">[CONFIRM: office hours]</p><hr class="psp-rule"/><blockquote class="roc-form-quote">Dr. Romans has a way of explaining things clearly and honestly. You never feel rushed, and it&rsquo;s obvious he wants people to make informed decisions about their care.</blockquote><span class="roc-form-cite">Bijan Shemirani &middot; Google review</span></div>
-<div class="roc-formwrap"><form novalidate>
+<div class="roc-formwrap"><form class="roc-formgrid" novalidate>
 <div class="roc-field"><label for="f-name">Name</label><input id="f-name" name="full_name" type="text" autocomplete="name" required/></div>
 <div class="roc-field"><label for="f-phone">Phone</label><input id="f-phone" name="phone" type="tel" autocomplete="tel"/></div>
 <div class="roc-field"><label for="f-email">Email</label><input id="f-email" name="email" type="email" autocomplete="email" required/></div>
