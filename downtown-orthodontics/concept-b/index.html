@@ -2,10 +2,10 @@
 <html lang="en-CA">
 <head>
 <meta charset="utf-8" />
-<script>try{if(/[?&]theme=dark/.test(location.search))document.documentElement.setAttribute('data-theme','dark')}catch(e){}</script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Orthodontist Downtown Vancouver | Downtown Orthodontics</title>
 <meta name="description" content="The only specialist orthodontist in downtown Vancouver. Braces, Invisalign and early treatment for kids, with 0% in-house financing. Book a free consultation." />
+<meta name="robots" content="noindex, nofollow" />
 <link rel="canonical" href="https://downtownorthodontics.ca/" />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="Downtown Orthodontics" />
@@ -15,7 +15,7 @@
 <meta property="og:url" content="https://downtownorthodontics.ca/" />
 <meta property="og:image" content="https://downtownorthodontics.ca/assets/photos/dt-7.jpg" />
 <meta name="twitter:card" content="summary_large_image" />
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cstyle%3Epath%7Bstroke:%23313131%7D@media(prefers-color-scheme:dark)%7Bpath%7Bstroke:%23EDEDED%7D%7D%3C/style%3E%3Cpath d='M8 22 A25 25 0 0 0 56 22' fill='none' stroke-width='12'/%3E%3C/svg%3E" />
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cstyle%3Epath%7Bstroke:%23313131%7D%3C/style%3E%3Cpath d='M8 22 A25 25 0 0 0 56 22' fill='none' stroke-width='12'/%3E%3C/svg%3E" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400&display=swap" rel="stylesheet" />
@@ -48,7 +48,20 @@
   "founder": {
     "@type": "Person",
     "name": "Dr. Sam Daher",
-    "jobTitle": "Certified Specialist in Orthodontics"
+    "jobTitle": "Certified Specialist in Orthodontics",
+    "award": [
+      "Invisalign Lifetime Achievement Award (2014)",
+      "Dr. James McCutcheon award, McGill University"
+    ],
+    "memberOf": { "@type": "Organization", "name": "Align Technology Scientific Advisory Board" },
+    "founderOf": [
+      { "@type": "Organization", "name": "Daher Aligner Institute" },
+      { "@type": "Organization", "name": "Stream Dental HR" }
+    ],
+    "affiliation": [
+      { "@type": "CollegeOrUniversity", "name": "University of Montreal" },
+      { "@type": "CollegeOrUniversity", "name": "University of the Pacific" }
+    ]
   },
   "hasOfferCatalog": {
     "@type": "OfferCatalog",
@@ -321,6 +334,9 @@
      so the primary action pops (charcoal is a core kit colour) */
   .hero-actions .btn-primary { background: var(--petrol-deep); color: #fff; box-shadow: 0 16px 34px -14px rgba(1,4,8,.55); }
   .hero-actions .btn-primary:hover { background: #000; box-shadow: 0 20px 42px -14px rgba(1,4,8,.62); }
+  /* ...but on the near-black bands that button was black-on-black. Fixed 2026-08-24. */
+  .doc .hero-actions .btn-primary, #financing .hero-actions .btn-primary { background: var(--teal); color: var(--ink-on-teal); box-shadow: var(--shadow-cta); }
+  .doc .hero-actions .btn-primary:hover, #financing .hero-actions .btn-primary:hover { background: color-mix(in srgb, var(--teal) 86%, #fff); }
   .hero-actions .btn-outline { border-color: color-mix(in srgb, var(--petrol), transparent 55%); color: var(--petrol); }
   .hero-actions .btn-outline:hover { border-color: var(--petrol); color: var(--petrol); background: color-mix(in srgb,#fff,transparent 45%); }
 
@@ -354,7 +370,10 @@
   .hero.hero-play .hero-figure { opacity: 1; transform: none; transition-delay: .18s; }
   .hero-callout { opacity: 0; transform: translateY(14px) scale(.95); transition: opacity .55s ease, transform .7s var(--e-spring); }
   .hero.hero-play .hero-callout { opacity: 1; transform: none; transition-delay: .78s; }
-  .hero-actions, .hero-cred { opacity: 0; transform: translateY(16px); transition: opacity .7s ease, transform .8s var(--e-out); }
+  /* Scoped to .hero: this entrance rule was unscoped, which left the doctor, journey and
+     financing CTAs permanently at opacity:0 on desktop (only prefers-reduced-motion
+     rescued them). Fixed 2026-08-24. */
+  .hero .hero-actions, .hero .hero-cred { opacity: 0; transform: translateY(16px); transition: opacity .7s ease, transform .8s var(--e-out); }
   .hero.hero-play .hero-actions { opacity: 1; transform: none; transition-delay: .58s; }
   .hero.hero-play .hero-cred { opacity: 1; transform: none; transition-delay: .70s; }
 
@@ -754,43 +773,24 @@
   .locpin.active .ring{ animation: loc-pulse 1.9s var(--e-out) infinite; }
   @keyframes loc-pulse{ 0%{ transform: scale(1); opacity:.5; } 70%{ transform: scale(3.4); opacity:0; } 100%{ opacity:0; } }
   @media (prefers-reduced-motion: reduce){ .locpin .ring{ animation:none; } .locpin.active .loclabel{ transform: translateX(-50%); } }
+
+  /* ---------- (CREDENTIALS & RECOGNITION) — client-supplied 2026-08-24 ----------
+     Every claim in this section came from the practice (Maya) and is treated as
+     confirmed. Two subs are flagged inline for a one-line description from her. */
+  .credo { background: var(--bg); }
+  .credo-lead { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(18px,2.4vw,30px); margin-bottom: clamp(36px,4.5vw,56px); }
+  .credo-lead > div { border: 1px solid var(--line); border-radius: var(--radius-lg); padding: clamp(22px,2.4vw,30px); background: var(--surface); }
+  .credo-lead .cl-k { font-size: clamp(1.5rem,2.6vw,2rem); font-weight: 800; letter-spacing: -.03em; line-height: 1.05; color: var(--ink); }
+  .credo-lead .cl-v { margin: 10px 0 0; font-size: .95rem; color: var(--ink-soft); }
+  .credo-list { display: grid; grid-template-columns: 1fr 1fr; gap: 0 clamp(30px,4vw,64px); border-top: 1px solid var(--line); }
+  .credo-list .ci { display: grid; grid-template-columns: auto 1fr; gap: 13px; align-items: start; padding: 20px 2px; border-bottom: 1px solid var(--line); }
+  .credo-list .ci svg { color: var(--teal-2); margin-top: 3px; }
+  .credo-list .ci b { display: block; font-size: 1rem; font-weight: 600; letter-spacing: -.01em; color: var(--ink); }
+  .credo-list .ci span { display: block; margin-top: 5px; font-size: .92rem; color: var(--ink-soft); }
+  @media (max-width: 880px){ .credo-lead { grid-template-columns: 1fr; } .credo-list { grid-template-columns: 1fr; } }
 </style>
-<style id="theme-dark">
-/* ============ DARK THEME (?theme=dark) — borrows the index-dark palette ============ */
-html[data-theme="dark"]{
-  color-scheme:dark;
-  --teal:#B3C9DC;--teal-2:#8FB5D3;
-  --bg:#0e1113;--surface:#14181b;--surface-2:#1c2226;
-  --mint:color-mix(in srgb,#B3C9DC 10%,#0e1113);
-  --teal-wash:color-mix(in srgb,var(--teal),transparent 82%);
-  --ink:#ECEFF1;--ink-soft:#b4bec6;--ink-faint:#8b959c;--ink-on-teal:#06090b;
-  --line:#262c31;--line-deep:color-mix(in srgb,#fff,transparent 88%);
-  --tint:color-mix(in srgb,var(--teal),transparent 86%);
-  --shadow:0 18px 40px rgba(0,0,0,.5);--shadow-soft:0 10px 30px rgba(0,0,0,.34);
-}
-html[data-theme="dark"] header.nav{background:color-mix(in srgb,var(--bg),transparent 12%)}
-html[data-theme="dark"] .menu{background:var(--surface)}
-html[data-theme="dark"] .hero{background:
-  radial-gradient(125% 120% at 100% 0%, color-mix(in srgb, var(--teal) 30%, var(--bg)) 0%, transparent 58%),
-  linear-gradient(176deg, color-mix(in srgb, var(--teal) 20%, var(--bg)) 0%, color-mix(in srgb, var(--teal) 30%, var(--bg)) 62%, var(--bg) 100%)}
-html[data-theme="dark"] .hero-title em{color:var(--teal)}
-html[data-theme="dark"] .hero-actions .btn-primary{background:var(--teal-2);color:var(--ink-on-teal);box-shadow:0 16px 34px -14px color-mix(in srgb,var(--teal-2),transparent 45%)}
-html[data-theme="dark"] .hero-actions .btn-primary:hover{background:color-mix(in srgb,var(--teal-2) 84%,#fff);box-shadow:0 20px 42px -14px color-mix(in srgb,var(--teal-2),transparent 38%)}
-html[data-theme="dark"] .btn-dark{background:var(--teal-2);color:var(--ink-on-teal)}
-html[data-theme="dark"] .btn-dark:hover{background:color-mix(in srgb,var(--teal-2) 84%,#fff)}
-html[data-theme="dark"] .hero-actions .btn-outline{border-color:color-mix(in srgb,var(--ink),transparent 60%);color:var(--ink)}
-html[data-theme="dark"] .hero-actions .btn-outline:hover{border-color:var(--ink);color:var(--ink);background:color-mix(in srgb,var(--surface),transparent 45%)}
-html[data-theme="dark"] .btn-outline:hover{color:var(--ink);border-color:color-mix(in srgb,var(--ink),transparent 55%)}
-html[data-theme="dark"] .bg-white{background-color:var(--surface) !important}
-html[data-theme="dark"] .bg-white\/85{background-color:color-mix(in srgb,var(--surface),transparent 15%) !important}
-html[data-theme="dark"] .bg-white\/35{background-color:color-mix(in srgb,var(--surface),transparent 65%) !important}
-html[data-theme="dark"] svg [fill="#0A1A24"]{fill:var(--teal)}
-html[data-theme="dark"] svg [stroke="#0A1A24"]{stroke:var(--teal)}
-html[data-theme="dark"] .loc-map iframe{filter:grayscale(1) invert(.92) hue-rotate(180deg) contrast(.9)}
-/* contrast-audit fixes: petrol-colored text is invisible on the dark ground */
-html[data-theme="dark"] .tlink,html[data-theme="dark"] .path .cue,html[data-theme="dark"] .path:hover .go,html[data-theme="dark"] .pstep .tag,html[data-theme="dark"] .pstep .tag::before,html[data-theme="dark"] details.f summary .pm,html[data-theme="dark"] .jstep .jtag,html[data-theme="dark"] .jstep .jtag::before,html[data-theme="dark"] .loc-tel,html[data-theme="dark"] .hero-cred svg{color:var(--teal)}
-html[data-theme="dark"] details.f[open] summary .pm{border-color:var(--teal)}
-/* avatar initials on the petrol chip were too faint in both themes */
+<style>
+/* avatar initials on the petrol chip were too faint */
 .qcard .asker .ava{color:#d9e0e5}
 </style>
 </head>
@@ -869,6 +869,9 @@ html[data-theme="dark"] details.f[open] summary .pm{border-color:var(--teal)}
     <div class="marquee">
       <div class="marquee-track">
         <span class="cred"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg> Certified Specialist in Orthodontics</span>
+        <span class="cred"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg> Invisalign Lifetime Achievement Award, 2014</span>
+        <span class="cred"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg> Align Technology Scientific Advisory Board</span>
+        <span class="cred"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg> Lectured in 46 Countries</span>
         <span class="cred"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg> 30+ Years in Practice</span>
         <span class="cred"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg> Braces &amp; Invisalign, Priced the Same</span>
         <span class="cred"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg> 0% In-House Financing</span>
@@ -892,7 +895,8 @@ html[data-theme="dark"] details.f[open] summary .pm{border-color:var(--teal)}
       </div>
       <div class="paths-grid">
         <a class="path reveal" href="#book">
-          <div class="pic"><img src="assets/photos/img-0079.jpg" alt="Dr. Daher with a young patient at the Downtown Orthodontics front desk" style="object-position:center 30%;" /></div>
+          <!-- PHOTO SWAP (Aug 12 shoot): client review 2026-08-24 asked that Dr. Daher not appear touching or hugging child patients; a female provider reads better in the family-facing slots. The three shots of him posed with children were pulled. Brief the shoot for a female provider with a child patient and drop it in here. -->
+          <div class="pic"><img src="assets/photos/used-1.jpg" alt="A member of the Downtown Orthodontics team holding a clear retainer" style="object-position:center 22%;" /></div>
           <div class="body">
             <div class="lbl">Kids</div>
             <h3>Start them off <em>right.</em></h3>
@@ -902,7 +906,8 @@ html[data-theme="dark"] details.f[open] summary .pm{border-color:var(--teal)}
           </div>
         </a>
         <a class="path reveal d1" href="#book">
-          <div class="pic"><img src="assets/photos/img-0081.jpg" alt="A smiling teen patient with braces beside Dr. Daher" style="object-position:center 25%;" /></div>
+          <!-- PHOTO SWAP (Aug 12 shoot): needs a real teen patient in braces. -->
+          <div class="pic"><img src="assets/photos/used-2.jpg" alt="A Downtown Orthodontics clinician scanning a patient chairside" style="object-position:center 45%;" /></div>
           <div class="body">
             <div class="lbl">Teens</div>
             <h3>Braces that <em>fit their life.</em></h3>
@@ -966,7 +971,7 @@ html[data-theme="dark"] details.f[open] summary .pm{border-color:var(--teal)}
       </div>
       <div class="journey-stage" aria-hidden="true">
         <article class="jpanel active">
-          <img src="assets/photos/img-4241.jpg" alt="" style="object-position:center 30%;" />
+          <img src="assets/photos/office-inside.jpg" alt="" style="object-position:center 55%;" />
           <div class="cap"><span class="cn">01</span><b>A warm welcome</b></div>
         </article>
         <article class="jpanel">
@@ -1024,15 +1029,51 @@ html[data-theme="dark"] details.f[open] summary .pm{border-color:var(--teal)}
       </div>
       <div class="reveal d1">
         <h2 class="h2">One specialist, <em>start to finish.</em></h2>
-        <p class="bio">Dr. Daher has planned orthodontic treatment for over 30 years, and leads the only specialist orthodontic practice in downtown Vancouver. His patients range from seven-year-olds at their first growth check to adults with cases other offices declined, and his rule hasn't changed: careful diagnosis, honest recommendations, and no unnecessary extractions.</p>
+        <p class="bio">Dr. Daher has planned orthodontic treatment for over 30 years, and leads the only specialist orthodontic practice in downtown Vancouver. He opened the world's first Invisalign-only practice in 2009, has taught in 142 cities across six continents, and still sits on Align Technology's scientific advisory board. His patients range from seven-year-olds at their first growth check to adults with cases other offices declined, and his rule hasn't changed: careful diagnosis, honest recommendations, and no unnecessary extractions.</p>
         <div class="doc-creds">
           <span><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg> Certified specialist in orthodontics</span>
           <span><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg> 30+ years in practice</span>
           <span><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg> Complex &amp; referred cases welcome</span>
+          <span><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg> Invisalign Lifetime Achievement Award</span>
+          <span><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg> Align scientific advisory board</span>
+          <span><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg> Founder, Daher Aligner Institute</span>
         </div>
+        <p style="margin:0 0 26px;font-size:.92rem;"><a class="tlink" href="#credentials" style="color:var(--teal);">See the full record &rarr;</a></p>
         <div class="hero-actions">
           <a class="btn btn-primary" href="#book">Book with Dr. Daher <span class="arr">&rarr;</span></a>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- (CREDENTIALS & RECOGNITION) — the doctor's record, front and centre.
+       Source: consolidated client direction from Maya, 2026-08-24. Ten items, in the
+       order she gave them: the three lead cards carry the first, fourth and ninth,
+       the ruled list carries the other seven, so every fact is stated exactly once.
+       Previously held out of every concept as unconfirmed
+       "Priority-4" claims; the client has now supplied them, so they run.
+       NOTE the company is "Align Technology" (singular) — the source note wrote
+       "Align Technologies". Corrected here. -->
+  <section class="block credo" id="credentials">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="eyebrow">(Credentials &amp; recognition)</span>
+        <h2 class="h2">Thirty years at the <em>front of the field.</em></h2>
+        <p>Dr. Daher has not only practised orthodontics for three decades, he has helped shape how it is taught and how aligner treatment is done. The record, in brief.</p>
+      </div>
+      <div class="credo-lead">
+        <div class="reveal"><span class="cl-k">2014</span><p class="cl-v">Invisalign Lifetime Achievement Award.</p></div>
+        <div class="reveal d1"><span class="cl-k">46 countries</span><p class="cl-v">142 cities, six continents, teaching other clinicians.</p></div>
+        <div class="reveal d2"><span class="cl-k">2009</span><p class="cl-v">Opened the world&rsquo;s first Invisalign-only practice.</p></div>
+      </div>
+      <div class="credo-list">
+        <div class="ci reveal"><svg width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><div><b>An early adopter of Invisalign</b><span>Dr. Daher worked with Align Technology&rsquo;s founder on the company&rsquo;s scientific advisory board.</span></div></div>
+        <div class="ci reveal d1"><svg width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><div><b>Still on Align&rsquo;s scientific advisory board</b><span>One of a select few orthodontists serving on it today.</span></div></div>
+        <div class="ci reveal"><svg width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><div><b>Founder of the Daher Aligner Institute</b><span><!-- FLAG: Maya to confirm a one-line description of what the Institute does. Placeholder sub asserts only what the title already states. -->Founded and led by Dr. Daher.</span></div></div>
+        <div class="ci reveal d1"><svg width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><div><b>Founder of Stream Dental HR</b><span><!-- FLAG: Maya to confirm a one-line description of Stream Dental HR. Placeholder sub asserts only what the title already states. -->A venture he founded alongside the practice.</span></div></div>
+        <div class="ci reveal"><svg width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><div><b>Former associate professor</b><span>University of Montreal and University of the Pacific.</span></div></div>
+        <div class="ci reveal d1"><svg width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><div><b>McGill&rsquo;s Dr. James McCutcheon award</b><span>Recognised by his alma mater.</span></div></div>
+        <div class="ci reveal"><svg width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><div><b>Top 1% of Invisalign providers globally</b><span>And the top provider worldwide from 2009 to 2011.</span></div></div>
       </div>
     </div>
   </section>
@@ -1108,7 +1149,7 @@ html[data-theme="dark"] details.f[open] summary .pm{border-color:var(--teal)}
       <!-- bento grid [Tailwind block] -->
       <div class="tw-block i-cards grid gap-4 sm:grid-cols-2 lg:grid-cols-3 lg:auto-rows-[1fr]">
         <div class="reveal relative overflow-hidden rounded-brand p-8 text-white sm:col-span-2 lg:col-span-1 lg:row-span-2" style="min-height:300px;">
-          <img src="assets/photos/office-inside.jpg" alt="" aria-hidden="true" class="absolute inset-0 h-full w-full object-cover" />
+          <img src="assets/photos/practice.jpg" alt="" aria-hidden="true" class="absolute inset-0 h-full w-full object-cover" />
           <span class="absolute inset-0" style="background:linear-gradient(180deg, color-mix(in srgb,var(--petrol-deep),transparent 28%), var(--petrol-deep) 94%);"></span>
           <div class="relative flex h-full flex-col justify-end">
             <svg width="30" height="30" viewBox="0 0 24 24" fill="none" class="mb-auto text-teal"><circle cx="12" cy="8" r="4" stroke="currentColor" stroke-width="1.7"/><path d="M5 20c0-3.3 3.1-5 7-5s7 1.7 7 5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
@@ -1566,14 +1607,6 @@ html[data-theme="dark"] details.f[open] summary .pm{border-color:var(--teal)}
       heads.forEach(h => ho.observe(h));
     })();
 
-  </script>
-  <script>
-  /* Theme via URL — light is the designed default; ?theme=dark borrows the index-dark palette */
-  (function(){
-    if(document.documentElement.getAttribute('data-theme')!=='dark')return;
-    var logo=document.querySelector('header.nav .logo img');
-    if(logo)logo.setAttribute('src','assets/Logo_Full-Light_Downtown%20Orthodontics.png');
-  })();
   </script>
 </body>
 </html>
