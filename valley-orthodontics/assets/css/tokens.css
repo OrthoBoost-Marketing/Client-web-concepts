@@ -1,0 +1,45 @@
+/* Valley Orthodontics brand tokens v1.0
+   Dr. Jeremy Haines | valleyorthoak.com
+   Colour values as supplied by the practice (Colors.png, 4 Sep 2026).
+   Ink sampled from the supplied vector artwork. */
+
+:root {
+  /* ---- brand palette ---- */
+  --valley-orthodontics-gold: #FCC351;   /* Pantone 122 U  | decorative only on white (1.61:1) */
+  --valley-orthodontics-mist: #93ABB1;   /* Pantone 2211 U | decorative only on white (2.41:1) */
+  --valley-orthodontics-slate: #5A7880;  /* Pantone 7476 U | AA body text on white (4.74:1) */
+  --valley-orthodontics-ink: #231F20;    /* wordmark colour | AAA on white (16.3:1) */
+
+  /* ---- neutrals ---- */
+  --valley-orthodontics-white: #FFFFFF;
+  --valley-orthodontics-paper: #FAFBFB;  /* section banding. Deliberately this light: at #F7F8F8
+                                            slate drops to 4.45:1 and muted to 4.44:1, both under AA.
+                                            Here they hold 4.57:1 and 4.56:1. Do not darken it. */
+  --valley-orthodontics-line: #E2E6E7;   /* hairlines, card borders */
+  --valley-orthodontics-muted: #6B7578;  /* secondary text, AA on white (4.73:1) */
+
+  /* ---- semantic roles ---- */
+  --valley-orthodontics-text: var(--valley-orthodontics-ink);
+  --valley-orthodontics-text-secondary: var(--valley-orthodontics-muted);
+  --valley-orthodontics-bg: var(--valley-orthodontics-white);
+  --valley-orthodontics-bg-alt: var(--valley-orthodontics-paper);
+  --valley-orthodontics-bg-dark: var(--valley-orthodontics-ink);
+  --valley-orthodontics-accent: var(--valley-orthodontics-gold);
+  --valley-orthodontics-primary: var(--valley-orthodontics-slate);
+
+  /* On dark grounds gold and mist both clear AA, so the accent inverts safely:
+     gold on ink 10.14:1, mist on ink 6.75:1, slate on ink 3.44:1 (large text only). */
+  --valley-orthodontics-accent-on-dark: var(--valley-orthodontics-gold);
+
+  /* ---- type ---- */
+  /* The wordmark face is NOT identified. See fonts/FONTS.md before setting headings.
+     Stack below is a documented interim, not a brand claim. */
+  --valley-orthodontics-font-heading: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  --valley-orthodontics-font-body: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  --valley-orthodontics-tracking-eyebrow: .16em;
+
+  /* ---- geometry ---- */
+  --valley-orthodontics-radius: 4px;
+  --valley-orthodontics-radius-lg: 10px;
+  --valley-orthodontics-shadow: 0 10px 30px -12px rgb(35 31 32 / .18);
+}
