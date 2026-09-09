@@ -120,3 +120,15 @@ built; their links go to the live site.
 8. Second doctor on the door: confirm with the practice.
 9. Instagram identity and the unverified tagline.
 10. Logo ownership and ABO usage rights.
+
+## Audit log
+
+**9 September 2026, run `3ca62e37c7`**, homepage scope, staging mode, all three concepts plus the hub.
+Report: https://claude.ai/code/artifact/672a9404-e6dc-4148-b7b5-a99f6cd18475
+
+Tiers 1 and 3 clear on all three concepts. Tiers 2 and 4 blocking: 9 rule groups to close, plus 4
+Tier 5 craft items. The engine JSON and its generated report are in `audit/`.
+
+The one defect no script found: the consultation form's interest menu is missing an opening
+`<option>` tag before Braces, so the browser parses four options and the practice's lead service is
+absent from the menu. Present in all three concepts, invisible while the form is disabled.
