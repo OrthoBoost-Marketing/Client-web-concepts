@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Valley Orthodontics: Homepage Concepts</title>
+<style>
+  :root {
+    --gold:#FCC351; --mist:#93ABB1; --slate:#5A7880; --ink:#231F20;
+    --paper:#FAFBFB; --line:#E2E6E7; --muted:#6B7578; --card:#ffffff;
+  }
+  * { margin:0; box-sizing:border-box; }
+  body {
+    font-family:'Segoe UI', system-ui, -apple-system, sans-serif;
+    color:var(--ink); background:var(--paper);
+    padding:clamp(24px, 5vh, 56px) clamp(20px, 4vw, 40px);
+    line-height:1.6;
+  }
+  main { width:100%; max-width:1080px; margin-inline:auto; }
+
+  .top { display:flex; justify-content:space-between; align-items:center; gap:24px; flex-wrap:wrap; margin-bottom:clamp(28px, 5vh, 48px); }
+  .top img { height:clamp(38px, 5vh, 52px); width:auto; display:block; }
+  .top .note { font-size:.8rem; color:var(--muted); }
+
+  h1 { font-size:clamp(1.4rem, 3.4vw, 2rem); font-weight:600; letter-spacing:-.02em; line-height:1.2; }
+  .lede { color:var(--slate); margin-top:14px; max-width:62ch; }
+  .lede + .lede { margin-top:10px; }
+
+  .rule { height:3px; width:88px; background:var(--gold); margin:26px 0 0; border-radius:2px; }
+
+  .concepts { display:grid; grid-template-columns:repeat(3, 1fr); gap:clamp(14px, 1.8vw, 20px); margin-top:clamp(28px, 5vh, 44px); }
+  .concept {
+    background:var(--card); border:1px solid var(--line); border-radius:10px;
+    padding:clamp(18px, 2.4vh, 24px);
+    display:flex; flex-direction:column;
+    transition:border-color .18s ease, transform .18s ease, box-shadow .18s ease;
+  }
+  .concept:hover {
+    border-color:var(--slate); transform:translateY(-2px);
+    box-shadow:0 10px 30px -18px rgb(35 31 32 / .22);
+  }
+  .concept .label { font-size:.68rem; font-weight:700; letter-spacing:.14em; text-transform:uppercase; color:var(--slate); }
+  .concept h2 { font-size:1.06rem; font-weight:600; letter-spacing:-.01em; margin-top:10px; line-height:1.3; }
+  .concept p { color:var(--muted); font-size:.88rem; margin-top:10px; }
+  .concept .open {
+    margin-top:auto; align-self:flex-start;
+    display:inline-flex; align-items:center; min-height:44px;
+    padding:10px 22px; border-radius:4px;
+    background:var(--slate); color:#fff; text-decoration:none;
+    font-size:.86rem; font-weight:600;
+    transition:background .16s ease;
+  }
+  .concept .open:hover, .concept .open:focus-visible { background:var(--ink); }
+
+  .reading { margin-top:clamp(28px, 5vh, 44px); border-top:1px solid var(--line); padding-top:22px; }
+  .reading h3 { font-size:.72rem; font-weight:700; letter-spacing:.14em; text-transform:uppercase; color:var(--slate); }
+  .reading ul { margin-top:14px; padding-left:20px; color:var(--muted); font-size:.88rem; }
+  .reading li + li { margin-top:8px; }
+  .reading strong { color:var(--ink); font-weight:600; }
+
+  footer { margin-top:clamp(28px, 5vh, 44px); border-top:1px solid var(--line); padding-top:18px; color:var(--muted); font-size:.78rem; display:flex; justify-content:space-between; gap:14px; flex-wrap:wrap; }
+
+  a:focus-visible { outline:3px solid var(--slate); outline-offset:4px; }
+
+  @media (max-width: 860px) {
+    .concepts { grid-template-columns:1fr; }
+  }
+</style>
+</head>
+<body>
+<main>
+  <div class="top">
+    <img src="assets/logo/valley-orthodontics-lockup-horizontal.svg" alt="Valley Orthodontics">
+    <span class="note">Unlisted previews, just for your team.</span>
+  </div>
+
+  <h1>Three homepage directions for Valley Orthodontics</h1>
+  <p class="lede">Each one is a complete, working homepage built with your own photography, your logo files and the practice details as they read today. Open them on a phone as well as a laptop. Every phone number dials the office.</p>
+  <p class="lede">They are three arrangements of the same practice, not three different businesses. Choosing one means choosing a layout and a reading order, and the winner becomes the pattern for the rest of the site.</p>
+  <div class="rule"></div>
+
+  <div class="concepts">
+    <div class="concept">
+      <span class="label">Concept 1</span>
+      <h2>Local practice</h2>
+      <p>Opens on the office itself, then Dr. Haines, then the community. Leads with braces and Invisalign side by side and names Palmer high on the page.</p>
+      <a class="open" href="concept-1/">Open concept 1</a>
+    </div>
+    <div class="concept">
+      <span class="label">Concept 2</span>
+      <h2>Appointment first</h2>
+      <p>Puts the office hours and the phone number in the first screen, so a visitor who already wants to book never has to hunt. Teal treatment.</p>
+      <a class="open" href="concept-2/">Open concept 2</a>
+    </div>
+    <div class="concept">
+      <span class="label">Concept 3</span>
+      <h2>Doctor led</h2>
+      <p>Editorial typography with Dr. Haines' portrait carrying the first screen. The quietest of the three and the most specialist in tone.</p>
+      <a class="open" href="concept-3/">Open concept 3</a>
+    </div>
+  </div>
+
+  <div class="reading">
+    <h3>Worth knowing before you look</h3>
+    <ul>
+      <li><strong>Nothing here is live.</strong> All three are preview pages carrying a noindex tag, so they cannot appear in Google or compete with valleyorthoak.com.</li>
+      <li><strong>The consultation form is switched off on purpose.</strong> It is built but disabled until the booking delivery is wired up and tested. Every page books by phone in the meantime.</li>
+      <li><strong>Colour and typeface are not settled.</strong> The navy, the teal and the serif are presentation choices from the three references, not brand decisions. Your gold, mist and slate palette is unchanged and the winner can be brought back onto it.</li>
+      <li><strong>No numbers appear anywhere.</strong> No review counts, no ratings, no years, no monthly payment figure, because the sources we hold disagree on several of those. They go on once you confirm them.</li>
+      <li><strong>Links to treatment and other pages point at your current website</strong>, since this round covers the homepage only.</li>
+    </ul>
+  </div>
+
+  <footer>
+    <span>Valley Orthodontics, Wasilla, Alaska. Prepared by OrthoBoost.</span>
+    <span>Concepts as of 9 September 2026</span>
+  </footer>
+</main>
+</body>
+</html>

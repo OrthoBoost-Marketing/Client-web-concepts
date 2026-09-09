@@ -9,6 +9,7 @@ One folder per practice, one `concept-*/` subfolder per design direction. Every 
 | Downtown Orthodontics | [/downtown-orthodontics/](https://orthoboost-marketing.github.io/Client-web-concepts/downtown-orthodontics/) | 3 | [client record](https://app.notion.com/p/31232d9551dd81aeb086cd14a2d107ce) |
 | Siouxland Orthodontics | [/siouxland-orthodontics/](https://orthoboost-marketing.github.io/Client-web-concepts/siouxland-orthodontics/) | 3 | [client record](https://app.notion.com/p/39632d9551dd802fb5f1fc06c8478199) |
 | Elite Dental & Wellness | [/elite-dental-wellness/](https://orthoboost-marketing.github.io/Client-web-concepts/elite-dental-wellness/) | 1 | [client record](https://app.notion.com/p/31232d9551dd8149a5b3e428ea272491) |
+| Valley Orthodontics | [/valley-orthodontics/](https://orthoboost-marketing.github.io/Client-web-concepts/valley-orthodontics/) | 3 | [client record](https://app.notion.com/p/3cd32d9551dd80aab83ecd5ecf01af8d) |
 | Chang Orthodontics | [/chang-orthodontics/](https://orthoboost-marketing.github.io/Client-web-concepts/chang-orthodontics/) | 1 | [client record](https://app.notion.com/p/31232d9551dd81c3bef9dd3cfab1f108) |
 
 Concept copies also remain on the dev account (`dev-orthoboost.github.io`); links already shared with clients from there keep working. This repo is the canonical home.
@@ -66,3 +67,17 @@ Concept copies also remain on the dev account (`dev-orthoboost.github.io`); link
 | [concept-a](https://orthoboost-marketing.github.io/Client-web-concepts/chang-orthodontics/concept-a/) | Clinical instrument: data-led, precise, real photography | homepage only |
 
 **State (Aug 10 2026):** walked back to a single concept. Concept A's homepage is the design system of record (`concept-a/DESIGN.md`, `concept-a/site.css`); every other page is being rebuilt through the current workflow, tracked in `concept-a/BUILD-QUEUE.md` and governed by `chang-orthodontics/CLIENT-BRIEF.md`. Concepts B and C, and Concept A's original 26 pages, were deleted and remain recoverable on `chang-preserve-2026-08-10`. Blocked on verbatim Google review quotes.
+
+## Valley Orthodontics
+
+[Notion client record](https://app.notion.com/p/3cd32d9551dd80aab83ecd5ecf01af8d) · Dr. Jeremy Haines · Wasilla, AK · [valleyorthoak.com](https://valleyorthoak.com)
+
+**Status (Sep 9 2026):** three homepage concepts imported from the 9 Sep Claude Code export, audited at homepage scope, no client sign-off on any direction. Full Custom build, launch date on the Notion record is Sep 21 2026.
+
+| Concept | Style | Themes |
+| --- | --- | --- |
+| [concept-1](https://orthoboost-marketing.github.io/Client-web-concepts/valley-orthodontics/concept-1/) | Local practice: navy and gold, office and community photography | light only |
+| [concept-2](https://orthoboost-marketing.github.io/Client-web-concepts/valley-orthodontics/concept-2/) | Appointment led: teal, office hours in the first screen | light only |
+| [concept-3](https://orthoboost-marketing.github.io/Client-web-concepts/valley-orthodontics/concept-3/) | Editorial serif, Dr. Haines' portrait carries the hero | light only |
+
+**Notes:** homepage only, so treatment and supporting links point at the live WordPress site. All three share one `assets/` tree and `assets/js/site.js`; concept stylesheets are separate and deliberately carry later overrides. The consultation form is present, hidden and disabled in all three: no endpoint exists for this client yet. Navy, teal and the Georgia serif are reference-driven presentation choices, NOT the client's gold/mist/slate brand palette, and no typeface is approved. Brief at `valley-orthodontics/CLIENT-BRIEF.md`, original handoffs under `valley-orthodontics/docs/`, audit runs under `valley-orthodontics/audit/`.
