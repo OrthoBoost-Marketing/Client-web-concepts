@@ -1,0 +1,11 @@
+# GitHub Pages serves this repo with .nojekyll, so every committed file is
+# publicly readable at its own URL. Nothing internal belongs in here.
+# The brief, the handoffs, the audit runs and the raw photo library live at
+# C:\Users\Chris\valley-orthodontics-website\concepts-internal\ instead.
+CLIENT-BRIEF.md
+DESIGN-SYSTEM.md
+docs/
+audit/
+review/
+photo-candidates/
+*.mjs

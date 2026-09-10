@@ -14,9 +14,15 @@
   <meta property="og:description" content="Braces and Invisalign in Wasilla, serving Palmer and the Mat-Su Valley. Start with a free consultation.">
   <meta property="og:url" content="https://valleyorthoak.com/">
   <link rel="icon" type="image/svg+xml" href="../assets/logo/valley-orthodontics-icon.svg">
+  <link rel="icon" type="image/png" sizes="48x48" href="../assets/logo/valley-orthodontics-icon-48.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="../assets/logo/valley-orthodontics-apple-touch-icon-180.png">
+  <!-- Hero photograph is the LCP element. imagesrcset and imagesizes match the img exactly,
+       so the browser preloads the same candidate the layout will actually use. -->
+  <link rel="preload" as="image" href="../assets/img/valley-orthodontics-treatment-bay-1040.webp" imagesrcset="../assets/img/valley-orthodontics-treatment-bay-520.webp 520w, ../assets/img/valley-orthodontics-treatment-bay-1040.webp 1040w" imagesizes="(min-width: 1101px) 520px, 100vw" fetchpriority="high">
   <link rel="stylesheet" href="../assets/css/tokens.css?v=20260909-refined">
   <link rel="stylesheet" href="../assets/css/site.css?v=20260909-refined">
-  <link rel="stylesheet" href="../assets/css/reference-style.css?v=20260909-refined">
+  <link rel="stylesheet" href="../assets/css/valley-orthodontics-components.css?v=20260910">
+  <link rel="stylesheet" href="../assets/css/reference-style.css?v=20260910-hero">
   <script src="../assets/js/site.js?v=20260909-refined" defer></script>
   <script type="application/ld+json">
   {"@context":"https://schema.org","@type":["Dentist","MedicalBusiness"],"@id":"https://valleyorthoak.com/#practice","name":"Valley Orthodontics","url":"https://valleyorthoak.com/","telephone":"(907) 376-1510","faxNumber":"(907) 373-0620","address":{"@type":"PostalAddress","streetAddress":"1001 E. USA Circle","addressLocality":"Wasilla","addressRegion":"AK","postalCode":"99654","addressCountry":"US"},"areaServed":["Wasilla, AK","Palmer, AK","Mat-Su Valley"],"openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":"Monday","opens":"08:00","closes":"16:00"},{"@type":"OpeningHoursSpecification","dayOfWeek":["Tuesday","Wednesday"],"opens":"07:30","closes":"16:30"},{"@type":"OpeningHoursSpecification","dayOfWeek":"Thursday","opens":"08:00","closes":"16:30"},{"@type":"OpeningHoursSpecification","dayOfWeek":"Friday","opens":"08:00","closes":"13:00"}],"sameAs":["https://www.facebook.com/people/Valley-Orthodontics-AK/100089096567064/"]}
@@ -33,24 +39,33 @@
   </div>
 </header>
 <main id="main">
+  <!-- Hero. Source order is h1, intro, calls to action, photograph, which is also the
+       mobile reading order, so no order property is used anywhere in the layout.
+       At 1101px and up the photograph runs off the right edge of the viewport. -->
   <section class="hero wrap" aria-labelledby="home-title">
     <div class="hero-copy">
-      
       <h1 id="home-title"><span class="practice-name">Valley Orthodontics</span>Braces and Invisalign<br>in Wasilla, Alaska.</h1>
-      <p class="intro">Braces and Invisalign for kids, teens and adults. Meet Dr. Jeremy Haines, your board-certified orthodontist serving Wasilla and Palmer.</p>
+      <p class="intro">Treatment for kids, teens and adults with Dr. Jeremy Haines, a board-certified orthodontist serving Wasilla and Palmer.</p>
       <div class="actions"><a class="button" href="tel:+19073761510">Call for a free consultation</a><a class="phone-link" href="#treatments">Explore treatments</a></div>
-      <p class="hero-note">(907) 376-1510</p>
     </div>
-    <figure class="hero-photo"><img src="../assets/img/valley-orthodontics-reception-1280.webp" srcset="../assets/img/valley-orthodontics-reception-640.webp 640w, ../assets/img/valley-orthodontics-reception-1280.webp 1280w" sizes="(max-width: 760px) 100vw, 50vw" width="1500" height="1125" fetchpriority="high" alt="The reception desk at Valley Orthodontics in Wasilla"></figure>
+    <figure class="hero-photo"><img src="../assets/img/valley-orthodontics-treatment-bay-1040.webp" srcset="../assets/img/valley-orthodontics-treatment-bay-520.webp 520w, ../assets/img/valley-orthodontics-treatment-bay-1040.webp 1040w" sizes="(min-width: 1101px) 520px, 100vw" width="1040" height="1386" fetchpriority="high" alt="An open treatment bay at Valley Orthodontics in Wasilla, with orthodontic chairs in a row beside tall windows looking out onto trees and snow"></figure>
   </section>
+  <!-- Trust bar. USP-descriptor variant, four cells, typography only.
+       No figures: the review count, the years in practice and the monthly
+       payment are each either unverified or contradicted between sources. -->
+  <section class="vo-trust" aria-label="Why patients choose Valley Orthodontics">
+    <div class="wrap"><div class="vo-trust-grid"><div class="vo-trust-cell"><p class="vo-trust-title">Board-certified orthodontist</p><p class="vo-trust-note">Dr. Jeremy Haines, treating children, teens and adults in Wasilla.</p></div><div class="vo-trust-cell"><p class="vo-trust-title">Orthodontics only</p><p class="vo-trust-note">The only practice in Wasilla limited to orthodontics.</p></div><div class="vo-trust-cell"><p class="vo-trust-title">Free first consultation</p><p class="vo-trust-note">Includes a TMJ analysis. Appointments are arranged by phone.</p></div><div class="vo-trust-cell"><p class="vo-trust-title">Alaska grown</p><p class="vo-trust-note">Locally owned and independent, serving Wasilla, Palmer and the Mat-Su Valley.</p></div></div></div>
+  </section>
+
   
   <section id="treatments" class="section wrap">
+    <!-- Services grid. Six cards, which the kit allows; four, five, seven and
+       eight are not permitted. The practice offers seven treatments, so
+       touch-up treatments is linked from inside the Retainer Assurance card
+       rather than becoming a seventh. No photography: no service-specific
+       frame exists and the brief bans stock outright. -->
     <div class="section-heading"><div><h2>Orthodontic treatment</h2></div><p>Explore treatment for children, teens and adults with Dr. Jeremy Haines.</p></div>
-    <div class="treatment-grid">
-      <article class="treatment"><h3>Braces</h3><p>Explore braces in Wasilla with a treatment plan tailored to your smile. Compare your options with Dr. Haines.</p><a class="text-link" href="https://valleyorthoak.com/braces/">About braces</a></article>
-      <article class="treatment"><h3>Invisalign</h3><p>Interested in Invisalign in Wasilla? Find out whether clear aligners are a fit for your goals at your free consultation.</p><a class="text-link" href="https://valleyorthoak.com/invisalign/">About Invisalign</a></article>
-    </div>
-    <div class="more-treatments"><p>Other treatments</p><div><a href="https://valleyorthoak.com/early-intervention/">Early intervention</a><a href="https://valleyorthoak.com/touch-up-treatments/">Touch-up treatments</a><a href="https://valleyorthoak.com/retainer-assurance/">Retainer Assurance</a><a href="https://valleyorthoak.com/splint-therapy/">Splint therapy</a><a href="https://valleyorthoak.com/surgical-orthodontics/">Surgical orthodontics</a></div></div>
+    <ul class="vo-services"><li class="vo-card"><h3><a href="https://valleyorthoak.com/braces/">Braces</a></h3><p>Metal and clear braces for children, teens and adults, planned around the result you want. Still the most predictable way to correct a complicated bite.</p><span class="vo-card-more">Learn more</span></li><li class="vo-card"><h3><a href="https://valleyorthoak.com/invisalign/">Invisalign</a></h3><p>Clear aligners you take out to eat and to brush. At your consultation Dr. Haines will tell you honestly whether they suit the result you are after.</p><span class="vo-card-more">Learn more</span></li><li class="vo-card"><h3><a href="https://valleyorthoak.com/early-intervention/">Early intervention</a></h3><p>A first orthodontic check while a child is still growing. Catching a problem early can shorten later treatment, and sometimes avoid it altogether.</p><span class="vo-card-more">Learn more</span></li><li class="vo-card"><h3><a href="https://valleyorthoak.com/splint-therapy/">Splint therapy</a></h3><p>For jaw pain, clicking and clenching. Your free consultation includes a TMJ analysis, so this starts with working out what is actually going on.</p><span class="vo-card-more">Learn more</span></li><li class="vo-card"><h3><a href="https://valleyorthoak.com/surgical-orthodontics/">Surgical orthodontics</a></h3><p>For bites that braces alone cannot correct, planned together with an oral surgeon. Ask whether your case needs it at your free consultation.</p><span class="vo-card-more">Learn more</span></li><li class="vo-card"><h3><a href="https://valleyorthoak.com/retainer-assurance/">Retainer Assurance</a></h3><p>Keeping your result after treatment ends. Ask about the program at your consultation, along with <a class="vo-card-inline" href="https://valleyorthoak.com/touch-up-treatments/">touch-up treatments</a> if teeth have moved since.</p><span class="vo-card-more">Learn more</span></li></ul>
   </section>
   
   <section id="our-practice" class="dark section">
@@ -73,7 +88,7 @@
       <h3 id="form-title">Request a free consultation</h3>
       <p id="form-status" role="status">Online requests are not available yet. Please <a href="tel:+19073761510">call (907) 376-1510</a> to book your free consultation.</p>
       <!-- TODO: Register OrthoBoost Leads backup endpoint, then configure GoHighLevel inbound webhook. Keep fields disabled until delivery, consent and failure handling are verified. Never send personal information via a GET request. -->
-      <fieldset disabled><legend class="visually-hidden">Consultation request details</legend><label for="full-name">Your name<input id="full-name" name="name" autocomplete="name" required maxlength="100"></label><div class="field-row"><label for="phone">Phone number<input id="phone" name="phone" type="tel" autocomplete="tel" required maxlength="40"></label><label for="email">Email address<input id="email" name="email" type="email" autocomplete="email" required maxlength="254"></label></div><label for="interest">I’m interested in<select id="interest" name="interest"><option value="unsure">Exploring my options</option>Braces</option><option>Invisalign</option><option>Care for my child</option><option>Other orthodontic care</option></select></label><button class="button" type="submit">Request my free consultation </button></fieldset><p class="small">A consultation request does not reserve an appointment.</p>
+      <fieldset disabled><legend class="visually-hidden">Consultation request details</legend><label for="full-name">Your name<input id="full-name" name="name" autocomplete="name" required maxlength="100"></label><div class="field-row"><label for="phone">Phone number<input id="phone" name="phone" type="tel" autocomplete="tel" required maxlength="40"></label><label for="email">Email address<input id="email" name="email" type="email" autocomplete="email" required maxlength="254"></label></div><label for="interest">I’m interested in<select id="interest" name="interest"><option value="unsure">Exploring my options</option><option>Braces</option><option>Invisalign</option><option>Care for my child</option><option>Other orthodontic care</option></select></label><button class="button" type="submit">Request my free consultation </button></fieldset><p class="small">A consultation request does not reserve an appointment.</p>
     </form>
   </section>
   <section id="location" class="location paper"><div class="wrap location-grid"><div><h2>Our Wasilla office</h2><address>Valley Orthodontics<br>1001 E. USA Circle, Wasilla, AK 99654</address><a class="text-link" href="https://www.google.com/maps/search/?api=1&amp;query=Valley+Orthodontics+1001+E.+USA+Circle+Wasilla+AK+99654">Get directions</a></div><div><h3>Office hours</h3><dl class="hours"><div><dt>Monday</dt><dd>8:00 AM – 4:00 PM</dd></div><div><dt>Tuesday</dt><dd>7:30 AM – 4:30 PM</dd></div><div><dt>Wednesday</dt><dd>7:30 AM – 4:30 PM</dd></div><div><dt>Thursday</dt><dd>8:00 AM – 4:30 PM</dd></div><div><dt>Friday</dt><dd>8:00 AM – 1:00 PM</dd></div><div><dt>Saturday–Sunday</dt><dd>Closed</dd></div></dl></div></div></section>

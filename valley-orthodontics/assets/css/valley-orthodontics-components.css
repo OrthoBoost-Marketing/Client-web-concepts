@@ -1,0 +1,230 @@
+/* Valley Orthodontics: shared homepage components
+   ------------------------------------------------------------------
+   Two sections that every concept must carry, per the OrthoBoost homepage
+   contract: the trust bar (kit section 03) and the services grid (kit
+   section 09).
+
+   STRUCTURE lives here. IDENTITY does not. Each concept sets the --vo-*
+   custom properties below in its own stylesheet, so the three concepts
+   share one set of components and still read as three different designs.
+   Do not put a literal colour, font or size in this file.
+
+   Trust bar is the USP-descriptor variant: bold title plus a one-line
+   description. The credential variant's numbered eyebrows (01 / Certified)
+   are deliberately NOT used here, because the 9 Sep direction bans
+   decorative numbered labels and eyebrow labels on every section.
+
+   Services grid carries no photography. No service-specific photograph
+   exists for this practice, and the brief bans stock outright. The kit
+   permits stock in this one section; the stricter rule wins, exactly as
+   Sharp Smiles and Chang both resolved it.
+*/
+
+/* ---- contract: every concept stylesheet must define these ---- */
+:root {
+  --vo-band-bg: #231F20;
+  --vo-band-fg: #FFFFFF;
+  --vo-band-rule: rgb(255 255 255 / .16);
+  --vo-band-muted: rgb(255 255 255 / .74);
+  --vo-surface: #FFFFFF;
+  --vo-ink: #231F20;
+  --vo-muted: #6B7578;
+  --vo-line: #E2E6E7;
+  --vo-accent: #FCC351;
+  --vo-radius: 10px;
+  --vo-section-y: 60px;
+  --vo-card-gap: 20px;
+}
+
+/* ==================================================================
+   TRUST BAR  (kit section 03, USP-descriptor variant)
+   Four cells, typography only, no icons, no figures.
+   An icon row above stats is the single most recognisable AI tell,
+   and every number this practice could show is either unverified or
+   contradicted between sources, so none appears.
+   ================================================================== */
+
+.vo-trust {
+  background: var(--vo-band-bg);
+  color: var(--vo-band-fg);
+}
+
+.vo-trust-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  padding-block: calc(var(--vo-section-y) * .5);
+}
+
+.vo-trust-cell {
+  display: grid;
+  grid-row: span 2;
+  grid-template-rows: subgrid;
+  gap: 7px;
+  align-content: start;
+  padding-inline: 30px;
+  border-left: 1px solid var(--vo-band-rule);
+}
+
+.vo-trust-cell:first-child {
+  padding-inline-start: 0;
+  border-left: 0;
+}
+
+.vo-trust-cell:last-child {
+  padding-inline-end: 0;
+}
+
+.vo-trust-title {
+  font-size: 19px;
+  font-weight: 650;
+  line-height: 1.25;
+  letter-spacing: -.015em;
+  color: var(--vo-band-fg);
+  text-wrap: balance;
+}
+
+.vo-trust-note {
+  font-size: 13.5px;
+  line-height: 1.55;
+  color: var(--vo-band-muted);
+}
+
+/* The accent earns its place on a dark ground, where it clears AA.
+   It is never allowed to carry this text on a light one. */
+.vo-trust-title .vo-mark {
+  color: var(--vo-accent);
+}
+
+/* ==================================================================
+   SERVICES GRID  (kit section 09)
+   Six cards. The rule allows 3, 6 or 9 and never 4, 5, 7 or 8.
+   The practice offers seven treatments, so touch-up treatments is
+   named inside the Retainer Assurance card and keeps its own link
+   rather than becoming a seventh card.
+   ================================================================== */
+
+.vo-services {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--vo-card-gap);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.vo-card {
+  position: relative;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  gap: 12px;
+  height: 100%;
+  padding: 26px 26px 24px;
+  background: var(--vo-surface);
+  border: 1px solid var(--vo-line);
+  border-radius: var(--vo-radius);
+  transition: border-color .18s ease, transform .18s ease;
+}
+
+.vo-card:hover {
+  border-color: var(--vo-ink);
+  transform: translateY(-2px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .vo-card { transition: border-color .18s ease; }
+  .vo-card:hover { transform: none; }
+}
+
+.vo-card h3 {
+  font-size: 21px;
+  line-height: 1.25;
+  letter-spacing: -.02em;
+  color: var(--vo-ink);
+  margin: 0;
+}
+
+.vo-card h3 a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Whole card clickable, while the link's accessible name stays the
+   service name alone. Keep this in step with .vo-card{position:relative}. */
+.vo-card h3 a::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: var(--vo-radius);
+}
+
+.vo-card h3 a:focus-visible::after {
+  outline: 3px solid var(--vo-ink);
+  outline-offset: 3px;
+}
+
+.vo-card p {
+  font-size: 14.5px;
+  line-height: 1.6;
+  color: var(--vo-muted);
+  margin: 0;
+}
+
+.vo-card-more {
+  align-self: end;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--vo-ink);
+  border-bottom: 2px solid var(--vo-accent);
+  justify-self: start;
+  padding-bottom: 2px;
+}
+
+/* The inner link is a real second destination, so it sits above the
+   stretched overlay rather than under it. */
+.vo-card .vo-card-inline {
+  position: relative;
+  z-index: 1;
+  color: inherit;
+}
+
+/* ==================================================================
+   RESPONSIVE
+   Two across from 1150px down, one across from 640px down, matching
+   every other build in the concepts repo.
+   ================================================================== */
+
+@media (max-width: 1150px) {
+  .vo-services { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  /* Subgrid is kept in the two-column layout too, so the description lines of
+     a pair share a baseline even when one title wraps and the other does not.
+     Dropping it here is what leaves a trust bar looking ragged on a phone. */
+  .vo-trust-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 26px; }
+  .vo-trust-cell:nth-child(odd) { padding-inline-start: 0; border-left: 0; }
+  .vo-trust-cell:nth-child(even) { padding-inline-end: 0; }
+}
+
+/* Where subgrid is unavailable the cells simply stack their own two rows,
+   which is the same layout without the shared baseline. */
+@supports not (grid-template-rows: subgrid) {
+  .vo-trust-cell { grid-row: auto; grid-template-rows: auto auto; }
+}
+
+@media (max-width: 760px) {
+  .vo-trust-title { font-size: 17px; }
+}
+
+@media (max-width: 640px) {
+  .vo-services { grid-template-columns: 1fr; }
+  .vo-card { padding: 22px; }
+}
+
+/* 2x2 is the spec's mobile shape for a four-cell bar, so it holds all
+   the way down rather than collapsing to a single column. At 320px the
+   cells are narrow, which is why the titles are set to balance. */
+@media (max-width: 420px) {
+  .vo-trust-grid { padding-block: 26px; }
+  .vo-trust-cell { padding-inline: 14px; }
+  .vo-trust-cell:nth-child(odd) { padding-inline-start: 0; }
+  .vo-trust-cell:nth-child(even) { padding-inline-end: 0; }
+  .vo-trust-note { font-size: 13px; }
+}

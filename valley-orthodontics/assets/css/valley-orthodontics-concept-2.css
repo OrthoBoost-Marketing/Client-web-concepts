@@ -308,3 +308,279 @@ h1,h2,h3 { font-family: var(--valley-orthodontics-font-body); color: #092e40; le
 .c2-location{border-radius:0}.c2-finish .booking-card h2{font-size:42px}.c2-finish .booking-card p{font-size:16px}.c2-finish .booking-card .button{gap:15px}.header nav a{font-size:14px}
 @media(max-width:760px){.hero h1{font-size:39px}.hero .intro{font-size:17px}.schedule-panel{padding:25px 20px}.schedule-panel h2{font-size:27px}.booking-hours{font-size:12px}.booking-hours div{gap:8px}.c2-section{padding-block:45px}.c2-fit-note{padding:20px 0 0;border-top:1px solid #ccdde3}.c2-visit{gap:24px}.c2-journey h3{font-size:22px}.c2-finish .booking-card h2{font-size:34px}}
 .hero h1 .practice-name{display:block;font:600 15px/1.5 Segoe UI,system-ui,sans-serif;letter-spacing:0;margin-bottom:20px}
+
+
+/* ---- shared components: concept 2 theme (teal) ---- */
+:root{
+  --vo-band-bg:#084e60;
+  --vo-band-fg:#ffffff;
+  --vo-band-rule:rgb(255 255 255 / .20);
+  --vo-band-muted:rgb(255 255 255 / .82);
+  --vo-surface:#ffffff;
+  --vo-ink:#092e40;
+  --vo-muted:#55666e;
+  --vo-line:#ccdde3;
+  --vo-accent:#ffbb19;
+  --vo-radius:10px;
+  --vo-section-y:60px;
+  --vo-card-gap:20px;
+}
+
+
+/* ==========================================================================
+   Concept 2 hero, rebuilt as a full-bleed photographic band. September 10, 2026.
+   Mobile first, no use of order: the mobile stack is the source order.
+   The photograph is a real img, never a CSS background, so the head preload,
+   srcset, sizes and fetchpriority all reach the LCP element. Below 940px it is
+   a band in normal flow above the copy; from 940px up it is absolutely
+   positioned behind the whole band with a scrim over it.
+   That scrim is a directional gradient rather than one flat wash: dense behind
+   the light copy, lighter where the white scheduling panel sits, so the room
+   stays readable instead of going muddy. Ratios were measured off the rendered
+   pixels with the text hidden, not estimated from the alpha values. The worst
+   measured value anywhere in the hero, across 320 to 2560px, is 5.84:1 on the
+   58px headline and 6.41:1 on any normal sized text.
+   Selectors carry three classes where they have to beat an earlier .hero.wrap
+   rule that lives inside one of the max-width media queries above.
+   ========================================================================== */
+
+.c2-hero.hero.wrap {
+  position: relative;
+  isolation: isolate;
+  display: block;
+  width: 100%;
+  max-width: none;
+  margin-inline: 0;
+  padding: 0;
+  gap: 0;
+  overflow: hidden;
+  background: #092e40;
+}
+
+/* Mobile: the photograph is a band in normal document flow across the top of
+   the hero, and the copy sits below it on solid deep teal. Scrimming a band
+   this short only muddied the reception without buying anything, since no text
+   crosses it here, so the scrim is switched off until the desktop layout puts
+   the copy on top of the picture. */
+.c2-hero .c2-hero-photo {
+  position: static;
+  display: block;
+  width: 100%;
+  max-width: none;
+  height: 204px;
+  object-fit: cover;
+  object-position: 46% 56%;
+}
+.c2-hero::after {
+  content: '';
+  display: none;
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+.c2-hero .c2-hero-inner {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 30px;
+  padding-block: 38px 44px;
+}
+
+/* ---- copy column, light on dark ---- */
+.c2-hero .hero-copy {
+  padding: 0;
+  background: none;
+  color: #ffffff;
+  align-self: center;
+  min-width: 0;
+}
+.c2-hero .hero-copy h1 {
+  color: #ffffff;
+  font-size: clamp(31px, 8.1vw, 40px);
+  line-height: 1.14;
+  letter-spacing: -.03em;
+}
+.c2-hero .hero-copy h1 .practice-name {
+  display: block;
+  color: #ffbb19;
+  font: 600 13px/1.5 'Segoe UI', system-ui, -apple-system, sans-serif;
+  letter-spacing: .015em;
+  margin-bottom: 15px;
+}
+.c2-hero .hero-copy .intro {
+  color: #eef5f7;
+  font-size: 17px;
+  line-height: 1.62;
+  max-width: 34em;
+  margin-top: 18px;
+}
+/* Keeps the hyphen in Mat-Su off a line break on narrow screens. */
+.c2-hero .c2-nb { white-space: nowrap; }
+.c2-hero .hero-copy .doctor-intro {
+  color: #dfebef;
+  font-size: 15px;
+  line-height: 1.6;
+  max-width: 34em;
+  margin: 14px 0 0;
+}
+.c2-hero .c2-hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 14px 26px;
+  margin-top: 26px;
+}
+.c2-hero .hero-copy .button {
+  max-width: 100%;
+  background: #ffbb19;
+  color: #092e40;
+  gap: 14px;
+  min-height: 54px;
+  padding: 14px 22px;
+  font-size: 15px;
+  border-radius: 4px;
+  text-align: center;
+}
+.c2-hero .hero-copy .button:hover { background: #ffd166; color: #092e40; }
+.c2-hero .hero-copy .text-link {
+  color: #ffffff;
+  font-size: 15px;
+  gap: 10px;
+  min-height: 44px;
+  text-decoration: underline;
+  text-underline-offset: 6px;
+  text-decoration-thickness: 1px;
+}
+.c2-hero .hero-copy .text-link:hover { text-decoration-thickness: 2px; }
+.c2-hero .hero-copy a:focus-visible { outline: 3px solid #ffbb19; outline-offset: 4px; }
+/* A gold ring around a gold button reads poorly, so the solid CTA takes a white one. */
+.c2-hero .hero-copy .button:focus-visible { outline-color: #ffffff; }
+
+/* ---- scheduling panel, floating white over the photograph ----
+   Office hours only. No day picker, no date field, no bookable inventory:
+   this practice books by phone. The depth comes from one wide, soft, low
+   opacity halo rather than a heavy drop shadow. */
+.c2-hero .schedule-panel {
+  position: relative;
+  align-self: center;
+  background: #ffffff;
+  border: 0;
+  border-top: 3px solid #ffbb19;
+  border-radius: 0;
+  padding: 26px 22px 28px;
+  color: #163b4b;
+  box-shadow: 0 30px 64px -30px rgb(2 18 26 / .60), 0 3px 12px rgb(2 18 26 / .14);
+}
+.c2-hero .schedule-panel h2 {
+  color: #092e40;
+  font-size: 26px;
+  line-height: 1.16;
+  letter-spacing: -.03em;
+  margin-bottom: 12px;
+}
+.c2-hero .schedule-panel > p { font-size: 14px; line-height: 1.6; }
+.c2-hero .booking-hours { font-size: 13px; margin: 18px 0 20px; }
+.c2-hero .booking-hours div { padding: 9px 0; gap: 10px; border-bottom: 1px solid #dbe6ea; }
+.c2-hero .booking-hours div:last-child { border-bottom: 0; padding-bottom: 0; }
+.c2-hero .booking-hours dt { font-weight: 600; }
+.c2-hero .schedule-panel .button {
+  width: 100%;
+  justify-content: center;
+  gap: 10px;
+  background: #084e60;
+  color: #ffffff;
+  min-height: 54px;
+  padding: 14px 18px;
+  font-size: 17px;
+  border-radius: 4px;
+}
+.c2-hero .schedule-panel .button:hover { background: #092e40; color: #ffffff; }
+.c2-hero .schedule-panel .schedule-phone {
+  margin-top: 12px;
+  text-align: center;
+  font-size: 13px;
+  font-weight: 400;
+  color: #4d626b;
+}
+
+/* Smallest phones: keep "Tuesday & Wednesday" and its time on one row each. */
+@media (max-width: 379px) {
+  .c2-hero .schedule-panel { padding-inline: 18px; }
+  .c2-hero .booking-hours { font-size: 12px; }
+}
+
+/* ---- wider phones and tablets: the band grows, layout stays one column ---- */
+@media (min-width: 620px) {
+  .c2-hero .c2-hero-photo { height: 300px; }
+  .c2-hero .c2-hero-inner { gap: 36px; padding-block: 50px 56px; }
+  .c2-hero .hero-copy h1 { font-size: clamp(40px, 5.3vw, 48px); }
+  .c2-hero .hero-copy .button { font-size: 16px; padding-inline: 26px; }
+  .c2-hero .schedule-panel { max-width: 470px; padding: 30px 30px 32px; }
+  .c2-hero .schedule-panel h2 { font-size: 28px; }
+}
+
+/* ---- desktop: photograph fills the whole band, panel floats to the right ----
+   The break is at 940px so a 1024px laptop gets the side by side layout. The
+   panel column is a clamp rather than a fixed track, so the copy column never
+   drops below the width the headline needs. */
+@media (min-width: 940px) {
+  .c2-hero .c2-hero-photo {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    height: 100%;
+    object-position: 52% 50%;
+  }
+  /* Directional scrim. Dense behind the copy on the left, thin under the white
+     panel on the right so the waiting area and the windows stay visible.
+     Narrow desktops need the dense half to reach further across, because the
+     copy takes a larger share of the width there. Measured, not guessed: at
+     940px the lighter 1200px ramp put the intro at 5.9:1, this puts it at 8.1. */
+  .c2-hero::after {
+    display: block;
+    background:
+      linear-gradient(90deg,
+        rgb(5 30 41 / .88) 0%,
+        rgb(5 30 41 / .85) 36%,
+        rgb(5 30 41 / .72) 58%,
+        rgb(5 30 41 / .48) 76%,
+        rgb(5 30 41 / .42) 100%),
+      linear-gradient(180deg, rgb(5 30 41 / .20) 0%, rgb(5 30 41 / 0) 42%, rgb(5 30 41 / .17) 100%);
+  }
+  .c2-hero .c2-hero-inner {
+    grid-template-columns: minmax(0, 1fr) clamp(330px, 31%, 400px);
+    align-items: center;
+    gap: clamp(36px, 4vw, 56px);
+    padding-block: clamp(56px, 5.4vw, 76px) clamp(60px, 5.8vw, 82px);
+  }
+  .c2-hero .hero-copy h1 { font-size: clamp(40px, 3.9vw, 58px); }
+  .c2-hero .hero-copy .intro { font-size: 18px; margin-top: 22px; max-width: 30em; }
+  .c2-hero .hero-copy .doctor-intro { font-size: 16px; margin-top: 16px; max-width: 30em; }
+  .c2-hero .c2-hero-actions { margin-top: 32px; gap: 16px 30px; }
+  .c2-hero .schedule-panel { max-width: none; padding: 30px 28px 32px; }
+  .c2-hero .schedule-panel h2 { font-size: 28px; }
+  .c2-hero .booking-hours { font-size: 14px; margin: 20px 0 22px; }
+  .c2-hero .booking-hours div { padding: 10px 0; gap: 12px; }
+}
+@media (min-width: 1200px) {
+  /* Wide desktops: the copy takes a smaller share of the band, so the scrim
+     can thin out sooner and give the reception back to the viewer. */
+  .c2-hero::after {
+    background:
+      linear-gradient(90deg,
+        rgb(5 30 41 / .87) 0%,
+        rgb(5 30 41 / .83) 32%,
+        rgb(5 30 41 / .62) 54%,
+        rgb(5 30 41 / .40) 74%,
+        rgb(5 30 41 / .36) 100%),
+      linear-gradient(180deg, rgb(5 30 41 / .20) 0%, rgb(5 30 41 / 0) 42%, rgb(5 30 41 / .17) 100%);
+  }
+  .c2-hero .schedule-panel { padding: 32px 34px 34px; }
+  .c2-hero .schedule-panel h2 { font-size: 29px; }
+  .c2-hero .booking-hours div { gap: 14px; }
+}
+@media (min-width: 1500px) {
+  .c2-hero .c2-hero-inner { padding-block: 92px 98px; }
+}
