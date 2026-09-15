@@ -14,10 +14,12 @@
    are deliberately NOT used here, because the 9 Sep direction bans
    decorative numbered labels and eyebrow labels on every section.
 
-   Services grid carries no photography. No service-specific photograph
-   exists for this practice, and the brief bans stock outright. The kit
-   permits stock in this one section; the stricter rule wins, exactly as
-   Sharp Smiles and Chang both resolved it.
+   Services grid carries the practice's own photography from the 10 Sep
+   2026 shoot. The brief bans stock, so no card falls back to it.
+
+   Added 15 Sep 2026 (AI-search + Dr. Ty blueprint pass): reviews grid
+   (kit section 08), doctor credential list, card photography, hours note,
+   header phone. Same rule: structure here, identity in the concept files.
 */
 
 /* ---- contract: every concept stylesheet must define these ---- */
@@ -37,11 +39,11 @@
 }
 
 /* ==================================================================
-   TRUST BAR  (kit section 03, USP-descriptor variant)
-   Four cells, typography only, no icons, no figures.
-   An icon row above stats is the single most recognisable AI tell,
-   and every number this practice could show is either unverified or
-   contradicted between sources, so none appears.
+   PROOF BAND  (Dr. Ty blueprint 2A / kit section 03, USP-descriptor variant)
+   Exactly three cells, typography only, no icons. An icon row above
+   stats is the single most recognisable AI tell. The one figure shown
+   (20+ years) is the office's tenure from the client record, not the
+   doctor's, whose years are still contradicted between sources.
    ================================================================== */
 
 .vo-trust {
@@ -51,7 +53,7 @@
 
 .vo-trust-grid {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   padding-block: calc(var(--vo-section-y) * .5);
 }
 
@@ -115,13 +117,14 @@
 .vo-card {
   position: relative;
   display: grid;
-  grid-template-rows: auto 1fr auto;
+  grid-template-rows: auto auto 1fr auto;
   gap: 12px;
   height: 100%;
-  padding: 26px 26px 24px;
+  padding: 0 0 24px;
   background: var(--vo-surface);
   border: 1px solid var(--vo-line);
   border-radius: var(--vo-radius);
+  overflow: hidden;
   transition: border-color .18s ease, transform .18s ease;
 }
 
@@ -133,6 +136,19 @@
 @media (prefers-reduced-motion: reduce) {
   .vo-card { transition: border-color .18s ease; }
   .vo-card:hover { transform: none; }
+}
+
+.vo-card > img {
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+  margin-bottom: 10px;
+}
+
+.vo-card > h3,
+.vo-card > p,
+.vo-card > .vo-card-more {
+  margin-inline: 26px;
 }
 
 .vo-card h3 {
@@ -198,9 +214,14 @@
   /* Subgrid is kept in the two-column layout too, so the description lines of
      a pair share a baseline even when one title wraps and the other does not.
      Dropping it here is what leaves a trust bar looking ragged on a phone. */
-  .vo-trust-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 26px; }
-  .vo-trust-cell:nth-child(odd) { padding-inline-start: 0; border-left: 0; }
-  .vo-trust-cell:nth-child(even) { padding-inline-end: 0; }
+}
+
+/* Three cells stack (the spec's mobile shape for a three-cell bar); the
+   left rule becomes a top rule between stacked cells. */
+@media (max-width: 900px) {
+  .vo-trust-grid { grid-template-columns: 1fr; row-gap: 22px; }
+  .vo-trust-cell { padding-inline: 0; border-left: 0; border-top: 1px solid var(--vo-band-rule); padding-top: 22px; }
+  .vo-trust-cell:first-child { border-top: 0; padding-top: 0; }
 }
 
 /* Where subgrid is unavailable the cells simply stack their own two rows,
@@ -215,16 +236,148 @@
 
 @media (max-width: 640px) {
   .vo-services { grid-template-columns: 1fr; }
-  .vo-card { padding: 22px; }
+  .vo-card { padding: 0 0 22px; }
+  .vo-card > h3, .vo-card > p, .vo-card > .vo-card-more { margin-inline: 22px; }
 }
 
-/* 2x2 is the spec's mobile shape for a four-cell bar, so it holds all
-   the way down rather than collapsing to a single column. At 320px the
-   cells are narrow, which is why the titles are set to balance. */
 @media (max-width: 420px) {
   .vo-trust-grid { padding-block: 26px; }
-  .vo-trust-cell { padding-inline: 14px; }
-  .vo-trust-cell:nth-child(odd) { padding-inline-start: 0; }
-  .vo-trust-cell:nth-child(even) { padding-inline-end: 0; }
   .vo-trust-note { font-size: 13px; }
+}
+
+/* ==================================================================
+   REVIEWS  (kit section 08)
+   Static grid of six verbatim Google reviews. Grid, never a carousel.
+   Stars are the accent on a light ground only as a glyph, never as text.
+   ================================================================== */
+
+.vo-reviews {
+  padding-block: var(--vo-section-y);
+  background: var(--vo-surface);
+  border-top: 1px solid var(--vo-line);
+}
+
+.vo-reviews-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 24px 40px;
+  flex-wrap: wrap;
+  margin-bottom: 36px;
+}
+
+.vo-reviews-rating {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--vo-ink);
+  white-space: nowrap;
+}
+
+.vo-stars {
+  color: var(--vo-accent);
+  letter-spacing: .08em;
+  font-size: 15px;
+}
+
+.vo-reviews-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--vo-card-gap);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.vo-review {
+  display: grid;
+  gap: 14px;
+  align-content: start;
+  padding: 26px;
+  background: var(--vo-surface);
+  border: 1px solid var(--vo-line);
+  border-radius: var(--vo-radius);
+}
+
+.vo-review blockquote {
+  margin: 0;
+}
+
+.vo-review blockquote p {
+  margin: 0;
+  font-size: 15.5px;
+  line-height: 1.6;
+  color: var(--vo-ink);
+}
+
+.vo-review cite {
+  font-style: normal;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--vo-muted);
+}
+
+.vo-reviews-more {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  margin-top: 28px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--vo-ink);
+}
+
+@media (max-width: 1150px) {
+  .vo-reviews-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 640px) {
+  .vo-reviews-grid { grid-template-columns: 1fr; }
+  .vo-review { padding: 22px; }
+}
+
+/* ==================================================================
+   DOCTOR CREDENTIALS  (Meet-the-Doctor spec: 3-6 scannable, checkable facts)
+   Inherits the section's text colour so it reads on dark and light grounds.
+   ================================================================== */
+
+.vo-credentials {
+  list-style: none;
+  margin: 22px 0 0;
+  padding: 0;
+  display: grid;
+  gap: 9px;
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+.vo-credentials li {
+  position: relative;
+  padding-left: 20px;
+}
+
+.vo-credentials li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: .7em;
+  width: 10px;
+  height: 2px;
+  background: var(--vo-accent);
+}
+
+/* ==================================================================
+   SMALL SHARED BITS
+   ================================================================== */
+
+.vo-hours-note {
+  margin-top: 12px;
+  font-size: 13px;
+  color: var(--vo-muted);
+}
+
+.header nav .header-phone {
+  text-decoration: none;
+  font-weight: 650;
+  white-space: nowrap;
 }
