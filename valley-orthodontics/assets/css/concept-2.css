@@ -1,0 +1,69 @@
+/* Concept 2: "Open Tuesday to Thursday"
+   Colour strategy: Drenched first fold. Valley Gold is the ground of the
+   hero and the schedule section; ink is the type. The signature device is
+   the hours board: a table set like the front-door sign (ink rules, tabular
+   numerals) that appears large in the hero, again in the schedule section,
+   and small in the footer. Same object, three sizes. */
+
+/* ---- hero: gold ground, board left, door portrait bleeding right, no scrim ---- */
+.c2-hero { background: var(--gold); color: var(--ink); overflow: hidden; }
+.c2-hero .wrap { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr); gap: clamp(32px, 5vw, 80px); align-items: stretch; }
+.c2-hero .hero-copy { padding-block: clamp(48px, 6vw, 96px) clamp(40px, 5vw, 80px); }
+.c2-hero h1 { font-size: clamp(42px, 5.4vw, 78px); }
+.c2-hero .intro { max-width: 52ch; margin-top: 20px; }
+.c2-hero .actions { margin-top: 26px; }
+.c2-hero .button { background: var(--ink); color: var(--white); }
+.c2-hero .button:hover { background: var(--white); color: var(--ink); }
+.c2-hero figure { position: relative; margin-right: calc(-1 * var(--gutter)); min-height: 560px; }
+.c2-hero figure img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 40% 20%; }
+.c2-hero figcaption { position: absolute; left: 0; bottom: 0; padding: 12px 18px; background: var(--ink); color: var(--white); font-size: 15px; max-width: 36ch; }
+
+/* ---- the board ---- */
+.board { width: 100%; max-width: 560px; border-collapse: collapse; font-variant-numeric: tabular-nums; margin-top: 30px; }
+.board caption { text-align: left; font-family: var(--font-display); font-weight: 800; font-size: 26px; text-transform: uppercase; letter-spacing: .04em; padding-bottom: 10px; border-bottom: 3px solid currentColor; }
+.board th, .board td { text-align: left; padding: 11px 0; border-bottom: 2px solid currentColor; font-size: 18px; vertical-align: top; }
+.board th { font-weight: 700; padding-right: 24px; white-space: nowrap; }
+.board td { font-family: var(--font-display); font-weight: 700; font-size: 22px; letter-spacing: .01em; }
+.board td small { display: block; font: 400 15px/1.35 var(--font-body); letter-spacing: 0; margin-top: 2px; }
+.board tr:last-child th, .board tr:last-child td { border-bottom: 0; }
+.board-line { margin-top: 18px; font-size: 18px; font-weight: 700; }
+.board-line span { font-weight: 400; }
+
+/* footer board: white type, gold rules, quiet */
+.footer .board { max-width: none; margin-top: 8px; }
+.footer .board caption { font-size: 20px; border-bottom-color: var(--gold); }
+.footer .board th, .footer .board td { border-bottom-color: rgb(255 255 255 / .18); font-size: 16px; padding: 8px 0; }
+.footer .board td { font-size: 18px; }
+
+/* ---- rhythm ---- */
+.c2 .proof { background: var(--ink); }
+.c2 .c2-doctor { background: var(--white); }
+.c2 .c2-usp { background: var(--paper); }
+.c2 .cta-band { background: var(--ink); color: var(--white); }
+.c2 .cta-band .button { background: var(--gold); color: var(--ink); }
+.c2 .cta-band .button:hover { background: var(--white); }
+.c2 .c2-wall { background: var(--mist-tint); }
+.c2 .c2-reviews { background: var(--white); }
+.c2 .c2-faq { background: var(--paper); }
+
+/* schedule on gold again: the board comes back at full size */
+.c2 .c2-schedule { background: var(--gold); color: var(--ink); }
+.c2 .c2-schedule .hours { display: none; }
+.c2 .c2-schedule .board { margin-top: 30px; }
+.c2 .c2-schedule .button { background: var(--ink); color: var(--white); }
+.c2 .c2-schedule .button:hover { background: var(--white); color: var(--ink); }
+.c2 .c2-schedule .text-2, .c2 .c2-schedule .hours-note, .c2 .c2-schedule .landmark, .c2 .c2-schedule .map-caption { color: var(--ink); }
+.c2 .c2-schedule .map { background: rgb(35 31 32 / .12); }
+
+@media (max-width: 1100px) {
+  .c2-hero figure { min-height: 480px; }
+}
+@media (max-width: 760px) {
+  .c2-hero .wrap { grid-template-columns: 1fr; gap: 0; }
+  .c2-hero figure { order: -1; margin-inline: calc(-1 * var(--gutter)); min-height: 0; height: min(52svh, 480px); }
+  .c2-hero figure img { object-position: 40% 10%; }
+  .c2-hero .hero-copy { padding-block: 32px 40px; }
+  .board { margin-top: 24px; }
+  .board th, .board td { font-size: 17px; padding: 9px 0; }
+  .board td { font-size: 20px; }
+}

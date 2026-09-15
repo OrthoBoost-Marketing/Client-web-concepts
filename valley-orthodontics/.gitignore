@@ -9,3 +9,7 @@ audit/
 review/
 photo-candidates/
 *.mjs
+
+# Impeccable design context for Claude sessions: useful locally, not for the public repo.
+PRODUCT.md
+DESIGN.md
