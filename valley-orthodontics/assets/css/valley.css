@@ -131,6 +131,20 @@ main:focus { outline: 0; }
 .header-phone .i { width: 20px; height: 20px; }
 .header-phone:hover span { text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: .18em; }
 .header .button { min-height: 50px; padding-block: var(--space-3); }
+
+/* ---- nav dropdowns (kit section 01) ----
+   Services is a dropdown of money pages and Meet the Doctor sits under Why Valley,
+   because those are the two pages patients look for by name. Single location, so the
+   fourth item is an address anchor rather than a Locations dropdown. Opens on hover
+   and on keyboard focus; the caret is a drawn chevron from the sprite, never a glyph. */
+.nav-dd { position: relative; }
+.nav-dd > .dd-trigger { gap: var(--space-2); }
+.nav-dd .i--chev { width: 14px; height: 14px; transition: transform var(--dur-fast) var(--ease-out); }
+.dd { position: absolute; top: 100%; left: calc(-1 * var(--space-3)); min-width: 15rem; display: none; flex-direction: column; padding: var(--space-2); background: var(--bg); border: 1px solid var(--line); border-radius: var(--radius); }
+.nav-dd:hover > .dd, .nav-dd:focus-within > .dd { display: flex; }
+.nav-dd:hover .i--chev, .nav-dd:focus-within .i--chev { transform: rotate(180deg); }
+.dd a { font-weight: 400; padding-inline: var(--space-3); }
+.dd a:hover { text-decoration: underline; text-decoration-thickness: 2px; }
 .menu-toggle { display: none; align-items: center; justify-content: center; gap: var(--space-2); min-height: 44px; min-width: 44px; padding: var(--space-2) var(--space-3); border: 1px solid var(--line); border-radius: var(--radius); font-weight: 700; font-size: var(--fs-small); transition: background var(--dur-fast) var(--ease-out); }
 .menu-toggle:hover { background: var(--paper); }
 .menu-toggle[aria-expanded="true"] { background: var(--ink); color: var(--white); border-color: var(--ink); }
@@ -324,12 +338,26 @@ main:focus { outline: 0; }
   html { scroll-padding-top: 76px; }
   .header-inner { min-height: 68px; flex-wrap: wrap; gap: 0 var(--space-4); }
   .brand img { width: 150px; }
-  .header .header-cta { display: none; }
+  /* The kit pins the CTA to the bottom of the drawer, so it stays in the drawer
+     rather than the collapsed bar. The action bar hides while the drawer is open so
+     two booking surfaces never sit on screen together. */
+  .header .header-cta { width: 100%; justify-content: center; margin-top: var(--space-4); }
   .header-phone { margin-left: auto; min-width: 44px; justify-content: center; }
   .header-phone span { display: none; }
   .header-phone .i { width: 24px; height: 24px; }
   .menu-toggle { display: inline-flex; margin-left: var(--space-3); }
-  .nav { width: 100%; display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-1) var(--space-5); padding: var(--space-2) 0 var(--space-4); }
+  /* align-items must be restated: the desktop rule centres the row, and left as
+     centre in a column it shrink-wraps every drawer link. Long dropdown items also
+     need to wrap here, or one of them sets the drawer wider than the screen. */
+  .nav { width: 100%; display: flex; flex-direction: column; align-items: stretch; gap: 0; padding: var(--space-2) 0 var(--space-4); }
+  .nav a { white-space: normal; }
+  .nav-dd { position: static; }
+  .nav-dd > .dd-trigger { width: 100%; justify-content: space-between; }
+  .dd { position: static; min-width: 0; margin-left: var(--space-2); padding: 0 0 var(--space-2) var(--space-4); background: none; border: 0; border-left: var(--rule) solid var(--gold); border-radius: 0; }
+  .nav-dd:hover > .dd, .nav-dd:focus-within > .dd { display: none; }
+  .nav-dd:hover .i--chev, .nav-dd:focus-within .i--chev { transform: none; }
+  .nav-dd[data-open="true"] > .dd { display: flex; }
+  .nav-dd[data-open="true"] .i--chev { transform: rotate(180deg); }
   .nav a { min-height: 48px; }
   .nav[hidden] { display: none; }
   body.nav-open { overflow: hidden; }
@@ -349,6 +377,9 @@ main:focus { outline: 0; }
   .hero .hero-copy { padding-block: var(--space-6) var(--space-7); }
   .hero figcaption { left: var(--bleed); }
   .usp-row figure img { aspect-ratio: 3 / 2; }
+  /* The rating line is nowrap so it reads as one statement; at 390 it is a pixel
+     too wide for that, so let it break rather than push the page sideways. */
+  .rating { flex-wrap: wrap; white-space: normal; }
   .services, .wall-grid, .reviews-grid { grid-template-columns: 1fr; }
   .cta-band .wrap { display: grid; }
   .cta-band .button { width: 100%; }
@@ -373,6 +404,7 @@ main:focus { outline: 0; }
   .mobile-bar a + a { border-left: 1px solid var(--line); }
   .mobile-bar a:hover { background: var(--paper); }
   .mobile-bar a:active { background: var(--mist-tint); opacity: 1; }
+  body.nav-open .mobile-bar { display: none; }
   .mobile-bar .mobile-bar-book { background: var(--gold); color: var(--ink); }
   .mobile-bar .mobile-bar-book:hover, .mobile-bar .mobile-bar-book:active { background: var(--ink); color: var(--white); }
   .mobile-bar a:focus-visible { outline-offset: -4px; }

@@ -19,9 +19,37 @@ function setMenu(open) {
   document.body.classList.toggle('nav-open', open && mobile.matches);
 }
 setMenu(false);
-mobile.addEventListener('change', () => setMenu(false));
+mobile.addEventListener('change', () => { setMenu(false); syncDropdowns(); });
 menuButton.addEventListener('click', () => setMenu(menuButton.getAttribute('aria-expanded') !== 'true'));
-navigation.addEventListener('click', (event) => { if (event.target.closest('a')) setMenu(false); });
+// A dropdown trigger must not close the drawer it just opened.
+navigation.addEventListener('click', (event) => {
+  if (event.target.closest('a') && !event.target.closest('.dd-trigger')) setMenu(false);
+});
+
+// Nav dropdowns. Desktop opens on hover and focus, which is CSS. Under 1100 the
+// trigger becomes an accordion so a thumb can open it without navigating away.
+const dropdowns = [...document.querySelectorAll('.nav-dd')];
+function syncDropdowns() {
+  dropdowns.forEach((dd) => {
+    const trigger = dd.querySelector('.dd-trigger');
+    if (mobile.matches) {
+      trigger.setAttribute('aria-expanded', dd.dataset.open === 'true' ? 'true' : 'false');
+    } else {
+      dd.dataset.open = 'false';
+      trigger.removeAttribute('aria-expanded');
+    }
+  });
+}
+dropdowns.forEach((dd) => {
+  const trigger = dd.querySelector('.dd-trigger');
+  trigger.addEventListener('click', (event) => {
+    if (!mobile.matches) return;
+    event.preventDefault();
+    dd.dataset.open = dd.dataset.open === 'true' ? 'false' : 'true';
+    trigger.setAttribute('aria-expanded', dd.dataset.open);
+  });
+});
+syncDropdowns();
 document.addEventListener('keydown', (event) => {
   if (event.key === 'Escape' && mobile.matches && !navigation.hidden) { setMenu(false); menuButton.focus(); }
 });
