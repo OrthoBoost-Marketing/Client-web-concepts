@@ -40,6 +40,41 @@ p + p { margin-top: 1em; }
 /* One display-face label role for everything that is a title but not a heading. */
 .label { font-family: var(--font-display); font-weight: 700; font-size: var(--fs-label); line-height: var(--lh-tight); letter-spacing: var(--track-label); }
 
+/* ---- emphasis scheme -------------------------------------------------------
+   Three inline treatments, in descending weight. All three are <b>: visual
+   prominence with no announced semantics, so a screen reader hears the sentence
+   exactly as written and the FAQ answers still mirror the FAQPage node.
+
+   .hl       the swipe. A gold marker stroke seated under the x-height, behind
+             the one phrase a section is really making. At most one per section.
+             Flat gold; the two-stop linear-gradient exists only so the fill can
+             be sized, and renders as a solid, never as a gradient ground.
+   .hl-rule  the rule. The same 3px gold as the fact dashes and the board
+             caption, under a fact that is repeated elsewhere on the page.
+   .num      the figure. Every number in running prose set in the display face,
+             so prices, times and counts match the values on the hours board.
+             1.12em is an optical match to Nunito, not a new step in the scale.
+
+   Budget: one swipe per section, two rules, figures wherever a number appears.
+   Never two treatments on one phrase. Never inside a repeated service card, a
+   verbatim review, or the proof band, which is display face already. */
+.hl, .hl-rule, .num { font-style: normal; }
+.hl {
+  font-weight: 700;
+  padding-inline: .1em;
+  margin-inline: -.1em;
+  background-image: linear-gradient(var(--gold), var(--gold));
+  background-repeat: no-repeat;
+  background-size: 100% var(--hl-size);
+  background-position: 0 var(--hl-seat);
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+h1 .hl, h2 .hl { --hl-size: .76em; --hl-seat: 98%; }
+.on-dark .hl { color: var(--ink); }
+.hl-rule { font-weight: 700; text-decoration: underline; text-decoration-color: var(--gold); text-decoration-thickness: var(--rule); text-underline-offset: .22em; text-decoration-skip-ink: none; }
+.num { font-family: var(--font-display); font-weight: 700; font-size: 1.12em; letter-spacing: var(--track-label); }
+
 a { color: inherit; text-underline-offset: .18em; text-decoration-thickness: 1px; }
 a:hover { text-decoration-thickness: 2px; }
 a:active { opacity: .82; }

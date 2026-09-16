@@ -1,8 +1,14 @@
 /* Concept 2: "Open Tuesday to Thursday"
-   Colour strategy: Soft gold first fold. The hero and the schedule section sit
-   on --gold-tint (gold at half strength; full gold read as loud); ink is the
-   type and the buttons, full gold is the board caption rule and the accent
-   dashes. The signature device is the hours board: a table set like
+   Colour strategy: White first screen. Gold arrives as emphasis rather than as
+   a ground: the marker swipe behind the phrase each section is making, the 3px
+   rule, the fact dashes, and the gold-tint schedule band at the end. Full gold
+   as a ground read as loud, so it is gone from the fold.
+
+   Photography: one grade for every photo on the page, warmed a few degrees
+   toward the gold and held under a 3px gold rule with square corners, so the
+   pictures carry the same lettering language as the front door and the hours
+   board. The bleed portrait in the hero takes the grade without the rule.
+   The signature device is the hours board: a table set like
    the front-door sign (ink rules, display-face values) that appears in the
    schedule section and small in the footer. Same object, two sizes. The
    schedule board is the page's one observed motion moment: its rows settle in
@@ -10,14 +16,16 @@
 
 .c2 { --fs-h1: clamp(42px, 5.4vw, 78px); }
 
-/* ---- hero: soft gold ground, copy left, door portrait bleeding right, no scrim ---- */
-.c2-hero { background: var(--gold-tint); color: var(--ink); --text-2: var(--ink); overflow: hidden; }
+/* ---- hero: white ground, copy left, door portrait bleeding right, no scrim ---- */
+.c2-hero { background: var(--white); color: var(--ink); overflow: hidden; }
 .c2-hero .wrap { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr); gap: var(--gap-l); align-items: center; }
 .c2-hero .hero-copy { padding-block: clamp(48px, 6vw, 96px) clamp(40px, 5vw, 80px); }
 .c2-hero .intro { max-width: 52ch; }
 .c2-hero .button { background: var(--ink); color: var(--white); }
 .c2-hero .button:hover { background: var(--white); color: var(--ink); }
-.c2-hero figure { margin-right: calc(-1 * var(--gutter)); min-height: 560px; }
+/* Bleed the portrait to the viewport edge, not just past the gutter: past 1336px the
+   wrap stops growing and a plain -gutter margin left a white sliver on the right. */
+.c2-hero figure { margin-right: calc(-1 * max(var(--gutter), (100vw - 1240px) / 2)); min-height: 560px; }
 .c2-hero figure img { object-position: 40% 20%; }
 
 /* ---- the board ---- */
@@ -59,6 +67,23 @@
 .c2 .c2-schedule .button { background: var(--ink); color: var(--white); }
 .c2 .c2-schedule .button:hover { background: var(--white); color: var(--ink); }
 .c2 .c2-schedule .map { background: var(--ink-tint); }
+/* Gold on the gold tint is nearly invisible, so the board caption rule goes ink here. */
+.c2 .c2-schedule .board caption { border-bottom-color: currentColor; }
+
+/* ---- photo grade: the one treatment every picture on the page gets ---- */
+.c2 { --grade: saturate(.94) contrast(1.05) sepia(.16) hue-rotate(-5deg) saturate(1.06); }
+.c2-hero figure img,
+.c2 .doctor figure img,
+.c2 .usp-row figure img,
+.c2 .wall-grid figure img,
+.c2 .svc img { filter: var(--grade); }
+.c2 .doctor figure img,
+.c2 .usp-row figure img,
+.c2 .wall-grid figure img,
+.c2 .svc img { border-radius: 0; border-bottom: var(--rule) solid var(--gold); }
+.c2 .svc h3 a::after { border-radius: 0; }
+.c2 .svc img { transition: transform var(--dur) var(--ease-out), filter var(--dur-fast) var(--ease-out); }
+.c2 .svc:hover img { filter: none; }
 
 @media (max-width: 1100px) {
   .c2-hero .wrap { grid-template-columns: 1fr 1fr; }

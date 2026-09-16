@@ -64,6 +64,8 @@
   --lh-body: 1.6;
   --lh-tight: 1.1;
   --track-label: .01em;
+  --hl-size: .58em;      /* height of the gold marker swipe behind emphasised text */
+  --hl-seat: 92%;        /* where that swipe sits: just under the x-height */
 
   /* ---- space: 4px base for component gaps, fluid steps for section rhythm ---- */
   --space-1: 4px;
