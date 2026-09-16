@@ -1,32 +1,33 @@
 /* Concept 2: "Open Tuesday to Thursday"
-   Colour strategy: Drenched first fold. Valley Gold is the ground of the hero
-   and the schedule section; ink is the type. The signature device is the hours
-   board: a table set like the front-door sign (ink rules, display-face values)
-   that appears in the hero, again in the schedule section, and small in the
-   footer. Same object, three sizes. The schedule board is the page's one
-   observed motion moment: its rows settle in one after another. */
+   Colour strategy: Restrained gold. Paper hero and mist-tint schedule; gold
+   is the primary button, the board caption rule and the accent dashes, never
+   a whole ground. The signature device is the hours board: a table set like
+   the front-door sign (ink rules, display-face values) that appears in the
+   schedule section and small in the footer. Same object, two sizes. The
+   schedule board is the page's one observed motion moment: its rows settle in
+   one after another. */
 
 .c2 { --fs-h1: clamp(42px, 5.4vw, 78px); }
 
-/* ---- hero: gold ground, board left, door portrait bleeding right, no scrim ---- */
-.c2-hero { background: var(--gold); color: var(--ink); overflow: hidden; }
-.c2-hero .wrap { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr); gap: var(--gap-l); align-items: stretch; }
+/* ---- hero: paper ground, copy left, door portrait bleeding right, no scrim ---- */
+.c2-hero { background: var(--paper); color: var(--ink); overflow: hidden; }
+.c2-hero .wrap { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr); gap: var(--gap-l); align-items: center; }
 .c2-hero .hero-copy { padding-block: clamp(48px, 6vw, 96px) clamp(40px, 5vw, 80px); }
 .c2-hero .intro { max-width: 52ch; }
-.c2-hero .button { background: var(--ink); color: var(--white); }
-.c2-hero .button:hover { background: var(--white); color: var(--ink); }
+.c2-hero .button { background: var(--gold); color: var(--ink); }
+.c2-hero .button:hover { background: var(--ink); color: var(--white); }
 .c2-hero figure { margin-right: calc(-1 * var(--gutter)); min-height: 560px; }
 .c2-hero figure img { object-position: 40% 20%; }
 
 /* ---- the board ---- */
 .board { width: 100%; max-width: 560px; border-collapse: collapse; margin-top: var(--space-6); }
-.board caption { text-align: left; font-family: var(--font-display); font-weight: 800; font-size: var(--fs-label); text-transform: uppercase; letter-spacing: .04em; padding-bottom: var(--space-2); border-bottom: var(--rule) solid currentColor; }
+.board caption { text-align: left; font-family: var(--font-display); font-weight: 800; font-size: var(--fs-label); text-transform: uppercase; letter-spacing: .04em; padding-bottom: var(--space-2); border-bottom: var(--rule) solid var(--gold); }
 .board th, .board td { text-align: left; padding: var(--space-3) 0; border-bottom: 2px solid currentColor; font-size: var(--fs-body); vertical-align: top; }
 .board th { font-weight: 700; padding-right: var(--space-5); width: 52%; }
 .board td { font-family: var(--font-display); font-weight: 700; font-size: var(--fs-label); letter-spacing: var(--track-label); white-space: nowrap; }
 .board td small { display: block; font: 400 var(--fs-caption)/1.35 var(--font-body); letter-spacing: 0; margin-top: 2px; white-space: normal; }
 .board tr:last-child th, .board tr:last-child td { border-bottom: 0; }
-.board-line { margin-top: var(--space-4); font-size: var(--fs-body); font-weight: 700; }
+.board-line { margin-top: var(--space-5); font-size: var(--fs-body); font-weight: 700; }
 .board-line span { font-weight: 400; }
 
 /* footer board: white type, gold caption rule, stacked rows so nothing collides in a narrow column */
@@ -46,13 +47,13 @@
 .c2 .c2-wall { background: var(--mist-tint); }
 .c2 .c2-faq { background: var(--paper); }
 
-/* schedule on gold again: the board comes back at full size and settles in row by row */
+/* schedule on mist-tint: the board at full size, settling in row by row */
 @media (prefers-reduced-motion: no-preference) {
   html.js .board.moment > * { opacity: 1; transform: none; transition: none; }
   html.js .board.moment tr { opacity: 0; transition: opacity var(--dur) var(--ease-out); transition-delay: calc(var(--i, 0) * 90ms); }
   html.js .board.moment.in tr { opacity: 1; }
 }
-.c2 .c2-schedule { background: var(--gold); color: var(--ink); --text-2: var(--ink); }
+.c2 .c2-schedule { background: var(--mist-tint); color: var(--ink); }
 .c2 .c2-schedule .board { margin-top: var(--space-6); }
 .c2 .c2-schedule .button { background: var(--ink); color: var(--white); }
 .c2 .c2-schedule .button:hover { background: var(--white); color: var(--ink); }
@@ -68,7 +69,6 @@
   .c2-hero figure { order: -1; margin-inline: calc(-1 * var(--gutter)); min-height: 0; height: min(52svh, 480px); }
   .c2-hero figure img { object-position: 40% 10%; }
   .c2-hero .hero-copy { padding-block: var(--space-6) var(--space-7); }
-  .board { margin-top: var(--space-5); }
 }
 @media (max-width: 420px) {
   .board th, .board td { display: block; border: 0; padding: 0; width: auto; }
