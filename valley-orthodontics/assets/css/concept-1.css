@@ -1,38 +1,36 @@
 /* Concept 1: "The office, unposed"
-   Colour strategy: Committed. Ink carries the first fold and the closing
-   band; gold is the accent everywhere. The signature device is the photo
-   essay of the office (real chalkboards, candy wall, neon, treatment bay,
-   the team) laid on a 12-column grid with captions, replacing the first
-   USP row. The chalkboard photograph leads it. */
+   Colour strategy: Committed. Ink carries the first fold and the wall; gold is
+   the accent everywhere and the ground of the CTA band. The signature device is
+   the photo essay of the office (real chalkboards, candy wall, neon, treatment
+   bay, the team) on a 12-column grid with captions; it stands in for the first
+   USP row and is the page's one observed motion moment. */
 
 .c1 .header { border-bottom-color: transparent; }
+.rule { height: var(--rule); width: 72px; background: var(--gold); margin-top: var(--space-5); }
 
 /* ---- hero: ink ground, copy left, the Gold Provider portrait breaking the right edge ---- */
 .c1-hero { background: var(--ink); color: var(--white); overflow: hidden; }
-.c1-hero .wrap { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr); gap: clamp(32px, 5vw, 80px); align-items: end; }
+.c1-hero .wrap { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr); gap: var(--gap-l); align-items: end; }
 .c1-hero .hero-copy { padding-block: clamp(56px, 7vw, 120px) clamp(48px, 6vw, 96px); }
-.c1-hero h1 { color: var(--white); }
-.c1-hero .rule { margin-top: 26px; }
-.c1-hero .intro { color: var(--white); max-width: 54ch; }
-.c1-hero .facts { color: var(--white); }
-.c1-hero .phone-link { color: var(--white); }
+.c1-hero .intro { max-width: 54ch; }
 .c1-hero .phone-link small { color: var(--mist); }
-.c1-hero figure { position: relative; align-self: stretch; margin-right: calc(-1 * var(--gutter)); min-height: 520px; }
-.c1-hero figure img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 18%; }
-.c1-hero figcaption { position: absolute; left: 0; bottom: 0; padding: 12px 18px; background: var(--ink); color: var(--mist); font-size: 15px; max-width: 34ch; }
+.c1-hero figure { align-self: stretch; margin-right: calc(-1 * var(--gutter)); min-height: 520px; }
+.c1-hero figure img { object-position: 50% 18%; }
+/* caption sits top-right so it never covers the plaque he is holding */
+.c1-hero figcaption { left: auto; bottom: auto; top: 0; right: 0; color: var(--mist); }
 
 /* proof band follows an ink hero, so it flips to light */
 .c1 .proof { background: var(--white); color: var(--ink); border-bottom: 1px solid var(--line); }
 .c1 .proof-cell { border-left-color: var(--line); }
 .c1 .proof-note { color: var(--text-2); }
 
-/* ---- the essay ---- */
+/* ---- the essay (signature device + motion moment) ---- */
 .c1-essay .section-head { max-width: 52ch; }
-.essay { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); grid-auto-rows: minmax(0, auto); gap: clamp(14px, 1.8vw, 24px); margin-top: clamp(28px, 3vw, 44px); }
-.essay figure { position: relative; display: grid; gap: 10px; align-content: start; }
+.essay { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: var(--gap-s); margin-top: var(--gap-m); }
+.essay figure { position: relative; display: grid; gap: var(--space-2); align-content: start; }
 .essay figure img { width: 100%; height: 100%; object-fit: cover; border-radius: var(--radius); }
-.essay figcaption { font-size: 17px; line-height: 1.45; }
-.essay figcaption strong { font-family: var(--font-display); font-weight: 700; font-size: 22px; display: block; margin-bottom: 2px; }
+.essay figcaption { font-size: var(--fs-body); line-height: 1.45; }
+.essay figcaption .label { display: block; margin-bottom: 2px; }
 .essay .e-a { grid-column: 1 / 6; grid-row: 1 / 3; }
 .essay .e-b { grid-column: 6 / 13; grid-row: 1 / 2; }
 .essay .e-c { grid-column: 6 / 10; grid-row: 2 / 3; }
@@ -41,24 +39,20 @@
 .essay .e-f { grid-column: 8 / 13; grid-row: 3 / 4; }
 .essay .e-a img { aspect-ratio: 3 / 4; }
 .essay .e-b img { aspect-ratio: 21 / 9; }
-.essay .e-c img, .essay .e-d img { aspect-ratio: 4 / 3; }
+.essay .e-c img, .essay .e-d img, .essay .e-f img { aspect-ratio: 4 / 3; }
 .essay .e-e img { aspect-ratio: 16 / 9; }
-.essay .e-f img { aspect-ratio: 4 / 3; }
-.essay-foot { margin-top: clamp(28px, 3vw, 40px); display: flex; flex-wrap: wrap; gap: 16px 32px; align-items: center; justify-content: space-between; }
+.essay-foot { margin-top: var(--gap-m); display: flex; flex-wrap: wrap; gap: var(--space-4) var(--space-6); align-items: center; justify-content: space-between; }
 .essay-foot p { font-size: var(--fs-lede); max-width: 46ch; }
 
-/* ---- rhythm: doctor on paper, USP rows on white, wall on ink ---- */
+/* ---- rhythm ---- */
 .c1 .c1-doctor { background: var(--paper); }
 .c1 .c1-wall { background: var(--ink); color: var(--white); }
-.c1 .c1-wall .wall-grid figcaption span { color: var(--mist); }
-.c1 .c1-wall .wall-list { border-top-color: rgb(255 255 255 / .18); }
-.c1 .cta-band { background: var(--gold); color: var(--ink); }
+.c1 .cta-band { background: var(--gold); color: var(--ink); --focus-on-dark: var(--ink); }
 .c1 .cta-band .button { background: var(--ink); color: var(--white); }
 .c1 .cta-band .button:hover { background: var(--white); color: var(--ink); }
 .c1 .c1-reviews { background: var(--paper); }
-.c1 .c1-faq { background: var(--white); }
 .c1 .c1-schedule { background: var(--mist-tint); }
-.c1 .footer { border-top: 6px solid var(--gold); }
+.c1 .footer { border-top: var(--rule) solid var(--gold); }
 
 @media (max-width: 1100px) {
   .c1-hero figure { min-height: 440px; }
@@ -68,14 +62,14 @@
   .essay .e-d { grid-column: 7 / 13; grid-row: 2 / 3; }
   .essay .e-e { grid-column: 1 / 7; grid-row: 3 / 4; }
   .essay .e-f { grid-column: 7 / 13; grid-row: 3 / 4; }
-  .essay .e-b img { aspect-ratio: 4 / 3; }
-  .essay .e-e img { aspect-ratio: 4 / 3; }
+  .essay .e-b img, .essay .e-e img { aspect-ratio: 4 / 3; }
 }
 @media (max-width: 760px) {
   .c1-hero .wrap { grid-template-columns: 1fr; gap: 0; }
   .c1-hero figure { order: -1; margin-inline: calc(-1 * var(--gutter)); min-height: 0; height: min(56svh, 500px); }
   .c1-hero figure img { object-position: 50% 12%; }
-  .c1-hero .hero-copy { padding-block: 36px 44px; }
+  .c1-hero figcaption { max-width: 60%; }
+  .c1-hero .hero-copy { padding-block: var(--space-6) var(--space-7); }
   .essay { grid-template-columns: 1fr; }
   .essay figure { grid-column: auto !important; grid-row: auto !important; }
   .essay figure img { aspect-ratio: 4 / 3 !important; }

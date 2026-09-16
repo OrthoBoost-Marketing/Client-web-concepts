@@ -1,69 +1,101 @@
-/* Valley Orthodontics brand tokens v2.0 (15 Sep 2026)
+/* Valley Orthodontics brand tokens v2.1 (15 Sep 2026)
    Dr. Jeremy Haines | valleyorthoak.com
    Colour values as supplied by the practice (Colors.png, 4 Sep 2026).
    Ink sampled from the supplied vector artwork.
 
-   v2 change: the three concepts now render THIS palette. The navy / teal /
-   near-black "reference" skins from the 9 Sep round are gone; each concept
-   differs by colour STRATEGY (how much gold, where the ink sits), not by hue.
+   Three tiers: primitives (this palette), semantic roles (--text, --bg, --line-on-dark ...),
+   and the scales the components draw from (space, type, z). Skins remap the semantic
+   tier on their body class; they never write a new primitive.
 
-   Type: the wordmark face is still unidentified (fonts/FONTS.md). Headings use
-   Barlow Condensed because the wordmark is a heavy condensed sans and the pair
-   reads as one family from across the room; body is Nunito per the Dr. M. Rogers
-   persona spec. Both self-hosted, latin subset, swap. */
+   Type: the wordmark face is still unidentified (fonts/FONTS.md). Headings use Barlow
+   Condensed because the wordmark is a heavy condensed sans and the pair reads as one
+   family from across the room; body is Nunito per the Dr. M. Rogers persona spec.
+   Both self-hosted, latin subset, swap, with a metric-matched local fallback for the
+   display face so the H1 does not reflow when the webfont lands. */
 
 @font-face { font-family: 'Barlow Condensed'; font-style: normal; font-weight: 600; font-display: swap; src: url('../fonts/barlow-condensed-600-latin.woff2') format('woff2'); }
 @font-face { font-family: 'Barlow Condensed'; font-style: normal; font-weight: 700; font-display: swap; src: url('../fonts/barlow-condensed-700-latin.woff2') format('woff2'); }
 @font-face { font-family: 'Barlow Condensed'; font-style: normal; font-weight: 800; font-display: swap; src: url('../fonts/barlow-condensed-800-latin.woff2') format('woff2'); }
+/* Fallback tuned so a condensed system face occupies roughly the same box as Barlow Condensed. */
+@font-face { font-family: 'Barlow Condensed Fallback'; src: local('Arial Narrow'), local('Roboto Condensed'), local('Arial'); size-adjust: 88%; ascent-override: 96%; descent-override: 22%; line-gap-override: 0%; }
 @font-face { font-family: 'Nunito'; font-style: normal; font-weight: 400; font-display: swap; src: url('../fonts/nunito-400-latin.woff2') format('woff2'); }
 @font-face { font-family: 'Nunito'; font-style: normal; font-weight: 600; font-display: swap; src: url('../fonts/nunito-600-latin.woff2') format('woff2'); }
 @font-face { font-family: 'Nunito'; font-style: normal; font-weight: 700; font-display: swap; src: url('../fonts/nunito-700-latin.woff2') format('woff2'); }
-@font-face { font-family: 'Nunito'; font-style: normal; font-weight: 800; font-display: swap; src: url('../fonts/nunito-800-latin.woff2') format('woff2'); }
 
 :root {
-  /* ---- brand palette ---- */
+  /* ---- primitives: brand palette ---- */
   --gold: #FCC351;   /* Pantone 122 U  | decorative on white (1.61:1); a GROUND for ink text (10.1:1) */
-  --mist: #93ABB1;   /* Pantone 2211 U | decorative on white (2.41:1); text only on ink (6.75:1) */
+  --mist: #93ABB1;   /* Pantone 2211 U | decorative on white (2.41:1); text only on ink (6.75:1), never on slate (1.96:1) */
   --slate: #5A7880;  /* Pantone 7476 U | AA body text on white (4.74:1); white text on it (4.74:1) */
   --ink: #231F20;    /* wordmark colour | AAA on white (16.3:1) */
 
-  /* ---- neutrals ---- */
+  /* ---- primitives: neutrals ---- */
   --white: #FFFFFF;
-  --paper: #F6F8F8;      /* cool, chroma toward mist, not warmth-by-default. Muted text holds 4.6:1 here. */
-  --mist-tint: #E6EEF0;  /* mist at ~25% on white: light band ground */
+  --paper: #F6F8F8;      /* cool, chroma toward mist, not warmth-by-default. Muted text holds 5.2:1 here. */
+  --mist-tint: #E6EEF0;  /* mist at ~25% on white: light band ground; muted text 4.7:1 */
   --line: #DDE4E6;
-  --muted: #5F6B6F;      /* 5.6:1 on white, 5.1:1 on paper */
+  --muted: #5F6B6F;      /* 5.5:1 on white */
 
-  /* ---- semantic ---- */
+  /* ---- semantic roles (skins remap these on their body class) ---- */
   --text: var(--ink);
   --text-2: var(--muted);
   --bg: var(--white);
   --accent: var(--gold);
   --dark: var(--ink);
-  --dark-2: var(--slate);
   --on-dark: var(--white);
-  --on-dark-2: var(--mist);
+  --on-dark-2: var(--mist);                          /* secondary text on --dark; concept 3 remaps to white for slate */
+  --line-on-dark: rgb(255 255 255 / .18);             /* hairlines on any dark ground */
+  --ink-tint: rgb(35 31 32 / .12);                    /* ink at 12%: placeholders on gold */
+  --focus: var(--ink);                                /* ring on light and gold grounds (10:1 on gold, 16:1 on white) */
+  --focus-on-dark: var(--white);                      /* ring on ink (16:1) and slate (4.7:1) */
 
   /* ---- type ---- */
-  --font-display: 'Barlow Condensed', 'Arial Narrow', 'Roboto Condensed', sans-serif;
+  --font-display: 'Barlow Condensed', 'Barlow Condensed Fallback', 'Arial Narrow', sans-serif;
   --font-body: 'Nunito', 'Segoe UI', system-ui, -apple-system, sans-serif;
+  --fs-caption: 15px;   /* figure captions, legal line only */
+  --fs-small: 16px;     /* nav, notes, meta */
   --fs-body: 18px;
   --fs-lede: 20px;
-  --fs-small: 16px;
-  --fs-h1: clamp(46px, 6.4vw, 92px);
-  --fs-h2: clamp(34px, 3.8vw, 58px);
+  --fs-label: 22px;     /* display-face labels: phone, table captions, figcaption titles, footer heads */
   --fs-h3: clamp(24px, 2.2vw, 30px);
-  --fs-phone: 22px;
+  --fs-h2: clamp(34px, 3.8vw, 58px);
+  --fs-h1: clamp(46px, 6.4vw, 92px);
+  --lh-body: 1.6;
+  --lh-tight: 1.1;
+  --track-label: .01em;
 
-  /* ---- geometry ---- */
-  --radius: 4px;
-  --wrap: 1240px;
-  --gutter: clamp(20px, 4vw, 48px);
+  /* ---- space: 4px base for component gaps, fluid steps for section rhythm ---- */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 64px;
+  --gap-s: clamp(16px, 2vw, 28px);    /* grid gaps */
+  --gap-m: clamp(28px, 3vw, 44px);    /* head-to-content, list-to-footer */
+  --gap-l: clamp(32px, 5vw, 80px);    /* two-column splits */
   --pad-l: clamp(72px, 9vw, 150px);
   --pad-m: clamp(48px, 6vw, 96px);
   --pad-s: clamp(28px, 3.5vw, 48px);
 
+  /* ---- geometry ---- */
+  --radius: 4px;
+  --rule: 3px;                        /* the gold rule thickness, everywhere it appears */
+  --wrap: 1240px;
+  --gutter: clamp(20px, 4vw, 48px);
+  --z-header: 30;
+  --z-bar: 40;
+  --z-skip: 100;
+
   /* ---- motion ---- */
   --ease-out: cubic-bezier(.16, 1, .3, 1);
   --dur: 560ms;
+  --dur-fast: 240ms;
+
+  /* ---- browser surfaces ---- */
+  color-scheme: light;
+  accent-color: var(--slate);
+  caret-color: var(--slate);
 }

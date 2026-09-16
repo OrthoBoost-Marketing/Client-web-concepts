@@ -1,10 +1,13 @@
 /* Concept 3: "Dr. Haines at the door"
-   Colour strategy: Restrained. White ground, slate for the dark bands,
-   gold only as a hairline. The signature device is the door frame: a
-   double gold rule (a 2px outer line and a 1px inner line set 10px in,
-   like the aluminium mullions on the Suite A door) that is the ONLY
-   container shape on the page. The hero panel, the doctor's second
-   portrait, the lead review and the hours block all sit "in the doorway". */
+   Colour strategy: Restrained. White ground, slate for the dark bands, gold only
+   as a hairline. The signature device is the door frame: a double gold rule
+   (2px outer line, 1px inner line set 10px in, like the aluminium mullions on
+   the Suite A door) that is the ONLY container shape on the page. The hero
+   panel, the doctor's second portrait, the lead review and the hours block sit
+   "in the doorway". The hours frame is the page's one observed motion moment:
+   its inner line draws itself when the schedule enters. */
+
+.c3 { --fs-h1: clamp(42px, 5vw, 76px); --dark: var(--slate); --on-dark-2: var(--white); --line-on-dark: rgb(255 255 255 / .22); }
 
 .frame { position: relative; border: 2px solid var(--gold); padding: clamp(24px, 3vw, 44px); border-radius: 0; }
 .frame::after { content: ""; position: absolute; inset: 10px; border: 1px solid var(--gold); pointer-events: none; }
@@ -16,37 +19,32 @@
 .c3-hero { display: grid; grid-template-columns: minmax(0, 46fr) minmax(0, 54fr); min-height: min(calc(100svh - 92px), 840px); background: var(--white); }
 .c3-hero .hero-copy { display: flex; flex-direction: column; justify-content: center; padding: clamp(40px, 5vw, 88px) clamp(24px, 4vw, 64px) clamp(40px, 5vw, 88px) var(--gutter); }
 .c3-hero .frame { max-width: 640px; }
-.c3-hero h1 { font-size: clamp(42px, 5vw, 76px); }
-.c3-hero .intro { margin-top: 20px; max-width: 46ch; }
-.c3-hero .actions { margin-top: 26px; }
-.c3-hero .facts { margin-top: 26px; }
-.c3-hero figure { position: relative; min-height: 560px; }
-.c3-hero figure img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 30% 22%; }
-.c3-hero figcaption { position: absolute; right: 0; bottom: 0; padding: 12px 18px; background: var(--ink); color: var(--white); font-size: 15px; max-width: 40ch; }
+.c3-hero .intro { max-width: 46ch; }
+.c3-hero figure { min-height: 560px; }
+.c3-hero figure img { object-position: 30% 22%; }
+.c3-hero figcaption { left: auto; right: 0; max-width: 40ch; }
 
 /* ---- rhythm: slate is the dark here, never ink ---- */
-.c3 .proof { background: var(--slate); }
-.c3 .proof-note { color: rgb(255 255 255 / .82); }
-.c3 .c3-doctor { background: var(--white); }
-.c3 .c3-doctor .doctor figure { padding: 14px; }
 .c3 .c3-doctor .doctor figure img { border-radius: 0; }
 .c3 .c3-usp { background: var(--paper); }
-.c3 .cta-band { background: var(--slate); color: var(--white); }
 .c3 .cta-band .button { background: var(--white); color: var(--ink); }
 .c3 .cta-band .button:hover { background: var(--gold); color: var(--ink); }
-.c3 .c3-services { background: var(--white); }
 .c3 .c3-wall { background: var(--paper); }
-.c3 .c3-reviews { background: var(--white); }
-.c3 .c3-reviews .review.frame { border-color: var(--gold); border-width: 2px; border-radius: 0; padding: clamp(24px, 3vw, 40px); }
-.c3 .c3-reviews .review.frame blockquote p { font-size: 20px; }
+/* the only container is the frame: unframed reviews lose their card chrome */
+.c3 .review:not(.frame) { background: transparent; border: 0; border-top: 1px solid var(--line); border-radius: 0; padding: var(--space-5) 0 0; }
+.c3 .review.frame { padding: clamp(24px, 3vw, 40px); }
+.c3 .review.frame blockquote p { font-size: var(--fs-lede); }
 .c3 .c3-faq { background: var(--paper); }
-.c3 .c3-schedule { background: var(--white); }
-.c3 .c3-schedule .hours-frame { margin-top: 28px; max-width: 560px; }
+.c3 .c3-schedule .hours-frame { margin-top: var(--space-5); max-width: 560px; }
 .c3 .c3-schedule .hours { margin-top: 0; max-width: none; }
-.c3 .footer { background: var(--slate); }
-.c3 .footer .footer-bottom { border-top-color: rgb(255 255 255 / .22); color: rgb(255 255 255 / .82); }
-.c3 .footer .footer-nap .footer-hours { color: rgb(255 255 255 / .82); }
-.c3 .footer .review cite span { color: rgb(255 255 255 / .82); }
+.c3 .map { background: transparent; border-radius: 0; }
+
+/* the moment: the inner mullion line draws itself when the hours frame arrives */
+@media (prefers-reduced-motion: no-preference) {
+  html.js .frame.moment > * { opacity: 1; transform: none; transition: none; }
+  html.js .frame.moment::after { clip-path: inset(0 100% 0 0); transition: clip-path 900ms var(--ease-out); }
+  html.js .frame.moment.in::after { clip-path: inset(0 0 0 0); }
+}
 
 @media (max-width: 1100px) {
   .c3-hero { min-height: 0; }
@@ -56,8 +54,8 @@
   .c3-hero { grid-template-columns: 1fr; }
   .c3-hero figure { order: -1; min-height: 0; height: min(58svh, 520px); }
   .c3-hero figure img { object-position: 28% 12%; }
-  .c3-hero .hero-copy { padding: 24px var(--gutter) 40px; }
+  .c3-hero .hero-copy { padding: var(--space-5) var(--gutter) var(--space-7); }
   .c3-hero .frame { max-width: none; }
-  .frame { padding: 22px; }
+  .frame { padding: var(--space-5) 22px; }
   .frame::after { inset: 8px; }
 }
