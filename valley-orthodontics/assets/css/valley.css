@@ -135,7 +135,11 @@ main:focus { outline: 0; }
 .menu-toggle[aria-expanded="true"] .i--menu, .menu-toggle:not([aria-expanded="true"]) .i--close { display: none; }
 
 /* ---- hero base (each skin positions it) ---- */
+/* One hero rhythm for all three concepts: the copy column sets the hero's height,
+   on the section padding scale, and the photo bleeds past the wrap to the viewport
+   edge on every one of them. Concepts vary the crop and the ground, not the spacing. */
 .hero { position: relative; }
+.hero .hero-copy { padding-block: var(--pad-m); }
 .hero .intro { margin-top: var(--space-5); }
 .hero .actions { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-4) var(--space-5); margin-top: var(--space-6); }
 .hero .phone-link { display: inline-flex; flex-direction: column; justify-content: center; min-height: 44px; text-decoration: none; font-size: 24px; }
@@ -339,6 +343,8 @@ main:focus { outline: 0; }
   :root { --fs-h1: clamp(40px, 12vw, 60px); --fs-h2: clamp(30px, 8.4vw, 40px); }
   .doctor, .usp-row, .schedule { grid-template-columns: 1fr; }
   .usp-row:nth-child(even) figure { order: 0; }
+  .hero .hero-copy { padding-block: var(--space-6) var(--space-7); }
+  .hero figcaption { left: var(--bleed); }
   .usp-row figure img { aspect-ratio: 3 / 2; }
   .services, .wall-grid, .reviews-grid { grid-template-columns: 1fr; }
   .cta-band .wrap { display: grid; }

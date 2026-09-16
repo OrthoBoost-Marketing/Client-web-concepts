@@ -88,6 +88,10 @@
   --rule: 3px;                        /* the gold rule thickness, everywhere it appears */
   --wrap: 1240px;
   --gutter: clamp(20px, 4vw, 48px);
+  /* Distance from the viewport edge to the edge of .wrap. Past 1336px the wrap stops
+     growing, so the gutter alone no longer reaches the edge. Photos bleed by a negative
+     margin of this; sections that lay out their own columns pad by it to stay on grid. */
+  --bleed: max(var(--gutter), (100vw - var(--wrap)) / 2);
   --z-header: 30;
   --z-bar: 40;
   --z-skip: 100;

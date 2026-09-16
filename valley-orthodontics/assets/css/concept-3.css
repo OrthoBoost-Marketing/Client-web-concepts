@@ -15,14 +15,18 @@
 .frame--photo { padding: 14px; }
 .frame--photo img { width: 100%; height: 100%; object-fit: cover; border-radius: 0; display: block; }
 
-/* ---- hero: the portrait fills the right half to the viewport edge; the panel sits in the frame ---- */
-.c3-hero { display: grid; grid-template-columns: minmax(0, 46fr) minmax(0, 54fr); min-height: min(calc(100svh - 92px), 840px); background: var(--white); }
-.c3-hero .hero-copy { display: flex; flex-direction: column; justify-content: center; padding: clamp(40px, 5vw, 88px) clamp(24px, 4vw, 64px) clamp(40px, 5vw, 88px) var(--gutter); }
+/* ---- hero: the portrait fills the right half to the viewport edge; the panel sits in the frame ----
+   This hero lays out its own columns instead of sitting in a .wrap, so it pads itself by
+   the same distance the wrap is inset. Without that the frame hung to the left of every
+   heading below it. The percentage is of the body, not the viewport, so a scrollbar
+   cannot push it off grid. */
+.c3-hero { display: grid; grid-template-columns: minmax(0, 46fr) minmax(0, 54fr); min-height: min(calc(100svh - 92px), 840px); padding-left: max(var(--gutter), (100% - var(--wrap)) / 2); background: var(--white); }
+.c3-hero .hero-copy { display: flex; flex-direction: column; justify-content: center; padding-inline: 0 var(--gap-l); }
 .c3-hero .frame { max-width: 640px; }
 .c3-hero .intro { max-width: 46ch; }
 .c3-hero figure { min-height: 560px; }
 .c3-hero figure img { object-position: 30% 22%; }
-.c3-hero figcaption { left: auto; right: 0; max-width: 40ch; }
+.c3-hero figcaption { left: auto; right: var(--bleed); max-width: 40ch; }
 
 /* ---- rhythm: slate is the dark here, never ink ---- */
 .c3 .c3-doctor .doctor figure img { border-radius: 0; }
@@ -32,7 +36,6 @@
 .c3 .c3-wall { background: var(--paper); }
 /* the only container is the frame: unframed reviews lose their card chrome */
 .c3 .review:not(.frame) { background: transparent; border: 0; border-top: 1px solid var(--line); border-radius: 0; padding: var(--space-5) 0 0; }
-.c3 .review.frame { padding: clamp(24px, 3vw, 40px); }
 .c3 .review.frame blockquote p { font-size: var(--fs-lede); }
 .c3 .c3-faq { background: var(--paper); }
 .c3 .c3-schedule .hours-frame { margin-top: var(--space-5); max-width: 560px; }
@@ -51,10 +54,10 @@
   .c3-hero figure { min-height: 480px; }
 }
 @media (max-width: 760px) {
-  .c3-hero { grid-template-columns: 1fr; }
+  .c3-hero { grid-template-columns: 1fr; padding-left: 0; }
   .c3-hero figure { order: -1; min-height: 0; height: min(58svh, 520px); }
   .c3-hero figure img { object-position: 28% 12%; }
-  .c3-hero .hero-copy { padding: var(--space-5) var(--gutter) var(--space-7); }
+  .c3-hero .hero-copy { padding-inline: var(--gutter); }
   .c3-hero .frame { max-width: none; }
   .frame { padding: var(--space-5) 22px; }
   .frame::after { inset: 8px; }
