@@ -18,13 +18,14 @@
 
 /* ---- hero: white ground, copy left, door portrait bleeding right, no scrim ---- */
 .c2-hero { background: var(--white); color: var(--ink); overflow: hidden; }
-.c2-hero .wrap { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr); gap: var(--gap-l); align-items: center; }
+.c2-hero .wrap { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr); gap: var(--gap-l); align-items: stretch; }
 .c2-hero .hero-copy { padding-block: clamp(48px, 6vw, 96px) clamp(40px, 5vw, 80px); }
 .c2-hero .intro { max-width: 52ch; }
 .c2-hero .button { background: var(--ink); color: var(--white); }
 .c2-hero .button:hover { background: var(--white); color: var(--ink); }
-/* Bleed the portrait to the viewport edge, not just past the gutter: past 1336px the
-   wrap stops growing and a plain -gutter margin left a white sliver on the right. */
+/* Bleed the portrait on three sides: to the viewport edge on the right (past 1336px the
+   wrap stops growing, so a plain -gutter margin left a white sliver), and to the top and
+   bottom edges of the section, which the copy column and its padding set. */
 .c2-hero figure { margin-right: calc(-1 * max(var(--gutter), (100vw - 1240px) / 2)); min-height: 560px; }
 .c2-hero figure img { object-position: 40% 20%; }
 
