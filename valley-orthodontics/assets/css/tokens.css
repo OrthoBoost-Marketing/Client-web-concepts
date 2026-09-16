@@ -33,6 +33,7 @@
   --white: #FFFFFF;
   --paper: #F6F8F8;      /* cool, chroma toward mist, not warmth-by-default. Muted text holds 5.2:1 here. */
   --mist-tint: #E6EEF0;  /* mist at ~25% on white: light band ground; muted text 4.7:1 */
+  --gold-tint: #FDE1A8;  /* gold at 50% on white: concept 2's soft first fold; ink text 13:1, muted text fails (4.4:1) so remap --text-2 to ink on it */
   --line: #DDE4E6;
   --muted: #5F6B6F;      /* 5.5:1 on white */
 

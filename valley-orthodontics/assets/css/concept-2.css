@@ -1,7 +1,8 @@
 /* Concept 2: "Open Tuesday to Thursday"
-   Colour strategy: Restrained gold. Paper hero and mist-tint schedule; gold
-   is the primary button, the board caption rule and the accent dashes, never
-   a whole ground. The signature device is the hours board: a table set like
+   Colour strategy: Soft gold first fold. The hero and the schedule section sit
+   on --gold-tint (gold at half strength; full gold read as loud); ink is the
+   type and the buttons, full gold is the board caption rule and the accent
+   dashes. The signature device is the hours board: a table set like
    the front-door sign (ink rules, display-face values) that appears in the
    schedule section and small in the footer. Same object, two sizes. The
    schedule board is the page's one observed motion moment: its rows settle in
@@ -9,13 +10,13 @@
 
 .c2 { --fs-h1: clamp(42px, 5.4vw, 78px); }
 
-/* ---- hero: paper ground, copy left, door portrait bleeding right, no scrim ---- */
-.c2-hero { background: var(--paper); color: var(--ink); overflow: hidden; }
+/* ---- hero: soft gold ground, copy left, door portrait bleeding right, no scrim ---- */
+.c2-hero { background: var(--gold-tint); color: var(--ink); --text-2: var(--ink); overflow: hidden; }
 .c2-hero .wrap { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr); gap: var(--gap-l); align-items: center; }
 .c2-hero .hero-copy { padding-block: clamp(48px, 6vw, 96px) clamp(40px, 5vw, 80px); }
 .c2-hero .intro { max-width: 52ch; }
-.c2-hero .button { background: var(--gold); color: var(--ink); }
-.c2-hero .button:hover { background: var(--ink); color: var(--white); }
+.c2-hero .button { background: var(--ink); color: var(--white); }
+.c2-hero .button:hover { background: var(--white); color: var(--ink); }
 .c2-hero figure { margin-right: calc(-1 * var(--gutter)); min-height: 560px; }
 .c2-hero figure img { object-position: 40% 20%; }
 
@@ -47,13 +48,13 @@
 .c2 .c2-wall { background: var(--mist-tint); }
 .c2 .c2-faq { background: var(--paper); }
 
-/* schedule on mist-tint: the board at full size, settling in row by row */
+/* schedule on soft gold again: the board at full size, settling in row by row */
 @media (prefers-reduced-motion: no-preference) {
   html.js .board.moment > * { opacity: 1; transform: none; transition: none; }
   html.js .board.moment tr { opacity: 0; transition: opacity var(--dur) var(--ease-out); transition-delay: calc(var(--i, 0) * 90ms); }
   html.js .board.moment.in tr { opacity: 1; }
 }
-.c2 .c2-schedule { background: var(--mist-tint); color: var(--ink); }
+.c2 .c2-schedule { background: var(--gold-tint); color: var(--ink); --text-2: var(--ink); }
 .c2 .c2-schedule .board { margin-top: var(--space-6); }
 .c2 .c2-schedule .button { background: var(--ink); color: var(--white); }
 .c2 .c2-schedule .button:hover { background: var(--white); color: var(--ink); }
