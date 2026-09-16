@@ -70,8 +70,11 @@ p + p { margin-top: 1em; }
   box-decoration-break: clone;
   -webkit-box-decoration-break: clone;
 }
-h1 .hl, h2 .hl { --hl-size: .76em; --hl-seat: 98%; }
-.on-dark .hl { color: var(--ink); }
+h1 .hl { --hl-size: .76em; --hl-seat: 98%; }
+/* On a dark ground the marker fills the word instead of striking under it: the
+   swiped text flips to ink, and a partial stroke would leave its ascenders in ink
+   against the dark, where they disappear. */
+.on-dark .hl { color: var(--ink); --hl-size: 1.02em; --hl-seat: 84%; }
 .hl-rule { font-weight: 700; text-decoration: underline; text-decoration-color: var(--gold); text-decoration-thickness: var(--rule); text-underline-offset: .22em; text-decoration-skip-ink: none; }
 .num { font-family: var(--font-display); font-weight: 700; font-size: 1.12em; letter-spacing: var(--track-label); }
 
