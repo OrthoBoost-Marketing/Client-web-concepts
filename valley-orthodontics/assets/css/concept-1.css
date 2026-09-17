@@ -9,7 +9,14 @@
 .rule { height: var(--rule); width: 72px; background: var(--gold); margin-top: var(--space-5); }
 
 /* ---- hero: ink ground, copy left, the Gold Provider portrait breaking the right edge ---- */
-.c1-hero { background: var(--ink); color: var(--white); overflow: hidden; }
+.c1-hero { background: var(--ink); color: var(--white); overflow: hidden; position: relative; }
+.c1-hero > * { position: relative; z-index: 1; }
+/* Contours of the Valley under the headline. Dark ground is the only place this
+   reads at 5%: on anything lighter it either disappears or turns to mud. */
+.c1-hero::after {
+  content: ""; position: absolute; inset: 0; z-index: 0; pointer-events: none; opacity: .05;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 620' fill='none' stroke='%23FFFFFF' stroke-width='1.6'%3E %3Cpath d='M-20 540 C 160 492 300 540 460 508 S 800 430 1220 476'/%3E %3Cpath d='M-20 486 C 170 434 310 486 470 448 S 810 366 1220 416'/%3E %3Cpath d='M-20 432 C 180 376 320 432 480 388 S 820 302 1220 356'/%3E %3Cpath d='M-20 378 C 190 318 330 378 490 328 S 830 238 1220 296'/%3E %3Cpath d='M-20 324 C 200 260 340 324 500 268 S 840 174 1220 236'/%3E %3Cpath d='M-20 270 C 210 202 350 270 510 208 S 850 110 1220 176'/%3E %3Cpath d='M-20 216 C 220 144 360 216 520 148 S 860 46 1220 116'/%3E %3C/svg%3E") no-repeat center bottom / cover;
+}
 .c1-hero .wrap { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr); gap: var(--gap-l); align-items: stretch; }
 .c1-hero .intro { max-width: 54ch; }
 .c1-hero .phone-link small { color: var(--mist); }
@@ -26,6 +33,9 @@
 
 /* ---- the essay (signature device + motion moment) ---- */
 .essay { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: var(--gap-s); margin-top: var(--gap-m); }
+/* A gold thread behind the frames was tried here and cut: the captions live in the
+   gutters, so any background line crosses running text and reads as a stray mark
+   rather than a ridgeline. The device needs empty gaps, and this grid has none. */
 .essay figure { position: relative; display: grid; gap: var(--space-2); align-content: start; }
 .essay figure img { width: 100%; height: 100%; object-fit: cover; border-radius: var(--radius); }
 .essay figcaption { font-size: var(--fs-body); line-height: 1.45; }
@@ -45,7 +55,13 @@
 
 /* ---- rhythm ---- */
 .c1 .c1-doctor { background: var(--paper); }
-.c1 .c1-wall { background: var(--ink); color: var(--white); }
+/* Embossed-paper chevrons behind the hung frames. */
+.c1 .c1-wall { background: var(--ink); color: var(--white); position: relative; }
+.c1 .c1-wall > * { position: relative; z-index: 1; }
+.c1 .c1-wall::before {
+  content: ""; position: absolute; inset: 0; z-index: 0; pointer-events: none; opacity: .035;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='92' height='54' viewBox='0 0 92 54' fill='none' stroke='%23FFFFFF' stroke-width='3'%3E %3Cpath d='M0 6 L46 34 L92 6 M0 26 L46 54 L92 26'/%3E%3C/svg%3E") repeat center / 92px 54px;
+}
 .c1 .cta-band { background: var(--gold); color: var(--ink); --focus-on-dark: var(--ink); --ridge-from: var(--bg); }
 .c1 .cta-band .button { background: var(--ink); color: var(--white); }
 .c1 .cta-band .button:hover { background: var(--white); color: var(--ink); }

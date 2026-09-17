@@ -21,7 +21,15 @@
 .c2 { --fs-h1: clamp(36px, 4.2vw, 60px); --radius: 8px; }
 
 /* ---- hero: white ground, copy left, door portrait bleeding right, no scrim ---- */
-.c2-hero { background: var(--white); color: var(--ink); overflow: hidden; }
+.c2-hero { background: var(--white); color: var(--ink); overflow: hidden; position: relative; }
+.c2-hero > * { position: relative; z-index: 1; }
+/* The mark's sun, at landscape scale, rising under the headline. A flat shape with
+   a rounded top rather than a gradient, so it stays a sun and not a glow. */
+.c2-hero::after {
+  content: ""; position: absolute; z-index: 0; pointer-events: none;
+  left: calc(-1 * var(--bleed)); bottom: 0; width: min(54vw, 720px); aspect-ratio: 2 / 1;
+  background: var(--gold-tint); border-radius: 100% 100% 0 0; opacity: .5;
+}
 .c2-hero .wrap { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr); gap: var(--gap-l); align-items: stretch; }
 .c2-hero .intro { max-width: 52ch; }
 .c2-hero .button { background: var(--ink); color: var(--white); }
@@ -52,7 +60,16 @@
 
 /* ---- rhythm ---- */
 .c2 .proof { background: var(--ink); }
+/* Each comparison row hands down to the next: a shallow wedge between them, so the
+   page steps as you descend the three. */
 .c2 .c2-usp { background: var(--paper); }
+.c2 .c2-usp .usp-row { position: relative; }
+.c2 .c2-usp .usp-row > * { position: relative; z-index: 1; }
+.c2 .c2-usp .usp-row:not(:last-child)::before {
+  content: ""; position: absolute; z-index: 0; pointer-events: none; opacity: .12;
+  left: 50%; translate: -50% 0; bottom: calc(-0.5 * var(--gap-l)); width: min(56%, 460px); height: 36px;
+  background: var(--gold); clip-path: polygon(0 0, 100% 0, 50% 100%);
+}
 .c2 .cta-band { background: var(--ink); color: var(--white); --ridge-from: var(--paper); --mono-src: url(../logo/valley-orthodontics-mark-reversed-white.svg); --mono-opacity: .09; }
 .c2 .cta-band .button { background: var(--gold); color: var(--ink); }
 .c2 .cta-band .button:hover { background: var(--white); color: var(--ink); }
