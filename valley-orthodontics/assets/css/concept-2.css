@@ -15,7 +15,10 @@
    one after another. */
 
 /* The longest headline of the three, so it takes the scale a step further down. */
-.c2 { --fs-h1: clamp(36px, 4.2vw, 60px); }
+/* Concept 2 runs a softer corner than the other two, one step up the 4px scale.
+   It carries buttons, cards, photographs and the nav panel, so the whole concept
+   reads rounder rather than one element looking out of place. */
+.c2 { --fs-h1: clamp(36px, 4.2vw, 60px); --radius: 8px; }
 
 /* ---- hero: white ground, copy left, door portrait bleeding right, no scrim ---- */
 .c2-hero { background: var(--white); color: var(--ink); overflow: hidden; }
@@ -50,7 +53,7 @@
 /* ---- rhythm ---- */
 .c2 .proof { background: var(--ink); }
 .c2 .c2-usp { background: var(--paper); }
-.c2 .cta-band { background: var(--ink); color: var(--white); }
+.c2 .cta-band { background: var(--ink); color: var(--white); --ridge-from: var(--paper); --mono-src: url(../logo/valley-orthodontics-mark-reversed-white.svg); --mono-opacity: .09; }
 .c2 .cta-band .button { background: var(--gold); color: var(--ink); }
 .c2 .cta-band .button:hover { background: var(--white); color: var(--ink); }
 .c2 .c2-wall { background: var(--mist-tint); }
@@ -62,7 +65,7 @@
   html.js .board.moment tr { opacity: 0; transition: opacity var(--dur) var(--ease-out); transition-delay: calc(var(--i, 0) * 90ms); }
   html.js .board.moment.in tr { opacity: 1; }
 }
-.c2 .c2-schedule { background: var(--gold-tint); color: var(--ink); --text-2: var(--ink); }
+.c2 .c2-schedule { background: var(--gold-tint); color: var(--ink); --text-2: var(--ink); --ridge-from: var(--paper); }
 .c2 .c2-schedule .board { margin-top: var(--space-6); }
 .c2 .c2-schedule .button { background: var(--ink); color: var(--white); }
 .c2 .c2-schedule .button:hover { background: var(--white); color: var(--ink); }
@@ -80,8 +83,7 @@
 .c2 .doctor figure img,
 .c2 .usp-row figure img,
 .c2 .wall-grid figure img,
-.c2 .svc img { border-radius: 0; border-bottom: var(--rule) solid var(--gold); }
-.c2 .svc h3 a::after { border-radius: 0; }
+.c2 .svc img { border-bottom: var(--rule) solid var(--gold); }
 .c2 .svc img { transition: transform var(--dur) var(--ease-out), filter var(--dur-fast) var(--ease-out); }
 .c2 .svc:hover img { filter: none; }
 

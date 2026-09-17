@@ -170,7 +170,9 @@ main:focus { outline: 0; }
    text behind a gold dash. Numbers verified against the ads-hub record. */
 .facts { display: flex; flex-wrap: wrap; gap: var(--space-2) var(--space-5); margin-top: var(--space-6); font-weight: 700; font-size: var(--fs-body); }
 .facts li, .creds li { position: relative; padding-left: 22px; }
-.facts li::before, .creds li::before { content: ""; position: absolute; left: 0; top: .66em; width: 12px; height: var(--rule); background: var(--gold); }
+/* The marker is the logo's chevron rather than a dash: two sides of a square
+   turned 45 degrees, in the same gold and the same 3px rule as everything else. */
+.facts li::before, .creds li::before { content: ""; position: absolute; left: 0; top: .5em; width: 10px; height: 10px; border-right: var(--rule) solid var(--gold); border-bottom: var(--rule) solid var(--gold); transform: rotate(45deg); }
 
 /* ---- proof band (blueprint 2A): three verified claims, typography only ---- */
 .proof { background: var(--dark); color: var(--on-dark); }
@@ -184,7 +186,11 @@ main:focus { outline: 0; }
 /* ---- sections ---- */
 .section { padding-block: var(--pad-m); }
 .section--l { padding-block: var(--pad-l); }
-.section-head { margin-bottom: var(--gap-m); max-width: 30ch; }
+/* The measure belongs on the type, not on the container. Capping .section-head
+   itself also capped the lede inside it, so the lede's own 58ch never applied and
+   both sat in a 30ch column on a 1240px page. */
+.section-head { margin-bottom: var(--gap-m); }
+.section-head h2 { max-width: 22ch; }
 .section-head .lede { margin-top: var(--space-4); max-width: 58ch; }
 
 /* ---- meet the doctor (teaser) ---- */
@@ -208,6 +214,33 @@ main:focus { outline: 0; }
 .usp-row .text-link { margin-top: var(--space-5); }
 
 /* ---- CTA band (blueprint 7): one line, one button ---- */
+/* ---- ridgeline notch ----
+   Where two bands meet, the boundary steps down in a shallow chevron instead of a
+   straight line, so the sections read as ridges rather than stripes. It is the mark's
+   geometry doing structural work. --ridge-from is the colour of the band above, which
+   is what the notch is cut out of. Depth stays shallow: a ridgeline, not a banner. */
+.ridge { position: relative; }
+.ridge > * { position: relative; z-index: 1; }
+.ridge::before {
+  content: ""; position: absolute; top: 0; left: 0; right: 0; height: var(--ridge);
+  background: var(--ridge-from, var(--bg));
+  clip-path: polygon(0 0, 100% 0, 50% 100%);
+  pointer-events: none; z-index: 0;
+}
+
+/* ---- ghost monogram ----
+   The mark oversized and bled off the edge, never centred and never a full logo
+   sitting politely in the middle. Low enough to read as texture, not as a watermark
+   somebody forgot to delete. */
+.mono { position: relative; overflow: hidden; }
+.mono > * { position: relative; z-index: 1; }
+.mono::after {
+  content: ""; position: absolute; inset: 0; z-index: 0; pointer-events: none;
+  opacity: var(--mono-opacity, .07);
+  background: var(--mono-src) no-repeat right -70px bottom -50px / auto min(62%, 320px);
+}
+@media (max-width: 760px) { .mono::after { background-position: right -60px bottom -30px; background-size: auto 150px; } }
+
 .cta-band { background: var(--dark); color: var(--on-dark); }
 .cta-band .wrap { display: flex; align-items: center; justify-content: space-between; gap: var(--space-5) var(--space-7); flex-wrap: wrap; padding-block: clamp(34px, 4vw, 56px); }
 .cta-band h2 { font-size: clamp(30px, 3.2vw, 46px); max-width: 24ch; }

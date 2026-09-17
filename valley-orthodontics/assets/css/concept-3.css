@@ -32,6 +32,7 @@
 /* ---- rhythm: slate is the dark here, never ink ---- */
 .c3 .c3-doctor .doctor figure img { border-radius: 0; }
 .c3 .c3-usp { background: var(--paper); }
+.c3 .cta-band { --ridge-from: var(--paper); --mono-src: url(../logo/valley-orthodontics-mark-reversed-white.svg); --mono-opacity: .08; }
 .c3 .cta-band .button { background: var(--white); color: var(--ink); }
 .c3 .cta-band .button:hover { background: var(--gold); color: var(--ink); }
 .c3 .c3-wall { background: var(--paper); }
