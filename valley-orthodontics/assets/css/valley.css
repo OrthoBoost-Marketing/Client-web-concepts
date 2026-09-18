@@ -214,6 +214,26 @@ main:focus { outline: 0; }
 .usp-row .text-link { margin-top: var(--space-5); }
 
 /* ---- CTA band (blueprint 7): one line, one button ---- */
+/* ---- arrow notch ----
+   A chevron cut into the top edge of a band, pointing down into it, taken from the
+   mark. --ridge-from is the colour of the band above, which is what the notch is cut
+   out of.
+
+   The span is CAPPED, and that is the whole trick. Drawn full-width it looked right on
+   a laptop and collapsed on a wide monitor: 56px of drop across 960px is a three degree
+   slope, which stops reading as an arrow and becomes two long stray diagonals. Fixing
+   the span at 420px keeps the angle near twelve degrees at any viewport, so it reads the
+   same on every screen. Do not make this full-width again. */
+.ridge { position: relative; }
+.ridge > * { position: relative; z-index: 1; }
+.ridge::before {
+  content: ""; position: absolute; top: 0; left: 50%; translate: -50% 0;
+  width: var(--ridge-span); height: var(--ridge);
+  background: var(--ridge-from, var(--bg));
+  clip-path: polygon(0 0, 100% 0, 50% 100%);
+  pointer-events: none; z-index: 0;
+}
+
 /* ---- ghost monogram ----
    The mark oversized and bled off the edge, never centred and never a full logo
    sitting politely in the middle. Low enough to read as texture, not as a watermark

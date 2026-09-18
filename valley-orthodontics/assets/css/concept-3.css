@@ -45,7 +45,7 @@ body.c3 { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.
   background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 220' preserveAspectRatio='none' fill='none' stroke='%23FFFFFF' stroke-width='2'%3E %3Cpath d='M0 186 L180 104 L320 152 L520 48 L700 140 L860 78 L1040 162 L1200 110'/%3E%3C/svg%3E") no-repeat center bottom / 100% 220px;
 }
 
-.c3 .cta-band { --mono-src: url(../logo/valley-orthodontics-mark-reversed-white.svg); --mono-opacity: .08; }
+.c3 .cta-band { --ridge-from: var(--paper); --mono-src: url(../logo/valley-orthodontics-mark-reversed-white.svg); --mono-opacity: .08; }
 .c3 .cta-band .button { background: var(--white); color: var(--ink); }
 .c3 .cta-band .button:hover { background: var(--gold); color: var(--ink); }
 .c3 .c3-wall { background: var(--paper); }
