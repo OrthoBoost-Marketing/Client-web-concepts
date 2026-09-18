@@ -261,7 +261,9 @@ main:focus { outline: 0; }
 .svc .more { display: inline-flex; align-items: center; gap: var(--space-2); font-weight: 700; font-size: var(--fs-small); justify-self: start; }
 .svc .more .i { transition: transform var(--dur-fast) var(--ease-out); }
 .svc:hover .more .i { transform: translateX(4px); }
-.services-more { margin-top: var(--gap-m); padding-top: var(--space-5); border-top: 1px solid var(--line); display: flex; flex-wrap: wrap; gap: var(--space-2) var(--space-5); align-items: center; font-size: var(--fs-body); }
+/* A row of links, not prose: the 68ch measure on p was breaking it into three short
+   lines while half the page sat empty. */
+.services-more { max-width: none; margin-top: var(--gap-m); padding-top: var(--space-5); border-top: 1px solid var(--line); display: flex; flex-wrap: wrap; gap: var(--space-2) var(--space-5); align-items: center; font-size: var(--fs-body); }
 .services-more strong { margin-right: var(--space-1); }
 .services-more a { min-height: 44px; display: inline-flex; align-items: center; }
 
@@ -309,7 +311,10 @@ main:focus { outline: 0; }
 .faq .text-link { margin-top: var(--space-5); }
 
 /* ---- schedule: phone, hours as a real table, address, directions, map ---- */
-.schedule { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: var(--gap-l); align-items: start; }
+/* Both columns run to the same depth: the map grows to meet the bottom of the hours
+   and address beside it, rather than stopping a third of the way down. */
+.schedule { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: var(--gap-l); align-items: stretch; }
+.schedule > div:last-child { display: flex; flex-direction: column; }
 .schedule .lede { margin-top: var(--space-4); }
 .big-phone { display: inline-flex; align-items: center; min-height: 44px; margin-top: var(--space-5); font-family: var(--font-display); font-weight: 800; font-size: clamp(38px, 4.2vw, 60px); line-height: 1; text-decoration: none; letter-spacing: var(--track-label); }
 .big-phone:hover { text-decoration: underline; text-decoration-thickness: var(--rule); text-underline-offset: .12em; }
@@ -326,7 +331,7 @@ main:focus { outline: 0; }
 .address-block address { font-style: normal; font-size: var(--fs-body); line-height: 1.5; }
 .address-block .landmark { color: var(--text-2); font-size: var(--fs-small); }
 .on-dark .address-block .landmark { color: var(--on-dark-2); }
-.map { position: relative; width: 100%; aspect-ratio: 4 / 3; border-radius: var(--radius); overflow: hidden; background: var(--mist-tint); }
+.map { position: relative; width: 100%; flex: 1; min-height: 340px; border-radius: var(--radius); overflow: hidden; background: var(--mist-tint); }
 .map iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
 .map-caption { margin-top: var(--space-2); font-size: var(--fs-small); color: var(--text-2); }
 
@@ -406,6 +411,8 @@ main:focus { outline: 0; }
 @media (max-width: 760px) {
   :root { --fs-h1: clamp(40px, 12vw, 60px); --fs-h2: clamp(30px, 8.4vw, 40px); }
   .doctor, .usp-row, .schedule { grid-template-columns: 1fr; }
+  /* Stacked, the map has no column to match, so it goes back to its own proportion. */
+  .map { flex: none; min-height: 0; aspect-ratio: 4 / 3; }
   .usp-row:nth-child(even) figure { order: 0; }
   .hero .hero-copy { padding-block: var(--space-6) var(--space-7); }
   .hero figcaption { left: var(--bleed); }

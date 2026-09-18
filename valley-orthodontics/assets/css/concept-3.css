@@ -25,14 +25,7 @@ body.c3 { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.
    the same distance the wrap is inset. Without that the frame hung to the left of every
    heading below it. The percentage is of the body, not the viewport, so a scrollbar
    cannot push it off grid. */
-.c3-hero { display: grid; grid-template-columns: minmax(0, 46fr) minmax(0, 54fr); min-height: min(calc(100svh - 92px), 840px); padding-left: max(var(--gutter), (100% - var(--wrap)) / 2); background: var(--white); position: relative; overflow: hidden; }
-.c3-hero > * { position: relative; z-index: 1; }
-/* Contour lines in the white around the frame: pure line, no fill, which is the only
-   kind of mark this concept allows. */
-.c3-hero::before {
-  content: ""; position: absolute; inset: 0; z-index: 0; pointer-events: none; opacity: .5;
-  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 620' fill='none' stroke='%23FCC351' stroke-width='1.4'%3E %3Cpath d='M-20 540 C 160 492 300 540 460 508 S 800 430 1220 476'/%3E %3Cpath d='M-20 486 C 170 434 310 486 470 448 S 810 366 1220 416'/%3E %3Cpath d='M-20 432 C 180 376 320 432 480 388 S 820 302 1220 356'/%3E %3Cpath d='M-20 378 C 190 318 330 378 490 328 S 830 238 1220 296'/%3E %3Cpath d='M-20 324 C 200 260 340 324 500 268 S 840 174 1220 236'/%3E %3Cpath d='M-20 270 C 210 202 350 270 510 208 S 850 110 1220 176'/%3E %3Cpath d='M-20 216 C 220 144 360 216 520 148 S 860 46 1220 116'/%3E %3C/svg%3E") no-repeat left bottom / auto 78%;
-}
+.c3-hero { display: grid; grid-template-columns: minmax(0, 46fr) minmax(0, 54fr); min-height: min(calc(100svh - 92px), 840px); padding-left: max(var(--gutter), (100% - var(--wrap)) / 2); background: var(--white); }
 .c3-hero .hero-copy { display: flex; flex-direction: column; justify-content: center; padding-inline: 0 var(--gap-l); }
 .c3-hero .frame { max-width: 640px; }
 .c3-hero .intro { max-width: 46ch; }
