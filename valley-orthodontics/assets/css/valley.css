@@ -192,6 +192,13 @@ main:focus { outline: 0; }
 .section-head { margin-bottom: var(--gap-m); }
 .section-head h2 { max-width: 22ch; }
 .section-head .lede { margin-top: var(--space-4); max-width: 58ch; }
+/* On a wide screen the lede sits beside the heading rather than under it, which is
+   where the room already was. Heads with no lede are unaffected: the h2 keeps the
+   left column and the right one stays empty. Stacked again below 1100. */
+@media (min-width: 1101px) {
+  .section-head { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: var(--gap-l); align-items: start; }
+  .section-head .lede { margin-top: .35em; }
+}
 
 /* ---- meet the doctor (teaser) ---- */
 .doctor { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: var(--gap-l); align-items: center; }
