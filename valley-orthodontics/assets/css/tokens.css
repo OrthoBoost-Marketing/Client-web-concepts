@@ -66,7 +66,6 @@
   --track-label: .01em;
   --hl-size: .58em;      /* height of the gold marker swipe behind emphasised text */
   --hl-seat: 92%;        /* where that swipe sits: just under the x-height */
-  --ridge: clamp(28px, 3.4vw, 56px);  /* depth of the ridgeline notch between bands */
 
   /* ---- space: 4px base for component gaps, fluid steps for section rhythm ---- */
   --space-1: 4px;

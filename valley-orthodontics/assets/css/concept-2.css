@@ -70,7 +70,7 @@
   left: 50%; translate: -50% 0; bottom: calc(-0.5 * var(--gap-l)); width: min(56%, 460px); height: 36px;
   background: var(--gold); clip-path: polygon(0 0, 100% 0, 50% 100%);
 }
-.c2 .cta-band { background: var(--ink); color: var(--white); --ridge-from: var(--paper); --mono-src: url(../logo/valley-orthodontics-mark-reversed-white.svg); --mono-opacity: .09; }
+.c2 .cta-band { background: var(--ink); color: var(--white); --mono-src: url(../logo/valley-orthodontics-mark-reversed-white.svg); --mono-opacity: .09; }
 .c2 .cta-band .button { background: var(--gold); color: var(--ink); }
 .c2 .cta-band .button:hover { background: var(--white); color: var(--ink); }
 .c2 .c2-wall { background: var(--mist-tint); }
@@ -82,7 +82,7 @@
   html.js .board.moment tr { opacity: 0; transition: opacity var(--dur) var(--ease-out); transition-delay: calc(var(--i, 0) * 90ms); }
   html.js .board.moment.in tr { opacity: 1; }
 }
-.c2 .c2-schedule { background: var(--gold-tint); color: var(--ink); --text-2: var(--ink); --ridge-from: var(--paper); }
+.c2 .c2-schedule { background: var(--gold-tint); color: var(--ink); --text-2: var(--ink); }
 .c2 .c2-schedule .board { margin-top: var(--space-6); }
 .c2 .c2-schedule .button { background: var(--ink); color: var(--white); }
 .c2 .c2-schedule .button:hover { background: var(--white); color: var(--ink); }

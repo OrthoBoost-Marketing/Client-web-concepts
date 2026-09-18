@@ -65,7 +65,7 @@
   content: ""; position: absolute; inset: 0; z-index: 0; pointer-events: none; opacity: .035;
   background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='92' height='54' viewBox='0 0 92 54' fill='none' stroke='%23FFFFFF' stroke-width='3'%3E %3Cpath d='M0 6 L46 34 L92 6 M0 26 L46 54 L92 26'/%3E%3C/svg%3E") repeat center / 92px 54px;
 }
-.c1 .cta-band { background: var(--gold); color: var(--ink); --focus-on-dark: var(--ink); --ridge-from: var(--bg); }
+.c1 .cta-band { background: var(--gold); color: var(--ink); --focus-on-dark: var(--ink); }
 .c1 .cta-band .button { background: var(--ink); color: var(--white); }
 .c1 .cta-band .button:hover { background: var(--white); color: var(--ink); }
 .c1 .c1-reviews { background: var(--paper); }
