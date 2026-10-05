@@ -335,6 +335,7 @@ main:focus { outline: 0; }
 .hours caption { text-align: left; padding-bottom: var(--space-2); }
 .hours th, .hours td { text-align: left; padding: var(--space-3) 0; border-top: 1px solid var(--line); vertical-align: top; }
 .hours th { font-weight: 700; padding-right: var(--space-5); }
+.hours-note { max-width: 520px; margin-top: var(--space-3); color: var(--text-2); }
 .hours td small { display: block; font-size: var(--fs-caption); color: var(--text-2); margin-top: 2px; }
 .hours tr:last-child th, .hours tr:last-child td { border-bottom: 1px solid var(--line); }
 .hours-note { margin-top: var(--space-3); font-size: var(--fs-small); color: var(--text-2); }

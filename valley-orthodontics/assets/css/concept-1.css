@@ -21,7 +21,7 @@
 .c1-hero .intro { max-width: 54ch; }
 .c1-hero .phone-link small { color: var(--mist); }
 .c1-hero figure { margin-right: calc(-1 * var(--bleed)); min-height: 520px; }
-.c1-hero figure img { object-position: 50% 18%; }
+.c1-hero figure img { object-position: 35% 30%; }
 /* caption sits top-right so it never covers the plaque he is holding, inset to the
    wrap edge so it lines up with the page grid rather than the bled photo edge */
 .c1-hero figcaption { left: auto; bottom: auto; top: 0; right: var(--bleed); color: var(--mist); }
